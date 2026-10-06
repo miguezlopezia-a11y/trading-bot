@@ -12,15 +12,31 @@ MODO SOMBRA: este modulo NUNCA ejecuta ni bloquea nada. El veto final lo tiene
 Risk (src/risk_veto.py). La deliberacion solo se registra en el journal junto a
 la decision del paper runner.
 
-Proveedores: interfaz Provider; AnthropicProvider (usa ANTHROPIC_API_KEY del
-entorno; modelo configurable por env DELIBERATION_MODEL, default Claude Sonnet);
-FakeProvider determinista para tests. Sin key -> deliberar() no se invoca; el
-runner registra deliberacion "no_disponible" (ver paper_runner.py).
+Proveedores: interfaz Provider; KimiProvider (usa MAIA_KIMI_KEY, proxy Kimi
+compatible con Anthropic Messages API — PREFERIDO, cubre el proyecto sin saldo
+Anthropic desde agosto 2026); AnthropicProvider (usa ANTHROPIC_API_KEY, fallback
+si algun dia hay saldo); FakeProvider determinista para tests. Sin ninguna key ->
+deliberar() no se invoca; el runner registra deliberacion "no_disponible" (ver
+paper_runner.py).
 """
 import hashlib
 import json
 import os
 from datetime import datetime, timezone
+
+# Carga MAIA_KIMI_KEY desde /root/maia/.env si no esta ya en el entorno
+# (mismo patron que bunker-2026/bot.py: setdefault, nunca sobreescribe).
+for _env_path in ("/root/maia/.env",):
+    try:
+        with open(_env_path, encoding="utf-8") as _f:
+            for _line in _f:
+                _line = _line.strip()
+                if not _line or _line.startswith("#") or "=" not in _line:
+                    continue
+                _k, _v = _line.split("=", 1)
+                os.environ.setdefault(_k.strip().removeprefix("export").strip(), _v.strip())
+    except (FileNotFoundError, PermissionError):
+        pass
 
 SOMBREROS = {
     "hechos": ("Eres el Sombrero Blanco (hechos). Analiza SOLO hechos verificables "
@@ -91,6 +107,43 @@ class AnthropicProvider(Provider):
                        if b.get("type") == "text")
 
 
+class KimiProvider(Provider):
+    """Proveedor preferido: proxy Kimi compatible con Anthropic Messages API
+    (ver bunker-2026/bot.py:call_kimi). Mismo formato de body que Anthropic;
+    headers propios (Bearer, no x-api-key). Cubre el proyecto sin saldo
+    Anthropic, decision de agosto 2026."""
+
+    def __init__(self, api_key=None, model=None, max_tokens=512):
+        self.api_key = api_key or os.environ.get("MAIA_KIMI_KEY")
+        assert self.api_key, "MAIA_KIMI_KEY no disponible"
+        self.model = model or os.environ.get("DELIBERATION_MODEL_KIMI",
+                                             "kimi-for-coding")
+        self.max_tokens = max_tokens
+
+    def complete(self, system_prompt: str, user_message: str) -> str:
+        import urllib.request
+        body = json.dumps({
+            "model": self.model, "max_tokens": self.max_tokens,
+            "system": system_prompt, "messages": [{"role": "user",
+                                                   "content": user_message}],
+        }).encode()
+        req = urllib.request.Request(
+            "https://api.kimi.com/coding/v1/messages", data=body,
+            headers={"Authorization": f"Bearer {self.api_key}",
+                     "anthropic-version": "2023-06-01",
+                     "content-type": "application/json"}, method="POST")
+        with urllib.request.urlopen(req, timeout=60) as r:
+            data = json.loads(r.read())
+        blocks = data.get("content", [])
+        text = "".join(b.get("text", "") for b in blocks if b.get("type") == "text")
+        if not text.strip():
+            # gotcha real de produccion (bot.py:559-562): Kimi a veces devuelve
+            # solo bloques "thinking" sin bloque "text" -> usar ese contenido.
+            text = "".join(b.get("thinking", "") for b in blocks
+                          if b.get("type") == "thinking")
+        return text
+
+
 class FakeProvider(Provider):
     """Determinista para tests: responde segun una cola de respuestas
     prefijadas, o con un veredicto fijo."""
@@ -108,7 +161,7 @@ class FakeProvider(Provider):
 
 
 def provider_disponible() -> bool:
-    return bool(os.environ.get("ANTHROPIC_API_KEY"))
+    return bool(os.environ.get("MAIA_KIMI_KEY") or os.environ.get("ANTHROPIC_API_KEY"))
 
 
 # ------------------------------------------------------------------ parsing

@@ -241,7 +241,12 @@ def deliberar_sombra(trades, equity):
     provider = None
     if deliberation is not None and deliberation.provider_disponible():
         try:
-            provider = deliberation.AnthropicProvider()
+            # Orden: Kimi primero (cubre el proyecto sin saldo Anthropic desde
+            # agosto 2026), Anthropic como fallback si algun dia hay saldo.
+            if os.environ.get("MAIA_KIMI_KEY"):
+                provider = deliberation.KimiProvider()
+            elif os.environ.get("ANTHROPIC_API_KEY"):
+                provider = deliberation.AnthropicProvider()
         except Exception as e:
             print(f"proveedor LLM no inicializable: {e}")
     for t in trades:
