@@ -32,6 +32,13 @@ sys.path.insert(0, "src")
 from strategies import STRATEGIES  # noqa: E402
 from backtester import run_backtest  # noqa: E402
 
+try:  # Etapa B: deliberacion en modo sombra (opcional, nunca bloquea)
+    import deliberation
+    from risk_veto import evaluar_veto
+except ImportError:  # modulo ausente -> runner funciona igual, sin deliberar
+    deliberation = None
+    evaluar_veto = None
+
 TICKER = "BTC-USD"
 INTERVAL = "1d"
 YEARS = 5
@@ -225,6 +232,63 @@ def render_dashboard(sim, df, strategy_name, journal_backend, out_path):
 
 # ---------------------------------------------------------------- main
 
+def deliberar_sombra(trades, equity):
+    """Etapa B: deliberacion 6 Sombreros MODO SOMBRA + veto de riesgo.
+    NUNCA modifica trades ni decisiones: solo produce registros para el
+    journal. Sin proveedor LLM -> deliberacion "no_disponible" (runner igual)."""
+    registros = []
+    now = datetime.now(timezone.utc).isoformat()
+    provider = None
+    if deliberation is not None and deliberation.provider_disponible():
+        try:
+            provider = deliberation.AnthropicProvider()
+        except Exception as e:
+            print(f"proveedor LLM no inicializable: {e}")
+    for t in trades:
+        eq_entry = float(equity.loc[:t.entry_date].iloc[-1])
+        sizing = (t.entry_price * t.size) / eq_entry if eq_entry else 0.0
+        direction = 1 if t.side == "long" else -1
+        dd_proj = (t.stop - t.entry_price) / t.entry_price * 100 * direction \
+            if t.stop else None
+        fecha = str(t.exit_date.date()) if t.exit_date is not None \
+            else str(t.entry_date.date())
+        candidato = {"estrategia": ACTIVA, "activo": TICKER, "direccion": t.side,
+                     "sizing": round(sizing, 6), "dd_proyectado_pct": dd_proj,
+                     "contexto": {"entry_price": t.entry_price, "stop": t.stop,
+                                  "target": t.target, "equity_entry": round(eq_entry, 6),
+                                  "motivo_salida": t.reason,
+                                  "dictamen": "walkforward_fragil_modo_observacion"}}
+        base = {"timestamp": now, "estrategia": ACTIVA,
+                "senal": t.side, "fecha_dato": fecha}
+        if evaluar_veto is not None:
+            veto = evaluar_veto(candidato)
+            registros.append({**base, "evento": "risk_veto",
+                              "decision": "vetada" if veto["vetado"] else "no_vetada",
+                              "motivo": ",".join(veto["motivos"]) or "dentro_de_limites",
+                              "detalle": json.dumps(veto, ensure_ascii=False),
+                              "equity_mtm": None})
+        if provider is not None:
+            try:
+                d = deliberation.deliberar(candidato, provider)
+                assert deliberation.valida_deliberacion(d)
+                registros.append({**base, "evento": "deliberacion",
+                                  "decision": d["veredicto"],
+                                  "motivo": d["motivo"],
+                                  "detalle": json.dumps(d, ensure_ascii=False),
+                                  "equity_mtm": None})
+            except Exception as e:
+                registros.append({**base, "evento": "deliberacion",
+                                  "decision": "no_disponible",
+                                  "motivo": f"error_provider:{type(e).__name__}",
+                                  "detalle": "{}", "equity_mtm": None})
+        else:
+            registros.append({**base, "evento": "deliberacion",
+                              "decision": "no_disponible",
+                              "motivo": "sin_proveedor_llm",
+                              "detalle": "{}", "equity_mtm": None})
+    return registros
+
+
 def main():
     df = load_data()
     sim = simulate(df, ACTIVA)
@@ -234,8 +298,14 @@ def main():
           f"equity final {eq.iloc[-1]:.6f} (retorno {(eq.iloc[-1] / eq.iloc[0] - 1) * 100:.2f}%)")
     print(f"Buy&hold: {(df['close'].iloc[-1] / df['close'].iloc[0] - 1) * 100:.2f}%")
 
+    shadow = deliberar_sombra(sim["trades"], eq)
+    n_delib = sum(1 for r in shadow if r["evento"] == "deliberacion")
+    n_veto = sum(1 for r in shadow if r["evento"] == "risk_veto")
+    print(f"Modo sombra: {n_delib} deliberaciones, {n_veto} vetos de riesgo "
+          f"(registrados, NUNCA bloquean)")
+
     journal = Journal()
-    for d in sim["decisions"]:
+    for d in sim["decisions"] + shadow:
         journal.insert(d)
     backend = journal.backend[0]
     print(f"Journal backend: {backend}")
