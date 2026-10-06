@@ -50,6 +50,17 @@ Con crédito, la siguiente ejecución del runner delibera de verdad sin cambios.
 - Las 7 verificaciones previas (paper sin dinero real estructural, MTM, A4/A7,
   a5, a6, h1, a8) siguen en PASS tras los cambios.
 
+## Hallazgo real del modo sombra (primer run, 2026-10-06)
+
+Las 32 señales de ma_cross registran `risk_veto: vetada` con motivo
+`sizing_sobre_limite`: el backtester arriesga el 95% del equity por trade
+(size_fraction=0.95, spot sin apalancamiento), muy por encima del límite Risk
+de Fase 2 (5%). En modo sombra solo se registra (no bloquea nada), pero es un
+dato de decisión para Pablo: o el límite SIZE_MAX refleja política real de
+riesgo y entonces ma_cross operaría con sizing reducido, o el sizing del
+backtest es la política y SIZE_MAX debe revisarse. NO se cambió ningún valor en
+esta etapa (prohibido optimizar; el veto no ejecuta nada).
+
 ## Coste / tokens
 
 Cada deliberación = 6 llamadas (1 por sombrero, +6 si repara). El runner
