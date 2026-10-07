@@ -33,9 +33,12 @@ def creds():
 
 
 def req(url, key, path, method="GET", body=None):
+    # Prefer: ignore-duplicates solo importa en POST (evita 409 en la
+    # segunda insercion con el mismo dedupe_key) - inocuo en GET/DELETE.
     r = urllib.request.Request(url + path, data=body,
                                headers={"apikey": key, "Authorization": f"Bearer {key}",
-                                        "Content-Type": "application/json"}, method=method)
+                                        "Content-Type": "application/json",
+                                        "Prefer": "resolution=ignore-duplicates"}, method=method)
     with urllib.request.urlopen(r, timeout=20) as resp:
         return resp.status, resp.read()
 
@@ -61,7 +64,7 @@ def main():
 
     # doble insercion (misma dedupe_key)
     for _ in range(2):
-        req(url, key, "/rest/v1/journal", "POST", json.dumps(row).encode())
+        req(url, key, "/rest/v1/journal?on_conflict=dedupe_key", "POST", json.dumps(row).encode())
 
     _, out = req(url, key, f"/rest/v1/journal?dedupe_key=eq.{dedupe}&select=id")
     n = len(json.loads(out))

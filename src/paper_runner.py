@@ -127,7 +127,8 @@ class Journal:
         if url and key:
             try:
                 self._sb_insert(url, key, {"evento": "journal_init_probe",
-                                           "estrategia": "probe"})
+                                           "estrategia": "probe",
+                                           "decision": "probe_ok"})
                 self.backend = ("supabase", url, key)
                 return
             except Exception:
@@ -158,7 +159,7 @@ class Journal:
             "fuente": row.get("fuente", "paper_runner_v1"),
             "dedupe_key": dedupe}.items() if v is not None}
         req = urllib.request.Request(
-            url.rstrip("/") + "/rest/v1/journal",
+            url.rstrip("/") + "/rest/v1/journal?on_conflict=dedupe_key",
             data=json.dumps(body).encode(),
             headers={"apikey": key, "Authorization": f"Bearer {key}",
                      "Content-Type": "application/json", "Prefer": "resolution=ignore-duplicates"},

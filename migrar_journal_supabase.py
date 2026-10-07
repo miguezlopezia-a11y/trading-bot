@@ -35,7 +35,7 @@ def creds():
 def sb_insert(url, key, row):
     body = {k: v for k, v in row.items() if v is not None}
     req = urllib.request.Request(
-        url + "/rest/v1/journal", data=json.dumps(body).encode(),
+        url + "/rest/v1/journal?on_conflict=dedupe_key", data=json.dumps(body).encode(),
         headers={"apikey": key, "Authorization": f"Bearer {key}",
                  "Content-Type": "application/json",
                  "Prefer": "resolution=ignore-duplicates"}, method="POST")
