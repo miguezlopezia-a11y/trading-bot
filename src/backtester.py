@@ -60,6 +60,8 @@ def run_backtest(df: pd.DataFrame, signals: pd.DataFrame,
     sl_vals = signals["stop_loss"].values
     tp_vals = signals["take_profit"].values
     trail_periods = signals["trailing_ma_period"].values
+    exit_long_sig = signals["exit_long"].values if "exit_long" in signals.columns else None
+    exit_short_sig = signals["exit_short"].values if "exit_short" in signals.columns else None
     ma_cache = {}
 
     for i in range(len(df)):
@@ -101,6 +103,18 @@ def run_backtest(df: pd.DataFrame, signals: pd.DataFrame,
                         exit_price, reason = close[i], "trailing_ma"
                     elif position.side == "short" and close[i] >= ma_val:
                         exit_price, reason = close[i], "trailing_ma"
+
+            if exit_price is None:
+                # exit_long/exit_short: senal explicita de la estrategia (ej.
+                # momentum se volvio negativo, o cierre cruza sobre una media
+                # en sentido contrario al de trailing_ma). Prioridad: SL/TP
+                # primero (gestion de riesgo), trailing_ma segundo, esto
+                # ultimo. Columnas opcionales -- sin ellas, comportamiento
+                # identico al de antes (A4/A7/S1/H1/H2 no se tocan).
+                if position.side == "long" and exit_long_sig is not None and exit_long_sig[i]:
+                    exit_price, reason = close[i], "exit_signal"
+                elif position.side == "short" and exit_short_sig is not None and exit_short_sig[i]:
+                    exit_price, reason = close[i], "exit_signal"
 
             if exit_price is not None:
                 exit_price *= (1 - slippage) if position.side == "long" else (1 + slippage)
