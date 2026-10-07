@@ -46,7 +46,8 @@ por fold escalan por el mismo factor ~1/19 en todos los folds).
 ## Recálculo del hallazgo del modo sombra (veto Risk)
 
 Simulación de `evaluar_veto` sobre los 12 trades reales con sizing 0.05
-(script ad-hoc, salida en REGISTRO_C.md): **7/12 vetadas por
+(script ad-hoc, sin guardar por separado -- el resultado y la resolucion
+ estan documentados mas abajo, seccion "Epsilon aplicado"): **7/12 vetadas por
 `sizing_sobre_limite:0.0500075>0.05`**, 5/12 dentro de límite. La causa es
 numérica, no de política: el backtester calcula `qty = cash*0.05/fill` sobre el
 **cash**, y el sizing efectivo medido sobre la **equity** al cierre de la vela

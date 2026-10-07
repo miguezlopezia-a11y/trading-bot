@@ -4,3 +4,4 @@ __pycache__/
 *.bak-*
 trading-bot-fase1-audit.tar.gz
 data/*.csv
+data/*.db
