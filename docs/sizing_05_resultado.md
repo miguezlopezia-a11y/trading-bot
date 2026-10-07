@@ -57,3 +57,19 @@ vetando la mitad de las señales por un redondeo. Opciones (decisión de Pablo,
 NO tomada aquí): tolerancia epsilon en la regla, o sizing calculado sobre
 equity en el backtester. En modo sombra esto solo se registra; no bloquea
 nada.
+
+## Epsilon aplicado (2026-10-07, decisión de Pablo)
+
+Fix aplicado: `SIZE_MAX_EPSILON = 1e-4` en `risk_veto.py` (commit `0216979`).
+Recalculado sobre las 12 operaciones reales (no un caso sintético):
+
+| | Antes del fix | Después del fix |
+|---|---|---|
+| Vetadas por `sizing_sobre_limite` | 7/12 | 0/12 |
+| Exceso máximo real medido | 3.98e-05 | — (dentro del margen 1e-4) |
+
+Las 7 vetadas lo eran por ruido numérico cash-vs-equity (slippage + timing de
+la medición), no por riesgo real tomado de más — el exceso real nunca superó
+3.98e-5, muy por debajo del epsilon de 1e-4. El caso de exceso genuino
+(ej. 0.06) sigue vetado sin cambios. Test de regresión en
+`verificar_veto_riesgo.py`.
