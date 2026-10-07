@@ -8,6 +8,8 @@ Regla de gestión de salidas (del PDF):
   - SL/TP fijos en % si la estrategia los define
   - Trailing stop con MA opcional (override del TP cuando está activo)
 """
+from functools import partial
+
 import numpy as np
 import pandas as pd
 
@@ -103,9 +105,66 @@ def trend_following(df: pd.DataFrame, fast: int = 10, slow: int = 30,
     return out
 
 
+# ---------------------------------------------------------------- 5/7 SMA-timing (Faber 2007 + Detzel et al. 2021)
+def sma_timing(df: pd.DataFrame, period: int = 100) -> pd.DataFrame:
+    """Largo si close cruza por encima de sma(period); fuera si cae por debajo (trailing_ma_period)."""
+    out = pd.DataFrame(index=df.index)
+    ma = sma(df["close"], period)
+    out["entry_long"] = (df["close"] > ma) & (df["close"].shift(1) <= ma.shift(1))
+    out["entry_short"] = False
+    out["stop_loss"] = np.nan
+    out["take_profit"] = np.nan
+    out["trailing_ma_period"] = period
+    out["regime"] = "trending"
+    return out
+
+
+# ---------------------------------------------------------------- 6/7 TSMOM (Moskowitz/Ooi/Pedersen 2012 + Liu/Tsyvinski 2021)
+def tsmom(df: pd.DataFrame, period: int = 365) -> pd.DataFrame:
+    """Adaptacion spot (sin cortos): largo en el cambio de signo del retorno de N velas, fuera cuando vuelve a <=0."""
+    out = pd.DataFrame(index=df.index)
+    ret_n = df["close"].pct_change(period)
+    out["entry_long"] = (ret_n > 0) & (ret_n.shift(1) <= 0)
+    out["entry_short"] = False
+    out["exit_long"] = ret_n <= 0
+    out["exit_short"] = False
+    out["stop_loss"] = np.nan
+    out["take_profit"] = np.nan
+    out["trailing_ma_period"] = None
+    out["regime"] = "trending"
+    return out
+
+
+# ---------------------------------------------------------------- 7/7 Connors RSI(2) — prueba de falsacion
+def connors_rsi2(df: pd.DataFrame, sma_filter: int = 290) -> pd.DataFrame:
+    """Largo si rsi(2)<5 con close por encima del filtro de tendencia; fuera al recuperar sobre sma(5)."""
+    out = pd.DataFrame(index=df.index)
+    r2 = rsi(df["close"], 2)
+    filtro = sma(df["close"], sma_filter)
+    salida = sma(df["close"], 5)
+    out["entry_long"] = (r2 < 5) & (df["close"] > filtro)
+    out["entry_short"] = False
+    out["exit_long"] = df["close"] > salida
+    out["exit_short"] = False
+    out["stop_loss"] = np.nan
+    out["take_profit"] = np.nan
+    out["trailing_ma_period"] = None
+    out["regime"] = "ranging"
+    return out
+
+
 STRATEGIES = {
     "mean_reversion": mean_reversion,
     "ma_cross": ma_cross,
     "breakout": breakout,
     "trend_following": trend_following,
+    "sma_timing_5": partial(sma_timing, period=5),
+    "sma_timing_10": partial(sma_timing, period=10),
+    "sma_timing_20": partial(sma_timing, period=20),
+    "sma_timing_50": partial(sma_timing, period=50),
+    "sma_timing_100": partial(sma_timing, period=100),
+    "sma_timing_304": partial(sma_timing, period=304),
+    "tsmom_365": partial(tsmom, period=365),
+    "tsmom_7": partial(tsmom, period=7),
+    "connors_rsi2": connors_rsi2,
 }

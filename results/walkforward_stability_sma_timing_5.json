@@ -1,0 +1,459 @@
+{
+  "estrategia": "sma_timing_5",
+  "configs": {
+    "365/90": {
+      "n_folds": 16,
+      "n_folds_con_trades": 16,
+      "cobertura_pct": 100.0,
+      "pct_positivos": 43.8,
+      "media_pct": 0.12,
+      "mediana_pct": -0.08,
+      "std_pct": 0.9,
+      "min_pct": -1.17,
+      "max_pct": 2.08
+    },
+    "730/180": {
+      "n_folds": 6,
+      "n_folds_con_trades": 6,
+      "cobertura_pct": 100.0,
+      "pct_positivos": 50.0,
+      "media_pct": 0.17,
+      "mediana_pct": -0.12,
+      "std_pct": 1.54,
+      "min_pct": -1.06,
+      "max_pct": 3.1
+    },
+    "180/60": {
+      "n_folds": 27,
+      "n_folds_con_trades": 27,
+      "cobertura_pct": 100.0,
+      "pct_positivos": 48.1,
+      "media_pct": 0.03,
+      "mediana_pct": -0.06,
+      "std_pct": 0.92,
+      "min_pct": -1.85,
+      "max_pct": 2.31
+    },
+    "365/180": {
+      "n_folds": 8,
+      "n_folds_con_trades": 8,
+      "cobertura_pct": 100.0,
+      "pct_positivos": 50.0,
+      "media_pct": 0.31,
+      "mediana_pct": -0.1,
+      "std_pct": 1.56,
+      "min_pct": -1.24,
+      "max_pct": 3.15
+    }
+  },
+  "folds": {
+    "365/90": [
+      {
+        "fold": 1,
+        "test_start": "2022-10-07",
+        "oos_return_pct": -0.11,
+        "oos_sharpe": -0.41,
+        "trades": 12
+      },
+      {
+        "fold": 2,
+        "test_start": "2023-01-05",
+        "oos_return_pct": 1.08,
+        "oos_sharpe": 1.86,
+        "trades": 11
+      },
+      {
+        "fold": 3,
+        "test_start": "2023-04-05",
+        "oos_return_pct": -0.15,
+        "oos_sharpe": -0.34,
+        "trades": 14
+      },
+      {
+        "fold": 4,
+        "test_start": "2023-07-04",
+        "oos_return_pct": -0.13,
+        "oos_sharpe": -0.42,
+        "trades": 11
+      },
+      {
+        "fold": 5,
+        "test_start": "2023-10-02",
+        "oos_return_pct": 1.21,
+        "oos_sharpe": 2.42,
+        "trades": 12
+      },
+      {
+        "fold": 6,
+        "test_start": "2023-12-31",
+        "oos_return_pct": 2.08,
+        "oos_sharpe": 3.2,
+        "trades": 11
+      },
+      {
+        "fold": 7,
+        "test_start": "2024-03-30",
+        "oos_return_pct": -1.17,
+        "oos_sharpe": -3.0,
+        "trades": 13
+      },
+      {
+        "fold": 8,
+        "test_start": "2024-06-28",
+        "oos_return_pct": 0.05,
+        "oos_sharpe": 0.12,
+        "trades": 11
+      },
+      {
+        "fold": 9,
+        "test_start": "2024-09-26",
+        "oos_return_pct": 1.47,
+        "oos_sharpe": 2.49,
+        "trades": 11
+      },
+      {
+        "fold": 10,
+        "test_start": "2024-12-25",
+        "oos_return_pct": -1.01,
+        "oos_sharpe": -2.05,
+        "trades": 16
+      },
+      {
+        "fold": 11,
+        "test_start": "2025-03-25",
+        "oos_return_pct": 0.15,
+        "oos_sharpe": 0.4,
+        "trades": 14
+      },
+      {
+        "fold": 12,
+        "test_start": "2025-06-23",
+        "oos_return_pct": 0.04,
+        "oos_sharpe": 0.16,
+        "trades": 12
+      },
+      {
+        "fold": 13,
+        "test_start": "2025-09-21",
+        "oos_return_pct": -0.28,
+        "oos_sharpe": -0.93,
+        "trades": 11
+      },
+      {
+        "fold": 14,
+        "test_start": "2025-12-20",
+        "oos_return_pct": -0.68,
+        "oos_sharpe": -1.8,
+        "trades": 12
+      },
+      {
+        "fold": 15,
+        "test_start": "2026-03-20",
+        "oos_return_pct": -0.52,
+        "oos_sharpe": -1.73,
+        "trades": 12
+      },
+      {
+        "fold": 16,
+        "test_start": "2026-06-18",
+        "oos_return_pct": -0.06,
+        "oos_sharpe": -0.13,
+        "trades": 13
+      }
+    ],
+    "730/180": [
+      {
+        "fold": 1,
+        "test_start": "2023-10-07",
+        "oos_return_pct": 3.1,
+        "oos_sharpe": 2.65,
+        "trades": 24
+      },
+      {
+        "fold": 2,
+        "test_start": "2024-04-04",
+        "oos_return_pct": -1.01,
+        "oos_sharpe": -1.3,
+        "trades": 25
+      },
+      {
+        "fold": 3,
+        "test_start": "2024-10-01",
+        "oos_return_pct": 0.26,
+        "oos_sharpe": 0.24,
+        "trades": 27
+      },
+      {
+        "fold": 4,
+        "test_start": "2025-03-30",
+        "oos_return_pct": 0.23,
+        "oos_sharpe": 0.35,
+        "trades": 26
+      },
+      {
+        "fold": 5,
+        "test_start": "2025-09-26",
+        "oos_return_pct": -1.06,
+        "oos_sharpe": -1.55,
+        "trades": 25
+      },
+      {
+        "fold": 6,
+        "test_start": "2026-03-25",
+        "oos_return_pct": -0.48,
+        "oos_sharpe": -0.67,
+        "trades": 26
+      }
+    ],
+    "180/60": [
+      {
+        "fold": 1,
+        "test_start": "2022-04-05",
+        "oos_return_pct": -1.85,
+        "oos_sharpe": -5.07,
+        "trades": 12
+      },
+      {
+        "fold": 2,
+        "test_start": "2022-06-04",
+        "oos_return_pct": 0.26,
+        "oos_sharpe": 0.9,
+        "trades": 6
+      },
+      {
+        "fold": 3,
+        "test_start": "2022-08-03",
+        "oos_return_pct": -1.0,
+        "oos_sharpe": -3.57,
+        "trades": 9
+      },
+      {
+        "fold": 4,
+        "test_start": "2022-10-02",
+        "oos_return_pct": 0.07,
+        "oos_sharpe": 0.37,
+        "trades": 8
+      },
+      {
+        "fold": 5,
+        "test_start": "2022-12-01",
+        "oos_return_pct": 1.5,
+        "oos_sharpe": 4.97,
+        "trades": 7
+      },
+      {
+        "fold": 6,
+        "test_start": "2023-01-30",
+        "oos_return_pct": 0.77,
+        "oos_sharpe": 1.78,
+        "trades": 9
+      },
+      {
+        "fold": 7,
+        "test_start": "2023-03-31",
+        "oos_return_pct": -0.26,
+        "oos_sharpe": -1.04,
+        "trades": 9
+      },
+      {
+        "fold": 8,
+        "test_start": "2023-05-30",
+        "oos_return_pct": -0.16,
+        "oos_sharpe": -0.57,
+        "trades": 8
+      },
+      {
+        "fold": 9,
+        "test_start": "2023-07-29",
+        "oos_return_pct": -0.21,
+        "oos_sharpe": -1.04,
+        "trades": 7
+      },
+      {
+        "fold": 10,
+        "test_start": "2023-09-27",
+        "oos_return_pct": 1.2,
+        "oos_sharpe": 3.49,
+        "trades": 8
+      },
+      {
+        "fold": 11,
+        "test_start": "2023-11-26",
+        "oos_return_pct": -0.33,
+        "oos_sharpe": -0.92,
+        "trades": 9
+      },
+      {
+        "fold": 12,
+        "test_start": "2024-01-25",
+        "oos_return_pct": 2.31,
+        "oos_sharpe": 5.21,
+        "trades": 7
+      },
+      {
+        "fold": 13,
+        "test_start": "2024-03-25",
+        "oos_return_pct": -0.66,
+        "oos_sharpe": -2.33,
+        "trades": 9
+      },
+      {
+        "fold": 14,
+        "test_start": "2024-05-24",
+        "oos_return_pct": 0.29,
+        "oos_sharpe": 1.25,
+        "trades": 6
+      },
+      {
+        "fold": 15,
+        "test_start": "2024-07-23",
+        "oos_return_pct": -0.4,
+        "oos_sharpe": -1.7,
+        "trades": 9
+      },
+      {
+        "fold": 16,
+        "test_start": "2024-09-21",
+        "oos_return_pct": 1.79,
+        "oos_sharpe": 4.36,
+        "trades": 7
+      },
+      {
+        "fold": 17,
+        "test_start": "2024-11-20",
+        "oos_return_pct": 0.11,
+        "oos_sharpe": 0.39,
+        "trades": 7
+      },
+      {
+        "fold": 18,
+        "test_start": "2025-01-19",
+        "oos_return_pct": -1.35,
+        "oos_sharpe": -4.15,
+        "trades": 12
+      },
+      {
+        "fold": 19,
+        "test_start": "2025-03-20",
+        "oos_return_pct": 0.28,
+        "oos_sharpe": 1.0,
+        "trades": 10
+      },
+      {
+        "fold": 20,
+        "test_start": "2025-05-19",
+        "oos_return_pct": 0.15,
+        "oos_sharpe": 0.84,
+        "trades": 8
+      },
+      {
+        "fold": 21,
+        "test_start": "2025-07-18",
+        "oos_return_pct": -0.26,
+        "oos_sharpe": -1.44,
+        "trades": 7
+      },
+      {
+        "fold": 22,
+        "test_start": "2025-09-16",
+        "oos_return_pct": -0.29,
+        "oos_sharpe": -1.43,
+        "trades": 9
+      },
+      {
+        "fold": 23,
+        "test_start": "2025-11-15",
+        "oos_return_pct": 0.14,
+        "oos_sharpe": 0.71,
+        "trades": 8
+      },
+      {
+        "fold": 24,
+        "test_start": "2026-01-14",
+        "oos_return_pct": -0.91,
+        "oos_sharpe": -3.76,
+        "trades": 8
+      },
+      {
+        "fold": 25,
+        "test_start": "2026-03-15",
+        "oos_return_pct": -0.06,
+        "oos_sharpe": -0.29,
+        "trades": 7
+      },
+      {
+        "fold": 26,
+        "test_start": "2026-05-14",
+        "oos_return_pct": -0.81,
+        "oos_sharpe": -4.78,
+        "trades": 10
+      },
+      {
+        "fold": 27,
+        "test_start": "2026-07-13",
+        "oos_return_pct": 0.4,
+        "oos_sharpe": 1.34,
+        "trades": 8
+      }
+    ],
+    "365/180": [
+      {
+        "fold": 1,
+        "test_start": "2022-10-07",
+        "oos_return_pct": 2.13,
+        "oos_sharpe": 2.15,
+        "trades": 23
+      },
+      {
+        "fold": 2,
+        "test_start": "2023-04-05",
+        "oos_return_pct": -0.39,
+        "oos_sharpe": -0.51,
+        "trades": 25
+      },
+      {
+        "fold": 3,
+        "test_start": "2023-10-02",
+        "oos_return_pct": 3.15,
+        "oos_sharpe": 2.7,
+        "trades": 24
+      },
+      {
+        "fold": 4,
+        "test_start": "2024-03-30",
+        "oos_return_pct": -1.24,
+        "oos_sharpe": -1.56,
+        "trades": 25
+      },
+      {
+        "fold": 5,
+        "test_start": "2024-09-26",
+        "oos_return_pct": 0.28,
+        "oos_sharpe": 0.27,
+        "trades": 28
+      },
+      {
+        "fold": 6,
+        "test_start": "2025-03-25",
+        "oos_return_pct": 0.19,
+        "oos_sharpe": 0.29,
+        "trades": 26
+      },
+      {
+        "fold": 7,
+        "test_start": "2025-09-21",
+        "oos_return_pct": -1.01,
+        "oos_sharpe": -1.48,
+        "trades": 24
+      },
+      {
+        "fold": 8,
+        "test_start": "2026-03-20",
+        "oos_return_pct": -0.65,
+        "oos_sharpe": -0.89,
+        "trades": 26
+      }
+    ]
+  },
+  "dictamen": "fragil"
+}
