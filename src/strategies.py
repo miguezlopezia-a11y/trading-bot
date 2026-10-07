@@ -153,6 +153,86 @@ def connors_rsi2(df: pd.DataFrame, sma_filter: int = 290) -> pd.DataFrame:
     return out
 
 
+# ---------------------------------------------------------------- 8/8 RSI hidden divergence
+# Adaptado de jamniol/freqtrade-setup (DivergenceStrategy, licencia MIT,
+# github.com/jamniol/freqtrade-setup) -- idea real de practicante (divergencia
+# oculta precio/RSI), NO el codigo tal cual: su deteccion de swings con
+# argrelextrema sobre toda la serie corre riesgo de look-ahead (el propio
+# ranking freqle.org marca "2 potential lookahead patterns" en esa entrada), y
+# su ROI (62.4% inicial) es un valor de hyperopt sobre su propio dataset, no
+# una regla transferible. Aqui: un solo oscilador (RSI, no 3 en confluencia,
+# mas simple y auditable), swing confirmado con el retraso real que exige
+# detectarlo (rolling centrado + shift(swing_order) -- no se usa la senal
+# hasta que de verdad se podria haber confirmado en tiempo real).
+def _swings_confirmados(series: pd.Series, order: int, min_gap: int, n: int):
+    roll = series.rolling(2 * order + 1, center=True)
+    extremo_min = roll.min()
+    extremo_max = roll.max()
+    es_min = (series == extremo_min) & extremo_min.notna()
+    es_max = (series == extremo_max) & extremo_max.notna()
+
+    def _filtrar(mask):
+        posiciones = np.where(mask.values)[0]
+        filtradas = []
+        for p in posiciones:
+            if not filtradas or p - filtradas[-1] >= min_gap:
+                filtradas.append(p)
+        return [(p, p + order) for p in filtradas if p + order < n]
+
+    return _filtrar(es_min), _filtrar(es_max)
+
+
+def _hidden_divergence_signals(close: pd.Series, oscilador: pd.Series,
+                               swing_order: int, min_gap: int):
+    """Logica pura, testeable sin pasar por rsi() real: entry/exit booleans
+    (listas alineadas con close.index) para divergencia oculta alcista/bajista."""
+    n = len(close)
+    entry = pd.Series(False, index=close.index)
+    exit_ = pd.Series(False, index=close.index)
+    precio_lows, precio_highs = _swings_confirmados(close, swing_order, min_gap, n)
+    osc_lows, osc_highs = _swings_confirmados(oscilador, swing_order, min_gap, n)
+
+    for i in range(1, len(precio_lows)):
+        p1, _ = precio_lows[i - 1]
+        p2, conf2 = precio_lows[i]
+        if close.iloc[p2] <= close.iloc[p1]:
+            continue
+        ventana = [oscilador.iloc[p] for p, _ in osc_lows if p1 <= p <= p2]
+        if len(ventana) >= 2 and ventana[-1] < ventana[0]:
+            entry.iloc[conf2] = True
+
+    for i in range(1, len(precio_highs)):
+        p1, _ = precio_highs[i - 1]
+        p2, conf2 = precio_highs[i]
+        if close.iloc[p2] >= close.iloc[p1]:
+            continue
+        ventana = [oscilador.iloc[p] for p, _ in osc_highs if p1 <= p <= p2]
+        if len(ventana) >= 2 and ventana[-1] > ventana[0]:
+            exit_.iloc[conf2] = True
+
+    return entry, exit_
+
+
+def rsi_hidden_divergence(df: pd.DataFrame, swing_order: int = 5, min_gap: int = 12,
+                          rsi_period: int = 14) -> pd.DataFrame:
+    """Divergencia oculta alcista (precio higher-low, RSI lower-low) -> largo.
+    Divergencia oculta bajista (precio lower-high, RSI higher-high) -> sale.
+    Swings confirmados con retraso real (sin mirar al futuro)."""
+    out = pd.DataFrame(index=df.index)
+    out["entry_short"] = False
+    out["exit_short"] = False
+    out["stop_loss"] = np.nan
+    out["take_profit"] = np.nan
+    out["trailing_ma_period"] = None
+    out["regime"] = "ranging"
+
+    close = df["close"]
+    r = rsi(close, rsi_period)
+    out["entry_long"], out["exit_long"] = _hidden_divergence_signals(
+        close, r, swing_order, min_gap)
+    return out
+
+
 STRATEGIES = {
     "mean_reversion": mean_reversion,
     "ma_cross": ma_cross,
@@ -167,4 +247,5 @@ STRATEGIES = {
     "tsmom_365": partial(tsmom, period=365),
     "tsmom_7": partial(tsmom, period=7),
     "connors_rsi2": connors_rsi2,
+    "rsi_hidden_divergence": rsi_hidden_divergence,
 }
