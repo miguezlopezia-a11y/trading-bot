@@ -12,10 +12,12 @@ MODO SOMBRA: este modulo NUNCA ejecuta ni bloquea nada. El veto final lo tiene
 Risk (src/risk_veto.py). La deliberacion solo se registra en el journal junto a
 la decision del paper runner.
 
-Proveedores: interfaz Provider; KimiProvider (usa MAIA_KIMI_KEY, proxy Kimi
-compatible con Anthropic Messages API — PREFERIDO, cubre el proyecto sin saldo
-Anthropic desde agosto 2026); AnthropicProvider (usa ANTHROPIC_API_KEY, fallback
-si algun dia hay saldo); FakeProvider determinista para tests. Sin ninguna key ->
+Proveedores: interfaz Provider; OpenRouterProvider (usa OPENROUTER_API_KEY,
+modelos :free gratis reales -- PRINCIPAL desde 2026-10-07, decision de Pablo:
+la cuota de Kimi Code es pequena y la necesita para codificar); KimiProvider
+(usa MAIA_KIMI_KEY, proxy Kimi compatible con Anthropic Messages API --
+fallback); AnthropicProvider (usa ANTHROPIC_API_KEY, ultimo fallback si algun
+dia hay saldo); FakeProvider determinista para tests. Sin ninguna key ->
 deliberar() no se invoca; el runner registra deliberacion "no_disponible" (ver
 paper_runner.py).
 """
@@ -107,6 +109,62 @@ class AnthropicProvider(Provider):
                        if b.get("type") == "text")
 
 
+class OpenRouterProvider(Provider):
+    """Proveedor PRINCIPAL (decision de Pablo, 2026-10-07): la cuota de Kimi
+    Code es pequena ahora y la necesita para codificar -- OpenRouter tiene
+    modelos \":free\" genuinamente gratis (sin tarjeta, sin saldo), pero
+    comparten un pool upstream que se congestiona (429/503 verificados en
+    pruebas reales). Se prueba una lista corta de modelos en orden hasta que
+    uno responda; si todos fallan, se propaga el error (mismo tratamiento que
+    cualquier proveedor_indisponible: veto por defecto, nunca basura)."""
+
+    MODELOS_FREE = [
+        "liquid/lfm-2.5-2.6b:free",
+        "cohere/north-mini-code:free",
+        "nvidia/nemotron-3-super-120b-a12b:free",
+    ]
+
+    def __init__(self, api_key=None, modelos=None, max_tokens=512):
+        self.api_key = api_key or os.environ.get("OPENROUTER_API_KEY")
+        assert self.api_key, "OPENROUTER_API_KEY no disponible"
+        self.modelos = modelos or self.MODELOS_FREE
+        self.max_tokens = max_tokens
+
+    def complete(self, system_prompt: str, user_message: str) -> str:
+        import urllib.error
+        import urllib.request
+        last_error = None
+        for modelo in self.modelos:
+            body = json.dumps({
+                "model": modelo, "max_tokens": self.max_tokens,
+                "messages": [{"role": "system", "content": system_prompt},
+                             {"role": "user", "content": user_message}],
+            }).encode()
+            req = urllib.request.Request(
+                "https://openrouter.ai/api/v1/chat/completions", data=body,
+                headers={"Authorization": f"Bearer {self.api_key}",
+                         "content-type": "application/json"}, method="POST")
+            try:
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    data = json.loads(r.read())
+            except urllib.error.HTTPError as e:
+                last_error = e
+                continue
+            if "error" in data:
+                last_error = RuntimeError(f"{modelo}: {data['error']}")
+                continue
+            contenido = data.get("choices", [{}])[0].get("message", {}).get("content")
+            if not contenido:
+                # Algunos modelos free devuelven content null (refusal, solo
+                # tool_calls, o vacio) -- se trata igual que un fallo de ese
+                # modelo, se prueba el siguiente de la lista.
+                last_error = RuntimeError(f"{modelo}: content vacio/null en la respuesta")
+                continue
+            return contenido
+        raise last_error if last_error is not None else RuntimeError(
+            "OpenRouter: todos los modelos free fallaron")
+
+
 class KimiProvider(Provider):
     """Proveedor preferido: proxy Kimi compatible con Anthropic Messages API
     (ver bunker-2026/bot.py:call_kimi). Mismo formato de body que Anthropic;
@@ -161,7 +219,8 @@ class FakeProvider(Provider):
 
 
 def provider_disponible() -> bool:
-    return bool(os.environ.get("MAIA_KIMI_KEY") or os.environ.get("ANTHROPIC_API_KEY"))
+    return bool(os.environ.get("OPENROUTER_API_KEY") or os.environ.get("MAIA_KIMI_KEY")
+                or os.environ.get("ANTHROPIC_API_KEY"))
 
 
 # ------------------------------------------------------------------ parsing

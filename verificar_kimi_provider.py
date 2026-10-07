@@ -86,6 +86,7 @@ def main():
         print("  OK provider_disponible() True con solo MAIA_KIMI_KEY")
     os.environ.pop("MAIA_KIMI_KEY", None)
 
+    os.environ.pop("OPENROUTER_API_KEY", None)  # aislar: Kimi vs Anthropic, sin OpenRouter (va primero desde 2026-10-07)
     os.environ["MAIA_KIMI_KEY"] = "kimi-x"
     os.environ["ANTHROPIC_API_KEY"] = "anthropic-x"
     import paper_runner

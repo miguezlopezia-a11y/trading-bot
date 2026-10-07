@@ -254,9 +254,13 @@ def deliberar_sombra(trades, equity):
     provider = None
     if deliberation is not None and deliberation.provider_disponible():
         try:
-            # Orden: Kimi primero (cubre el proyecto sin saldo Anthropic desde
-            # agosto 2026), Anthropic como fallback si algun dia hay saldo.
-            if os.environ.get("MAIA_KIMI_KEY"):
+            # Orden (decision Pablo 2026-10-07): OpenRouter free PRINCIPAL
+            # (cuota de Kimi Code reducida, reservada para codificar), Kimi
+            # como fallback, Anthropic como ultimo fallback si algun dia hay
+            # saldo.
+            if os.environ.get("OPENROUTER_API_KEY"):
+                provider = deliberation.OpenRouterProvider()
+            elif os.environ.get("MAIA_KIMI_KEY"):
                 provider = deliberation.KimiProvider()
             elif os.environ.get("ANTHROPIC_API_KEY"):
                 provider = deliberation.AnthropicProvider()
