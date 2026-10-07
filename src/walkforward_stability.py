@@ -31,7 +31,8 @@ from backtester import run_backtest, compute_metrics  # noqa: E402
 
 PPY = 365
 WARMUP = 200
-STRATEGY = "ma_cross"
+SIZE_FRACTION = 0.05
+STRATEGY = sys.argv[1] if len(sys.argv) > 1 else "ma_cross"
 # (train_days, test_days) — medir estabilidad, no buscar la mejor ventana.
 CONFIGS = [(365, 90), (730, 180), (180, 60), (365, 180)]
 
@@ -57,7 +58,7 @@ def run_config(df_full, strategy_fn, train_d, test_d):
         test_start = start + train_d
         test_end = test_start + test_d
         test_data, sig_v = signals_with_warmup(df_full, test_start, test_end, strategy_fn)
-        res = run_backtest(test_data, sig_v)
+        res = run_backtest(test_data, sig_v, size_fraction=SIZE_FRACTION)
         m = compute_metrics(res["equity"], res["trades"], PPY)
         folds.append({"fold": len(folds) + 1,
                       "test_start": str(test_data.index[0].date()),
@@ -102,10 +103,15 @@ def verdict(summaries):
 
 
 def main():
+    if STRATEGY not in STRATEGIES:
+        print(f"ERROR: estrategia '{STRATEGY}' no esta en STRATEGIES "
+              f"({sorted(STRATEGIES.keys())})")
+        sys.exit(2)
     df = load_data()
     fn = STRATEGIES[STRATEGY]
-    print(f"Walk-forward estabilidad {STRATEGY} — {len(df)} velas "
-          f"({df.index[0].date()} -> {df.index[-1].date()}). Sin optimizar parametros.")
+    print(f"Walk-forward estabilidad {STRATEGY} (size_fraction={SIZE_FRACTION}) — "
+          f"{len(df)} velas ({df.index[0].date()} -> {df.index[-1].date()}). "
+          f"Sin optimizar parametros.")
 
     out = {"estrategia": STRATEGY, "configs": {}, "folds": {}, "dictamen": None}
     summaries = []
@@ -126,11 +132,12 @@ def main():
 
     v = verdict(summaries)
     out["dictamen"] = v
-    print(f"\nDICTAMEN: ma_cross es {v.upper()} en walk-forward post-fix "
+    print(f"\nDICTAMEN: {STRATEGY} es {v.upper()} en walk-forward post-fix "
           f"({'modo observacion' if v == 'fragil' else 'modo aprobacion'} en paper runner).")
-    with open("results/walkforward_stability.json", "w") as fh:
+    out_path = f"results/walkforward_stability_{STRATEGY}.json"
+    with open(out_path, "w") as fh:
         json.dump(out, fh, indent=2)
-    print("-> results/walkforward_stability.json guardado")
+    print(f"-> {out_path} guardado")
 
 
 if __name__ == "__main__":
