@@ -25,6 +25,22 @@ CASOS_VETADOS = [
 
 def main():
     ok = True
+
+    # caso limite real (hallazgo 2026-10-07): ruido numerico de ~7.5e-6 sobre
+    # SIZE_MAX NO debe vetar (es la politica real, no exceso); un exceso de
+    # verdad (0.001) SI debe seguir vetando.
+    v_ruido = evaluar_veto({"estrategia": "ma_cross", "sizing": SIZE_MAX + 0.0000075, "dd_proyectado_pct": -2.0})
+    if v_ruido["vetado"]:
+        print(f"  FALLO: ruido numerico 7.5e-6 sobre SIZE_MAX fue vetado {v_ruido["motivos"]}"); ok = False
+    else:
+        print("  OK epsilon: ruido de 7.5e-6 sobre SIZE_MAX NO se veta (es la politica real)")
+
+    v_exceso = evaluar_veto({"estrategia": "ma_cross", "sizing": SIZE_MAX + 0.001, "dd_proyectado_pct": -2.0})
+    if not v_exceso["vetado"]:
+        print(f"  FALLO: exceso real de 0.001 sobre SIZE_MAX no fue vetado"); ok = False
+    else:
+        print("  OK epsilon: exceso real de 0.001 sobre SIZE_MAX SIGUE vetado")
+
     # con LLM disponible en el entorno y sin el (el veto no depende de ello)
     for con_llm in (True, False):
         if not con_llm:
