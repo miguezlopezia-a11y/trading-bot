@@ -26,18 +26,33 @@ junto a la decisión del paper runner; no bloquea, no modifica, no aprueba nada
 ## Proveedor LLM
 
 Interfaz `Provider` + `FakeProvider` (determinista, tests) +
-`AnthropicProvider` (lee `ANTHROPIC_API_KEY` del entorno; modelo por
-`DELIBERATION_MODEL`, default `claude-sonnet-4-5`).
+`AnthropicProvider` (lee `ANTHROPIC_API_KEY`) +
+**`KimiProvider` (proveedor activo, commit `8efd0c3`)**.
 
-**Estado real del proveedor (2026-10-06):** hay `ANTHROPIC_API_KEY` usable en
-el entorno (`/root/trading-bot-env`, chmod 600, copiada desde `/root/maia/.env`
-sin imprimirla), pero la cuenta **no tiene crédito** — la API responde
-`400 credit balance is too low` para todos los modelos probados
-(sonnet-4-5, 3-5-sonnet, 3-5-haiku). Smoke test real ejecutado: 1 deliberación
-→ `proveedor_indisponible:HTTPError`, registrada en el journal (SQLite). Es
-decir: la integración LLM está verificada de punta a punta excepto la respuesta
-del modelo, que queda **no verificado por bloqueo de saldo**, no por diseño.
-Con crédito, la siguiente ejecución del runner delibera de verdad sin cambios.
+**Estado real del proveedor (actualizado 2026-10-07):** la vía Anthropic quedó
+descartada por proyecto (la cuenta no tiene crédito y no se recarga). El
+proveedor activo es `KimiProvider`, verificado de punta a punta con llamadas
+reales. Evidencia en `REGISTRO_B.md` §7 (primer smoke real) y en el smoke
+re-ejecutado hoy:
+
+```
+$ source /root/maia/.env && ./venv/bin/python smoke_kimi_real.py
+veredicto_global: no | size_final: 0.0 | motivo: al_menos_un_sombrero_veto
+  hechos: veredicto=ajustar size_ajuste=0.006 reparado=False ...
+  premortem: veredicto=no ... justificacion='Walkforward fragil en modo observación...'
+  riesgo: veredicto=ajustar size_ajuste=0.006 ...
+  beneficios: veredicto=ajustar size_ajuste=0.006 reparado=True ...
+  creatividad: veredicto=ajustar size_ajuste=0.005 ...
+  proceso: veredicto=no ...
+sombreros con proveedor_indisponible: 0/6
+SMOKE_KIMI_REAL_OK  (EXIT=0)
+```
+
+6/6 sombreros con JSON válido (1 reparado), 0 indisponibles, y el veredicto
+global "no" es una deliberación real del modelo (consenso: dictamen
+walk-forward frágil → no validar aún), no un veto por defecto. La distinción
+`proveedor_indisponible` vs `veto_por_defecto_parse` queda verificada por
+`verificar_deliberacion_schema.py`.
 
 ## Verificaciones
 
@@ -47,19 +62,25 @@ Con crédito, la siguiente ejecución del runner delibera de verdad sin cambios.
   parseable, nunca una decisión sin parsear.
 - `verificar_veto_riesgo.py`: 3 casos vetados siempre, con y sin LLM en el
   entorno; las 3 estrategias descartadas vetadas; caso sano no vetado.
-- Las 7 verificaciones previas (paper sin dinero real estructural, MTM, A4/A7,
+- `verificar_kimi_provider.py`: smoke estructural del KimiProvider.
+- Las verificaciones previas (paper sin dinero real estructural, MTM, A4/A7,
   a5, a6, h1, a8) siguen en PASS tras los cambios.
 
-## Hallazgo real del modo sombra (primer run, 2026-10-06)
+## Hallazgo real del modo sombra (actualizado 2026-10-07 con sizing 5%)
 
-Las 32 señales de ma_cross registran `risk_veto: vetada` con motivo
-`sizing_sobre_limite`: el backtester arriesga el 95% del equity por trade
-(size_fraction=0.95, spot sin apalancamiento), muy por encima del límite Risk
-de Fase 2 (5%). En modo sombra solo se registra (no bloquea nada), pero es un
-dato de decisión para Pablo: o el límite SIZE_MAX refleja política real de
-riesgo y entonces ma_cross operaría con sizing reducido, o el sizing del
-backtest es la política y SIZE_MAX debe revisarse. NO se cambió ningún valor en
-esta etapa (prohibido optimizar; el veto no ejecuta nada).
+**Primera versión del hallazgo (2026-10-06, sizing 95%):** las 32 señales del
+run del runner quedaban `vetada` por `sizing_sobre_limite` (0.95 > 0.05). Ese
+escenario quedó descartado: Pablo decidió que la política real es SIZE_MAX=5%
+y el backtest se ajusta a ella (ver `docs/sizing_05_resultado.md` — retorno
+OOS de ma_cross +7.96% → +0.42%, mismas señales).
+
+**Hallazgo actual (sizing 0.05):** el veto por sizing casi desaparece pero NO
+del todo — 7/12 señales vetadas por `sizing_sobre_limite:0.0500075>0.05`, un
+exceso de 7.5e-6 causado por el cálculo del sizing sobre cash vs equity
+(detalle en `docs/sizing_05_resultado.md`). El dictamen walk-forward (FRÁGIL)
+no cambia: es invariante ante el escalado del sizing. Pendiente de Pablo:
+tolerancia epsilon en la regla o sizing sobre equity en el backtester; en modo
+sombra solo se registra, nada se bloquea.
 
 ## Coste / tokens
 

@@ -144,12 +144,19 @@ class Journal:
         self.backend = ("sqlite",)
 
     def _sb_insert(self, url, key, row):
+        import hashlib
+        detalle = row.get("detalle") or ""
+        dedupe = hashlib.sha256(
+            f'{row.get("evento")}|{row.get("fecha_dato")}|{detalle}'.encode()
+        ).hexdigest()
         body = {k: v for k, v in {
             "ts": row.get("timestamp"), "estrategia": row.get("estrategia"),
             "evento": row.get("evento"), "senal": row.get("senal"),
             "decision": row.get("decision"), "motivo": row.get("motivo"),
-            "detalle": row.get("detalle"), "equity_mtm": row.get("equity_mtm"),
-            "fecha_dato": row.get("fecha_dato")}.items() if v is not None}
+            "detalle": detalle, "equity_mtm": row.get("equity_mtm"),
+            "fecha_dato": row.get("fecha_dato"),
+            "fuente": row.get("fuente", "paper_runner_v1"),
+            "dedupe_key": dedupe}.items() if v is not None}
         req = urllib.request.Request(
             url.rstrip("/") + "/rest/v1/journal",
             data=json.dumps(body).encode(),
@@ -166,6 +173,11 @@ class Journal:
                 return
             except Exception:
                 pass
+        import hashlib
+        detalle = row.get("detalle") or ""
+        dedupe = hashlib.sha256(
+            f'{row.get("evento")}|{row.get("fecha_dato")}|{detalle}'.encode()
+        ).hexdigest()
         self.db.execute(
             "INSERT OR IGNORE INTO journal (ts,estrategia,evento,senal,decision,"
             "motivo,detalle,equity_mtm,fecha_dato) VALUES (?,?,?,?,?,?,?,?,?)",

@@ -37,3 +37,10 @@ El matiz real: el edge parece existir en horizontes largos, pero con ~12
 trades/año y 50% de folds ganadores en la ventana por defecto, no hay base
 para aprobación automática. Si el track record de paper trading (varios meses)
 confirma expectancy positiva, se puede reevaluar el modo.
+
+**Nota 2026-10-07 (sizing 5%):** Pablo fijó la política de riesgo en
+SIZE_MAX=5% y el backtest se rehizo con size_fraction=0.05
+(`docs/sizing_05_resultado.md`). El dictamen de estabilidad NO se rehace: la
+estabilidad medida (signo y consistencia fold a fold, % de folds positivos) es
+invariante ante un escalado positivo del sizing; los retornos por fold
+escalan por el mismo factor en todos los folds. El dictamen FRÁGIL se mantiene.
