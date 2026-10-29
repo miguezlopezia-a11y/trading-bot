@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:37.316048+00:00",
+  "ticker": "BTC-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "f9958c51886ce43059da37121344390d565fb9023e054691570b23342d4299e6",
+  "n_velas": 4406,
+  "primera_fecha": "2014-09-17",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

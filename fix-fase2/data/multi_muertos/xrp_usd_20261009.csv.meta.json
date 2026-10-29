@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:38.560088+00:00",
+  "ticker": "XRP-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "fbd5fa9ce103e30470eb75f7ee6e16141adff909726f5378dd6e50a3790f3619",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

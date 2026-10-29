@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:41.425849+00:00",
+  "ticker": "FIL-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "dfbb954fc385be739077effc6ef506c4d68b27cf8a008561ba55ef1e6d6594d9",
+  "n_velas": 3223,
+  "primera_fecha": "2017-12-13",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

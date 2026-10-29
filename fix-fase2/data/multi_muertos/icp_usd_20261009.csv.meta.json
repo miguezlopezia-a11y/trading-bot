@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:41.703721+00:00",
+  "ticker": "ICP-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "d7727e1609ca76eba9c1a1e4dc2073aa9dd25cde83c19d57f2d7759f7fc5bc53",
+  "n_velas": 1979,
+  "primera_fecha": "2021-05-10",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

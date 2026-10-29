@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-09T10:09:56.141718+00:00",
+  "ticker": "LINK-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "63f957cc6842ae2bdce42b886219481f5cfb0ae0babbe9141cc18476c911fbb2",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09"
+}

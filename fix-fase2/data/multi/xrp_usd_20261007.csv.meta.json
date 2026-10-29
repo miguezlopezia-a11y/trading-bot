@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-07T18:33:52.307713+00:00",
+  "ticker": "XRP-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "4013a4ec89dea7fc146fa01ec58684b9421810708838572178d60f441c780e49",
+  "n_velas": 3255,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-07"
+}

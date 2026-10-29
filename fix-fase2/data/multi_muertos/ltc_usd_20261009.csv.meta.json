@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:39.982014+00:00",
+  "ticker": "LTC-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "01c39d0cfbc96dce743d59afb915086c9ec87549311f5c595888f6aab6971f71",
+  "n_velas": 4406,
+  "primera_fecha": "2014-09-17",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

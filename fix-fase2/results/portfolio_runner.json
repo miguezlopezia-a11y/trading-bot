@@ -1,0 +1,141 @@
+{
+  "activos": [
+    "BTC-USD",
+    "ETH-USD",
+    "SOL-USD",
+    "BNB-USD",
+    "XRP-USD",
+    "ADA-USD",
+    "AVAX-USD",
+    "LINK-USD",
+    "DOGE-USD",
+    "LTC-USD"
+  ],
+  "lookback": 365,
+  "lambda": 0.94,
+  "sigma_target": 0.1,
+  "w_max": 0.2,
+  "gross_max": 1.0,
+  "vol_tope_mult": 1.25,
+  "costes": {
+    "commission": 0.001,
+    "slippage": 0.0005
+  },
+  "metricas": {
+    "retorno_pct": 317.52,
+    "sharpe": 1.008,
+    "max_dd_pct": -26.9,
+    "calmar": 11.804,
+    "bench_retorno_pct": 132831.04,
+    "bench_sharpe": 1.164,
+    "bench_max_dd_pct": -88.96,
+    "bench_calmar": 1493.181
+  },
+  "n_vetos_wmax": 2462,
+  "n_vetos_vol": 3095,
+  "vetos_wmax_muestra": [
+    {
+      "fecha": "2016-01-10",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2005
+    },
+    {
+      "fecha": "2016-01-11",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2063
+    },
+    {
+      "fecha": "2016-01-12",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2125
+    },
+    {
+      "fecha": "2016-01-13",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2156
+    },
+    {
+      "fecha": "2016-01-14",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2221
+    },
+    {
+      "fecha": "2016-01-15",
+      "activo": "BTC-USD",
+      "peso_crudo": 0.2001
+    },
+    {
+      "fecha": "2016-01-15",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.229
+    },
+    {
+      "fecha": "2016-02-17",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2026
+    },
+    {
+      "fecha": "2016-02-18",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2079
+    },
+    {
+      "fecha": "2016-02-19",
+      "activo": "LTC-USD",
+      "peso_crudo": 0.2144
+    }
+  ],
+  "vetos_vol_muestra": [
+    {
+      "fecha": "2015-11-03",
+      "vol_portfolio": 0.1762,
+      "escala_aplicada": 0.7093
+    },
+    {
+      "fecha": "2015-11-04",
+      "vol_portfolio": 0.1817,
+      "escala_aplicada": 0.6879
+    },
+    {
+      "fecha": "2015-11-05",
+      "vol_portfolio": 0.1778,
+      "escala_aplicada": 0.7031
+    },
+    {
+      "fecha": "2015-11-06",
+      "vol_portfolio": 0.1796,
+      "escala_aplicada": 0.6959
+    },
+    {
+      "fecha": "2015-11-08",
+      "vol_portfolio": 0.18,
+      "escala_aplicada": 0.6943
+    },
+    {
+      "fecha": "2015-12-09",
+      "vol_portfolio": 0.188,
+      "escala_aplicada": 0.665
+    },
+    {
+      "fecha": "2015-12-10",
+      "vol_portfolio": 0.1879,
+      "escala_aplicada": 0.6653
+    },
+    {
+      "fecha": "2015-12-11",
+      "vol_portfolio": 0.1879,
+      "escala_aplicada": 0.6654
+    },
+    {
+      "fecha": "2015-12-12",
+      "vol_portfolio": 0.1884,
+      "escala_aplicada": 0.6636
+    },
+    {
+      "fecha": "2015-12-13",
+      "vol_portfolio": 0.189,
+      "escala_aplicada": 0.6614
+    }
+  ],
+  "exposicion_media": 0.1559827260735808
+}

@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-09T10:09:55.144950+00:00",
+  "ticker": "BNB-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "708be5ab92dcad28a47c6ef09c250b042c8647ea5d0830de12a7924ed5eae09a",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09"
+}

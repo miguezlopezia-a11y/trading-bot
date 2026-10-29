@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-09T10:09:54.363628+00:00",
+  "ticker": "BTC-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "af09792020922ea42c3e5a041e45b28d6c5f7f62dbba5ebfd82e9c8a8db02699",
+  "n_velas": 4406,
+  "primera_fecha": "2014-09-17",
+  "ultima_fecha": "2026-10-09"
+}

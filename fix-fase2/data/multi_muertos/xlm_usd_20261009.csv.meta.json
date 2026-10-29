@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:40.689681+00:00",
+  "ticker": "XLM-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "3a263e3ed6dc3844e17857d3514444f12420e049f46d3130651ebb66051ed832",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

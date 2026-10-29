@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:38.863037+00:00",
+  "ticker": "ADA-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "071100474c8d9f3ed6ae5468d77b30208a7f99e6ff365bfa7ee980b10b774927",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

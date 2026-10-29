@@ -1,0 +1,30 @@
+{
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max",
+  "muertos": [
+    "EOS-USD",
+    "XLM-USD",
+    "BCH-USD",
+    "FIL-USD",
+    "ICP-USD"
+  ],
+  "n_activos": 15,
+  "metricas": {
+    "retorno_pct": 266.13,
+    "sharpe": 0.916,
+    "max_dd_pct": -27.18,
+    "dsr": 0.6014,
+    "t_stat": 3.18,
+    "pasa_t3": true,
+    "ic95_retorno_anual_pct": [
+      3.27,
+      19.9
+    ],
+    "edge_ic": true,
+    "bench_retorno_pct": 54913.98,
+    "bench_sharpe": 1.068,
+    "supera_bench_sharpe": false
+  },
+  "n_vetos_wmax": 2724,
+  "n_vetos_vol": 3190,
+  "exposicion_media": 0.15711804729336995
+}

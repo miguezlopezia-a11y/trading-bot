@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:39.562704+00:00",
+  "ticker": "DOGE-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "4ad61355462e3e393923d43d12c147f3691c097ecbd6c762b34e3f66670434f0",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

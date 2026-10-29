@@ -1,0 +1,25 @@
+{
+  "n_trials": 12,
+  "var_trials": 0.0007021947704551833,
+  "sharpe_anual": 1.008,
+  "n_obs": 4403,
+  "n_obs_eff": 4336,
+  "skew": 1.037,
+  "kurt": 31.999,
+  "sr0_per": 0.04412,
+  "dsr": 0.7191,
+  "t_stat": 3.48,
+  "pasa_t3": true,
+  "ic_retorno_anual_pct": [
+    4.47,
+    20.91
+  ],
+  "edge_ic": true,
+  "retorno_pct": 317.52,
+  "max_dd_pct": -26.9,
+  "bench_retorno_pct": 132831.04,
+  "bench_sharpe": 1.164,
+  "bench_max_dd_pct": -88.96,
+  "dias": 4404,
+  "exposicion_media": 0.1559827260735808
+}

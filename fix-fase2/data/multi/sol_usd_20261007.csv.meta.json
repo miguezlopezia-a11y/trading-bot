@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-07T18:33:51.885892+00:00",
+  "ticker": "SOL-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "8100019386d7ca872f9704d198809476b938c19df6ba582ba45cf664cd6eaf36",
+  "n_velas": 2372,
+  "primera_fecha": "2020-04-10",
+  "ultima_fecha": "2026-10-07"
+}

@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-07T18:33:53.040543+00:00",
+  "ticker": "AVAX-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "3f8e5e8301a79df2d2faf6ab4ae524da51985a65f7068a3d2eab3bdcfd4d8b0b",
+  "n_velas": 2209,
+  "primera_fecha": "2020-07-13",
+  "ultima_fecha": "2026-10-07"
+}

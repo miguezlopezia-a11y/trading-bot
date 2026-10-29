@@ -1,0 +1,75 @@
+{
+  "tramos_definicion": [
+    [
+      "T1_2015-2018",
+      "2015-09-01",
+      "2018-12-31"
+    ],
+    [
+      "T2_2019-2022",
+      "2019-01-01",
+      "2022-12-31"
+    ],
+    [
+      "T3_2023-fin",
+      "2023-01-01",
+      "2262-12-31"
+    ]
+  ],
+  "n_trials": 12,
+  "var_trials": 0.0007021947704551833,
+  "seed": 42,
+  "resultados": {
+    "T1_2015-2018": {
+      "sharpe_anual": 1.328,
+      "dsr": 0.8244,
+      "t_stat": 2.34,
+      "ic95_retorno_anual_pct": [
+        0.57,
+        38.51
+      ],
+      "n_obs_eff": 1136,
+      "pnl_pct": 81.72,
+      "exposicion_media": 0.186,
+      "bench_pnl_pct": 1860.67,
+      "bench_sharpe": 1.467,
+      "supera_bench_sharpe": false
+    },
+    "T2_2019-2022": {
+      "sharpe_anual": 1.219,
+      "dsr": 0.7719,
+      "t_stat": 2.49,
+      "ic95_retorno_anual_pct": [
+        1.13,
+        30.71
+      ],
+      "n_obs_eff": 1524,
+      "pnl_pct": 82.42,
+      "exposicion_media": 0.141,
+      "bench_pnl_pct": 1910.93,
+      "bench_sharpe": 1.294,
+      "supera_bench_sharpe": false
+    },
+    "T3_2023-fin": {
+      "sharpe_anual": 0.572,
+      "dsr": 0.3008,
+      "t_stat": 1.1,
+      "ic95_retorno_anual_pct": [
+        -5.86,
+        20.3
+      ],
+      "n_obs_eff": 1356,
+      "pnl_pct": 25.95,
+      "exposicion_media": 0.184,
+      "bench_pnl_pct": 213.63,
+      "bench_sharpe": 0.802,
+      "supera_bench_sharpe": false
+    },
+    "_dictamen": {
+      "superado": true,
+      "tramos_positivos": 2,
+      "tramos_claramente_negativos": 0,
+      "n_tramos": 3
+    }
+  }
+}

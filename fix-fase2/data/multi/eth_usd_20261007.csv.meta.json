@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-07T18:33:51.584577+00:00",
+  "ticker": "ETH-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "ed8d1d1a06ba5db3538ef2490ee93b717364bb0444ca65ec9e4a7872686f5dd9",
+  "n_velas": 3255,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-07"
+}

@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-09T10:09:56.477033+00:00",
+  "ticker": "DOGE-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "4ad61355462e3e393923d43d12c147f3691c097ecbd6c762b34e3f66670434f0",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09"
+}

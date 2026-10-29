@@ -1,0 +1,82 @@
+{
+  "activos": {
+    "ADA_USD": {
+      "dir_acc": 0.4378,
+      "n_obs": 555,
+      "t_binomial": -2.93,
+      "mase_naive": 2.7484,
+      "ventanas": 111
+    },
+    "AVAX_USD": {
+      "dir_acc": 0.5423,
+      "n_obs": 260,
+      "t_binomial": 1.36,
+      "mase_naive": 3.2066,
+      "ventanas": 52
+    },
+    "BNB_USD": {
+      "dir_acc": 0.5261,
+      "n_obs": 555,
+      "t_binomial": 1.23,
+      "mase_naive": 2.6448,
+      "ventanas": 111
+    },
+    "BTC_USD": {
+      "dir_acc": 0.4904,
+      "n_obs": 885,
+      "t_binomial": -0.57,
+      "mase_naive": 3.0206,
+      "ventanas": 177
+    },
+    "DOGE_USD": {
+      "dir_acc": 0.4865,
+      "n_obs": 555,
+      "t_binomial": -0.64,
+      "mase_naive": 2.7515,
+      "ventanas": 111
+    },
+    "ETH_USD": {
+      "dir_acc": 0.4901,
+      "n_obs": 555,
+      "t_binomial": -0.47,
+      "mase_naive": 2.5955,
+      "ventanas": 111
+    },
+    "LINK_USD": {
+      "dir_acc": 0.4649,
+      "n_obs": 555,
+      "t_binomial": -1.66,
+      "mase_naive": 2.4302,
+      "ventanas": 111
+    },
+    "LTC_USD": {
+      "dir_acc": 0.4927,
+      "n_obs": 885,
+      "t_binomial": -0.44,
+      "mase_naive": 2.7405,
+      "ventanas": 177
+    },
+    "SOL_USD": {
+      "dir_acc": 0.5279,
+      "n_obs": 305,
+      "t_binomial": 0.97,
+      "mase_naive": 2.8016,
+      "ventanas": 61
+    },
+    "XRP_USD": {
+      "dir_acc": 0.5099,
+      "n_obs": 555,
+      "t_binomial": 0.47,
+      "mase_naive": 2.6224,
+      "ventanas": 111
+    }
+  },
+  "agregado": {
+    "dir_acc": 0.4925,
+    "n_obs": 5665,
+    "t_binomial": -1.13,
+    "mase_naive": 2.7452,
+    "h_decisivo": 5
+  },
+  "tiempo_s": 190
+}

@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:37.931764+00:00",
+  "ticker": "SOL-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "ddc09eb6583f23c1c64f7a35e71839e9528d12a356fd4316a6a6caf74239a8d5",
+  "n_velas": 2374,
+  "primera_fecha": "2020-04-10",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

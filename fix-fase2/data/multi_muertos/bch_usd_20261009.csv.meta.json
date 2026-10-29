@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:41.027832+00:00",
+  "ticker": "BCH-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "53632afa9f59f30ae16000b0dfd3dcce883a67c6b05cbf4252ef5e96b477d59b",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

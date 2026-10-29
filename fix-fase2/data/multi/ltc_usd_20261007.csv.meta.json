@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-07T18:33:53.780519+00:00",
+  "ticker": "LTC-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "a45f3c34311bed0a77c92c3b52057ca88b29b69e59d4a26082b2302ec6f09ffa",
+  "n_velas": 4404,
+  "primera_fecha": "2014-09-17",
+  "ultima_fecha": "2026-10-07"
+}

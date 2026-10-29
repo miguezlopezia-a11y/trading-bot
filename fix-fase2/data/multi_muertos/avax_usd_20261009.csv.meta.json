@@ -1,0 +1,12 @@
+{
+  "fecha_descarga": "2026-10-09T10:10:39.066668+00:00",
+  "ticker": "AVAX-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "e3d54bed952bef45dacd27a854e23d325dcbe3375069d277d44745cb81f710a9",
+  "n_velas": 2211,
+  "primera_fecha": "2020-07-13",
+  "ultima_fecha": "2026-10-09",
+  "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max"
+}

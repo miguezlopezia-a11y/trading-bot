@@ -1,0 +1,11 @@
+{
+  "fecha_descarga": "2026-10-09T10:09:55.591804+00:00",
+  "ticker": "ADA-USD",
+  "period": "max",
+  "interval": "1d",
+  "auto_adjust": true,
+  "sha256": "680a6c11202d5457792223917ce9ebaed62d029b6e0086c7cd5579457e24ce65",
+  "n_velas": 3257,
+  "primera_fecha": "2017-11-09",
+  "ultima_fecha": "2026-10-09"
+}

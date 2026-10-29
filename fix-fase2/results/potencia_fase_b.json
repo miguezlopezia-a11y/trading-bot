@@ -1,0 +1,38 @@
+{
+  "T_eff": 4336,
+  "skew": 1.037,
+  "kurt_raw": 31.999,
+  "var_trials": 0.0007021947704551833,
+  "confianza_dsr": 0.95,
+  "umbral_t": 3,
+  "sharpe_observado": 1.008,
+  "sharpe_min_t_anual": 0.87,
+  "tabla": [
+    {
+      "N": 1,
+      "sr0_per": 0.0,
+      "sharpe_min_dsr_anual": 0.472
+    },
+    {
+      "N": 5,
+      "sr0_per": 0.0316,
+      "sharpe_min_dsr_anual": 1.073
+    },
+    {
+      "N": 12,
+      "sr0_per": 0.04412,
+      "sharpe_min_dsr_anual": 1.312
+    },
+    {
+      "N": 50,
+      "sr0_per": 0.06032,
+      "sharpe_min_dsr_anual": 1.622
+    },
+    {
+      "N": 100,
+      "sr0_per": 0.06706,
+      "sharpe_min_dsr_anual": 1.751
+    }
+  ],
+  "brecha_dsr_n12": 0.304
+}
