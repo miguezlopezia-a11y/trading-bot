@@ -24,8 +24,8 @@ cifras del expediente.
 | Dictamen | Veredicto | Qué lo justifica |
 |---|---|---|
 | **Fase A** — 11 variantes, BTC 5 años: NINGUNA sobrevive. DSR máx 0.66, t máx 1.52 | **SE SOSTIENE** | Reproduce en 245/245 campos (3.0b). Los tres criterios bloqueantes del audit previo cierran a favor del harness (3.1). Sin look-ahead en 14/14 estrategias (3.2). El único sesgo encontrado (H4, benchmark de exposición igualada inflado) va **en contra** de las estrategias, y Fase A ya moría por DSR, bootstrap y t de forma independiente del benchmark. |
-| **Fase B** — portfolio 10 activos, 12 años: SEÑAL DÉBIL. Sharpe 1.008, t 3.48, DSR 0.72 | **SE SOSTIENE** | Reproduce exacto con el sello `20261007` (3.0c). Curva invariante al futuro (3.2 parte B). El coste de rebalanceo se cobra y el edge resiste costes ×2 (3.3). El dictamen es robusto a todo N ≥ 5 (3.4). |
-| **Fase B-reevaluación** — P1 y P3 superados, DSR sigue 0.72 | **SE SOSTIENE, con una salvedad** | P3 reproduce exacto y es robusto a quitar cualquiera de los 5 caídos (3.6). P1 reproduce (IC95 de los tres tramos). **Salvedad:** los **DSR por tramo** (0.824/0.772/0.301) descansan en una `V` estimada en 2024-2026 y aplicada a tramos que empiezan en 2015 (H3), porque recalcularla por tramo es imposible. No afecta al dictamen P1, que se decide por IC95 y no por DSR. |
+| **Fase B** — portfolio 10 activos, 12 años: SEÑAL DÉBIL. Sharpe 1.008, t 3.48, DSR 0.72 | **QUEDA EN DUDA** | El harness está limpio: reproduce exacto con el sello `20261007` (3.0b-bis), la curva es invariante al futuro (3.2), el coste de rebalanceo se cobra y el edge resiste costes ×2 (3.3), y el dictamen es robusto a todo N ≥ 5 (3.4). **Pero el número del que cuelga no lo está:** el listón de 1.312 se mueve a **0.823** si `V` se mide con `T` homogéneo (3.0c), y el Sharpe observado 1.008 cae **en medio** de las dos construcciones defendibles. Y el "pierde vs B&H" era un veredicto no medido: a igual exposición el B&H gana por 0.063, no por 0.156 (3.0d). El dictamen no se invalida — se queda sin un suelo numérico firme. |
+| **Fase B-reevaluación** — P1 y P3 superados, DSR sigue 0.72 | **SE SOSTIENE en P1 y P3; el DSR QUEDA EN DUDA** | P3 reproduce exacto y es robusto a quitar cualquiera de los 5 caídos (3.6). P1 reproduce (IC95 de los tres tramos). **Salvedad:** los **DSR por tramo** (0.824/0.772/0.301) descansan en una `V` estimada en 2024-2026 y aplicada a tramos que empiezan en 2015 (H3), porque recalcularla por tramo es imposible. No afecta al dictamen P1, que se decide por IC95 y no por DSR. |
 | **TimesFM 2.5 (H1/H2)** — MUERTA. dir_acc 0.4925 agregada | **QUEDA SIN VERIFICAR POR REPRODUCCIÓN** | La cifra 0.4925 se confirmó en el documento, pero `results/timesfm_t3_zeroshot.json` **no se regeneró**: hace falta `torch` y `timesfm`, no instalables en este entorno. No hay motivo para dudar del dictamen, y no hay prueba de reproducción. Se declara el límite en vez de darlo por bueno. |
 
 **Nada se activa.** La brecha +0.304 sigue ahí, reproducida exacta.
@@ -45,6 +45,9 @@ cifras del expediente.
 | **H7** | `portfolio_supervivencia.py:57` | reproducibilidad / datos | **sí** | Igual que H1, en el módulo de supervivencia. No parcheado (fuera de alcance) | **ALTO** |
 | **H8** | `portfolio_runner.py:246` vs `:229` | asimetría de información | **sí**, medido | A ninguno: 10 decisiones de 44.030 (0,023%), +0.0041 de Sharpe en el benchmark | **BAJO** |
 | **H9** | `potencia_fase_b.py:4,25-28` | etiqueta | **sí** | A ninguno. Se presenta como potencia "A PRIORI" y cablea `T_EFF`, `SKEW`, `KURT`, `V` tomados del run ya observado | **BAJO** |
+| **H10** | `portfolio_bateria.py:54-69` + `potencia_fase_b.py:28` | metodología estadística | **sí**, medido | **Al número central del expediente.** El listón pasa de 1.312 a 0.823 según cómo se construya `V`, y el Sharpe observado (1.008) cae entre los dos. La brecha +0.304 no es robusta | **CRÍTICO** |
+| **H11** | ausencia de corrección en Fase B frente a `rigor_estadistico.py:185-209` | benchmark no igualado | **sí**, medido | Al "pierde vs B&H" de Fase B: medido a igual exposición pierde por 0.063 en vez de 0.156. Fase A sí aplicó esta corrección; Fase B la omitió | **ALTO** |
+| **H12** | `timesfm_fase2_resultado.md:6` vs `portfolio_bateria.py:35` | contabilidad de `N` | **sí** | A la aritmética de todo el expediente: con N=14 el listón es 1.349 y la brecha +0.341. **Contradicción abierta, no reconciliada** | **ALTO** |
 
 Lo que **no** se encontró, declarado como tal: ningún look-ahead, ningún coste
 mal modelado, ninguna doble contabilización, ningún no-determinismo, ninguna
@@ -318,6 +321,134 @@ descarga en vivo del 2026-10-05 y no sobre este CSV: mismo número de velas
 
 ---
 
+## 5-bis. El número central del expediente no es robusto (3.0c y 3.0d)
+
+Pasos añadidos por Pablo el 2026-11-01 a partir de la némesis de N2 (rama
+`nube/s2-literatura`, objeciones **B1** y **B3**). Son de cómputo, sin red, sin
+datos nuevos y **sin gastar un trial**: `N` sigue en 12 en ambos.
+
+### 3.0c — `V` con `T` homogéneo
+`fix-fase2/auditoria_n1/paso_3_0c_v_con_t_homogeneo.py`
+
+N2 observó que `SR₀ = √V·E[max_N]` usa una `V` estimada sobre 11 trials con
+`n_obs_eff` entre 598 y 2188 y la aplica a un estadístico medido con
+`T_eff = 4336`.
+
+**Diagnóstico (parte A).** Confirmado y **matizado**: la dispersión observada
+no solo cae dentro del ruido muestral, es **menor** que el ruido medio de
+estimación.
+
+```
+  var observada 0.00070217  vs  ruido medio 0.00133815
+  ratio 0.525
+  var_verdadera estimada = -0.0006359790  -> NEGATIVA
+```
+
+Bajo un modelo de errores independientes la dispersión verdadera entre reglas
+se estima en **cero**. Pero ese modelo no se sostiene y es el matiz que N2 no
+incluyó: las 11 reglas corren sobre **la misma serie de precios de BTC**, en el
+mismo tramo OOS, así que sus errores están fuertemente correlacionados y la
+varianza entre ellas puede ser mucho menor que la suma de ruidos
+independientes. De ahí el ratio 0.525 < 1. El reescalado `V·843/4336` que N2
+propone es **un** modelo posible, no el correcto.
+
+**Medición (partes B–D).** Se replicó el bucle del portfolio con la regla
+desacoplada y **la réplica reproduce Fase B con diferencia 0.0e+00** punto a
+punto en la equity — sin esa validación nada de lo demás valdría. Después se
+midieron las 11 reglas de Fase A sobre el mismo panel (10 activos, 12 años,
+misma maquinaria Carver + cov EWMA + mismos costes), con un control
+anti-colapso que aborta si dos trials dan el mismo Sharpe:
+
+```
+  T_eff de los 12 trials: min 3850 max 5695 ratio 1.48
+  (antes: min 598 max 4336 ratio 7.25)
+
+                                    V vieja        V nueva
+  SR0 diario                        0.04412        0.01850
+  liston Sharpe DSR>=0.95             1.312          0.823
+  Sharpe observado                    1.008          1.008
+  brecha                             +0.304         -0.185
+  DSR de Fase B                      0.7190         0.9891
+  ¿DSR >= 0.95?                          no             SI
+```
+
+**El sesgo que corta en contra (parte E).** No se puede quedar con el 0.823 sin
+más, por dos razones medidas:
+
+```
+  familia de trials                       min      max        sd    rango
+  Fase A single-asset + Fase B         -0.298    1.116     0.506    1.415
+  11 reglas sobre el panel + Fase B     0.535    1.267     0.212    0.733
+  negativos en la familia                   3        0
+```
+
+1. Los 12 trials nuevos pasan **todos** por la misma maquinaria de
+   vol-targeting al 10%, que los comprime hacia un mismo perfil de riesgo:
+   ninguno queda negativo y la sd cae de 0.506 a 0.212. Parte de la caída de
+   `V` no es "quitar ruido de muestras cortas".
+2. En Bailey-LdP, `V` es la dispersión entre los intentos **que de verdad se
+   probaron**. La búsqueda real fue 11 reglas sobre BTC solo y después una
+   regla de portfolio. Medir esas 11 sobre el panel describe una familia de
+   intentos que **nunca se buscó**.
+
+```
+  construccion de V                                    V    liston      DSR
+  la del expediente (T heterogeneo)           0.00070219     1.312   0.7190
+  T homogeneo sobre el panel (3.0c)           0.00012351     0.823   0.9891
+  reescalado de N2 (V·843/4336)               0.00013652     0.842   0.9872
+```
+
+**El hallazgo, por encima de la dirección (H10):** el listón se mueve entre
+**0.823 y 1.312** según una elección metodológica defendible que nadie había
+hecho explícita, y el Sharpe observado (1.008) **cae en medio**. La cifra 1.312
+—y con ella la brecha +0.304 de la que cuelgan el expediente entero, los tres
+briefs y la premisa "solo quedan dos salidas"— **no es robusta**. Eso vale
+cualquiera de las dos construcciones que se prefiera. Lo que queda establecido
+es que **la brecha no es fiable**, no que sea cero.
+
+*[no verificado]* Que Bailey-LdP exija `T` homogéneo entre trials para que `V`
+sea comparable no se pudo comprobar contra SSRN 2460551 desde esta sesión
+(sin acceso). Se mantiene la etiqueta que N2 le puso.
+
+### 3.0d — benchmark de exposición igualada sobre Fase B
+`fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py`
+
+Fase B está al **15,6%** de exposición media y se compara contra un B&H **100%
+invertido**. Fase A sí aplicó la corrección (`rigor_estadistico.py:185-209`) y
+fue esa medición la que mató a `sma_timing_50/100`. **B3 de N2 es correcta: en
+Fase B se omitió.**
+
+```
+  serie                                         Sharpe    Calmar  exp. media
+  Fase B (con costes)                            1.008     0.978       0.156
+  B&H 100% invertido (el publicado)              1.164   123.754       1.000
+  B&H a IGUAL exposicion                         1.071     1.144       0.156
+
+  Fase B vs B&H 100%          -0.156  (pierde) <- el par publicado
+  Fase B vs B&H igualado      -0.063  (pierde) <- la comparacion justa
+```
+
+**Fase B sigue perdiendo, pero por 0.063 en vez de 0.156.** El dictamen se
+sostiene por el lado del benchmark, y ahora por la razón correcta en vez de por
+una comparación no igualada. Contra lo que B3 temía, la corrección **no**
+convierte a Fase B en "el mismo cadáver que `sma_timing_50` con otro nombre".
+
+Se verificó el matiz de N2 sobre la invariancia de escala: el Sharpe del B&H
+×0.5, ×1 y ×2 es idéntico (1.164). Lo que mueve el Sharpe es escalar por un
+camino de exposición **variable en el tiempo**, que es de lo que va la
+corrección. Y el test de selección (objeción B-09 del registro némesis): el
+camino real queda a **+0.62 sd** de la media de 2000 permutaciones del propio
+camino (percentil 73,6%) — si hay sesgo va en contra de la estrategia, y a esa
+distancia no se distingue del ruido.
+
+### La palanca `T` está cerrada (dato de N3, no recalculado aquí)
+
+Por indicación de Pablo, y para no recalcularlo: N3 (`nube/s3-datos`) demostró
+que el estadístico `t` es **exactamente invariante** a la frecuencia de muestreo
+(delta 0.000000 verificado), que el umbral DSR **sube** al pasar a horario
+(1.312 → 1.317…1.325) y que cerrar la brecha por ventana de calendario exigiría
+**~96 años** de historia. **Este informe no propone más datos como salida.**
+
 ## 6. Costes
 
 `fix-fase2/auditoria_n1/paso_3_3_costes.py`
@@ -361,6 +492,12 @@ size grande en un activo ilíquido.
 ## 7. El DSR como función de N
 
 `fix-fase2/auditoria_n1/paso_3_4_dsr_funcion_de_n_y_v.py`
+
+**Contradicción abierta sobre `N` (N2 · B2, sin reconciliar).**
+`timesfm_fase2_resultado.md:6` declara **N=14** registrado antes del primer
+forecast (2026-10-12/13); el código y la reevaluación del 2026-10-09 usan **12**.
+Nadie lo ha reconciliado y esta tarea no lo arregla. Con N=14 el listón es
+**1.349** y la brecha **+0.341** en lugar de +0.304.
 
 **`N=12` es una [ASUNCIÓN NO VERIFICABLE].** `N` en Bailey-LdP cuenta
 configuraciones **probadas**, no publicadas. El repo solo registra las
@@ -427,7 +564,7 @@ Decisión de Pablo (§8). `AUDIT-S*`/`AUDIT-A*` son del `AUDIT_BRIEF.md`
 | `AUDIT-S4` / `AUDIT-A4` | salidas intravela | no | ya cubierto por `verificar_a4_a7_cierre.py` | PASS |
 | `AUDIT-A5` | indicadores vs referencia | no | `verificar_a5_indicadores.py`, recuperado en 3.7 | PASS (12 indicadores, dif. máx 1.4e-08) |
 | `AUDIT-A6` | métricas a mano | no | `verificar_a6_metricas.py` | PASS |
-| `AUDIT-A7` | resultados post-fix reejecutados | no | 3.0b / 3.0c | PASS, 245/245 y exacto |
+| `AUDIT-A7` | resultados post-fix reejecutados | no | 3.0b / 3.0b-bis | PASS, 245/245 y exacto |
 | `AUDIT-A8` | adversarial coin-flip ≈ 0 menos costes | no | `verificar_a8_adversarial.py`, recuperado en 3.7 | PASS (30 semillas: retorno medio −22.9%, Sharpe −0.454, t −5.19) |
 | `AUDIT-S5` | walk-forward sin optimización | no | no auditado | fuera de alcance |
 | `AUDIT-S6` | datos yfinance y reproducibilidad | no | H1, H5, H6, H7 | **cuatro hallazgos** |
@@ -468,6 +605,12 @@ auditoría. Esta encontró nueve cosas, y estos son sus límites:
    multiplica una tasa proporcional, no simula profundidad de libro.
 8. **La brecha de la línea base pre-auditoría (1.63 vs 0.80) queda sin
    explicar** desde este repo. *[no verificado]*
+9. **No se resuelve cuál es la `V` correcta.** 3.0c establece que el listón no
+   es robusto a esa elección y mide las dos construcciones; decidir cuál vale
+   es una decisión metodológica de Pablo, no un resultado de esta auditoría. Y
+   cambiarla después de ver el resultado sería cambiar la métrica, prohibido.
+10. **No se reconcilia `N`=12 frente a `N`=14.** Queda anotado como
+   contradicción abierta, con el listón de ambos.
 
 ---
 
@@ -506,7 +649,9 @@ largo es 3.2 (~150 s).
 ```bash
 cd fix-fase2
 python3 auditoria_n1/paso_3_0b_reproducibilidad.py
-python3 auditoria_n1/paso_3_0c_reproducibilidad_fase_b.py
+python3 auditoria_n1/paso_3_0b_bis_reproducibilidad_fase_b.py
+python3 auditoria_n1/paso_3_0c_v_con_t_homogeneo.py
+python3 auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py
 python3 auditoria_n1/paso_3_1_audit_a1_lookahead.py
 python3 auditoria_n1/paso_3_1_audit_a2_drawdown.py
 python3 auditoria_n1/paso_3_1_audit_a3_comision.py

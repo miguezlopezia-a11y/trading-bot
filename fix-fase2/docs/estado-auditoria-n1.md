@@ -11,9 +11,11 @@ archivo al búnker a mano.
 
 ## 1. Lo que cambia en el expediente
 
-**Los cuatro dictámenes se sostienen.** La auditoría no encontró ningún
-defecto del harness que invalide ninguno. Eso incluye el que sobrevive
-("SEÑAL DÉBIL" de Fase B) y los tres que mueren.
+**El harness está limpio.** La auditoría no encontró ningún defecto del
+instrumento de medida que invalide ningún dictamen: ni look-ahead, ni costes
+mal modelados, ni doble contabilización, ni no-determinismo. Fase A se sostiene.
+Fase B **queda en duda**, no por el harness, sino por cómo se construye la `V`
+que deflacta su Sharpe. TimesFM queda sin verificar por reproducción.
 
 El vínculo código↔resultados quedó **establecido con prueba**, que era la
 condición de parada: `rigor_estadistico.py` reejecutado reproduce
@@ -22,8 +24,15 @@ el portfolio de Fase B reproduce `results/portfolio_runner.json` **exacto**
 con el sello `20261007`. Antes de esta auditoría eso no se había comprobado
 nunca, y era la asunción más débil de todo el expediente.
 
-**La cifra que ordena el expediente no se mueve:** N=12 exige Sharpe 1.312
-para DSR ≥ 0.95, el observado es 1.008, brecha **+0.304**. Reproducido exacto.
+**Pero la cifra que ordena el expediente SÍ se mueve.** Los pasos 3.0c y
+3.0d, que Pablo añadió el 2026-11-01 desde la némesis de N2, cambian la lectura
+de Fase B. Está en el hallazgo H10 de abajo, y es lo primero que hay que leer:
+el listón de 1.312 pasa a **0.823** si `V` se mide con `T` homogéneo, y el
+Sharpe observado (1.008) cae **en medio** de las dos construcciones. La brecha
++0.304 se reproduce exacta, pero **no es robusta**.
+
+Por eso el veredicto de Fase B en el informe es **QUEDA EN DUDA**, no "se
+sostiene": el harness está limpio, el número del que cuelga no.
 
 ---
 
@@ -36,6 +45,9 @@ para DSR ≥ 0.95, el observado es 1.008, brecha **+0.304**. Reproducido exacto.
 | H3 | `V` (la otra mitad de `SR0`) **no se puede recalcular por tramo**: las 11 series que la componen cubren 2024-10→2026-10 y no solapan con T1 (2015-2018) ni T2 (2019-2022). La V de los tres tramos se estima en 2 años y se aplica a tramos que empiezan en 2015. | MEDIO | No el veredicto global. Sí la lectura de los **DSR por tramo** (0.824/0.772/0.301), que no son comparables entre sí como el expediente los presenta. |
 | H4 | El **benchmark de exposición igualada** de Fase A está sesgado **al alza**: la máscara de posición de la estrategia selecciona días favorables para B&H (percentil medio 71% contra 2000 máscaras aleatorias; `sma_timing_50` al 96.5%). | MEDIO | No. El sesgo va **en contra** de las estrategias y Fase A ya moría por DSR, bootstrap y t de forma independiente. |
 | H5 | 4 de los 23 `verificar_*.py` descargaban de yfinance **en tiempo de ejecución**, y ninguno comprobaba que la descarga trajese filas (fallaban con `IndexError` sobre un DataFrame vacío). | ALTO | No, pero hacía la suite no reproducible. Pasan 4/4 con el CSV congelado. |
+| **H10** | **El listón del DSR no es robusto.** Pasa de **1.312** a **0.823** si `V` se mide con `T` homogéneo sobre el panel (3.0c), y el Sharpe observado 1.008 cae **en medio**. Las dos construcciones son defendibles y nadie había hecho la elección explícita. | **CRÍTICO** | **Sí: a Fase B.** No la invalida ni la rescata — la deja sin suelo numérico firme. Es el hallazgo más importante de N1. |
+| H11 | El benchmark de Fase B **no estaba igualado en exposición**: cartera al 15,6% contra B&H al 100%. Fase A sí aplicó la corrección; Fase B la omitió (3.0d). | ALTO | Al "pierde vs B&H": medido a igual exposición pierde por **0.063**, no por 0.156. El dictamen se sostiene, ahora por la razón correcta. |
+| H12 | **`N` no está reconciliado.** `timesfm_fase2_resultado.md:6` declara **N=14** registrado antes del primer forecast; el código y la reevaluación usan **12**. | ALTO | A la aritmética: con N=14 el listón es 1.349 y la brecha +0.341. **Contradicción abierta.** |
 
 ---
 
@@ -63,6 +75,8 @@ importancia:
 4. **`btc_usd_5y_1d.csv` no tiene `.sha256` ni `.meta.json`**, y es el único
    insumo de los 11 dictámenes de Fase A. Es el único de los 36 CSV sin ancla
    de integridad.
+5. **`portfolio_resultado.md` sigue sin existir** y `REGISTRO_F.md` tampoco
+   (sección 4). No se reconstruyen, por decisión de Pablo.
 
 ---
 
@@ -124,14 +138,31 @@ nota de `brain.py` está obsoleta; no se tocó porque está fuera de alcance.
 
 ## 7. Siguiente paso, según lo que esta auditoría deja en pie
 
-El harness no es el problema. La brecha **+0.304** es real y sigue ahí, y el
-paso 3.4 añade el dato que la ordena: la conclusión es **robusta al alza de
-N** (se sostiene para todo N ≥ 5) y el DSR es **más sensible a `V` que a `N`**
-(con `V` a la mitad, el DSR sube de 0.719 a 0.926). Las dos vías que el
-expediente ya tenía escritas siguen siendo las dos vías:
+**El harness no es el problema. La métrica sí.** Y eso reordena lo que viene.
 
-- **más T** (tarea N3), que es lo que mueve el umbral sin tocar la métrica, y
-- **menos trials futuros**, porque cada variante nueva encarece el umbral: de
-  N=12 a N=50 la brecha pasa de +0.304 a +0.614.
+Lo que esta auditoría deja decidido:
 
-Nada se activa. La Fase B sigue siendo candidata a más datos.
+- La conclusión es **robusta al alza de `N`** (se sostiene para todo N ≥ 5, y
+  solo caería si los intentos reales hubiesen sido ≤ 4).
+- El DSR es **más sensible a `V` que a `N`**: subir `N` de 12 a 50 mueve el
+  listón +0.31, mientras cambiar la construcción de `V` lo mueve −0.49.
+- **La palanca `T` está cerrada.** N3 demostró que `t` es exactamente
+  invariante a la frecuencia de muestreo, que el umbral DSR **sube** al pasar
+  a horario (1.312 → 1.317…1.325) y que cerrar la brecha por ventana de
+  calendario exigiría **~96 años** de historia. **Más datos no es la salida**,
+  y este informe no la propone.
+
+Lo que queda abierto, y es una decisión de Pablo, no un resultado:
+
+1. **Cuál es la `V` correcta.** Es la pregunta que decide si hay brecha o no la
+   hay. Las dos construcciones están medidas en 3.0c con sus sesgos a la vista.
+   Cambiarla después de ver el resultado sería cambiar la métrica —prohibido—,
+   así que la decisión tiene que justificarse por el método, no por el número
+   que produce.
+2. **Reconciliar `N`**: 12 o 14. Y escribir la regla de qué cuenta como trial.
+   N2 · B2 propone `fix-fase2/docs/registro_N.md` con una línea por trial.
+   Sin ese libro de cuentas, toda la aritmética del DSR es sobre un número que
+   nadie puede auditar.
+
+Nada se activa. Fase B sigue siendo candidata — pero ya no "a más datos", sino
+a que se cierre cómo se mide su propio listón.

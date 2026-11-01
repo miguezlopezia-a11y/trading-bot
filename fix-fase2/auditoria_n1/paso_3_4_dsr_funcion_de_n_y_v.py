@@ -96,12 +96,14 @@ def sharpe_min(n_trials, var_trials):
 
 
 tabla_n = {}
-for n in (1, 2, 3, 4, 5, 8, 12, 20, 30, 50, 100):
+for n in (1, 2, 3, 4, 5, 8, 12, 13, 14, 15, 20, 30, 50, 100):
     d, sr0 = dsr(s_per, t_eff, n, V_CABLEADA, skew, kurt)
     smin = sharpe_min(n, V_CABLEADA)
     tabla_n[n] = {"dsr": d, "sr0": sr0, "sharpe_min": smin}
     marca = "SI" if d >= CONF else "no"
-    destaca = " <-- N del expediente" if n == 12 else ""
+    destaca = (" <-- N del expediente (codigo y reevaluacion)" if n == 12
+               else " <-- N=14 de timesfm_fase2_resultado.md:6 (sin reconciliar)"
+               if n == 14 else "")
     print(f"  {n:>5} {sr0:>12.5f} {d:>8.4f} {smin:>22.3f} {marca:>12}"
           f"{destaca}")
 print()
@@ -146,7 +148,7 @@ print("  'SEÑAL MUERTA'. Subir N baja el DSR y aleja la señal de ACTIVABLE,")
 print("  pero MUERTA esta definida por el fallo de P1 o P3, que son pruebas")
 print("  basadas en intervalos de confianza y en t, no en N.")
 print("  Lo que N si hace, cuantificado:")
-for n in (12, 20, 30, 50):
+for n in (12, 14, 20, 30, 50):
     t = tabla_n[n]
     print(f"    N={n:<4} DSR {t['dsr']:.4f}   brecha de Sharpe hasta 0.95: "
           f"{t['sharpe_min'] - s_anual:+.3f}")
@@ -304,6 +306,14 @@ for f in (0.25, 0.5, 1.0, 2.0, 4.0):
 print()
 print("=" * 74)
 print("VEREDICTO 3.4")
+print("  CONTRADICCION ABIERTA (N2 · B2, sin resolver, no se arregla aqui):")
+print("  timesfm_fase2_resultado.md:6 declara N=14 registrado antes del primer")
+print("  forecast (2026-10-12/13); el codigo y la reevaluacion del 2026-10-09")
+print("  usan 12. Nadie lo ha reconciliado. Con N=14 el liston es "
+      f"{tabla_n[14]['sharpe_min']:.3f}")
+print(f"  y la brecha {tabla_n[14]['sharpe_min']-s_anual:+.3f} en lugar de "
+      f"{tabla_n[12]['sharpe_min']-s_anual:+.3f}.")
+print()
 print(f"  N: ASUNCION NO VERIFICABLE. El dictamen 'DSR < 0.95' se sostiene")
 print(f"  para todo N >= {n_max + 1} y solo caeria si los intentos reales")
 print(f"  fuesen <= {n_max}. La conclusion es robusta al alza de N.")

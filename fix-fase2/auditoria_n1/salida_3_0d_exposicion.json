@@ -1,0 +1,15 @@
+{
+  "sello": "20261007",
+  "dias": 4404,
+  "exposicion_media": 0.1559827260735808,
+  "dias_exposicion_cero": 915,
+  "sharpe_fase_b": 1.0082678270225074,
+  "sharpe_bh_100": 1.164272064204635,
+  "sharpe_bh_igual_exposicion": 1.07121204755227,
+  "gana_con_benchmark_igualado": false,
+  "mascara_binaria": {
+    "sharpe_estrategia": 1.1358747566407752,
+    "sharpe_bh": 1.1566971275382782
+  },
+  "percentil_seleccion": 73.55000000000001
+}
