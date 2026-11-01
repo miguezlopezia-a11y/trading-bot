@@ -287,6 +287,8 @@ Orden autorizado, en este orden exacto:
 |---|---|---|
 | 3.0 | Parchear `load_or_download()` con ruta/stamp explícito y **fallo en duro** si el fichero no existe. Descarga prohibida durante toda la auditoría. | B-01, A-10 |
 | 3.0b | Reejecutar `rigor_estadistico.py` (corre sin red) dos veces y comparar contra `results/rigor_estadistico.json` | B-10, B-13 |
+| 3.0c | Recalcular `V` con `T` homogéneo y recalcular el DSR de Fase B | N2 · B1 |
+| 3.0d | Benchmark de exposición igualada sobre la equity de Fase B | N2 · B3 |
 | 3.1 | Cerrar A1/A2/A3 del `AUDIT_BRIEF.md` con tres scripts | B-04, A-18 |
 | 3.2 | Look-ahead por invariancia de prefijo, rejilla de `t`, OHLC coherente, incluyendo `_swings_confirmados` | B-05, B-06 |
 | 3.3 | Costes: agregado de rebalanceos y coste acumulado + sensibilidad ×2/×5/×10 | A-15 |
@@ -294,6 +296,72 @@ Orden autorizado, en este orden exacto:
 | 3.5 | Simetría estrategia-benchmark (`:t` vs `:t+1`, máscara de exposición) | B-09 |
 | 3.6 | Supervivencia | — |
 | 3.7 | Repuntar los 4 verificadores de red a los CSV congelados | B-12 |
+
+**Añadido 2026-11-01 — los pasos 3.0c y 3.0d vienen de la némesis de N2
+(literatura), rama `nube/s2-literatura`.** Léela antes de ejecutarlos:
+`fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md`,
+objeciones **B1** y **B3**. Resumen de por qué están aquí y no en otra tarea:
+
+- **3.0c — `V` mezcla dos escalas.** `SR₀ = √V · E[max de N normales]`, y esa
+  `V` es la varianza across-trial de los Sharpes de las 11 variantes de Fase A,
+  medidas con `n_obs_eff` entre 598 y 2188. Se usa para deflactar un Sharpe
+  estimado con `T_eff = 4336`. N2 midió que la dispersión observada entre los
+  12 trials (sd 0.0265 diaria) **cae dentro del rango de ruido muestral de un
+  Sharpe con habilidad cero a esos tamaños** (0.021–0.041): es decir, `V`
+  podría estar midiendo error de estimación, no dispersión de habilidad.
+  Reescalando al `T_eff` del estadístico deflactado, el listón cae a **0.842
+  anual — por debajo del 1.008 observado**.
+  **Qué hacer:** reestimar las 11 reglas de Fase A sobre el mismo panel de 10
+  activos y 12 años que usa Fase B, recalcular `V` con `T` homogéneo y
+  recalcular el DSR de Fase B con esa `V`. Son las 11 reglas ya contadas,
+  medidas otra vez: **`N` sigue en 12, no sube.**
+  **Qué NO hacer:** dar por hecho que el listón baja. N2 avisa de que
+  reestimar sobre doce años podría aumentar la dispersión *verdadera* (2015-2018
+  y 2019-2022 favorecen al momentum) y dejar `V` donde estaba. La dirección es
+  desconocida a priori: se mide, no se supone. Y N2 declara **[no verificado]**
+  su lectura de que Bailey-LdP exija trials de longitud homogénea — compruébalo
+  contra el paper si puedes, y si no, etiquétalo igual.
+- **3.0d — el benchmark de Fase B no está igualado en exposición.** Fase B
+  tiene exposición media **0.156** y se compara contra un B&H **100% invertido**
+  (1.008 vs 1.164). Fase A sí aplicó la corrección de exposición igualada, y
+  fue esa medición la que mató a `sma_timing_50/100`. La función ya existe en
+  `rigor_estadistico.py:185-209`.
+  **Es un benchmark, no una variante: no sube `N`.**
+  Ojo al matiz que N2 deja escrito: la exposición baja **no infla el Sharpe por
+  sí sola** (es invariante a escala), y la caja al 0% tampoco lo regala. El
+  defecto es la falta de igualación del benchmark, no el nivel de exposición.
+  Y recuerda la objeción B-09 de tu propio registro: esa máscara de exposición
+  selecciona días condicionada al comportamiento de la estrategia, así que
+  mide también si eso introduce selección.
+
+Los dos pasos son de cómputo, sin red, sin datos nuevos y sin gastar un trial.
+Van aquí, y no en una sesión aparte, porque dependen de que 3.0 y 3.0b estén
+hechos: sin el loader parcheado y sin el vínculo código↔resultados
+establecido, cualquier reejecución no es fiable.
+
+**Lo que decide el resto del expediente.** Si 3.0c confirma que el listón
+corregido queda por debajo de 1.008, entonces Fase B pasa DSR ≥ 0.95 con `N=12`
+y **no hay brecha que cerrar**: dilo en el informe con esas palabras y sigue
+con 3.1 en adelante igualmente, porque la auditoría del harness mantiene su
+valor. Si 3.0d muestra que el B&H a igual exposición bate a Fase B, dilo
+también: el dictamen "SEÑAL DÉBIL" sería un veredicto no medido. **Ninguno de
+los dos resultados autoriza cambiar el veredicto del expediente** — eso lo
+decide Pablo con tu informe delante.
+
+**Dato de N3 (`nube/s3-datos`), para que no lo recalcules:** la palanca "ampliar
+T con datos de mayor frecuencia" está cerrada. El estadístico t es exactamente
+invariante a la frecuencia de muestreo (delta 0.000000 verificado), el umbral
+DSR **sube** al pasar a horario (1.312 → 1.317…1.325), y cerrar la brecha por
+ventana de calendario exigiría ~96 años de historia. No propongas más datos
+como salida en tu informe.
+
+**Contabilidad de `N`, sin resolver.** N2 · B2 encontró que
+`timesfm_fase2_resultado.md:6` declara **N=14 registrado antes del primer
+forecast** (2026-10-12/13), mientras el código y la reevaluación del 2026-10-09
+usan 12. Nadie lo ha reconciliado. No lo arregles tú: anótalo en el informe y
+en `estado-auditoria-n1.md` como contradicción abierta, y cuando entregues el
+DSR como función de `N` (paso 3.4), incluye **N=14** en la tabla junto a 12, 20,
+30 y 50.
 
 **Condición de parada en 3.0b.** Si las cifras reejecutadas no coinciden con
 `results/rigor_estadistico.json`, **parar ahí** y reportar. No seguir con
