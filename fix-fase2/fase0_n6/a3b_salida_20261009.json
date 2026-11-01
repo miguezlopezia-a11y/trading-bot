@@ -1,0 +1,86 @@
+{
+  "stamp": "20261009",
+  "n_dias_equity": 4406,
+  "ultima_fecha": "2026-10-09",
+  "tramos": {
+    "T1_2015-2018": {
+      "mio": {
+        "n_retornos": 1218,
+        "n_obs_eff": 1136,
+        "sharpe_anual": 1.328,
+        "t_stat": 2.34,
+        "dsr": 0.8244,
+        "ic95": [
+          0.57,
+          38.51
+        ],
+        "pnl_pct": 81.72
+      },
+      "publicado": {
+        "sharpe_anual": 1.328,
+        "t_stat": 2.34,
+        "dsr": 0.8244,
+        "ic95": [
+          0.57,
+          38.51
+        ],
+        "n_obs_eff": 1136,
+        "pnl_pct": 81.72
+      },
+      "reproduce": true
+    },
+    "T2_2019-2022": {
+      "mio": {
+        "n_retornos": 1461,
+        "n_obs_eff": 1524,
+        "sharpe_anual": 1.219,
+        "t_stat": 2.49,
+        "dsr": 0.7719,
+        "ic95": [
+          1.13,
+          30.71
+        ],
+        "pnl_pct": 82.42
+      },
+      "publicado": {
+        "sharpe_anual": 1.219,
+        "t_stat": 2.49,
+        "dsr": 0.7719,
+        "ic95": [
+          1.13,
+          30.71
+        ],
+        "n_obs_eff": 1524,
+        "pnl_pct": 82.42
+      },
+      "reproduce": true
+    },
+    "T3_2023-fin": {
+      "mio": {
+        "n_retornos": 1378,
+        "n_obs_eff": 1356,
+        "sharpe_anual": 0.572,
+        "t_stat": 1.1,
+        "dsr": 0.3008,
+        "ic95": [
+          -5.86,
+          20.3
+        ],
+        "pnl_pct": 25.95
+      },
+      "publicado": {
+        "sharpe_anual": 0.572,
+        "t_stat": 1.1,
+        "dsr": 0.3008,
+        "ic95": [
+          -5.86,
+          20.3
+        ],
+        "n_obs_eff": 1356,
+        "pnl_pct": 25.95
+      },
+      "reproduce": true
+    }
+  },
+  "reproducen_todos": true
+}
