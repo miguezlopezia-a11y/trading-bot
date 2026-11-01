@@ -9,7 +9,8 @@
     "N": 11,
     "rho_medio": 0.3299739622659571,
     "cheverud_nyholt": 9.042952408284854,
-    "li_ji": 6.538228974788747,
+    "li_ji": 7.000000000000002,
+    "li_ji_impl_erronea_v1": 6.538228974788747,
     "kish": 2.5582944469544495,
     "autovalores": [
       5.2698,
@@ -29,7 +30,8 @@
     "N": 14,
     "rho_medio": 0.21309674361129827,
     "cheverud_nyholt": 12.158543419936677,
-    "li_ji": 8.455231987316655,
+    "li_ji": 10.000000000000002,
+    "li_ji_impl_erronea_v1": 8.455231987316655,
     "kish": 3.7132740615410196,
     "autovalores": [
       5.6194,
@@ -71,9 +73,9 @@
     },
     {
       "construccion": "N efectivo Li-Ji (11 corr.) + portfolio",
-      "N": 7.54,
+      "N": 8.0,
       "V": 0.0007021947704551833,
-      "liston_anual": 1.1915,
+      "liston_anual": 1.2076,
       "pasa": false
     },
     {
@@ -99,9 +101,9 @@
     },
     {
       "construccion": "N efectivo Li-Ji (14 corr.) + portfolio",
-      "N": 9.46,
+      "N": 11.0,
       "V": 0.0015503661545655356,
-      "liston_anual": 1.6327,
+      "liston_anual": 1.6901,
       "pasa": false
     },
     {

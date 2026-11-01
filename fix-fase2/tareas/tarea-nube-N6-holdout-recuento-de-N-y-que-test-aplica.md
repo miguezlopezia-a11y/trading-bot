@@ -328,8 +328,15 @@ OK para ejecutar el Alcance: [pendiente]
 PR contra `fase-b-recuperada`, nunca contra `main`.
 **Alcance ejecutado:** solo la **Fase 0** (§3), pasos A y B, más el segundo
 agente del Maker/Verifier. **Ni un paso de la §4.** La §7 sigue sin firma.
-**Scripts:** `fix-fase2/fase0_n6/*.py`, nueve ficheros, cada uno ejecutable por
-separado y cada uno con su JSON de salida. Ninguno está en `auditoria_n6/`.
+**Scripts:** `fix-fase2/fase0_n6/*.py`, **trece** ficheros, **nueve** con JSON de
+salida. Ninguno está en `auditoria_n6/`.
+> **Corregido tras la crítica (hallazgo 5).** La v1 decía *"nueve ficheros, cada
+> uno ejecutable por separado y cada uno con su JSON"*. Eran **once** scripts y
+> **siete** JSON; cuatro (`a1_`, `a2_`, `a4_`, `b_a_preregistro_auditable`) no
+> escriben ninguno, y `a6_` **aborta** si no se le pasa `STAMP_CONGELADO`, así
+> que "ejecutable por separado" no era cierto de él. Añadidos `a8_cifras_sueltas.py`
+> y `a9_balance_y_etiquetas.py` para las cifras que la v1 pegó sin script
+> detrás. Los cuatro sin JSON son los que solo imprimen inventario o `grep`.
 **Lectura previa:** las cuatro del encabezado, enteras y en orden. El registro
 némesis de N4 completo, incluida la crítica literal del segundo agente y las
 dieciséis respuestas.
@@ -348,14 +355,14 @@ y aquí vuelve a aparecer en el brief que la denuncia.
 
 | | Resultado |
 |---|---|
-| Hechos de la §2 | **4 CONFIRMADOS** (2.1, 2.3, 2.4, 2.6), **1 CONFIRMADO con la cifra corregida** (2.2: el outlier está a 4.24–4.49 sd, no a ~3.5), **1 CONFIRMADO en parte y REFUTADO en parte** (2.5: `t>3` manda para `N≤2`, no para `N=3`) |
+| Hechos de la §2 | **5 CONFIRMADOS** (2.1, 2.3, 2.4, 2.5, 2.6) y **1 CONFIRMADO con la cifra corregida** (2.2: el outlier está a 4.24–4.49 sd, no a ~3.5). **Recuento corregido tras la crítica (hallazgo 11):** la v1 puso §2.5 como *"REFUTADO en parte"*, y eso salía de fusionar dos frases del brief que dicen cosas distintas y que, leídas por separado, son **las dos ciertas**. §2.5 pasa a CONFIRMADO con una imprecisión declarada, y el NO-GO de la §2 **no se dispara en absoluto** |
 | A-1 inventario de los 13 | **Hecho. `N` no pasa de 15 por este inventario.** Los once `walkforward_stability_*` no añaden estrategias: cubren las mismas de `V(11)`. Hallazgo nuevo: los produjo `yf.download`, no el CSV congelado |
 | A-2 ¿se contradicen los árboles? | **NO.** Los dos ficheros comunes son idénticos al byte y semánticamente. Los conjuntos difieren; el contenido no. **NO-GO no se dispara** |
 | A-3 tramos T1/T2/T3 | **REPRODUCEN los tres, campo a campo, IC del bootstrap incluidos** — pero **solo re-simulando con el sello `20261009`**. Desde la equity congelada del repo, **T3 no reproduce**. **NO-GO no se dispara**, y 6.4 tal como está escrito lo dispararía en falso |
 | A-4 intérprete y red | Python 3.13.18 + numpy/pandas. **0 de 10 fuentes de mercado**, PyPI sí. 8 módulos de `src/` descargarían si se ejecutasen: reportados, no parcheados |
 | A-5 el eje de la tarea | **CONFIRMADO al bit.** `V(15) = 0.001550366`, listón **1.8024**. `V(12)` reproduce con diferencia **0.0e+00** |
-| Paso B | **10 objeciones**, de ellas **2 CRÍTICAS** (B-a, B-b) y **4 ALTAS**. B-a vacía la función decisoria de 6.4. B-b encuentra la corrección contraria que el brief pide, la mide, y **en una construcción Fase B pasa** |
-| Maker/Verifier | pendiente de pegar abajo |
+| Paso B | **10 objeciones planteadas, 9 en pie** tras la crítica: **2 CRÍTICAS** (B-a, B-b), **3 ALTAS** (B-c, B-e2, B-e3), **4 MEDIAS** (B-d, B-e1, B-e5, B-e6) y **1 RETIRADA** (B-e4). B-a vacía la función decisoria de 6.4. B-b encuentra la corrección contraria que el brief pide y la mide. **B-c y B-e5 reescritas tras la crítica** (su frontera estaba cuatro posiciones fuera de sitio), **B-e1 bajada a MEDIA**, **B-e4 retirada entera** |
+| Maker/Verifier | **13 hallazgos** del segundo agente. **Acepto los 13**, entre ellos **1 CRÍTICO** (la frontera del veredicto está en `N≈4.08`, no entre 2 y 3, y **Fase B pasa el DSR con `N=3`**) y **3 ALTOS**. Correcciones aplicadas en línea y marcadas |
 
 **Lo que cambia respecto al brief.** El brief dice que hace tres cosas: cerrar
 el recuento de `N`, medir Fase B con el holdout pre-registrado, y enumerar qué
@@ -367,6 +374,12 @@ tests podrían decidir. De las tres:
    que es ruido al lado de los ±0.49 de H10. La primera de las dos correcciones
    de la tarea es, medida, casi inconsecuente salvo que se decida conservar el
    outlier — y esa decisión, tomada hoy, es ella misma una elección de métrica.
+1-bis. **Y el número nuevo que esta ronda aporta, tras la crítica:** **Fase B
+   pasa el DSR para todo `N ≤ 4.08`** y falla desde ahí. La familia de intentos
+   que el expediente puede enumerar sobre el panel (dos curvas) cae **dentro**
+   de esa región, con margen (listón 0.7336 contra 1.0084). La pregunta de
+   Fase B no es qué `V` ni qué holdout: es **cuántos intentos de panel hubo**,
+   y eso no lo decide ningún test.
 2. **La medición con holdout es legítima; usarla como criterio no.** Lo que
    estaba pre-registrado era el split **y una métrica decisiva distinta** (≥2
    de 3 tramos con IC95 positivo), que ya se aplicó y dio SUPERADO. Comparar el
@@ -423,6 +436,15 @@ que importan porque están en la sección que manda reverificar:**
   tarea. Los no mirados son doce.
 
 ### §2.2 — `N ≥ 15`: hay tres estrategias más con resultados publicados → **CONFIRMADO; la salvedad del outlier, CONFIRMADA con la cifra corregida**
+
+> **Desviación de forma del brief, añadida tras la crítica (hallazgo 11).** El
+> brief titula su §2.2 *"hay **cuatro** estrategias más con resultados
+> publicados"*. Son **tres**: `ma_cross`, la cuarta de
+> `backtest_sizing05.json`, ya está contada en `V(11)` — y el cuerpo del propio
+> brief lo dice dos líneas más abajo. La v1 de este registro **reescribió el
+> encabezado en silencio** y estampó CONFIRMADO, mientras que para la §2.1 se
+> detuvo a listar dos desviaciones de forma *"porque están en la sección que
+> manda reverificar"*. La vara es la misma o no es vara.
 
 Desde `fix-fase2/`:
 
@@ -576,7 +598,18 @@ aprobada el 2026-10-09 no es "el Sharpe de T3 contra el listón del DSR": es
 **se aplicó y dio SUPERADO** (`{'superado': True, 'tramos_positivos': 2,
 'tramos_claramente_negativos': 0}`). Ver B-a.
 
-### §2.5 — `T` nunca era la restricción → **CONFIRMADO en parte, REFUTADO en parte**
+### §2.5 — `T` nunca era la restricción → **CONFIRMADO, con una imprecisión declarada**
+
+> **Veredicto rebajado tras la crítica (hallazgo 11).** La v1 puso
+> *"REFUTADO en parte"* y con él marcó el NO-GO de la §2 como *"disparado
+> parcialmente"*. Era injustificado. El brief dice **dos** cosas: (1) *"Con
+> `N ≤ 3`, los 11,9 años que ya están en el repo sobran"* y (2) *"con `N` bajo
+> la restricción activa no es el DSR sino `t > 3`"*. **Las dos son ciertas por
+> separado:** con `N=3` el listón es 0.9014 < 1.0084, luego los 11,9 años
+> sobran; y "con `N` bajo" (1 y 2) manda `t>3`. El "REFUTADO" salía de pegarle
+> a la segunda frase el `N ≤ 3` de la primera, que el texto no obliga. **El
+> NO-GO de la §2 no se dispara.** Lo que queda es una imprecisión de lectura,
+> y —con el hallazgo 1 corregido— **irrelevante para el veredicto**: ver abajo.
 
 Las dos cifras que el brief da salen:
 
@@ -585,16 +618,19 @@ Las dos cifras que el brief da salen:
   N=1   liston_DSR=0.4723                                   (brief: 0.472)
 ```
 
-Y los `T` mínimos de N5 se reverifican con la `V` y las colas del expediente:
+Y los `T` mínimos de N5 se reverifican. **Por bisección, no por rejilla**
+(`fase0_n6/a8_cifras_sueltas.py`; la v1 recorría `T` de 10 en 10 y pegó el
+resultado de la rejilla como si fuese exacto — hallazgo 5):
 
 ```
-  N=1   DSR: T_eff minimo =     940 dias =   2.58 anos      (N5: 2.6)
-  t>3     : T_eff minimo =    3240 dias =   8.88 anos       (N5: 9.0)
+  t>3 : T_eff = (3/0.05278115955)^2 = 3230.6 dias = 8.85 anos   (N5: 9.0)
+        la v1 pego 3240 / 8.88: artefacto de la rejilla
+  N=1  con V(12)   SR0_anual=0.0000  T_eff=940.0 dias = 2.58 anos   (N5: 2.6)
   T_eff del expediente = 4336 dias = 11.88 anos
 ```
 
-**Pero la afirmación "con `N ≤ 3` la restricción activa no es el DSR sino
-`t > 3`" es falsa en `N = 3`:**
+**La frase "con `N` bajo la restricción activa no es el DSR sino `t > 3`" es
+cierta para `N ≤ 2` y deja de serlo en `N = 3`, donde el DSR pasa por delante:**
 
 ```
   N=1   liston_DSR=0.4723  manda: t>3
@@ -605,13 +641,36 @@ Y los `T` mínimos de N5 se reverifican con la `V` y las colas del expediente:
   N=15  liston_DSR=1.3654  manda: DSR
 ```
 
-El cruce está entre `N = 2` y `N = 3`. **CONFIRMADO para `N ≤ 2`, REFUTADO
-para `N = 3`.** La diferencia no es cosmética: B-c muestra que el veredicto de
-Fase B **cambia de signo** exactamente entre `N = 2` (pasa) y `N = 3` (no pasa),
-así que el límite importa.
+El cruce de **qué test manda** está entre `N = 2` y `N = 3`.
 
-Cifra nueva, por completitud: con `N = 15` el `T` que el DSR exigiría es
-**208.7 años**, no los ~96 que N1 calculó con `N = 12`.
+> **Corregido tras la crítica (hallazgo 1, CRÍTICO).** La v1 seguía aquí con:
+> *"La diferencia no es cosmética: B-c muestra que el veredicto de Fase B cambia
+> de signo exactamente entre `N = 2` (pasa) y `N = 3` (no pasa), así que el
+> límite importa."* **Es falso.** Hay **dos fronteras distintas** y la v1 las
+> confundió: la de *qué test manda* (entre `N=2` y `N=3`) y la de *si Fase B
+> pasa* (en `N* = 4.0786`). Fase B **pasa** el DSR con `N=3`, porque
+> 1.008383 > 0.9014. Luego el límite `N=2`/`N=3` es, para el veredicto,
+> **cosmético** — exactamente lo contrario de lo que la v1 afirmó. Ver B-c y
+> B-e5, las dos reescritas.
+
+> **Y la "cifra nueva" de la v1 estaba mal emparejada (hallazgo 2, ALTA).**
+> Decía: *"con `N = 15` el `T` que el DSR exigiría es **208.7 años**"*. Ese
+> número empareja `N=15` con `V(12)` — la `V` **anterior** al recuento que es el
+> eje de la tarea. Con la pareja coherente la respuesta es otra:
+>
+> ```
+>   N=12 con V(12)                      SR0_anual=0.8428  T_eff= 34838 d =  95.45 anos
+>   N=15 con V(12)                      SR0_anual=0.8964  T_eff= 76180 d = 208.71 anos
+>   N=15 con V(15)  <-- la DEL RECUENTO SR0_anual=1.3320 > Sharpe obs 1.0084
+>                                       -> NINGUN T BASTA
+> ```
+>
+> Con `N=15` y `V(15)`, `SR₀` anualizado es **1.3320**, por encima del Sharpe
+> observado: el numerador de la PSR es negativo y **más datos alejan el DSR de
+> 0.95**. La respuesta correcta no es "208.7 años": es que **no existe `T`**. Y
+> es justo el emparejamiento `(N, V)` descolocado que este registro se
+> felicitaba por no haber encontrado en el expediente. El error va, además, en
+> la dirección blanda.
 
 ### §2.6 — Lo que esto NO prueba → **CONFIRMADO**
 
@@ -649,8 +708,94 @@ uno (estrategia, sizing, CSV, ¿trial?):
     walkforward_stability_rsi_hidden_divergence.json  estrategia=rsi_hidden_divergence
 ```
 
-**Respuesta al paso que el brief dice que "decide si `N` es 15 o más": `N` no
-pasa de 15 por este inventario.** Los once `walkforward_stability*` no añaden
+> **RETIRADO Y REESCRITO tras la crítica (hallazgos 3 y 4, los dos ALTOS).**
+> Lo que sigue en esta subsección era lo más débil del registro y hay que
+> decirlo entero:
+>
+> **(a) El "hallazgo nuevo que vale de A-1" no era nuevo.** La v1 afirmaba que
+> el vintage de los `walkforward_stability*` *"no está registrado en ningún
+> lado"* y que *"nadie ha citado eso en ninguna de las tres fases"*. **Las dos
+> cosas son falsas, y la prueba estaba a un `ls docs/` de distancia en el mismo
+> árbol de la raíz que el inventario recorría:**
+>
+> ```
+> $ sed -n '1,5p' docs/walkforward_stability.md
+> # Walk-forward de estabilidad de ma_cross (1.4) — 2026-10-06
+> **Objetivo:** medir estabilidad de ma_cross post-fix, NO optimizar parámetros
+> (mismos params en todos los folds). Script: `src/walkforward_stability.py`.
+> Datos: BTC-USD 5y 1d (yfinance, 1827 velas, 2021-10-06 → 2026-10-06).
+>
+> $ sed -n '6,10p' docs/estrategias_candidatas_resultado.md
+> Script: `src/walkforward_stability.py <estrategia>` (generalizado,
+> `STRATEGIES[sys.argv[1]]`, default `ma_cross`). Datos: BTC-USD 5y 1d
+> (yfinance, 2021-10-07 → 2026-10-07).
+> ```
+>
+> El vintage **está registrado**, con fecha y recuento de velas. Para el
+> fichero por defecto son 1827 velas 2021-10-06 → 2026-10-06, que es
+> **exactamente** la ventana del CSV congelado que A-5.1 verifica. Y los
+> dictámenes **están publicados y citados**, con su criterio (≥60 % de folds
+> positivos por configuración) y su consecuencia operativa:
+> `docs/estrategias_candidatas_resultado.md` tabula las diez con
+> `connors_rsi2` **ESTABLE** y `ma_cross (referencia)` **FRÁGIL**, y
+> `docs/walkforward_stability.md` cierra con *"el paper runner arranca en modo
+> observación"*. La v1 corrigió al brief la coma de "trece ficheros" y no
+> corrigió su premisa: con `docs/` delante, el material no auditado está cerca
+> de **cero**.
+>
+> **Lo que sobrevive, en su forma precisa y más débil:** los diez por variante
+> corren sobre `2021-10-07 → 2026-10-07`, **un día corrido** respecto al CSV
+> congelado (`2021-10-06 → 2026-10-06`). No es "vintage desconocido": es una
+> ventana desplazada un día y declarada. Luego **B-e4 estaba mal** y su
+> propuesta de etiquetarlos como *"no auditable por vintage de datos"* se
+> retira: son auditables y están auditados.
+>
+> **(b) "`N` no pasa de 15" no está demostrado.** La v1 contestó, para
+> `backtest_summary.json`, *"NO COMMENSURABLE"*. Eso responde si sus Sharpes
+> pueden entrar en `V`, **no si son intentos**, que es lo que el brief pregunta.
+> Y la regla que la v1 aplicó a los `walkforward_stability*` es la contraria:
+> *"mismo código, MISMOS parámetros, distintas ventanas → NO es trial"*. Por
+> esa regla, **mismo código con un parámetro distinto (sizing 0.95 vs 0.05) SÍ
+> es un intento**, y entonces `N ≥ 19`, no 15.
+>
+> El documento que zanja el caso también estaba en `docs/` y la v1 no lo abrió.
+> `docs/sizing_05_resultado.md` dice literal: *"Solo cambia `size_fraction`
+> (0.95 → 0.05). **Mismas señales, mismo código, mismo split, sin optimizar
+> ningún otro parámetro**"*, y titula la comparación *"NÚMERO NUEVO vs VIEJO —
+> NO son el mismo número"*. O sea: **el expediente ya resolvió que es el mismo
+> trial medido dos veces.** Esa es la conclusión correcta, y la v1 llegó a ella
+> por el camino equivocado y sin la fuente.
+>
+> **Y un agravante que el segundo agente no vio, y que sale de abrir el
+> documento:** la columna "viejo" de `sizing_05_resultado.md` **no cita
+> `backtest_summary.json`**, cita *"`resultado_paso3_final.json`,
+> size_fraction=0.95, datos descargados 2026-10-05"*. Ese fichero **no existe
+> en el repo ni existió nunca en git** (`find` y `git log --diff-filter=A`
+> vacíos). Y tres de sus cuatro cifras coinciden al céntimo con
+> `backtest_summary.json` pero la cuarta no:
+>
+> ```
+>   estrategia          doc (viejo)   backtest_summary   igual?
+>   ma_cross                   7.96               7.96     True
+>   mean_reversion           -33.68             -33.68     True
+>   breakout                  -1.36              -1.36     True
+>   trend_following           -9.51              -9.13    False
+> ```
+>
+> Luego la resolución del expediente **está documentada pero su evidencia está
+> rota**: cita una fuente inexistente y una de sus cuatro cifras no cuadra con
+> el único fichero que puede ser esa fuente. Eso es material para 6.1, no para
+> esta Fase 0.
+>
+> **Veredicto rehecho:** si `backtest_summary.json` cuenta como trial es
+> **ambiguo, y lo decide la regla de 6.2**. Con la lectura del expediente
+> (mismo trial, dos medidas) `N ≥ 15`; con la regla que la v1 aplicó a los
+> walkforward, `N ≥ 19`. Escribir *"`N` no pasa de 15"* era exigirse menos de
+> lo que B-d exige a 6.3 en este mismo documento (*"si la regla de 6.2 no
+> determina qué hacer con `mean_reversion`, 6.2 está mal escrita"*).
+
+**Lo que la v1 escribía aquí, conservado para que se vea qué se corrige:**
+*"`N` no pasa de 15 por este inventario."* Los once `walkforward_stability*` no añaden
 ninguna configuración de estrategia nueva: reejecutan las mismas once de
 `V(11)` sobre ventanas distintas, con los parámetros congelados y con la
 prohibición explícita de optimizar escrita en el propio docstring
@@ -926,10 +1071,19 @@ de él**, y eso es el Paso B.
 
 ## Paso B — Ataque adversarial al planteamiento
 
-Diez objeciones. **Dos CRÍTICAS** (B-a, B-b), **cuatro ALTAS**, cuatro MEDIAS.
+Diez objeciones planteadas. **Recuento tras la crítica del segundo agente:
+9 en pie** — **2 CRÍTICAS** (B-a, B-b), **3 ALTAS** (B-c, B-e2, B-e3),
+**4 MEDIAS** (B-d, B-e1, B-e5, B-e6) — y **1 RETIRADA** (B-e4, que era mía y
+no del expediente). La v1 decía *"dos CRÍTICAS, cuatro ALTAS, cuatro MEDIAS"*;
+B-e1 baja a MEDIA (hallazgo 9) y B-e4 se cae (hallazgo 3).
+
 Ninguna ataca la **pregunta** de la §1 —sigue siendo la pregunta correcta— ni
 el eje aritmético, que A-5 reproduce al bit. Lo que atacan es qué se puede
 concluir, y la función decisoria de uno de los seis pasos.
+
+**Dos de ellas llegaron a Pablo con un error y van corregidas en línea:** B-c
+tenía la frontera del veredicto cuatro posiciones fuera de sitio (CRÍTICO), y
+el "Balance honesto" de B-b infracontaba su propio lado fuerte en 0.39.
 
 ---
 
@@ -1060,10 +1214,56 @@ listón (`fase0_n6/b_correccion_contraria.py`, desde `fix-fase2/`):
 
   Magnitud frente a las dos que la tarea aplica:
     N efectivo CN (11 corr.)                   -0.0446
-    N efectivo Li-Ji (11 corr.)                -0.1203
-    N efectivo rho-medio (11)                  -0.3493
+    N efectivo Li-Ji (11 corr.)                -0.1042   <- corregido, era -0.1203
+    N efectivo Kish (11 corr.)                 -0.3493
     recuento N=15 (en contra)                  +0.4906
 ```
+
+> **Tres correcciones tras la crítica (hallazgos 7, 8 y 13).**
+>
+> **(a) Li-Ji estaba mal implementado.** Li & Ji (2005) definen
+> `f(x) = I(x≥1) + (x − ⌊x⌋)`: las dos piezas se **suman**, así que para
+> `λ = 5.2698` vale `1.2698`, no `1`. La v1 escribió `1.0 if x>=1 else …`, que
+> **tira la parte fraccionaria de todo autovalor ≥ 1**. Corregido en
+> `b_correccion_contraria.py`:
+>
+> ```
+>   [11 de V(11)]   Li-Ji v1 (mal) 6.5381   Li-Ji bien 6.9998
+>                   liston  1.1915                   1.2076
+>   [11+3 = 14]     Li-Ji v1 (mal) 8.4552   Li-Ji bien 10.0000
+>                   liston  1.6327                   1.6901
+> ```
+>
+> Ningún veredicto cambia, pero el error **subestimaba `N_eff` en 1.54** en el
+> caso de catorce, y su dirección **bajaba el listón** — o sea, favorecía la
+> tesis de esta objeción. En una sección que declara el límite de la analogía
+> con tanto cuidado, implementar mal el método que nombra es de la misma
+> familia que la doble vara que este registro reprocha.
+>
+> **(b) La fila que produce el titular no es de la literatura que se invoca.**
+> `N/(1+(N−1)ρ)` es el **efecto de diseño de Kish** (1965), del muestreo por
+> conglomerados: **no** es un estimador de número efectivo de *tests*, y no
+> tiene interpretación como "pruebas independientes" en un estadístico de
+> máximo. Y es **esa fila, y solo esa**, la que da `N = 3.56` → listón 0.9625 →
+> *"Fase B pasa"*. **Con los dos estimadores que sí son de la literatura de
+> tests múltiples (Cheverud-Nyholt y Li-Ji), Fase B no pasa en ninguna
+> construcción.** Hay que decirlo con esa letra: la procedencia que esta
+> objeción alega **no cubre la fila que sostiene su conclusión**. El docstring
+> de la v1 además decía *"Dos estimadores estándar"* y listaba tres.
+>
+> **(c) El `+1` del portfolio choca con A-5.7.** Esta tabla suma `+1` por el
+> portfolio a cada `N_eff`, mientras A-5.7 sostiene que el trial nº12 **es** la
+> regla `tsmom_365`, que ya es el nº9. Si es duplicado, bajo una corrección por
+> correlación no aporta `+1` sino `0`. Las dos cosas no caben juntas. Las dos
+> lecturas, para Kish: `N=3.56` → 0.9625 (pasa) y `N=2.56` → 0.8400 (pasa). El
+> veredicto no cambia, la incoherencia sí está.
+>
+> **(d) Y el script afirmaba de más sobre el paper.** La v1 imprimía
+> *"Bailey-LdP **no define** un `N` efectivo por correlación"* — una afirmación
+> **positiva** sobre un texto que A-4 declara inalcanzable. La versión del `.md`
+> sí estaba bien formulada (*"el repo no transcribe…"*); la del script, que es
+> parte del entregable, no. Retirada. Es la misma falta que el hallazgo 6 del
+> segundo agente de N4, en pequeño.
 
 **Dirección: corregir `N` por correlación BAJA el listón, entre −0.04 y −0.35
 según el estimador. Con el más agresivo, Fase B pasa (1.0084 ≥ 0.9625).** Esa
@@ -1105,14 +1305,36 @@ argumento a favor de 6.4 que el brief no hace, y contrapesa parcialmente a B-a:
 si alguien defiende 6.4, este es el argumento que tiene, no el del
 pre-registro.
 
-**Balance honesto.** Las dos correcciones de la tarea suman **+0.49** de listón
-(más un Sharpe que baja 0.44 y un `t` que baja de 3.48 a 1.10). Las contrarias
-suman entre **−0.04 y −0.35** dentro de lo que esta tarea puede tocar, y −0.49
-si se cuenta H10, que no es suya. **El neto sigue yendo en contra de Fase B,
-pero no es el bloque unidireccional que el brief describe, y hay al menos una
-construcción documentable en la que Fase B pasa.** El brief, tal como está,
-**sí** estaba mal construido en el sentido que él mismo define; con esta
-objeción deja de estarlo.
+**Balance honesto. CORREGIDO tras la crítica (hallazgo 6, MEDIA): la v1 sumaba
+mal, y sumaba mal a favor de la simetría que esta objeción quiere demostrar.**
+Daba **+0.49** como el efecto de las *dos* correcciones de la tarea. +0.49 es
+**solo el recuento**; el holdout aporta otros ~+0.39 de listón, que este mismo
+registro mide en B-a y destaca en el resumen ejecutivo, y no estaba en la suma.
+Medido entero (`fase0_n6/a9_balance_y_etiquetas.py`, equity congelada
+`20261007`):
+
+```
+  construccion                        T_eff   liston    delta   Sharpe   pasa
+  base: N=12, muestra completa         4336   1.3118  +0.0000   1.0084  False
+  solo recuento: N=15, completa        4336   1.8024  +0.4906   1.0084  False
+  solo holdout: N=12 en T3             1354   1.7013  +0.3896   0.5725  False
+  LAS DOS: N=15 en T3                  1354   2.1950  +0.8833   0.5725  False
+```
+
+**Las dos correcciones de la tarea suman +0.8833 de listón, no +0.49**, y
+encima un Sharpe que cae 0.4359. El lado contrario se daba a valor completo
+(−0.04 a −0.35). **La única tabla del registro cuya función era ser ecuánime
+infracontaba su propio lado fuerte en 0.39**, y en la dirección de hacer
+parecer más cercanos los dos platillos.
+
+Con la suma bien hecha: el neto va **claramente** en contra de Fase B por el
+eje del listón. **La afirmación que sobrevive es otra, y es la de B-c
+reescrita:** no es que las correcciones se compensen, es que **la frontera del
+veredicto está en `N ≈ 4` y la familia enumerable del panel está por debajo**.
+Fase B pasa o no pasa según cuántos intentos de panel hubo, y eso no es una
+cuestión de signos sumados. El brief **sí** estaba mal construido en el sentido
+que él mismo define —solo buscó pruebas en un sentido— y con esta objeción deja
+de estarlo; pero la simetría que la v1 insinuaba con el +0.49 no existe.
 
 **Qué cambia del Alcance:** 6.3 y 6.5 tienen que tabular también las filas a la
 baja, con su límite declarado, o el entregable 6.6 será un informe que solo
@@ -1153,19 +1375,58 @@ Dos curvas de panel enumerables (10 activos y 15), seis hiperparámetros sin
 pre-registro y la elección del universo de 10 sin rastro de cuántas
 combinaciones se probaron.
 
-**(c) Y aquí está lo que decide la objeción.** El veredicto cambia de signo
-dentro del rango de incertidumbre:
+**(c) Y aquí está lo que decide la objeción. REESCRITO ENTERO tras la crítica
+(hallazgo 1, CRÍTICO).**
+
+> **Lo que la v1 escribía, y es falso:**
+> ```
+>   N=1   liston 0.4723   Fase B PASA
+>   N=2   liston 0.7336   Fase B PASA
+>   N=3   liston 0.9014   Fase B NO PASA      <-- FALSO
+> ```
+> *"Entre `N=2` y `N=3` se invierte el dictamen."*
+>
+> Los tres listones son correctos. **La columna "pasa/no pasa" no.** El Sharpe
+> observado es 1.008383 (A-5.3 de este mismo registro) y **1.008383 > 0.9014**.
+> La v1 trasplantó la frontera de *"¿manda el DSR o manda `t>3`?"* —que sí está
+> entre `N=2` y `N=3`, A-5.6— a la frontera de *"¿pasa Fase B?"*, que está
+> cuatro posiciones más allá. **Y no fue un lapsus de redacción: el "pasa"/"no
+> pasa" estaba cableado en prosa en `b_ventana_homogenea.py:154,156`**, con el
+> listón calculado al lado. El mismo script compara de verdad veinte líneas más
+> arriba (`"pasa_n12": bool(obs >= l12)`), así que sabía hacerlo.
+>
+> **Peor: contradecía la tabla de B-b de este mismo documento**, que marca
+> `True` para `N = 3.56` con listón 0.9625. El listón es monótono creciente en
+> `N`: si pasa con 3.56, es imposible que no pase con 3.
+
+Medido, con la comparación calculada (`fase0_n6/a8_cifras_sueltas.py`):
 
 ```
-  N=1   liston 0.4723   Fase B PASA
-  N=2   liston 0.7336   Fase B PASA
-  N=3   liston 0.9014   Fase B NO PASA
+  liston t>3 = 0.8704   Sharpe observado = 1.008383
+       N  liston_DSR  manda  Fase B pasa?
+       1      0.4723    t>3          True
+       2      0.7336    t>3          True
+       3      0.9014    DSR          True
+       4      1.0020    DSR          True
+       5      1.0729    DSR         False
+      12      1.3118    DSR         False
+      15      1.3654    DSR         False
+  frontera del VEREDICTO     : N* = 4.0786
+  frontera de QUE TEST MANDA : entre N=2 y N=3
 ```
 
-**Entre `N=2` y `N=3` se invierte el dictamen, y nadie puede decir cuál es.**
+**Fase B pasa el DSR para todo `N ≤ 4.08` y falla desde ahí.** Y eso hace la
+objeción **más fuerte, no más débil**: la familia enumerable del panel que este
+mismo registro cuenta en B-c.3 —**dos** curvas— cae **dentro** de la región
+donde Fase B pasa, con margen (0.7336 contra 1.0084). Hay que decírselo a
+Pablo con esa letra: **con la familia realmente enumerada, el DSR no tumba
+Fase B.**
+
+La indecidibilidad sigue en pie y es la misma: el filo está en `N ≈ 4`, no en
+`N ≈ 2.5`, y **nadie puede decir cuántos intentos de panel hubo**. Con `N`
+indeterminado a un lado y otro de 4, el DSR no distingue "pasa" de "no pasa".
 No es que el test dé un resultado incómodo: es que el test no tiene entrada
-determinable. Con `N` indeterminado entre 2 y 3 —el rango que la familia del
-panel admite— el DSR no distingue "pasa" de "no pasa".
+determinable.
 
 **(d) Y la ventana homogénea, que sería la construcción coherente por el lado
 de `T`, es la peor de todas:**
@@ -1233,7 +1494,28 @@ en 0.
 
 ---
 
-### B-e1 · El NO-GO de 6.4 se dispararía en falso: T3 no reproduce desde el fichero congelado del repo — **ALTA**
+### B-e1 · Las dos colas del bootstrap de T3 se mueven si se corta el CSV congelado en vez de re-simular — **MEDIA (bajada de ALTA tras la crítica)**
+
+> **Rebajada y reescrita tras la crítica (hallazgo 9).** La v1 decía:
+> *"publica 0.573 como 'el Sharpe de Fase B en el holdout' y **no cuadra con el
+> único documento de dictamen del expediente**"*. **Es falso.** El documento de
+> dictamen publica a dos decimales:
+>
+> ```
+> $ sed -n '27p' fix-fase2/docs/fase_b_reevaluacion_resultado.md
+> | T3 2023-fin | +26.0% | 0.184 | 0.57 | 1.10 | 0.301 | [-5.86, +20.30] | 0.80 |
+> ```
+>
+> `0.573 → 0.57` y `0.3013 → 0.301`. **A la precisión del dictamen, el Sharpe y
+> el DSR de T3 SÍ reproducen desde la equity congelada.** El "NO REPRODUCE" de
+> A-3 lo fabrica la tolerancia que el propio script eligió contra el JSON
+> (`a3_tramos_t1_t2_t3.py:126-128`: `1e-3` en Sharpe, `1e-4` en DSR), no un
+> desacuerdo con nada publicado.
+>
+> **Lo que sí difiere a la precisión del dictamen** son el IC95
+> (`[−5.82, +20.35]` contra `[−5.86, +20.30]`) y `n_obs_eff` (1354 contra 1356,
+> este último solo en el JSON). Luego la objeción sobrevive **por el IC, no por
+> el Sharpe**, y a MEDIA, no a ALTA.
 
 El brief escribe como NO-GO del Alcance: *"Si 6.4 no reproduce el tramo T3
 publicado → parar en 6.4 y reportar."* A-3 mide qué pasa si se intenta de la
@@ -1247,11 +1529,12 @@ La causa es trivial y está declarada en el propio documento de dictamen
 enteran; T3 sí, porque es *"2023-01-01 → fin datos"*. Re-simulando con el sello
 correcto reproduce campo a campo.
 
-**Esto no es un detalle de ejecución: es el paso 6.4 entero.** Un 6.4 escrito
-sin saberlo o bien para en falso, o bien publica 0.573 como "el Sharpe de Fase
-B en el holdout" y no cuadra con el único documento de dictamen del expediente.
-Y la diferencia entra justo en la cifra que la tarea quiere poner delante de
-Pablo.
+**Lo que queda, que sigue siendo real.** Un 6.4 que lea el CSV congelado en vez
+de re-simular publicará **el IC95 equivocado** del tramo que la tarea quiere
+poner delante de Pablo, y su propio NO-GO (*"si 6.4 no reproduce el tramo T3
+publicado → parar"*) se disparará o no según la tolerancia que elija, no según
+un desacuerdo real. El Sharpe y el DSR no son el problema; las dos colas del
+bootstrap sí.
 
 **Qué cambia del Alcance:** 6.4, si se ejecuta, tiene que declarar el sello
 (`STAMP_CONGELADO=20261009`), re-simular en vez de leer el CSV, y pegar la
@@ -1319,42 +1602,59 @@ importa es **una** cosa (el holdout) y media.
 
 ---
 
-### B-e4 · Los once `walkforward_stability_*` salen de `yf.download`, y dicen que `ma_cross` es frágil — **MEDIA**
+### B-e4 · **RETIRADA.** Los `walkforward_stability_*` sí están documentados y auditados — **la objeción era mía, no del expediente**
 
-A-1 lo encuentra y no está en ningún documento del expediente. Los once
-ficheros que el brief llama "material no auditado" se produjeron con
-`yf.download("BTC-USD", period="5y")` (`walkforward_stability.py:42`), no con
-el CSV congelado. `period="5y"` se resuelve contra la fecha de ejecución, que
-no está registrada. **No son reproducibles sin red, y no hay red.**
+**Retirada entera tras la crítica (hallazgo 3, ALTA).** La v1 sostenía que los
+once ficheros tienen *"vintage desconocido"*, que *"no está registrado en
+ningún lado"*, que *"nadie ha citado eso en ninguna de las tres fases"*, y
+proponía etiquetarlos en 6.1 como **no auditables por vintage de datos**.
+**Nada de eso es cierto**, y la prueba está en el mismo árbol de la raíz que el
+inventario de A-1 recorría, en `docs/`, que la v1 nunca abrió. Los detalles,
+con las salidas pegadas, están en la corrección de A-1.
 
-Lo que dicen: **diez de once `fragil`, una `estable`** (`connors_rsi2`). Entre
-las frágiles, **`ma_cross`**, que es la que el expediente trató como ganadora
-de Fase A y la que alimenta `paper_runner.py`. El propio docstring dice que el
-dictamen *"lo consume `paper_runner.py` (modo observacion si fragil)"*.
+**Lo que queda, en su forma precisa:** los diez ficheros por variante corren
+sobre `2021-10-07 → 2026-10-07`, un día corrido respecto al CSV congelado
+(`2021-10-06 → 2026-10-06`), y eso está declarado en
+`docs/estrategias_candidatas_resultado.md`. Es una ventana desplazada y
+documentada, no un agujero. **No hay objeción.**
 
-**No cambia ningún veredicto** —Fase A murió por DSR, bootstrap y `t` de forma
-independiente— y por eso es MEDIA y no ALTA. Pero es material publicado,
-citado, no reproducible y nunca auditado, y la tarea que lo inventaría debería
-etiquetarlo como tal en `registro_N.md` en vez de dejarlo fuera porque "no es
-un trial".
-
-**Qué cambia del Alcance:** 6.1 tiene que listarlos con la etiqueta **no
-auditable por vintage de datos**, que es el tipo de honestidad que el NO-GO del
-propio Alcance pide (*"se escribe como no auditable con esa etiqueta; no
-inventar una procedencia plausible"*).
+**Qué cambia del Alcance:** 6.1 debe **citar los cuatro documentos de
+`docs/`** (`walkforward_stability.md`, `estrategias_candidatas_resultado.md`,
+`sizing_05_resultado.md`, `rigor_estadistico_resultado.md`) como procedencia de
+ese material, en vez de etiquetarlo como no auditado. Y lo que sí necesita
+etiqueta de **no auditable** es otra cosa, que sale de abrir el tercero: la
+columna "viejo" de `sizing_05_resultado.md` cita
+`resultado_paso3_final.json`, **que no existe ni existió en git**, y una de sus
+cuatro cifras (`trend_following`, −9.51 % contra −9.13 %) no cuadra con el
+único fichero que puede ser esa fuente.
 
 ---
 
-### B-e5 · La §2.5 afirma "con `N ≤ 3`" y el cruce está en `N = 2` — **MEDIA**
+### B-e5 · El umbral de `t>3` depende de `T_eff`, y 6.5 tiene que decirlo — **MEDIA (reescrita tras la crítica)**
 
-Medido en A-5.6: el listón del DSR supera al de `t>3` ya en `N = 3` (0.9014
-contra 0.8704). La afirmación del brief es correcta para `N ≤ 2` y falsa para
-`N = 3`.
+> **Reescrita entera tras la crítica (hallazgo 1).** La v1 decía: *"Importa
+> porque B-c muestra que el veredicto de Fase B se invierte exactamente ahí:
+> pasa con `N = 2`, no pasa con `N = 3`."* **La razón era falsa**, porque el
+> veredicto no se invierte ahí: Fase B pasa el DSR con `N=3` y la frontera está
+> en `N* = 4.0786`. Luego el límite `N=2`/`N=3` es, **para el veredicto,
+> cosmético** — lo contrario de lo que la v1 afirmó. La objeción se queda sin su
+> motivo declarado y hay que reemplazarlo por el que sí hay.
 
-Importa porque B-c muestra que **el veredicto de Fase B se invierte exactamente
-ahí**: pasa con `N = 2`, no pasa con `N = 3`. Una tarea que fuese a apoyarse en
-"con `N` bajo manda `t>3` = 0.870" estaría usando un umbral que no aplica justo
-en el punto donde se decide.
+Lo que queda, que es menor pero real: el cruce de **qué test manda** está entre
+`N = 2` (manda `t>3`, 0.8704 > 0.7336) y `N = 3` (manda el DSR, 0.9014 >
+0.8704), no en `N ≤ 3` como el brief da a entender. Y, más útil para el
+Alcance: **el umbral de `t>3` no es la constante 0.870 que el expediente
+maneja.** Es `3/√T_eff·√365`, y se mueve mucho con la ventana:
+
+```
+  muestra completa  T_eff=4336  ->  liston t>3 = 0.8704   (Fase B: t=3.48, pasa)
+  T3 2023-fin       T_eff=1354  ->  liston t>3 = 1.5565   (Fase B: t=1.10, no pasa)
+  ventana de V      T_eff= 666  ->  liston t>3 = 2.2209   (Fase B: t=0.38, no pasa)
+```
+
+**Qué cambia del Alcance:** 6.5, al enumerar `t > 3` como test, tiene que dar
+su umbral **por ventana**, no como 0.870 a secas, y decir que solo es la
+restricción más exigente de las dos para `N ≤ 2`.
 
 **Qué cambia del Alcance:** 6.5, al enumerar `t > 3` como test, tiene que decir
 que su umbral depende de `T_eff` (0.870 en muestra completa, **1.557 en T3**) y
@@ -1365,9 +1665,27 @@ que solo es la restricción activa para `N ≤ 2`.
 ### B-e6 · "`T` homogéneo" nombra dos construcciones opuestas, y 6.5 va a confundirlas — **MEDIA**
 
 H10 de N1 dice que el listón pasa de 1.312 a **0.823** *"si `V` se mide con `T`
-homogéneo sobre el panel"*. Eso homogeneíza **subiendo `V` al universo del
-objeto**. La otra lectura natural de la misma frase —homogeneizar **bajando
-`T` a la ventana de `V`**— da lo contrario:
+homogéneo sobre el panel"*. Eso homogeneíza **remidiendo `V` sobre el panel**.
+
+> **Corregido tras la crítica (hallazgo 12, BAJA).** La v1 escribía aquí
+> *"homogeneíza **subiendo `V` al universo del objeto**"*. El listón **crece**
+> con `V`, y H10 lo **baja** de 1.312 a 0.823, luego `V` tiene que **bajar**:
+>
+> ```
+>   liston con V(12)=7.021948e-04 : 1.3118
+>   V que da liston 0.823         : 1.2317e-04   (cociente V/V12 = 0.175)
+> ```
+>
+> **`V` tiene que caer a 0.175× la actual.** "Subiendo `V` al universo" se lee
+> naturalmente como "aumentando `V`", que es el signo contrario — y en la única
+> sección del registro cuyo objeto es que las etiquetas invitan a equivocarse
+> de signo. El mecanismo correcto es el de N1 (3.0c): el vol-targeting
+> **comprime** la dispersión entre reglas (sd de 0.506 a 0.212), así que medir
+> `V` sobre el panel la **baja**. Y la cifra que Pablo necesita para leer esa
+> fila —`V ≈ 1.23e-4`— no estaba en la v1; ahora está.
+
+La otra lectura natural de la misma frase —homogeneizar **bajando `T` a la
+ventana de `V`**— da lo contrario:
 
 ```
   ventana de V exacta   T=731  T_eff=666  Sharpe 0.2798  t 0.38  liston_N12 2.1080
@@ -1395,9 +1713,14 @@ dominante" era la mejor.
   primeros con diferencia **0.0e+00**.
 - **Ninguna contradicción entre los dos árboles** (A-2). El NO-GO más duro del
   brief no se materializa.
-- **Ninguna manipulación.** Las dos `V` siguen correctamente emparejadas con
-  sus `N`, y el defecto de recuento es una omisión fechada antes de que
-  existiese Fase B, igual que concluyó N4.
+- **Ninguna manipulación.** Las dos `V` del expediente siguen correctamente
+  emparejadas con sus `N`, y el defecto de recuento es una omisión fechada
+  antes de que existiese Fase B, igual que concluyó N4.
+  **Salvedad, tras la crítica (hallazgo 2):** el único emparejamiento `(N, V)`
+  descolocado de todo el material de N6 **lo introdujo la v1 de este registro**,
+  en la "cifra nueva" de la §2.5 (`N=15` con `V(12)` → "208.7 años"). Corregido
+  arriba. Felicitarse por no encontrar en otros un defecto que se acaba de
+  cometer es el tipo de cosa que este protocolo existe para pillar.
 - **Ninguna objeción a la pregunta de la §1.** Que el test está mal aplicado y
   que `N` está mal contado es cierto. Lo que no sobrevive es el valor que 6.4
   puede añadir, y la magnitud que 6.1/6.3 pueden mover.
@@ -1416,19 +1739,39 @@ dominante" era la mejor.
 | *Si A-2 encuentra que los dos árboles se contradicen → PARAR* | **No se dispara.** Ningún fichero homónimo difiere, al byte ni semánticamente (A-2) |
 | *Si A-3 no reproduce los tres tramos → PARAR* | **No se dispara.** Los tres reproducen campo a campo con el sello `20261009`. Desde el fichero congelado T3 no reproduce, y eso es **B-e1**, no el NO-GO |
 | *Si B-a concluye que medir con holdout ahora **es** cambiar el test después del resultado → PARAR* | **Se dispara sobre el paso 6.4, no sobre la tarea.** Medir y reportar T3 es legítimo; compararlo contra un listón es un criterio elegido hoy. Ver B-a |
-| *Si algo de la §2 sale REFUTADO → PARAR* | **Se dispara parcialmente, por §2.5**, cuya afirmación *"con `N ≤ 3` manda `t>3`"* es falsa en `N = 3`. Lo puntúo **MEDIA** (B-e5) y **no acciono el freno con él**: el encabezado de la §2.5 es cierto, sus dos cifras (0.870 y 0.472) salen exactas, y los `T` mínimos de N5 reverifican. Accionar el NO-GO más duro con una objeción MEDIA es la desproporción que el segundo agente de N4 castigó en su hallazgo 8 |
+| *Si algo de la §2 sale REFUTADO → PARAR* | **No se dispara. Corregido tras la crítica (hallazgo 11).** La v1 lo marcaba *"disparado parcialmente"* por §2.5, y eso salía de fusionar dos frases del brief que, leídas por separado, son **las dos ciertas**. §2.5 pasa a CONFIRMADO con una imprecisión declarada. Ninguno de los seis hechos sale REFUTADO |
 
-**La parada se sostiene en B-a y B-b, que es donde está el motivo real**, y no
-en los frenos formales.
+**La parada se sostiene en B-a, que es donde está el motivo real.**
+
+> **Corregido tras la crítica (hallazgo 13).** La v1 decía *"se sostiene en B-a
+> y B-b"*. **B-b no es un motivo de parada**: su "qué cambia del Alcance" es
+> *"6.3 y 6.5 tienen que tabular también las filas a la baja"*, que es una
+> enmienda. B-b es la objeción que **abre** una construcción favorable a Fase B;
+> ponerla como freno era inflar la cuenta. Y el segundo agente tiene razón en lo
+> de fondo: la v1 convirtió **dos NO-GO binarios del brief en frenos
+> graduados** —*"se dispara sobre el paso 6.4, no sobre la tarea"* y *"se
+> dispara parcialmente"*— y en los dos casos el grado elegido fue el que permite
+> seguir. Es una discrecionalidad que el brief no concedió, ejercida dos veces
+> en el mismo sentido. Operativamente no cambia nada (la Fase 0 acaba en PARADO
+> igual), pero había que declararlo. Lo declaro: **el de la §2 no se dispara en
+> absoluto** (corregido), y el de B-a **lo gradúo a conciencia** y explico por
+> qué en B-a.
 
 **Lo que esta Fase 0 deja establecido, sin gastar el Alcance:**
 
 1. **El eje de la tarea es correcto al bit.** `V(15) = 0.001550366`, listón
    **1.8024**, `V(12)` con diferencia 0.0e+00. N4 no se equivocó aquí.
-2. **`N` no pasa de 15.** El inventario de los trece ficheros está hecho
-   (A-1) y ninguno añade una configuración de estrategia. Los once
-   `walkforward_stability*` reejecutan las mismas once de `V(11)` —y con datos
-   de vintage desconocido, que es hallazgo nuevo.
+2. **El inventario de los trece está hecho (A-1), y si `N` es 15 o 19 lo
+   decide la regla de 6.2.** *(Punto reescrito tras la crítica, hallazgos 3 y
+   4.)* Los once `walkforward_stability*` reejecutan las mismas once de `V(11)`
+   y **están documentados y auditados** en `docs/` del árbol de la raíz, con su
+   vintage y sus dictámenes — la v1 afirmó lo contrario y se retira. Lo que
+   queda abierto es `backtest_summary.json`: mismo código con el sizing en 0.95
+   en vez de 0.05. Con la lectura del expediente
+   (`docs/sizing_05_resultado.md`: *"mismas señales, mismo código, mismo
+   split"*) es el mismo trial medido dos veces y `N ≥ 15`; con la regla que
+   este registro aplicó a los walkforward, un parámetro distinto es un intento
+   y `N ≥ 19`. **No está demostrado que `N` no pase de 15.**
 3. **Los tres tramos reproducen**, campo a campo, IC de bootstrap incluidos,
    con el sello `20261009`. El dictamen pre-registrado de los IC95 (SUPERADO)
    también reproduce.
@@ -1438,19 +1781,56 @@ en los frenos formales.
    pasa `t>3` en la muestra completa y no en T3. El brief subestimaba esto.
 5. **El recuento de `N`, medido, es casi vacío sin el outlier**: 89 % del
    efecto es `mean_reversion`, y sin él el listón se mueve +0.054. El listón
-   además **no es monótono en `N`** (añadir solo `mean_reversion` da 1.8251,
-   más que añadir las tres).
+   además **no es monótono en la composición de `V`** (añadir solo
+   `mean_reversion` da 1.8251, más que añadir las tres). Y con la pareja
+   coherente `(N=15, V(15))`, **ningún `T` basta**: `SR₀` anualizado es 1.3320,
+   por encima del Sharpe observado.
 6. **Existe corrección contraria y está medida**: corregir `N` por correlación
    entre trials baja el listón entre 0.04 y 0.35, y en una construcción
-   **Fase B pasa** (1.0084 ≥ 0.9625). Con su límite declarado: es analogía de
-   la literatura de tests múltiples, no de Bailey-LdP.
-7. **No hay test que decida Fase B con este material.** El veredicto se
-   invierte entre `N = 2` y `N = 3`, y la familia sobre el panel no es
-   enumerable. La respuesta honesta a B-c es la quinta opción del propio brief:
-   **ninguno**. Fase B quedaría **indecidible, no débil**.
+   **Fase B pasa** (1.0084 ≥ 0.9625). **Con dos límites, el segundo añadido
+   tras la crítica (hallazgos 7 y 8):** (a) es analogía, no resultado citable —
+   el repo no transcribe ninguna noción de `N` efectivo por correlación y el
+   paper no es alcanzable; (b) **la única fila que da la vuelta al veredicto es
+   la de Kish, que no es un estimador de tests múltiples sino el efecto de
+   diseño del muestreo por conglomerados.** Con Cheverud-Nyholt y Li-Ji —los
+   dos que sí son de esa literatura, y Li-Ji ahora bien implementado— Fase B no
+   pasa en ninguna construcción. Y las dos correcciones de la tarea, bien
+   sumadas, dan **+0.8833** de listón, no +0.49.
+7. **No hay test que decida Fase B con este material, y la frontera está en
+   `N* = 4.0786`.** *(Punto reescrito tras la crítica, hallazgo 1: la v1 decía
+   "se invierte entre `N = 2` y `N = 3`", y era falso — Fase B **pasa** el DSR
+   con `N=3`.)* **Fase B pasa el DSR para todo `N ≤ 4.08`**, y la familia de
+   intentos sobre el panel que el expediente puede enumerar son **dos** curvas,
+   que caen dentro de esa región con margen (0.7336 contra 1.0084). Pero la
+   familia no es enumerable con precisión —seis hiperparámetros sin
+   pre-registro y la elección del universo— así que el DSR no tiene entrada
+   determinable. La respuesta honesta a B-c sigue siendo la quinta opción del
+   propio brief: **ninguno**. Fase B quedaría **indecidible, no débil** — y la
+   pregunta que lo decidiría no es *"qué `V`"* ni *"qué holdout"*, es
+   **cuántos intentos de panel hubo**, que no lo contesta ningún test.
 8. **El pre-registro de los tramos no es auditable por git.** Diseño, código,
    resultados y equity llegan en el mismo commit `d34b147`. Mismo estatus
    probatorio que la cadena `N = 11 → 12 → 14` que N4 declaró NO VERIFICABLE.
+   **Y la misma vara, aplicada de vuelta, muerde a este registro (hallazgo 10,
+   MEDIA):** los CSV sellados `20261007`/`20261009` llegan **en ese mismo
+   commit**, y lo único que verifica el código es el sha256 del fichero contra
+   su propio sidecar (`portfolio_runner.py:60-73`), no la fecha; la
+   `fecha_descarga` del `.meta.json` es autoatestiguada igual que *"aprobada
+   por Pablo 2026-10-09"*. A-3 —la verificación de la que este registro hace
+   depender que el NO-GO de los tramos no se dispare— **se apoya en aceptar
+   esos sellos al pie de la letra.** O las dos cosas son autoatestiguadas o
+   ninguna, y este registro declaraba una y usaba la otra. Lo acepto. Única
+   distinción que sí hay, y es de grado, no de especie: el sello deja huella
+   numérica comprobable (el CSV llamado `20261009` tiene `ultima_fecha:
+   2026-10-09` y 4406 velas, y re-simulando con él sale el T3 publicado hasta
+   el último decimal, IC incluidos), mientras un pre-registro no deja huella
+   numérica de ninguna clase. Eso hace al sello **más corroborable**, no
+   auditable en la fecha.
+
+9. **El número que esta ronda aporta y que ningún documento del expediente
+   había puesto delante:** `N* = 4.0786`. Fase B pasa el DSR por debajo y falla
+   por encima. Todo el debate de H10 sobre qué `V` es la correcta ha estado
+   moviendo un listón cuyo punto de inflexión nadie había localizado.
 
 **Lo que hace falta antes de cualquier OK:**
 
@@ -1460,13 +1840,467 @@ en los frenos formales.
   pasos cubre el OK (B-e2).
 - **Reescribir 6.3** como cota con regla de lectura, no como menú (B-d), y que
   6.2 determine qué hacer con `mean_reversion` **antes** de que 6.3 se emita.
-- **Añadir a 6.3/6.5 las filas a la baja** medidas en B-b, con su límite
-  declarado, o el informe solo tendrá pruebas en un sentido.
-- **Separar las dos "`T` homogéneo"** en 6.5 (B-e6).
+- **Que 6.2 resuelva si un cambio de sizing es un trial antes de que 6.1 se
+  escriba**, porque de eso depende si `N` es 15 o 19 (hallazgo 4).
+- **Que 6.1 cite los cuatro documentos de `docs/`** del árbol de la raíz como
+  procedencia del material de walk-forward, en vez de etiquetarlo como no
+  auditado (hallazgo 3).
+- **Añadir a 6.3/6.5 las filas a la baja** medidas en B-b, con los dos límites
+  declarados —analogía, y Kish no es de la literatura invocada.
+- **Separar las dos "`T` homogéneo"** en 6.5 (B-e6), con la cifra `V ≈ 1.23e-4`
+  al lado de la fila de H10.
+- **Poner `N* = 4.0786` en 6.5 y en 6.6**, porque es la única cifra nueva de
+  esta ronda y reordena la pregunta.
 
 **Con eso, lo que queda del Alcance es 6.1, 6.2, 6.5 y 6.6**, que es trabajo
 real y que esta Fase 0 no ha hecho: el libro de cuentas de `N`, la regla
 prospectiva, la enumeración de tests y el informe. 6.3 necesita reescritura y
-6.4 sobra.
+6.4 sobra. **Y 6.1 no puede escribirse antes que 6.2.**
+
+**No se ha ejecutado ni un paso de la §4. La §7 sigue sin firma.**
+
+---
+
+## Maker/Verifier — crítica del segundo agente y respuesta
+
+El brief (§3, *Maker/Verifier*) manda invocar un segundo agente que **solo
+critique este registro**, y pegar su crítica literal. Hecho. **Encontró un
+error CRÍTICO y tres ALTOS, y el CRÍTICO es del mismo tipo que el que la
+crítica de N4 encontró: una comparación con el signo mal puesto, cableada en
+prosa dentro de un script.** Reverifiqué con comandos propios **todas** sus
+afirmaciones numéricas antes de aceptar ninguna: **las trece salen.** Las
+correcciones están aplicadas en línea arriba y marcadas; ninguna afirmación
+falsa queda en pie sin su corrección al lado. Y los scripts corregidos están en
+el mismo commit, porque un registro que corrige en prosa y deja el script malo
+no ha corregido nada.
+
+### Qué acepto y qué no
+
+| # | Hallazgo del segundo agente | Sev. | Mi respuesta |
+|---|---|---|---|
+| 1 | **El veredicto de Fase B no se invierte entre `N=2` y `N=3`: la frontera está en `N*≈4.08`, y Fase B PASA con `N=3`** | CRÍTICA | **ACEPTADO ENTERO.** Reverificado: `1.008383 > 0.9014`, y por bisección `N* = 4.0786`. Confundí la frontera de *"qué test manda"* (sí entre 2 y 3) con la de *"¿pasa Fase B?"*. Y tiene razón en el agravante: **el "pasa"/"no pasa" estaba cableado en prosa** en `b_ventana_homogenea.py:154,156` con el listón calculado al lado, y el mismo script compara de verdad veinte líneas antes. Y en el peor: **contradecía mi propia tabla de B-b** (`N=3.56` → `True`), y el listón es monótono creciente en `N`. Script corregido para que calcule la comparación y la frontera; B-c, B-e5, §2.5 y los puntos 2 y 7 del veredicto reescritos. **Su lectura de la consecuencia también es correcta y la adopto: el hallazgo sale MÁS FUERTE, no más débil** — la familia enumerable del panel cae dentro de la región donde Fase B pasa |
+| 2 | **"208.7 años" empareja `N=15` con `V(12)`. Con `V(15)`, ningún `T` basta** | ALTA | **ACEPTADO.** Reverificado: `SR₀` anual con `(15, V(15))` es **1.3320 > 1.0084**, numerador de la PSR negativo, **no existe `T`**. Y acepto los tres agravantes: es el emparejamiento `(N,V)` descolocado que yo me felicitaba por no encontrar en nadie; la cifra correcta es **más dura** para Fase B que la que publiqué, o sea el error iba en la dirección blanda; y no la producía ningún script. Corregido en §2.5 y en "Lo que NO se encontró", con script (`a8_`) |
+| 3 | **El "hallazgo nuevo que vale de A-1" ya estaba publicado en `docs/` del árbol de la raíz, con vintage y dictámenes** | ALTA | **ACEPTADO, y es el golpe más limpio.** Reverificado: `docs/walkforward_stability.md:4` da *"1827 velas, 2021-10-06 → 2026-10-06"* —la ventana exacta del CSV congelado que yo mismo verifico en A-5.1— y `docs/estrategias_candidatas_resultado.md` tabula las diez con dictamen, criterio (≥60 %) y consecuencia operativa. **Hice un inventario de `results/` y nunca abrí `docs/` del mismo árbol**, en un registro cuya nota de apertura es precisamente sobre la bifurcación de los dos árboles. **B-e4 retirada entera.** Lo que sobrevive es su versión precisa: ventana desplazada un día, declarada |
+| 4 | **"`N` no pasa de 15" no está demostrado: A-1 contestó la pregunta de commensurabilidad en vez de la de trial** | ALTA | **ACEPTADO.** Tiene razón en los dos pasos: *"no commensurable"* responde si entra en `V`, no si es un intento; y por la regla que yo apliqué a los walkforward (*mismos parámetros* → no es trial), un **sizing distinto sí es un parámetro distinto** y entonces `N ≥ 19`. Y tiene razón en que me exigí menos de lo que B-d exige a 6.3 en este mismo documento. **Añado un agravante que él no vio**, y sale de abrir el documento que me señala: la columna "viejo" de `docs/sizing_05_resultado.md` cita `resultado_paso3_final.json`, **que no existe ni existió en git**, y `trend_following` da −9.51 % ahí contra −9.13 % en `backtest_summary.json`. La resolución del expediente está documentada **con la evidencia rota**. Veredicto rehecho: **ambiguo, lo decide 6.2** |
+| 5 | **La contabilidad de los scripts no cuadra y tres bloques de código no los produce ningún script** | ALTA | **ACEPTADO.** Reverificado: **once** `.py` y **siete** `.json`, no "nueve, cada uno con su JSON"; `a6_` **aborta** sin `STAMP_CONGELADO`, así que "ejecutable por separado" no era cierto de él; y `grep` confirma que ninguna de las cifras huérfanas está en un script. Es exactamente el reproche que el brief de N6 heredó de N4 (*"un documento que reprocha a otro no citar su fuente no puede llegar sin scripts detrás"*), cometido por quien lo citaba en su primera página. Corregido: `a8_cifras_sueltas.py` y `a9_balance_y_etiquetas.py`, y el encabezado con la cuenta real. **Y acepto su corrección de una de las cifras huérfanas: el `3240 / 8.88` era un artefacto de recorrer `T` de 10 en 10; el exacto es `(3/0.05278116)² = 3230.6` días = 8.85 años** |
+| 6 | **El "Balance honesto" de B-b suma +0.49 cuando las dos correcciones suman +0.88, y el error va a favor de la simetría que B-b quiere** | MEDIA | **ACEPTADO, y es el más incómodo de los trece.** Reverificado: solo recuento +0.4906, solo holdout +0.3896, **las dos +0.8833**, y encima el Sharpe cae 0.4359. El lado contrario lo daba a valor completo. **La única tabla del registro cuya función era ser ecuánime infracontaba su propio lado fuerte en 0.39.** Corregido con tabla y script. Y acepto la consecuencia: la simetría que insinuaba el +0.49 **no existe**; lo que sobrevive es B-c reescrita, que es otra cosa |
+| 7 | **La única fila que da "Fase B pasa" es Kish, que no es un estimador de tests múltiples** | MEDIA | **ACEPTADO.** `N/(1+(N−1)ρ)` es el efecto de diseño de Kish (1965), de muestreo por conglomerados; no tiene lectura como "pruebas independientes" en un estadístico de máximo. Mi propio script ya lo nombraba `kish` en su JSON y yo lo presenté como uno de los "tres estimadores de tests múltiples". **Con Cheverud-Nyholt y Li-Ji, Fase B no pasa en ninguna construcción.** Luego la procedencia que B-b alega no cubre la fila que sostiene su titular, y eso había que decirlo con esa letra. Dicho. Y sí: el docstring decía "dos estimadores" y listaba tres |
+| 8 | **Li-Ji está mal implementado: tira la parte fraccionaria de los autovalores ≥ 1** | MEDIA | **ACEPTADO.** Li & Ji (2005) suman `I(x≥1) + (x−⌊x⌋)`; yo escribí un `if/else`. Reverificado desde los autovalores de mi propio JSON: `6.5381` contra `6.9998` en las once, `8.4552` contra `10.0000` en las catorce. Ningún veredicto cambia, pero **subestimaba `N_eff` en 1.54 y la dirección del error bajaba el listón, o sea favorecía mi propia tesis**. Implementación corregida. Y acepto el añadido: el `+1` por el portfolio **choca con A-5.7**, que sostiene que es un duplicado; si lo es, aporta 0, no 1. Las dos lecturas van ahora en el script |
+| 9 | **B-e1 está sobrecalificada: `0.573 → 0.57` sí cuadra con el documento de dictamen** | MEDIA | **ACEPTADO.** Reverificado: el dictamen publica `0.57` y `0.301` a dos y tres decimales, y mis `0.573`/`0.3013` coinciden ahí. El "NO REPRODUCE" lo fabricó la tolerancia que yo elegí contra el JSON (`1e-3`/`1e-4`), no un desacuerdo con nada publicado. **Lo que sí difiere a la precisión del dictamen es el IC95**, y `n_obs_eff` solo en el JSON. B-e1 **bajada a MEDIA** y reescrita: el riesgo es el IC del bootstrap, no el Sharpe |
+| 10 | **Doble vara: el pre-registro no es auditable, pero los sellos `20261007`/`20261009` sí — y llegan en el mismo commit** | MEDIA | **ACEPTADO.** Reverificado: `git log -- fix-fase2/data/multi` da `d34b147`, y `_verificar_sha256` compara el fichero con **su propio sidecar**, no con una fecha; la `fecha_descarga` del `.meta.json` es autoatestiguada igual que *"aprobada por Pablo 2026-10-09"*. Y A-3, de la que hago depender que el NO-GO no se dispare, acepta el sello al pie de la letra. **Añado la única distinción que sí veo, y la declaro como de grado y no de especie:** el sello deja huella numérica comprobable (4406 velas, `ultima_fecha 2026-10-09`, y re-simulando sale el T3 publicado al último decimal con sus IC), y un pre-registro no deja huella de ninguna clase. Eso lo hace **más corroborable**, no auditable en la fecha. Declarado en el punto 8 del veredicto |
+| 11 | **§2.2 se declara CONFIRMADA tras reescribir en silencio el enunciado, y el "REFUTADO en parte" de §2.5 fusiona dos frases del brief** | MEDIA | **ACEPTADO, las dos.** El brief titula §2.2 *"**cuatro** estrategias más"* y yo escribí "tres" sin decirlo, en la misma sección donde para §2.1 me detuve a listar dos desviaciones de forma *"porque están en la sección que manda reverificar"*. La vara es la misma o no es vara: desviación añadida. Y en §2.5 tiene razón: *"Con `N ≤ 3` los 11,9 años sobran"* y *"con `N` bajo manda `t>3`"* son **dos frases ciertas por separado**, y el REFUTADO salía de pegarle a la segunda el `N ≤ 3` de la primera. **§2.5 pasa a CONFIRMADO y el NO-GO de la §2 no se dispara en absoluto.** Y acepto su observación más fina: con el hallazgo 1 corregido, declinar el freno es lo correcto, pero **el motivo que yo daba era el contrario del verdadero** — decía que el límite *"importa mucho"* y es cosmético |
+| 12 | **"Homogeneizar subiendo `V` al universo" describe un cambio que exige que `V` baje 5,7×** | BAJA | **ACEPTADO.** Reverificado: la `V` que da listón 0.823 es `1.2317e-04`, o sea **0.175×** la actual. "Subiendo `V` al universo" se lee como "aumentando `V`", el signo contrario, **en la única sección cuyo objeto es que las etiquetas invitan a equivocarse de signo**. Corregido, con el mecanismo correcto (el vol-targeting comprime la dispersión: sd 0.506 → 0.212, N1 3.0c) y con la cifra `V ≈ 1.23e-4` que él señala que Pablo necesita y no estaba |
+| 13 | **Inconsistencias de cierre: "la parada se sostiene en B-a y B-b" cuando B-b es una enmienda; dos NO-GO binarios convertidos en graduados, las dos veces hacia seguir; y el script afirma de más sobre el paper** | BAJA | **ACEPTADO, los cuatro puntos.** B-b **no es un freno**: su enmienda es tabular filas, y es la objeción que *abre* una construcción favorable a Fase B. Corregido a *"la parada se sostiene en B-a"*. Sobre los NO-GO graduados: tiene razón en que es una discrecionalidad que el brief no concedió, ejercida dos veces en el mismo sentido; el de la §2 queda **no disparado** (hallazgo 11) y el de B-a lo **gradúo a conciencia** y lo declaro como tal. Y el script decía *"Bailey-LdP no define un `N` efectivo por correlación"* —afirmación **positiva** sobre un texto inalcanzable— mientras el `.md` estaba bien formulado: retirada del script |
+
+**Balance: acepto los trece, enteros. Ninguno en parte.** Y acepto su juicio de
+conjunto, porque está documentado: **el error CRÍTICO es del mismo tipo que el
+de N4** —una comparación de signo, cableada en prosa, que contradecía una tabla
+del propio documento—, cometido por la Fase 0 que había leído la crítica de N4
+entera y que abre su registro citándola. Tres de sus trece hallazgos
+(**6, 7 y 8**) son errores cuya dirección **favorece mi propia tesis**, que es
+el patrón exacto que este registro le reprocha al brief. Y el punto ciego de
+`docs/` (**3 y 4**) me cuesta el único hallazgo que A-1 reclamaba como propio y
+deja sin demostrar el titular `N ≤ 15`, en un inventario que recorrió el
+directorio de al lado y no éste.
+
+**El protocolo Maker/Verifier funcionó otra vez para lo que está: esta Fase 0,
+sin el segundo agente, habría llegado a Pablo diciendo que Fase B no pasa el
+DSR con `N=3` cuando pasa, con una frontera cuatro posiciones fuera de sitio y
+una cifra de `T` emparejada con la `V` equivocada.**
+
+**Lo que no acepto:** nada. No hay ningún hallazgo que rechace, ni entero ni en
+parte. Lo único que añado por mi cuenta son dos cosas que él no vio y que van
+en su dirección, no en la mía: el `resultado_paso3_final.json` inexistente con
+su cifra descuadrada (hallazgo 4) y la distinción de grado en el hallazgo 10.
+
+---
+
+### Crítica del segundo agente (Maker/Verifier)
+
+*Pegada literal, como manda el brief. Es salida de un modelo, no autoridad:
+todo lo que afirma lo reverifiqué antes de aceptarlo, y el resultado de esa
+reverificación está en la tabla de arriba.*
+
+Reverifiqué el registro ejecutando **los once scripts** de `fix-fase2/fase0_n6/` (no nueve), reimplementando por mi cuenta la PSR, `E[max_N]`, el listón y el `T` mínimo desde `statistics.NormalDist` en un directorio temporal, y comprobando cada cifra pegada contra la salida real del script que la produce (o contra la ausencia de script). Ataqué específicamente los dos signos que el registro declara —"acortar la ventana SUBE el listón" y "corregir `N` por correlación lo BAJA"—, el límite de escritura del commit `0eed41c` con `git show --stat`, la contabilidad interna del registro, y el material que el registro declara "nunca auditado". Repo intacto: `git status --short` vacío y `git diff --stat` vacío al terminar; los scripts reescriben sus propios JSON byte a byte idénticos, así que son deterministas.
+
+**Resumen:** los dos signos centrales del registro **salen correctos** y el eje aritmético (`V(11)`, `V(12)`, `V(15)`, listón 1.8024, los tres tramos) reproduce al bit, de forma independiente. Pero el registro contiene **un error de comparación CRÍTICO** en la objeción B-c —que se contradice con su propia tabla de B-b— y una cifra **ALTA** calculada con la `V` equivocada que, bien calculada, dice lo contrario de lo que el registro escribe. Además, el "hallazgo nuevo que vale de A-1" no es nuevo: está publicado en dos documentos del árbol de la raíz que el registro no abrió, y tres de sus bloques de código no los produce ningún script suyo.
+
+---
+
+#### 1. El veredicto de Fase B **no** se invierte entre `N=2` y `N=3`: se invierte entre `N=4` y `N=5`. Fase B PASA con `N=3` — **CRÍTICA**
+
+B-c(c) escribe, y lo repite el veredicto final (punto 7), §2.5 y B-e5:
+
+> ```
+>   N=1   liston 0.4723   Fase B PASA
+>   N=2   liston 0.7336   Fase B PASA
+>   N=3   liston 0.9014   Fase B NO PASA
+> ```
+> **Entre `N=2` y `N=3` se invierte el dictamen, y nadie puede decir cuál es.**
+
+Los tres listones son correctos. La columna "pasa/no pasa" no. El Sharpe observado es **1.008383** (A-5.3 del propio registro) y **1.008383 > 0.9014**:
+
+```
+$ python3 -I scratchpad/verif.py
+=== 1. ¿Donde se invierte el veredicto de Fase B?  (V12, T_eff 4336) ===
+  Sharpe observado = 1.008383   liston t>3 = 0.8704
+      N  liston_DSR  manda  Fase B pasa?   registro dice
+      1      0.4723    t>3          True   PASA
+      2      0.7336    t>3          True   PASA
+      3      0.9014    DSR          True   NO PASA
+      4      1.0020    DSR          True   -
+      5      1.0729    DSR         False   -
+      6      1.1273    DSR         False   -
+     12      1.3118    DSR         False   -
+     15      1.3654    DSR         False   -
+  frontera exacta: N* = 4.0786  (liston 1.008383 = Sharpe obs)
+```
+
+Fase B **pasa el DSR para todo `N ≤ 4.08`** y falla desde `N ≥ 4.08`. Es el mismo tipo de error que el segundo agente de N4 encontró en su B-10: el registro trasplantó la frontera de *"¿manda el DSR o manda `t>3`?"* (que sí está entre `N=2` y `N=3`, A-5.6) a la frontera de *"¿pasa Fase B?"*, que está cuatro posiciones más allá. Y no es un lapsus de redacción: está **cableado en prosa** en el script, no calculado:
+
+```
+$ grep -n "y Fase B pasa" -A2 -B2 fix-fase2/fase0_n6/b_ventana_homogenea.py
+153:    print("  probaron. Con N=2 el liston es "
+154:          f"{liston(2, V12, 4336, 1.036877, 31.998897):.4f} y Fase B pasa;")
+156:          f"{liston(3, V12, 4336, 1.036877, 31.998897):.4f} y no pasa.")
+```
+
+El listón se imprime calculado; el "pasa"/"no pasa" es literal de teclado. Las líneas 113-114 del mismo fichero sí comparan (`"pasa_n12": bool(obs >= l12)`), así que el script sabía hacerlo y en este bloque no lo hizo.
+
+**Y el registro se contradice consigo mismo.** La tabla de B-b, en el mismo documento, marca `True` para `N = 3.56`:
+
+```
+$ cd fix-fase2 && python3 fase0_n6/b_correccion_contraria.py | grep rho-medio
+  N efectivo rho-medio (11) + portfolio      3.56   0.00070219   0.9625    True   <--
+```
+
+El listón es monótono creciente en `N`. Si Fase B pasa con `N=3.56` y listón 0.9625, es imposible que no pase con `N=3` y listón 0.9014. Una de las dos secciones tiene que estar mal, y es B-c.
+
+**Consecuencias que hay que rehacer:**
+- B-c(c) pierde su argumento tal como está escrito. Lo que de verdad sale es **más fuerte, no más débil**: la familia enumerable del panel que el propio registro cuenta (B-c.3: *"Curvas de panel enumerables: 2"*) cae **dentro** de la región donde Fase B pasa, con margen (listón 0.7336 contra 1.0084). La indecidibilidad sigue existiendo, pero el filo de la navaja está en `N≈4`, no en `N≈2.5`, y hay que decirle a Pablo que **con la familia realmente enumerada el DSR no tumba Fase B**.
+- B-e5 (MEDIA) pierde su razón de ser declarada: *"Importa porque B-c muestra que el veredicto de Fase B se invierte exactamente ahí"*. No se invierte ahí. El límite `N=2`/`N=3` es, para el veredicto, **cosmético** — justo lo contrario de lo que B-e5 afirma.
+- El punto 7 del veredicto (*"El veredicto se invierte entre `N = 2` y `N = 3`"*) hay que reescribirlo.
+- §2.5 (*"La diferencia no es cosmética: B-c muestra que el veredicto de Fase B cambia de signo exactamente entre `N = 2` (pasa) y `N = 3` (no pasa)"*) hay que reescribirlo.
+
+---
+
+#### 2. "Con `N = 15` el `T` que el DSR exigiría es 208.7 años" está calculado con la `V` de doce. Con la `V` de quince, **ningún `T` basta** — **ALTA**
+
+§2.5 cierra con una "cifra nueva, por completitud":
+
+> Cifra nueva, por completitud: con `N = 15` el `T` que el DSR exigiría es **208.7 años**, no los ~96 que N1 calculó con `N = 12`.
+
+Reproduce exacto — pero solo si se empareja `N=15` con `V(12) = 0.000702`, es decir con la `V` **anterior** al recuento que es el eje de toda la tarea:
+
+```
+=== 2. El 'T que el DSR exigiria' con N=15 ===
+  N=12 con V(12)                       SR0_anual=0.8428  T_eff_min=34839 dias = 95.45 anos
+  N=15 con V(12)                       SR0_anual=0.8964  T_eff_min=76181 dias = 208.72 anos
+  N=15 con V(15)  <-- la del recuento  SR0_anual=1.3320  T_eff_min=IMPOSIBLE (SR0 > Sharpe obs): ningun T basta
+```
+
+Con la construcción del recuento (`N=15`, `V(15)=0.001550`, la que da el listón 1.8024 que el registro verifica "al bit" en A-5), `SR0` anualizado es **1.3320**, por encima del Sharpe observado **1.0084**. El numerador de la PSR es negativo: **más datos alejan el DSR de 0.95, no lo acercan**. La respuesta correcta no es "208.7 años": es "**no existe `T`**".
+
+Esto importa por tres razones:
+1. Es exactamente el emparejamiento `(N, V)` descolocado que el registro se felicita por no encontrar en el expediente: *"Las dos `V` siguen correctamente emparejadas con sus `N`"* (**Lo que NO se encontró**). La única pareja mal emparejada del material de N6 la introduce el propio registro.
+2. La cifra correcta es **mucho más dura** para Fase B que la que el registro publica, y en un documento cuya tesis es que el brief solo mira en una dirección, el error va en la dirección blanda.
+3. **No la produce ningún script.** `grep -rn "208" fix-fase2/fase0_n6/` no devuelve nada; "208.7" solo aparece en el `.md`. Ver hallazgo 5.
+
+---
+
+#### 3. El "hallazgo nuevo que vale de A-1" ya estaba publicado en el árbol de la raíz, con la ventana y los dictámenes — **ALTA**
+
+A-1 y B-e4 (MEDIA) se construyen sobre esto:
+
+> **Hallazgo nuevo que no está en ningún sitio del expediente, y es el que vale de A-1:** los once se produjeron con **`yf.download`** […] `period="5y"` se resuelve contra la fecha de ejecución, **que no está registrada en ningún lado**. Luego esos once dictámenes […] están medidos sobre datos de **vintage desconocido** […] **Nadie ha citado eso en ninguna de las tres fases.**
+
+El árbol de la raíz tiene `results/` **y `docs/`**, y `docs/` contiene dos dictámenes sobre exactamente ese material:
+
+```
+$ grep -ln "results/" docs/*.md
+docs/estrategias_candidatas_resultado.md
+docs/rigor_estadistico_resultado.md
+docs/sizing_05_resultado.md
+docs/walkforward_stability.md
+
+$ sed -n '1,6p' docs/walkforward_stability.md
+# Walk-forward de estabilidad de ma_cross (1.4) — 2026-10-06
+**Objetivo:** medir estabilidad de ma_cross post-fix, NO optimizar parámetros
+(mismos params en todos los folds). Script: `src/walkforward_stability.py`.
+Datos: BTC-USD 5y 1d (yfinance, 1827 velas, 2021-10-06 → 2026-10-06).
+
+$ sed -n '6,9p' docs/estrategias_candidatas_resultado.md
+Script: `src/walkforward_stability.py <estrategia>` (generalizado,
+(yfinance, 2021-10-07 → 2026-10-07). Costes: 0.1% comisión + 0.05% slippage
+```
+
+Es decir:
+
+- **El vintage sí está registrado**, en los dos casos, con fecha y recuento de velas. Para el fichero por defecto son **1827 velas, 2021-10-06 → 2026-10-06**, que es **exactamente** el CSV congelado que el propio registro verifica en A-5.1 (*"CSV congelado: 1827 velas, 2021-10-06 -> 2026-10-06"*); `wc -l fix-fase2/data/btc_usd_5y_1d.csv` = 1828 con cabecera. Para los diez por variante, `2021-10-07 → 2026-10-07`, **un día corrido** respecto al congelado.
+- **Los dictámenes están citados y auditados.** `docs/estrategias_candidatas_resultado.md` publica la tabla completa de las diez, con `connors_rsi2` **ESTABLE** y `ma_cross (referencia)` **FRÁGIL**, el criterio (≥60 % de folds positivos por configuración) y la consecuencia operativa. `docs/walkforward_stability.md` cierra con *"**FRÁGIL** […] Consecuencia ejecutada: el paper runner arranca en **modo observación**"*. Luego *"nadie ha citado eso en ninguna de las tres fases"* es falso, y la propuesta de B-e4 de etiquetarlos en 6.1 como **"no auditable por vintage de datos"** está mal: son auditables por vintage, están auditados, y lo que queda es un matiz distinto y mejor (los diez por variante corren sobre una ventana desplazada +1 día respecto del CSV congelado, no sobre el CSV congelado).
+- El registro corrigió al brief el *"trece ficheros que ninguna auditoría ha mirado"* y lo bajó a doce porque N4 miró uno. Con `docs/` delante, el número honesto está **cerca de cero**: cuatro documentos del mismo árbol documentan el árbol entero. El registro aplicó su vara a la coma del brief y no a la premisa.
+
+Esto no cambia ningún veredicto —y el registro ya decía que no lo cambia—, pero **retira el único hallazgo que A-1 reclamaba como propio**, y lo retira usando material que estaba a un `ls docs/` de distancia en el árbol cuya bifurcación el propio registro convierte en nota metodológica de apertura.
+
+---
+
+#### 4. "N no pasa de 15" no está demostrado: A-1 contestó la pregunta de commensurabilidad en lugar de la de trial — **ALTA**
+
+El brief pide de cada uno de los trece: *"si constituye un trial bajo la regla que el Alcance va a escribir. Es el paso que decide si `N` es 15 o más"*. Para `backtest_summary.json`, A-1 contesta:
+
+> | `backtest_summary.json` | las mismas 4 estrategias | **0.95** (default de `backtester.py`, no pasado) | **`yf.download`** | **NO COMMENSURABLE**: ni el mismo sizing ni el mismo origen |
+
+Los hechos son correctos (`src/backtester.py:32` → `size_fraction: float = 0.95`; `src/run_backtest.py:21` → `yf.download`; escribe `results/backtest_summary.json` en la línea 91). El problema es que **"no commensurable" contesta si sus Sharpes pueden entrar en `V`, no si son intentos**. Y la regla que el propio registro aplica a los walkforward es la contraria:
+
+> **NO** — reejecución de una ya contada […] mismo código, MISMO parámetros, distintas ventanas
+
+Por esa regla, *mismo código con un parámetro distinto* (sizing 0.95 vs 0.05) **es** un intento nuevo, no una reejecución. Si los cuatro de `backtest_summary.json` cuentan, `N ≥ 19`, no 15 — y el titular del resumen ejecutivo (*"`N` no pasa de 15 por este inventario"*) y el punto 2 del veredicto se caen.
+
+Agravante: el documento que zanja el caso existe y el registro no lo abrió. `docs/sizing_05_resultado.md` dice literalmente *"Solo cambia `size_fraction` (0.95 → 0.05). **Mismas señales, mismo código, mismo split, sin optimizar ningún otro parámetro**"* y titula la comparación *"NÚMERO NUEVO vs VIEJO — NO son el mismo número"*, con los valores de `backtest_summary.json` en la columna "viejo". Es decir: el expediente ya resolvió que es **el mismo trial medido dos veces**, que es la conclusión a la que el registro llega — pero por el camino equivocado y sin la fuente. (De paso: ese documento da `trend_following` retorno viejo **−9.51 %** y `results/backtest_summary.json` dice **−9.13 %**; discrepancia real sin explicar que A-1 habría encontrado si hubiera leído los dos.)
+
+Y el registro se exige a sí mismo exactamente esto en B-d: *"Si la regla de 6.2 no determina qué hacer con `mean_reversion`, 6.2 está mal escrita y 6.3 no se puede emitir"*. La misma exigencia aplicada a A-1 obliga a escribir *"ambiguo, lo decide la regla de 6.2"*, no *"N no pasa de 15"*.
+
+---
+
+#### 5. La contabilidad del propio registro no cuadra, y tres de sus bloques de código no los produce ningún script suyo — **ALTA**
+
+Encabezado del registro:
+
+> **Scripts:** `fix-fase2/fase0_n6/*.py`, **nueve ficheros**, cada uno ejecutable por separado y **cada uno con su JSON de salida**.
+
+```
+$ ls fix-fase2/fase0_n6/*.py | wc -l
+11
+$ ls fix-fase2/fase0_n6/*.json | wc -l
+7
+```
+
+Son **once** scripts y **siete** JSON. Cuatro (`a1_`, `a2_`, `a4_`, `b_a_preregistro_auditable`) no escriben ninguno. Y "ejecutable por separado" no es cierto de `a6`, que **aborta** si no se le pasa el sello:
+
+```
+$ cd fix-fase2 && python3 fase0_n6/a6_holdout_y_coherencia.py
+…
+=== §2.6 ¿esta bien definida la comparacion del paso 4.2? ===
+Traceback (most recent call last):
+  …
+portfolio_runner.DatoCongeladoAusente: faltan 10 CSV congelados con sello 20261101 en data/multi
+```
+
+El bloque de §2.3 que el registro pega es la parte que corre **antes** del traceback; la tabla de B-a sale del mismo script con `STAMP_CONGELADO=20261009` y eso no se declara en §2.3. Un lector que copie el comando de §2.3 tal como está pegado se encuentra una excepción.
+
+Más grave: **tres bloques presentados dentro de cercas de código no los emite ningún script del commit.**
+
+| Bloque | Dónde | Comprobación |
+|---|---|---|
+| `contra las 11 de V(11) z=-4.405` / `contra las 11 + portfolio (V12) z=-4.490` | §2.2 | `a7` es el único script que calcula `z`; su salida completa son 38 líneas y no contiene esas dos. `grep -n "4.405\|4.490" fix-fase2/fase0_n6/*.py` → vacío |
+| `N=1 DSR: T_eff minimo = 940 dias` / `t>3 : T_eff minimo = 3240 dias` / `T_eff del expediente = 4336 dias = 11.88 anos` | §2.5 | `grep -rn "940\|3240\|11\.88\|minimo" fix-fase2/fase0_n6/*.py` → vacío |
+| `(los 11 ficheros .py comunes: TODOS IDENTICOS; la 12ª entrada es el directorio personas/)` y `data 1 ficheros (solo data/brain/knowledge.jsonl)` | A-2 | `grep -n "personas\|IDENTICOS" fix-fase2/fase0_n6/a2_dos_arboles.py` → vacío. El script imprime `comunes: 1 | solo en data: 0 | solo en fix-fase2/data: 4`. La glosa es editorial, dentro de la cerca |
+
+De esas cifras huérfanas, las dos `z` **son correctas** (las recalculé: `−4.405` y `−4.490` con ddof=1), el `940` es correcto, el `3240` está mal —el mínimo exacto es `(3/0.05278116)² = 3230.6` días = 8.85 años, no 3240 / 8.88— y el `208.7` está mal por la razón del hallazgo 2. El problema no es que todas fallen: es que el registro **no puede distinguir cuáles fallan** porque no dejó cómo recalcularlas, y es el mismo registro que abre reprochando al brief de N6 haberle reprochado a N4 llegar sin scripts: *"un documento que reprocha a otro no citar su fuente no puede llegar sin scripts detrás"*.
+
+Contabilidad que **sí** cuadra, para que conste: diez objeciones, 2 CRÍTICAS (B-a, B-b) + 4 ALTAS (B-c, B-e1, B-e2, B-e3) + 4 MEDIAS (B-d, B-e4, B-e5, B-e6) = 10, y los seis hechos de la §2 suman 4 + 1 + 1. Eso está bien llevado.
+
+---
+
+#### 6. El "Balance honesto" de B-b suma mal, y suma mal a favor de la simetría que B-b quiere demostrar — **MEDIA**
+
+> **Balance honesto.** Las dos correcciones de la tarea suman **+0.49** de listón (más un Sharpe que baja 0.44 y un `t` que baja de 3.48 a 1.10). Las contrarias suman entre **−0.04 y −0.35** dentro de lo que esta tarea puede tocar
+
+El `+0.49` es **solo el recuento**. El efecto del holdout sobre el listón —que el propio registro mide, destaca en el resumen ejecutivo (*"van más lejos de lo que el brief dice"*) y vuelve a poner en el punto 4 del veredicto— no está en la suma:
+
+```
+=== 3. Las dos correcciones de la tarea, sumadas de verdad ===
+  base N=12, muestra completa    liston=1.3117  delta=+0.0000
+  solo recuento  N=15            liston=1.8022  delta=+0.4906
+  solo holdout   N=12 en T3      liston=1.7007  delta=+0.3890
+  LAS DOS        N=15 en T3      liston=2.1944  delta=+0.8827
+```
+
+Las dos correcciones de la tarea suman **+0.8827** de listón, no +0.49, y encima un Sharpe que cae 0.436. El lado contrario se da a valor completo (−0.04 a −0.35). La única tabla del registro cuya función es ser ecuánime es la que **infracuenta su propio lado fuerte en 0.39**, y lo hace en la dirección de hacer parecer más cercanos los dos platillos. La frase *"no es el bloque unidireccional que el brief describe"* es defendible; la aritmética que la respalda no lo es.
+
+---
+
+#### 7. La única construcción en la que "Fase B pasa" —el titular de una CRÍTICA— es la fórmula de Kish, no un estimador de tests múltiples — **MEDIA**
+
+B-b declara su límite así:
+
+> **Límite declarado, y es grande:** Cheverud-Nyholt, Li-Ji y la fórmula de correlación media vienen de la literatura de **tests múltiples correlacionados**, no de Bailey-LdP.
+
+Cheverud-Nyholt y Li-Ji sí. `N/(1+(N−1)ρ)` no: es el efecto de diseño / tamaño efectivo de Kish, de muestreo por conglomerados, y no tiene interpretación como "número de pruebas independientes" en un estadístico de máximo. El propio script lo sabe y lo nombra así en su JSON:
+
+```
+$ python3 -I -c "import json;print(list(json.load(open('fix-fase2/fase0_n6/b_salida_correlacion.json'))['n_eff_11']))"
+['N', 'rho_medio', 'cheverud_nyholt', 'li_ji', 'kish', 'autovalores']
+```
+
+Y es **justo esa fila**, y solo esa, la que produce el titular de la objeción CRÍTICA (*"en una construcción Fase B pasa"*, `N=3.56` → listón 0.9625). Con los dos estimadores que sí son de la literatura que B-b invoca, Fase B no pasa en ninguna construcción. Hay que decirlo con esa letra: la procedencia que B-b alega no cubre la fila que sostiene su conclusión. (Y de paso: el docstring del script dice *"Dos estimadores estandar"* y lista tres.)
+
+---
+
+#### 8. Li-Ji está mal implementado: pierde la parte fraccionaria de los autovalores ≥ 1 — **MEDIA**
+
+```
+$ grep -n "li_ji\|1.0 if abs" fix-fase2/fase0_n6/b_correccion_contraria.py | head -3
+17:  - Li-Ji (2005):     N_eff = sum_i f(|lambda_i|),  f(x)=1 si x>=1, si no x-floor(x)
+98:    lj = float(sum(1.0 if abs(x) >= 1 else abs(x) - math.floor(abs(x))
+```
+
+Li & Ji (2005) definen `f(x) = I(x≥1) + (x − ⌊x⌋)`: para `λ = 5.2698` vale `1.2698`, no `1`. El script tira la parte fraccionaria de todo autovalor ≥ 1. Recalculado desde los autovalores que el propio JSON guarda:
+
+```
+$ python3 -I scratchpad/liji.py
+[11 de V(11)] sum(lambda)=10.9998
+  Li-Ji como lo implementa el script : 6.5381  (JSON: 6.5382)
+  Li-Ji como lo define Li&Ji 2005    : 6.9998
+  liston con N_eff script +1 = 7.54 -> 1.1915
+  liston con N_eff Li&Ji  +1 = 8.00 -> 1.2076
+[11+3 = 14] sum(lambda)=14.0000
+  Li-Ji como lo implementa el script : 8.4552  (JSON: 8.4552)
+  Li-Ji como lo define Li&Ji 2005    : 10.0000
+  liston con N_eff script +1 = 9.46 -> 1.6327
+  liston con N_eff Li&Ji  +1 = 11.00 -> 1.6901
+```
+
+Ningún veredicto cambia (sigue fallando en las dos). Pero el error **subestima `N_eff` en 1.54** en el caso de catorce, y la dirección del error **baja el listón**, o sea favorece la tesis propia de B-b. En un registro que declara el límite de la analogía con tanto cuidado, implementar mal el método nombrado y dar la cifra con dos decimales como si fuera él es un problema de la misma familia que la doble vara que reprocha.
+
+Añadido menor en la misma tabla: B-b suma `+1` por el portfolio a cada `N_eff`, mientras A-5.7 sostiene que *"el trial nº12 (portfolio) es la regla `tsmom_365`, que ya es el nº9"*. Si es un duplicado, bajo una corrección por correlación no aporta `+1`: aporta `0`. Las dos cosas no pueden ser verdad a la vez.
+
+---
+
+#### 9. B-e1 está sobrecalificada: `0.573` **sí** cuadra con el documento de dictamen — **MEDIA**
+
+> **Esto no es un detalle de ejecución: es el paso 6.4 entero.** Un 6.4 escrito sin saberlo o bien para en falso, o bien **publica 0.573 como "el Sharpe de Fase B en el holdout" y no cuadra con el único documento de dictamen del expediente.**
+
+El único documento de dictamen es `fix-fase2/docs/fase_b_reevaluacion_resultado.md`, y publica **0.57** y **0.301**:
+
+```
+$ sed -n '26,28p' fix-fase2/docs/fase_b_reevaluacion_resultado.md
+| T3 2023-fin | +26.0% | 0.184 | 0.57 | 1.10 | 0.301 | [-5.86, +20.30] | 0.80 |
+```
+
+`0.573 → 0.57` y `0.3013 → 0.301`. A la precisión del dictamen, el Sharpe y el DSR de T3 **reproducen desde la equity congelada**. El "NO REPRODUCE" de A-3 lo fabrica la tolerancia que el propio script eligió contra el JSON (`a3_tramos_t1_t2_t3.py:126-128`: `1e-3` en Sharpe, `1e-4` en DSR), no un desacuerdo con nada publicado. Lo que **sí** difiere a la precisión del dictamen son el IC95 (`[−5.82, +20.35]` contra `[−5.86, +20.30]`) y `n_obs_eff` (1354 contra 1356), así que la objeción sobrevive — por el IC, no por el Sharpe. Hay que reescribir la frase y bajarla de ALTA: el riesgo real no es "no cuadra con el dictamen", es "las dos colas del bootstrap se mueven si se corta el CSV congelado en vez de re-simular".
+
+---
+
+#### 10. Doble vara con la autoatestación: el pre-registro no es auditable, pero los sellos `20261007`/`20261009` sí — y llegan en el mismo commit — **MEDIA**
+
+§2.4(a) y B-a declaran el pre-registro **no auditable** porque diseño, código, resultados y equity llegan juntos:
+
+```
+$ cd fix-fase2 && python3 -I fase0_n6/b_a_preregistro_auditable.py | sed -n '/B-a.3/,/NINGUNO/p'
+=== B-a.3 ¿se puede FECHAR el pre-registro por git? ===
+  portfolio_walkforward_temporal.py          d34b147 2026-10-29 Recupera el trabajo de Fase B…
+  fase_b_reevaluacion_resultado.md           d34b147 2026-10-29 …
+  …
+    (NINGUNO)
+```
+
+Reverificado: el repo tiene 38 commits, el último antes del hueco es `58afd98` del 2026-10-07 y el siguiente es `d34b147` del 2026-10-29; `git log --since=2026-10-08 --until=2026-10-28` está vacío. El hecho es cierto.
+
+Pero los CSV sellados llegan **en ese mismo commit**:
+
+```
+$ git log --pretty='%h %ad' --date=short -- fix-fase2/data/multi | tail -1
+d34b147 2026-10-29
+```
+
+El sello `20261009` es un **nombre de fichero y un sidecar en el mismo commit** que el documento que lo declara: exactamente el mismo estatuto probatorio que *"aprobada por Pablo 2026-10-09, antes de la corrida"*. El `[verificado]` que imprime `a6` verifica el **sha256 contra su propio sidecar**, no la fecha. Y A-3 —la verificación de la que el registro hace depender que el NO-GO de los tramos no se dispare— se apoya enteramente en aceptar esos sellos al pie de la letra. O las dos cosas son autoatestiguadas, o ninguna. El registro declara una y usa la otra, y la que usa es la que le hace falta para no pararse.
+
+---
+
+#### 11. §2.2 se declara CONFIRMADA después de reescribir el enunciado que se iba a verificar — **MEDIA**
+
+El brief titula su §2.2: *"`N ≥ 15`: hay **cuatro** estrategias más con resultados publicados"*. El registro titula su verificación: *"`N ≥ 15`: hay **tres** estrategias más con resultados publicados → **CONFIRMADO**"*. Son tres (`ma_cross` ya estaba contada), o sea el brief se equivocó en su propio encabezado — y el registro lo arregló en silencio y estampó CONFIRMADO, en la misma sección en la que para §2.1 se detuvo a listar *"**dos desviaciones de forma** en la redacción del brief, que importan porque están en la sección que manda reverificar"*. La vara es la misma o no es vara.
+
+Lo mismo, y más consecuente, con §2.5. El brief dice dos cosas: *"Con `N ≤ 3`, los 11,9 años que ya están en el repo sobran"* y *"**con `N` bajo** la restricción activa no es el DSR sino `t > 3`"*. **Las dos son verdad**: con `N=3` el listón 0.9014 < 1.0084, así que los 11,9 años sobran; y "con `N` bajo" (1 y 2) manda `t>3`. El "REFUTADO en parte" sale de pegarle a la segunda frase el `N ≤ 3` de la primera. El registro disparó un NO-GO (*"Si algo de la §2 sale REFUTADO → PARAR"*) sobre una lectura que el texto del brief no obliga, y acto seguido declinó accionarlo. Con el hallazgo 1 corregido, declinar es lo correcto —el límite `N=2`/`N=3` es irrelevante para el veredicto— pero el motivo que el registro da es el contrario del verdadero: dice que el límite **importa mucho** y aun así no frena.
+
+---
+
+#### 12. "Homogeneizar subiendo `V` al universo del objeto" describe un cambio que exige que `V` **baje** 5,7× — **BAJA**
+
+B-e6 avisa con razón de que *"`T` homogéneo"* nombra dos cosas opuestas, y entonces describe la de N1 así: *"Eso homogeneíza **subiendo `V` al universo del objeto**"*. Pero el listón crece con `V`, y H10 lo baja de 1.312 a 0.823:
+
+```
+V que da liston 0.823 con N=12, T_eff 4336 : 1.232e-04   (V12 = 7.022e-04; cociente 0.175)
+  -> para que el liston BAJE a 0.823, V tiene que BAJAR, no subir
+```
+
+`V` tiene que **caer a 0.175×** la actual. "Subiendo `V` al universo" se lee naturalmente como "aumentando `V`", que es el signo contrario. En la única sección del registro cuyo objeto es que las etiquetas invitan a equivocarse de signo, la etiqueta propia invita a equivocarse de signo. Y la cifra que Pablo necesita para leer esa fila —`V ≈ 1.23e-4`— no está en el registro; debería.
+
+---
+
+#### 13. Pequeñas inconsistencias de cierre — **BAJA**
+
+- *"La parada se sostiene en B-a y **B-b**"*. Pero el "qué cambia del Alcance" de B-b es *"6.3 y 6.5 tienen que tabular también las filas a la baja"* — una enmienda, no un freno. B-b es la objeción que **abre** una construcción en la que Fase B pasa; no es un motivo de parada.
+- El registro convierte dos NO-GO binarios del brief en frenos graduados (*"se dispara sobre el paso 6.4, no sobre la tarea"*; *"se dispara parcialmente, por §2.5"*) y en los dos casos el grado elegido es el que permite seguir. Es defendible por proporción —y lo digo sin inflarlo: la Fase 0 acaba en PARADO de todas formas, así que operativamente no cambia nada— pero es una discrecionalidad que el brief no concedió, ejercida dos veces en el mismo sentido.
+- `b_a_preregistro_auditable.py` imprime *"Commits … entre la fecha declarada del pre-registro (2026-10-09)"* y la prosa del registro dice *"entre el 2026-10-07 y el 2026-10-29"*. Las dos son ciertas, pero no son la misma frase.
+- El script `b_correccion_contraria.py` afirma en su salida *"Bailey-LdP **no define** un N efectivo por correlacion"*: una afirmación positiva sobre el contenido de un paper que A-4 declara inalcanzable. La versión del `.md` sí está bien formulada (*"El repo no transcribe ninguna noción…"*); la del script, que es parte del entregable, no. Es la misma falta que el hallazgo 6 del segundo agente de N4, en pequeño.
+
+---
+
+### **Lo que el registro acierta.**
+
+Verificado, no concedido:
+
+1. **Los dos signos que se me pidió atacar salen correctos.** "Acortar la ventana SUBE el listón": `1.3117 → 1.7007 → 2.1080`, y la atribución a `√(T−1)` es la correcta — descompuesto, `T_eff` sola aporta `+0.371` de los `+0.389` y los momentos de T3 (skew 0.124, kurt 11.514) solo `+0.018`. "Corregir `N` por correlación BAJA el listón": el listón es monótono creciente en `N` (0.4723 → 1.3654 de `N=1` a `N=15`), así que bajar `N_eff` lo baja necesariamente; las magnitudes `−0.0446 / −0.1203 / −0.3493` reproducen. **No hay signo invertido como el de N4.** La "Corrección propia" declarada en B-a es real y está efectivamente aplicada en `a6_holdout_y_coherencia.py`.
+2. **El eje aritmético reproduce al bit, con implementación independiente.** `V(12) = 0.000702194770` contra el literal de `potencia_fase_b.py:28` (`grep -n V_TRIALS` → `0.0007021947704551833`): diferencia `0.000e+00`. `V(11) = 0.000701693564` contra `rigor_estadistico.json`: `0.000e+00`. `V(15) = 0.001550366155`, listón `1.8024`. `T_eff = 4336`, skew `1.036877`, kurt `31.998897`, Sharpe `1.008383`. A-5 no importa nada de métrica de `src/` —solo `strategies` y `backtester`, como declara (`grep "^from" a5_v_y_liston_n15.py`)— y lo reescribe a mano. Verifiqué la PSR y `E[max_N]` contra `fix-fase2/src/rigor_estadistico.py:85-103`: las fórmulas coinciden.
+3. **El outlier y la no-monotonía del listón, correctos.** `z(mean_reversion) = −4.239` con el segundo más extremo a `1.191`; las tres bases alternativas dan `−4.405`, `−4.490`, `−4.239` (las recalculé, salen con ddof=1). El 89 % y el `+0.0540` salen: `(0.4906−0.0540)/0.4906 = 88.99 %`. Y la no-monotonía es real y es un buen hallazgo: `N=13` con solo `mean_reversion` da **1.8251**, por encima del `1.8024` de `N=15`.
+4. **A-3 es sólido y el diagnóstico del sello es correcto.** Los tres tramos reproducen campo a campo con `STAMP_CONGELADO=20261009`, IC del block bootstrap incluidos, y las dos curvas coinciden a `8.882e-16` en las 4404 fechas comunes. El `+2 velas` está declarado en `fase_b_reevaluacion_resultado.md:6-10`. Ninguna descarga: sin `PERMITIR_DESCARGA` el loader parcheado por N1 falla en duro, y lo comprobé provocando el fallo.
+5. **A-2 es correcto y su matiz es el bueno.** `comm -12` da dos ficheros, los dos `IDENTICO` por hash y `json.load` iguales; ningún homónimo difiere en ninguno de los tres árboles. El NO-GO no se dispara, y la lectura *"no se contradicen: se solapan"* es la correcta.
+6. **La "Nota de rutas" es cierta y pertinente.** `ls docs/fase_b_reevaluacion_resultado.md` → *No such file or directory*: la cita de la §2.4 del brief, leída con el convenio que el brief mismo fija, apunta a un fichero inexistente.
+7. **Los límites del brief, respetados sin excepción.** `git show --stat 0eed41c`: 19 ficheros, **todos** en `fix-fase2/fase0_n6/` más el `.md` de la tarea, todos `A` (añadidos), 3291 inserciones y **0 borrados**. Nada en `auditoria_n6/`, ni un `src/*.py`, ni un `results/*.json`, ni un CSV, ni un documento de dictamen. Ninguna estrategia nueva ni variante de parámetro: las 14 reejecuciones son las ya publicadas con parámetros congelados. Ninguna descarga. `git status` limpio y los scripts deterministas (reescriben sus JSON idénticos). **En este frente no encontré nada que objetar.**
+8. **B-a, en lo sustantivo, se sostiene.** La distinción entre pre-registrar el *split* y pre-registrar el *criterio* es correcta y está documentada: `fase_b_reevaluacion_resultado.md:20-22` fija *"≥2 de 3 tramos con IC95 del retorno positivo"* y el JSON publica `"_dictamen": {"superado": true, "tramos_positivos": 2, "tramos_claramente_negativos": 0}`. Comparar el Sharpe de T3 contra el listón del DSR es, en efecto, un criterio distinto. Y el matiz de que T3 no es un holdout "ajustado en train, medido en test" está literal en `portfolio_walkforward_temporal.py` y en el dictamen (*"Una sola simulación […] equity cortada por tramo"*).
+9. **A-1, en los hechos verificables, correcto.** `results/` tiene 15 ficheros, 12 `walkforward_stability*` de los cuales 11 son exclusivos y cubren 10 estrategias, todas dentro de `V(11)`; los dictámenes son 10 `fragil` + 1 `estable` (`connors_rsi2`), verificado leyendo los 12 JSON. El sizing por defecto 0.95 y el `yf.download` de `run_backtest.py` son correctos. B-e2 (las dos numeraciones, 4.2 contra 6.1–6.6) es correcto y bien visto. B-e3 es correcto y es, en mi opinión, la mejor objeción del registro.
+
+**Frentes donde no encontré nada, y lo digo en vez de inventar:** no hay signo invertido; el commit no se sale de los límites de escritura; `backtest_summary.json` no es un trial *commensurable* (su verdadero problema es el otro, hallazgo 4); `portfolio_bateria.json`, `portfolio_supervivencia.json` y `timesfm_t3_zeroshot.json` —los tres ficheros de `fix-fase2/results/` que el registro nombra sin abrir— los abrí y no esconden familia de trials ni un uso previo del tramo T3 (el "T3" de TimesFM es otra numeración, con su propio `TRAIN_FRAC`, no el tramo 2023→fin); y la contabilidad de objeciones y severidades cuadra.
+
+---
+
+### **Veredicto sobre el registro.**
+
+Es un trabajo serio y mucho mejor que el de N4 en higiene: el eje aritmético está reverificado de verdad y al bit, los límites del brief se respetan sin una sola excepción, los dos signos que se le exigían salen bien, y la objeción central sobre el pre-registro del criterio (B-a) es correcta y bien documentada. Pero **no está listo para apoyar una firma**, por tres razones de distinto orden:
+
+- **Una CRÍTICA mal calculada** (hallazgo 1). La frontera del veredicto está en `N≈4.08`, no entre 2 y 3, y Fase B **pasa** el DSR con la familia que el propio registro enumera. El error contradice su propia tabla de B-b, está cableado en prosa en el script, y contamina B-c, B-e5, §2.5 y el punto 7 del veredicto. En un documento cuya tesis es que el expediente lleva mal las cuentas, es el mismo fallo que el que denuncia.
+- **Una cifra ALTA con la `V` descolocada** (hallazgo 2), que además dice lo contrario de la verdad: con `N=15` y `V(15)` no es que hagan falta 208,7 años, es que **no hay `T` que valga**. Y es precisamente el emparejamiento `(N, V)` que el registro se felicita por no encontrar en nadie más.
+- **Un punto ciego de método** (hallazgos 3 y 4): el registro hizo un inventario de `results/` y nunca miró `docs/` del mismo árbol, que contiene cuatro documentos sobre ese material. Eso le cuesta su único hallazgo propio de A-1 y deja sin demostrar el titular *"N no pasa de 15"*.
+
+Sobre las dos decisiones de NO-GO que se me pidió juzgar: la de la §2.5 **llega al sitio correcto por el razonamiento equivocado** (el límite es irrelevante para el veredicto, no "importa mucho"), y el "REFUTADO en parte" que la motiva se obtiene fusionando dos frases del brief que dicen cosas distintas y que, leídas por separado, son las dos ciertas. La de B-a (*"se dispara sobre el paso 6.4, no sobre la tarea"*) es **razonable en el fondo pero formalmente inventada**: el NO-GO del brief es binario y la conclusión literal de B-a —medir no es cambiar el test— significa que no se dispara en absoluto. No veo conveniencia dolosa en ninguna de las dos, porque la Fase 0 termina en PARADO de todos modos; veo una tendencia consistente a graduar frenos que el brief escribió sin grados.
+
+### **Recomendación operativa para Pablo.**
+
+1. **No firmes la §7 todavía**, y no por los motivos que el registro da. Antes exige una corrección del registro, no un Alcance.
+2. **Pide que se rehagan, con comando y salida, cuatro cosas**: (a) la frontera del veredicto (`N* = 4.08`, Fase B pasa para `N ≤ 4`), con la consecuencia reescrita en B-c, B-e5, §2.5 y el punto 7; (b) el `T` exigido con `N=15` emparejado con `V(15)` (**no existe**), y la retirada del "208.7 años" o su reetiquetado explícito como `N=15` con `V(12)`; (c) el "Balance honesto" con las dos correcciones sumadas de verdad (**+0.8827**, no +0.49); (d) los tres bloques huérfanos de §2.2, §2.5 y A-2 convertidos en salida de script o retirados de las cercas de código.
+3. **Lee tú `docs/walkforward_stability.md`, `docs/estrategias_candidatas_resultado.md` y `docs/sizing_05_resultado.md`** antes de aceptar cualquier cosa que el registro diga sobre "material no auditado". Los tres están en el árbol de la raíz, los tres son cortos, y los tres contradicen a B-e4 y resuelven la mitad de A-1.
+4. **Lo que sí puedes dar por bueno sin volver a mirarlo**: el eje (`V(11)`, `V(12)`, `V(15)`, listón 1.8024, `T_eff` 4336), la reproducción de T1/T2/T3 con el sello `20261009`, la no contradicción de los dos árboles, el 89 % del outlier y la no-monotonía del listón en `N`, y el cumplimiento de los límites de escritura. Están reverificados dos veces por dos agentes distintos con implementaciones independientes.
+5. **El dato de decisión que ninguno de los dos documentos te ha puesto delante, y que ahora sí está medido:** si la familia de intentos sobre el panel es la que el expediente puede enumerar (dos curvas, `N=2`), **Fase B pasa el DSR con margen** (1.008 contra 0.734) y pasa `t>3` (3.48). Deja de pasar a partir de `N≈4`. La pregunta de Fase B no es "qué `V`" ni "qué holdout": es **cuántos intentos de panel hubo**, y eso no lo decide ningún test — lo sabes tú o no lo sabe nadie. Si la respuesta honesta es "no está registrado", entonces el cierre correcto del expediente es el que el propio registro propone en B-c (**indecidible, no débil**), pero con la frontera puesta donde está, que es el único número nuevo que esta ronda aporta.
+6. **De los seis pasos del Alcance**: coincido con el registro en que 6.4 sobra y 6.3 no puede ser un menú, y en que 6.1, 6.2, 6.5 y 6.6 son trabajo real. Añado que **6.1 no puede escribirse hasta que 6.2 resuelva si un cambio de sizing es un trial** (hallazgo 4), porque de eso depende si `N` es 15 o 19, y que **6.1 debe citar los cuatro documentos de `docs/`** en vez de etiquetar su material como no auditable.
+
+---
+
+### Estado final de la Fase 0
+
+Los trece hallazgos están aceptados y aplicados, en el documento **y en los
+scripts**. Lo que Pablo tiene delante:
+
+- **Hechos:** 5 CONFIRMADOS y 1 CONFIRMADO con la cifra corregida. **Ningún
+  NO-GO formal disparado sobre la tarea.** El de la §2 **no se dispara**
+  (corregido tras el hallazgo 11); el de B-a lo gradúo sobre el paso 6.4 y lo
+  declaro como graduación, no como lectura literal del brief.
+- **El eje, intacto y reverificado dos veces:** `V(15) = 0.001550366`, listón
+  **1.8024**, `V(12)` y `V(11)` con diferencia 0.0e+00, los tres tramos campo a
+  campo con el sello `20261009`.
+- **Objeciones:** 10, de ellas 2 CRÍTICAS (B-a, B-b) y 3 ALTAS tras las
+  correcciones (B-c, B-e2, B-e3). **B-e4 retirada entera.** B-e1 bajada a MEDIA.
+  B-c y B-e5 reescritas.
+- **La cifra nueva de esta ronda, y la única:** `N* = 4.0786`. **Fase B pasa el
+  DSR por debajo de esa `N` y falla por encima.** La familia de intentos sobre
+  el panel que el expediente puede enumerar son dos curvas, y caen dentro de la
+  región donde pasa. **La pregunta que decide Fase B no es qué `V` ni qué
+  holdout: es cuántos intentos de panel hubo**, y eso no lo contesta ningún
+  test. Si no está registrado, el cierre correcto es *indecidible, no débil*.
+- **Recomendación, que no cambia con la crítica: no firmar la §4 como está.**
+  Lo que cambia es que ahora la recomendación está bien fundada, que 6.1 no
+  puede escribirse antes que 6.2, y que el informe final tiene un número que
+  antes no tenía.
 
 **No se ha ejecutado ni un paso de la §4. La §7 sigue sin firma.**

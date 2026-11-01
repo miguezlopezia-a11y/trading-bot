@@ -11,11 +11,22 @@ Los trials del expediente no son independientes: seis son el mismo parametro
 barrido sobre la misma serie. Si se corrige el N por correlacion, el N efectivo
 baja, el SR0 baja y el liston BAJA. Esa es la correccion contraria.
 
-Dos estimadores estandar de "numero efectivo de tests", los dos aplicados a la
-matriz de correlacion de los retornos diarios de los trials:
+TRES estimadores, aplicados a la matriz de correlacion de los retornos diarios
+de los trials. CORRECCION (hallazgos 7 y 8 del segundo agente): solo los dos
+primeros son de la literatura de tests multiples; el tercero NO lo es, y es el
+unico que da "Fase B pasa".
   - Cheverud-Nyholt:  N_eff = 1 + (N-1)*(1 - Var(lambda)/N)
-  - Li-Ji (2005):     N_eff = sum_i f(|lambda_i|),  f(x)=1 si x>=1, si no x-floor(x)
-  - y el de media de correlacion: N_eff = N / (1 + (N-1)*rho_medio)
+  - Li-Ji (2005):     N_eff = sum_i [ I(lambda_i >= 1) + (lambda_i - floor(lambda_i)) ]
+      La primera version de este script implemento f(x)=1 si x>=1, que TIRA la
+      parte fraccionaria de todo autovalor >= 1. Mal: para lambda=5.2698 vale
+      1.2698, no 1. Corregido. El error subestimaba N_eff y por tanto BAJABA el
+      liston, o sea favorecia la tesis de esta objecion.
+  - Kish (1965), efecto de diseno: N_eff = N / (1 + (N-1)*rho_medio)
+      NO es un estimador de numero efectivo de TESTS: es el tamano muestral
+      efectivo del muestreo por conglomerados, y no tiene interpretacion como
+      "numero de pruebas independientes" en un estadistico de maximo. Se deja
+      porque es la unica fila que da la vuelta al veredicto, y precisamente por
+      eso hay que decir que su procedencia NO cubre esa conclusion.
 Se dan los tres y el rango, sin elegir: elegir es de Pablo.
 
 Uso (desde fix-fase2/):
@@ -95,14 +106,17 @@ def n_eff_estimadores(C):
     # Cheverud-Nyholt
     cn = 1 + (N - 1) * (1 - np.var(lam, ddof=1) / N)
     # Li-Ji
-    lj = float(sum(1.0 if abs(x) >= 1 else abs(x) - math.floor(abs(x))
-                   for x in lam))
+    # Li & Ji (2005): f(x) = I(x>=1) + (x - floor(x)). Las dos piezas se SUMAN.
+    lj = float(sum((1.0 if x >= 1 else 0.0) + (x - math.floor(x)) for x in lam))
+    # La implementacion erronea de la primera version, para poder comparar:
+    lj_malo = float(sum(1.0 if abs(x) >= 1 else abs(x) - math.floor(abs(x))
+                        for x in lam))
     # media de correlacion (Kish-like)
     off = C[~np.eye(N, dtype=bool)]
     rho = float(off.mean())
     kish = N / (1 + (N - 1) * rho) if (1 + (N - 1) * rho) > 0 else float("nan")
     return {"N": N, "rho_medio": rho, "cheverud_nyholt": float(cn),
-            "li_ji": lj, "kish": float(kish),
+            "li_ji": lj, "li_ji_impl_erronea_v1": lj_malo, "kish": float(kish),
             "autovalores": [round(float(x), 4) for x in sorted(lam)[::-1]]}
 
 
@@ -136,8 +150,10 @@ def main():
         print(f"  [{etq}]  N nominal = {e['N']}")
         print(f"    rho medio          : {e['rho_medio']:.4f}")
         print(f"    Cheverud-Nyholt    : {e['cheverud_nyholt']:.2f}")
-        print(f"    Li-Ji (2005)       : {e['li_ji']:.2f}")
-        print(f"    N/(1+(N-1)rho)     : {e['kish']:.2f}")
+        print(f"    Li-Ji (2005)       : {e['li_ji']:.2f}"
+              f"   [impl. erronea v1: {e['li_ji_impl_erronea_v1']:.2f}]")
+        print(f"    Kish N/(1+(N-1)rho): {e['kish']:.2f}"
+              f"   <- NO es estimador de tests multiples")
         print(f"    autovalores        : {e['autovalores'][:5]} ...")
     print()
 
@@ -185,12 +201,31 @@ def main():
     print(f"    recuento N=15 (en contra)                  "
           f"{[x for x in filas if x['N']==15][0]['liston_anual']-base:+.4f}")
     print()
-    print("  LIMITE DECLARADO, y es grande: estos tres estimadores vienen de la")
-    print("  literatura de tests multiples (SNPs correlacionados), NO de")
-    print("  Bailey-LdP. Bailey-LdP no define un N efectivo por correlacion, y")
-    print("  el paper no es alcanzable desde este contenedor (A-4). Aplicarlos")
-    print("  al E[max_N] es una ANALOGIA defendible, no un resultado citable.")
-    print("  Se reporta como cota de direccion, no como liston alternativo.")
+    print("  LIMITE DECLARADO, y es grande. Corregido tras los hallazgos 7,")
+    print("  8 y 13 del segundo agente:")
+    print("   - Cheverud-Nyholt y Li-Ji vienen de la literatura de tests")
+    print("     multiples correlacionados (SNPs). Kish NO: es efecto de diseno")
+    print("     de muestreo por conglomerados, y es LA UNICA FILA que da la")
+    print("     vuelta al veredicto. La procedencia alegada no cubre la")
+    print("     conclusion que sostiene esta objecion.")
+    print("   - EL REPO NO TRANSCRIBE ninguna nocion de N efectivo por")
+    print("     correlacion (rigor_estadistico.py:17-22 y")
+    print("     docs/rigor_estadistico_resultado.md). Lo que diga el paper")
+    print("     sobre esto es NO VERIFICABLE: SSRN no es alcanzable (A-4). La")
+    print("     v1 de este script afirmaba 'Bailey-LdP no define un N efectivo")
+    print("     por correlacion', que es una afirmacion POSITIVA sobre un texto")
+    print("     que no se puede leer. Retirada.")
+    print("   - Aplicar estos estimadores al E[max_N] es una ANALOGIA, no un")
+    print("     resultado citable. Cota de direccion, no liston alternativo.")
+    print()
+    print("  Y el +1 por el portfolio: A-5.7 sostiene que el trial nº12 es la")
+    print("  misma regla que el nº9. Si es duplicado, bajo una correccion por")
+    print("  correlacion no aporta +1 sino 0. Las dos cosas no caben juntas")
+    print("  (hallazgo 8 del segundo agente). Las dos lecturas, para Kish:")
+    for nn, et in ((e11["kish"] + 1, "+1 (el portfolio cuenta)"),
+                   (max(e11["kish"], 1.0001), "+0 (duplicado, no cuenta)")):
+        ll = liston_m(nn, V12, t_eff, sk, ku) * math.sqrt(PPY)
+        print(f"    N={nn:>5.2f} liston={ll:.4f} pasa={obs >= ll}   {et}")
 
     with open("fase0_n6/b_salida_correlacion.json", "w") as f:
         json.dump({"corr_sma_timing": {"media": float(off.mean()),

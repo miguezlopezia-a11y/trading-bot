@@ -150,11 +150,35 @@ def main():
     print("  Luego la familia del objeto evaluado NO es N=1, pero tampoco es")
     print("  enumerable: 6 hiperparametros sin pre-registro y la eleccion del")
     print("  universo de 10 no dejan rastro de cuantas combinaciones se")
-    print("  probaron. Con N=2 el liston es "
-          f"{liston(2, V12, 4336, 1.036877, 31.998897):.4f} y Fase B pasa;")
-    print("  con N=3, "
-          f"{liston(3, V12, 4336, 1.036877, 31.998897):.4f} y no pasa.")
-    print("  El veredicto cambia entre 2 y 3, y nadie puede decir cual es.")
+    print("  probaron.")
+    print()
+    print("  CORRECCION (hallazgo 1 del segundo agente, CRITICA). Una version")
+    print("  previa de este bloque imprimia 'con N=2 el liston es 0.7336 y")
+    print("  Fase B pasa; con N=3, 0.9014 y no pasa'. El liston estaba")
+    print("  calculado; el 'pasa'/'no pasa' estaba CABLEADO EN PROSA y era")
+    print("  falso para N=3: 1.008383 > 0.9014, luego Fase B PASA con N=3.")
+    print("  Se habia trasplantado la frontera de '¿manda el DSR o manda")
+    print("  t>3?' (que si esta entre N=2 y N=3) a la frontera de '¿pasa")
+    print("  Fase B?', que esta cuatro posiciones mas alla. Ahora se compara:")
+    print()
+    OBS = 1.008383
+    print(f"  {'N':>6} {'liston_DSR':>11} {'Fase B pasa?':>13}")
+    for N in (1, 2, 3, 4, 5, 6, 12, 15):
+        L = liston(N, V12, 4336, 1.036877, 31.998897)
+        print(f"  {N:>6} {L:>11.4f} {str(OBS >= L):>13}")
+    lo, hi = 1.0, 15.0
+    for _ in range(80):
+        m = (lo + hi) / 2
+        if liston(m, V12, 4336, 1.036877, 31.998897) < OBS:
+            lo = m
+        else:
+            hi = m
+    print(f"\n  FRONTERA EXACTA del veredicto: N* = {lo:.4f}")
+    print(f"  Fase B PASA el DSR para todo N <= {lo:.2f} y falla desde ahi.")
+    print("  Luego la familia enumerable del panel (2 curvas) cae DENTRO de la")
+    print("  region donde Fase B pasa, con margen (liston 0.7336 vs 1.0084).")
+    print("  La indecidibilidad sigue: el filo esta en N~4, no en N~2.5, y")
+    print("  nadie puede decir cuantos intentos de panel hubo.")
 
     with open("fase0_n6/b_salida_ventanas.json", "w") as f:
         json.dump({"ventana_V": [str(v_ini.date()), str(v_fin.date())],
