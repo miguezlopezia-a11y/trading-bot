@@ -1,0 +1,273 @@
+{
+  "sello": "20261009",
+  "reproduce_p3": true,
+  "publicado": {
+    "retorno_pct": 266.13,
+    "sharpe": 0.916,
+    "max_dd_pct": -27.18,
+    "dsr": 0.6014,
+    "t_stat": 3.18,
+    "pasa_t3": true,
+    "ic95_retorno_anual_pct": [
+      3.27,
+      19.9
+    ],
+    "edge_ic": true,
+    "bench_retorno_pct": 54913.98,
+    "bench_sharpe": 1.068,
+    "supera_bench_sharpe": false
+  },
+  "reejecutado": {
+    "retorno_pct": 266.13,
+    "sharpe": 0.916,
+    "max_dd_pct": -27.18,
+    "dsr": 0.6014,
+    "t_stat": 3.18,
+    "pasa_t3": true,
+    "ic95_retorno_anual_pct": [
+      3.27,
+      19.9
+    ],
+    "edge_ic": true,
+    "bench_retorno_pct": 54913.98,
+    "bench_sharpe": 1.068,
+    "supera_bench_sharpe": false
+  },
+  "calidad_datos": {
+    "ADA-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 4.277558562926976
+    },
+    "AVAX-USD": {
+      "primera": "2020-07-13",
+      "ultima": "2026-10-09",
+      "obs": 2211,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 0.9010840000331825
+    },
+    "BCH-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 2.529393919747022
+    },
+    "BNB-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 3.0603461622299997
+    },
+    "BTC-USD": {
+      "primera": "2014-09-17",
+      "ultima": "2026-10-09",
+      "obs": 4406,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 0.9993493051962733
+    },
+    "DOGE-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 1.4681595874323015
+    },
+    "EOS-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 2.4181960608131634
+    },
+    "ETH-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 1.7812352550751664
+    },
+    "FIL-USD": {
+      "primera": "2017-12-13",
+      "ultima": "2026-10-09",
+      "obs": 3223,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 1.1473762066441306
+    },
+    "ICP-USD": {
+      "primera": "2021-05-10",
+      "ultima": "2026-10-09",
+      "obs": 1979,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 2.1539397431724283
+    },
+    "LINK-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 2.3859872298008336
+    },
+    "LTC-USD": {
+      "primera": "2014-09-17",
+      "ultima": "2026-10-09",
+      "obs": 4406,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 0.5685804342291588
+    },
+    "SOL-USD": {
+      "primera": "2020-04-10",
+      "ultima": "2026-10-09",
+      "obs": 2374,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 1.1358969638727012
+    },
+    "XLM-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 2.7159094395561154
+    },
+    "XRP-USD": {
+      "primera": "2017-11-09",
+      "ultima": "2026-10-09",
+      "obs": 3257,
+      "vol_cero_inicio": 0,
+      "px_constante_inicio": 0,
+      "sigma_ratio": 3.038428758761388
+    }
+  },
+  "sospechosos": [],
+  "universos": {
+    "solo_vivos": {
+      "retorno_pct": 317.52,
+      "sharpe": 1.008,
+      "max_dd_pct": -26.9,
+      "dsr": 0.7189,
+      "t_stat": 3.48,
+      "pasa_t3": true,
+      "ic95_retorno_anual_pct": [
+        4.37,
+        21.0
+      ],
+      "edge_ic": true,
+      "bench_retorno_pct": 127663.28,
+      "bench_sharpe": 1.16,
+      "supera_bench_sharpe": false
+    },
+    "extendido_15": {
+      "retorno_pct": 266.13,
+      "sharpe": 0.916,
+      "max_dd_pct": -27.18,
+      "dsr": 0.6014,
+      "t_stat": 3.18,
+      "pasa_t3": true,
+      "ic95_retorno_anual_pct": [
+        3.27,
+        19.9
+      ],
+      "edge_ic": true,
+      "bench_retorno_pct": 54913.98,
+      "bench_sharpe": 1.068,
+      "supera_bench_sharpe": false
+    },
+    "sin_EOS-USD": {
+      "retorno_pct": 279.2,
+      "sharpe": 0.939,
+      "max_dd_pct": -26.94,
+      "dsr": 0.6322,
+      "t_stat": 3.26,
+      "pasa_t3": true,
+      "ic95_retorno_anual_pct": [
+        3.54,
+        20.2
+      ],
+      "edge_ic": true,
+      "bench_retorno_pct": 86831.97,
+      "bench_sharpe": 1.118,
+      "supera_bench_sharpe": false
+    },
+    "sin_XLM-USD": {
+      "retorno_pct": 276.13,
+      "sharpe": 0.932,
+      "max_dd_pct": -27.18,
+      "dsr": 0.6235,
+      "t_stat": 3.23,
+      "pasa_t3": true,
+      "ic95_retorno_anual_pct": [
+        3.52,
+        20.07
+      ],
+      "edge_ic": true,
+      "bench_retorno_pct": 64754.9,
+      "bench_sharpe": 1.085,
+      "supera_bench_sharpe": false
+    },
+    "sin_BCH-USD": {
+      "retorno_pct": 284.99,
+      "sharpe": 0.955,
+      "max_dd_pct": -27.18,
+      "dsr": 0.6533,
+      "t_stat": 3.31,
+      "pasa_t3": true,
+      "ic95_retorno_anual_pct": [
+        3.68,
+        20.41
+      ],
+      "edge_ic": true,
+      "bench_retorno_pct": 67635.9,
+      "bench_sharpe": 1.09,
+      "supera_bench_sharpe": false
+    },
+    "sin_FIL-USD": {
+      "retorno_pct": 265.97,
+      "sharpe": 0.916,
+      "max_dd_pct": -27.18,
+      "dsr": 0.6023,
+      "t_stat": 3.18,
+      "pasa_t3": true,
+      "ic95_retorno_anual_pct": [
+        3.33,
+        19.84
+      ],
+      "edge_ic": true,
+      "bench_retorno_pct": 43175.7,
+      "bench_sharpe": 1.042,
+      "supera_bench_sharpe": false
+    },
+    "sin_ICP-USD": {
+      "retorno_pct": 266.57,
+      "sharpe": 0.916,
+      "max_dd_pct": -27.18,
+      "dsr": 0.6021,
+      "t_stat": 3.18,
+      "pasa_t3": true,
+      "ic95_retorno_anual_pct": [
+        3.3,
+        19.92
+      ],
+      "edge_ic": true,
+      "bench_retorno_pct": 56894.45,
+      "bench_sharpe": 1.072,
+      "supera_bench_sharpe": false
+    }
+  }
+}

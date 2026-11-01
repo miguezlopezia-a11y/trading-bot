@@ -1,0 +1,92 @@
+{
+  "sello": "20261007",
+  "n_trials": 12,
+  "v_vieja": 0.0007021947704551833,
+  "v_nueva": 0.00012350796734786402,
+  "replica_dif_max": 0.0,
+  "var_observada_vieja": 0.0007021670248438965,
+  "ruido_medio_estimacion": 0.001338146000084936,
+  "dispersion_verdadera_naive": -0.0006359789752410396,
+  "sr0_viejo": 0.044115766902390344,
+  "sr0_nuevo": 0.01850173793274228,
+  "liston_viejo": 1.3117731385056128,
+  "liston_nuevo": 0.8234765259431225,
+  "sharpe_observado": 1.0082681199193697,
+  "dsr_viejo": 0.7189849445733288,
+  "dsr_nuevo": 0.9891314484032471,
+  "pasa_095_con_v_nueva": true,
+  "trials": {
+    "ma_cross": {
+      "sharpe_per": 0.06224180770126003,
+      "sharpe_anual": 1.1891280664676243,
+      "t_eff": 4239,
+      "equity_final": 5.042798131698259
+    },
+    "sma_timing_5": {
+      "sharpe_per": 0.042227846526769836,
+      "sharpe_anual": 0.806761875112648,
+      "t_eff": 4027,
+      "equity_final": 2.837498841896895
+    },
+    "sma_timing_10": {
+      "sharpe_per": 0.054738208712291715,
+      "sharpe_anual": 1.0457720090708582,
+      "t_eff": 3850,
+      "equity_final": 3.9224755963448654
+    },
+    "sma_timing_20": {
+      "sharpe_per": 0.06311747861048687,
+      "sharpe_anual": 1.2058577356981306,
+      "t_eff": 3976,
+      "equity_final": 4.954329551719899
+    },
+    "sma_timing_50": {
+      "sharpe_per": 0.06632892488221576,
+      "sharpe_anual": 1.2672123305709964,
+      "t_eff": 4070,
+      "equity_final": 5.724210060030258
+    },
+    "sma_timing_100": {
+      "sharpe_per": 0.059744305647017326,
+      "sharpe_anual": 1.1414133567179519,
+      "t_eff": 4246,
+      "equity_final": 4.6007185308819984
+    },
+    "sma_timing_304": {
+      "sharpe_per": 0.0631708779540353,
+      "sharpe_anual": 1.2068779287241613,
+      "t_eff": 4362,
+      "equity_final": 5.346128714433804
+    },
+    "tsmom_7": {
+      "sharpe_per": 0.045241863189557016,
+      "sharpe_anual": 0.8643445826028221,
+      "t_eff": 3939,
+      "equity_final": 3.159482769466098
+    },
+    "tsmom_365": {
+      "sharpe_per": 0.05847510797630166,
+      "sharpe_anual": 1.1171653692657368,
+      "t_eff": 4336,
+      "equity_final": 4.804489146481473
+    },
+    "connors_rsi2": {
+      "sharpe_per": 0.027986446366939578,
+      "sharpe_anual": 0.5346803070911614,
+      "t_eff": 5695,
+      "equity_final": 1.385966384409836
+    },
+    "rsi_hidden_divergence": {
+      "sharpe_per": 0.048990724118387424,
+      "sharpe_anual": 0.9359664700832186,
+      "t_eff": 4419,
+      "equity_final": 3.8862303217102294
+    },
+    "portfolio_fase_b": {
+      "sharpe_per": 0.05277516543508565,
+      "sharpe_anual": 1.0082681199193697,
+      "t_eff": 4336,
+      "equity_final": 4.175151198990724
+    }
+  }
+}

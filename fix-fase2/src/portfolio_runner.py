@@ -41,6 +41,74 @@ SLIPPAGE = 0.0005
 DATA_DIR = "data/multi"
 RESULTS = "results/portfolio_runner.json"
 
+# --- Parche auditoria N1, paso 3.0 (objeciones B-01 / A-10) -----------------
+# El loader original componia el nombre del CSV con la fecha de HOY, asi que
+# no alcanzaba los congelados (sellos 20261007 / 20261009) en ningun otro dia:
+# o reventaba sin red, o descargaba datos frescos EN SILENCIO y seguia. Ahora:
+#   - el sello es explicito (argumento, o env STAMP_CONGELADO, o el de hoy),
+#   - si el fichero no existe se falla EN DURO, no se descarga,
+#   - la descarga solo ocurre con PERMITIR_DESCARGA=1 en el entorno,
+#   - si hay .sha256 al lado, se verifica y se aborta si no cuadra.
+# No cambia ninguna metrica, umbral ni parametro del expediente.
+STAMP_CONGELADO = os.environ.get("STAMP_CONGELADO") or None
+PERMITIR_DESCARGA = os.environ.get("PERMITIR_DESCARGA") == "1"
+
+
+class DatoCongeladoAusente(RuntimeError):
+    """El CSV congelado que se pide no esta y la descarga esta prohibida."""
+
+
+def _verificar_sha256(path):
+    """Compara el fichero con su .sha256 de al lado. Aborta si no cuadra.
+    Devuelve (digest, 'verificado'|'sin_ancla')."""
+    digest = hashlib.sha256(open(path, "rb").read()).hexdigest()
+    sidecar = path + ".sha256"
+    if not os.path.exists(sidecar):
+        return digest, "sin_ancla"
+    esperado = open(sidecar).read().split()[0]
+    if digest != esperado:
+        raise RuntimeError(
+            f"sha256 NO coincide para {path}\n  calculado {digest}\n"
+            f"  esperado  {esperado} (segun {sidecar})")
+    return digest, "verificado"
+
+
+def cargar_congelados(tickers, data_dir=DATA_DIR, stamp=None, verbose=True):
+    """Carga un CSV congelado por ticker. Falla en duro si falta alguno.
+
+    stamp: sello 'YYYYMMDD'. Si es None usa STAMP_CONGELADO del entorno y,
+    si tampoco hay, la fecha de hoy (comportamiento historico)."""
+    sello = stamp or STAMP_CONGELADO or \
+        datetime.now(timezone.utc).strftime("%Y%m%d")
+    out, faltan = {}, []
+    for ticker in tickers:
+        base = f"{ticker.lower().replace('-', '_')}_{sello}.csv"
+        path = os.path.join(data_dir, base)
+        if not os.path.exists(path):
+            faltan.append(path)
+            continue
+        df = pd.read_csv(path, index_col=0, parse_dates=True)
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
+        digest, estado = _verificar_sha256(path)
+        out[ticker] = df
+        if verbose:
+            print(f"  {ticker:<10} {len(df):>5} velas  sello {sello}  "
+                  f"sha256 {digest[:12]}… [{estado}]")
+    if faltan:
+        disponibles = sorted({
+            f.rsplit("_", 1)[1][:8] for f in os.listdir(data_dir)
+            if f.endswith(".csv") and "_" in f}) if os.path.isdir(data_dir) else []
+        raise DatoCongeladoAusente(
+            f"faltan {len(faltan)} CSV congelados con sello {sello} en "
+            f"{data_dir}: {faltan[:3]}{' …' if len(faltan) > 3 else ''}\n"
+            f"sellos disponibles en ese directorio: {disponibles or 'ninguno'}\n"
+            "La descarga esta PROHIBIDA durante la auditoria. Pasa el sello "
+            "correcto (STAMP_CONGELADO=YYYYMMDD) o, si de verdad quieres "
+            "descargar, PERMITIR_DESCARGA=1.")
+    return out
+# --- fin del parche --------------------------------------------------------
+
 
 # ---------------------------------------------------------------- nucleo puro
 def ewma_vol(rets: np.ndarray, lam: float = LAMBDA) -> np.ndarray:
@@ -113,14 +181,25 @@ def portfolio_vol_anual(w: np.ndarray, cov_diaria: np.ndarray) -> float:
 
 
 # ---------------------------------------------------------------- datos
-def load_or_download() -> dict:
-    """Un CSV congelado por activo (+ sha256 + meta). Devuelve {ticker: df}."""
-    os.makedirs(DATA_DIR, exist_ok=True)
+def load_or_download(stamp=None, data_dir=None, tickers=None,
+                     verbose=True) -> dict:
+    """Un CSV congelado por activo (+ sha256 + meta). Devuelve {ticker: df}.
+
+    Parche auditoria N1 (3.0): por defecto NO descarga. Lee los congelados
+    del sello pedido y falla en duro si falta alguno. Para descargar hace
+    falta PERMITIR_DESCARGA=1 en el entorno."""
+    data_dir = data_dir or DATA_DIR
+    tickers = tickers or ACTIVOS
+    if not PERMITIR_DESCARGA:
+        return cargar_congelados(tickers, data_dir=data_dir, stamp=stamp,
+                                 verbose=verbose)
+    os.makedirs(data_dir, exist_ok=True)
     import yfinance as yf
     out = {}
-    for ticker in ACTIVOS:
-        stamp = datetime.now(timezone.utc).strftime("%Y%m%d")
-        path = os.path.join(DATA_DIR, f"{ticker.lower().replace('-', '_')}_{stamp}.csv")
+    for ticker in tickers:
+        stamp_ = stamp or STAMP_CONGELADO or \
+            datetime.now(timezone.utc).strftime("%Y%m%d")
+        path = os.path.join(data_dir, f"{ticker.lower().replace('-', '_')}_{stamp_}.csv")
         if os.path.exists(path):
             # ya congelado hoy: reutilizar (no re-descargar, hash preservado)
             df = pd.read_csv(path, index_col=0, parse_dates=True)

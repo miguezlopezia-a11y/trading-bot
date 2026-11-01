@@ -1,0 +1,94 @@
+{
+  "sello": "20261007",
+  "parte_a": {
+    "decisiones": 44030,
+    "divergentes": 10,
+    "por_activo": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1,
+      "BNB-USD": 1,
+      "XRP-USD": 1,
+      "ADA-USD": 1,
+      "AVAX-USD": 1,
+      "LINK-USD": 1,
+      "DOGE-USD": 1,
+      "LTC-USD": 1
+    },
+    "sharpe_benchmark_actual": 1.1644047612643846,
+    "sharpe_benchmark_simetrico": 1.160271233798433
+  },
+  "parte_b": {
+    "ma_cross": {
+      "exposicion_pct": 3.830369357045144,
+      "bh_mascara_real": 4.12087490520759,
+      "bh_aleatorio_medio": 0.4334286315192828,
+      "percentil": 83.55,
+      "estrategia": 4.220963936313313
+    },
+    "sma_timing_5": {
+      "exposicion_pct": 51.84678522571819,
+      "bh_mascara_real": 0.2471816935822749,
+      "bh_aleatorio_medio": 0.5796988885102426,
+      "percentil": 30.75,
+      "estrategia": -0.4141987717463589
+    },
+    "sma_timing_10": {
+      "exposicion_pct": 51.57318741450069,
+      "bh_mascara_real": 0.74130170076258,
+      "bh_aleatorio_medio": 0.5681926013137388,
+      "percentil": 59.25,
+      "estrategia": 0.24201451007712063
+    },
+    "sma_timing_20": {
+      "exposicion_pct": 52.39398084815321,
+      "bh_mascara_real": 1.3554731973555412,
+      "bh_aleatorio_medio": 0.5776122656595961,
+      "percentil": 87.9,
+      "estrategia": 1.0885756369266737
+    },
+    "sma_timing_50": {
+      "exposicion_pct": 55.12995896032832,
+      "bh_mascara_real": 1.7722357027035374,
+      "bh_aleatorio_medio": 0.5597028040909793,
+      "percentil": 96.5,
+      "estrategia": 1.5042271688322435
+    },
+    "sma_timing_100": {
+      "exposicion_pct": 50.752393980848154,
+      "bh_mascara_real": 1.7174882763631045,
+      "bh_aleatorio_medio": 0.5761291397638348,
+      "percentil": 94.45,
+      "estrategia": 1.4104873117007812
+    },
+    "sma_timing_304": {
+      "exposicion_pct": 35.15731874145007,
+      "bh_mascara_real": 1.187688155384505,
+      "bh_aleatorio_medio": 0.5533876788500298,
+      "percentil": 74.35000000000001,
+      "estrategia": 0.8698502691653971
+    },
+    "tsmom_7": {
+      "exposicion_pct": 53.214774281805745,
+      "bh_mascara_real": 0.10204170510085851,
+      "bh_aleatorio_medio": 0.581671936670421,
+      "percentil": 23.5,
+      "estrategia": -0.35423980353773193
+    },
+    "connors_rsi2": {
+      "exposicion_pct": 5.198358413132695,
+      "bh_mascara_real": 4.843269198631687,
+      "bh_aleatorio_medio": 0.5121546912578189,
+      "percentil": 92.15,
+      "estrategia": 4.068934162391861
+    },
+    "rsi_hidden_divergence": {
+      "exposicion_pct": 11.901504787961697,
+      "bh_mascara_real": 1.4897719886473426,
+      "bh_aleatorio_medio": 0.5953167955618283,
+      "percentil": 67.4,
+      "estrategia": 1.495943493156804
+    }
+  },
+  "percentil_medio": 70.97999999999999
+}
