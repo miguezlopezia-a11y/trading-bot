@@ -276,8 +276,63 @@ Ningún punto se da por hecho sin script ejecutado y salida pegada.
 
 ## 8. OK de Pablo
 
-> Pendiente. Esta sección la rellena Pablo después de leer el
-> `## Registro de revisión némesis — S1`. Sin texto aquí, la §3 no se ejecuta.
+**OK CONCEDIDO — 2026-11-01.** Pablo autoriza ejecutar la §3 **con el orden
+corregido** que propone el registro némesis, no con el orden original. El
+registro queda aceptado entero: sus 14 objeciones sustituyen a la §3 tal
+como estaba escrita.
+
+Orden autorizado, en este orden exacto:
+
+| Paso | Qué | Objeción que lo motiva |
+|---|---|---|
+| 3.0 | Parchear `load_or_download()` con ruta/stamp explícito y **fallo en duro** si el fichero no existe. Descarga prohibida durante toda la auditoría. | B-01, A-10 |
+| 3.0b | Reejecutar `rigor_estadistico.py` (corre sin red) dos veces y comparar contra `results/rigor_estadistico.json` | B-10, B-13 |
+| 3.1 | Cerrar A1/A2/A3 del `AUDIT_BRIEF.md` con tres scripts | B-04, A-18 |
+| 3.2 | Look-ahead por invariancia de prefijo, rejilla de `t`, OHLC coherente, incluyendo `_swings_confirmados` | B-05, B-06 |
+| 3.3 | Costes: agregado de rebalanceos y coste acumulado + sensibilidad ×2/×5/×10 | A-15 |
+| 3.4 | DSR como función de `N` (12, 20, 30, 50) y `V` recalculada por tramo | B-02, B-08 |
+| 3.5 | Simetría estrategia-benchmark (`:t` vs `:t+1`, máscara de exposición) | B-09 |
+| 3.6 | Supervivencia | — |
+| 3.7 | Repuntar los 4 verificadores de red a los CSV congelados | B-12 |
+
+**Condición de parada en 3.0b.** Si las cifras reejecutadas no coinciden con
+`results/rigor_estadistico.json`, **parar ahí** y reportar. No seguir con
+3.1 en adelante: auditar un harness que no es el que generó los resultados
+no dice nada sobre el expediente. Esa comparación decide el valor de todo
+lo demás, por eso va antes que nada.
+
+**Decisiones sobre los puntos de documentación que el registro deja abiertos:**
+
+- **B-03 (colisión de nombres).** Aceptada. En todo lo que escribas a partir
+  de ahora, los criterios del `AUDIT_BRIEF.md` se citan como `AUDIT-S1`…`AUDIT-S6`
+  y `AUDIT-A1`…`AUDIT-A8`; esta tarea y sus hermanas se citan como `N1` (esta),
+  `N2` (literatura) y `N3` (ampliación de T). Incluye la tabla de
+  correspondencia en el informe. No renombres los archivos.
+- **B-14 (destino del PR).** El PR va contra `fase-b-recuperada`, no contra
+  `main`. La §5 queda corregida por esta línea.
+- **§9 y el ancla.** `shared/` no existe en este repo y no va a existir.
+  Escribe los hallazgos que deban sobrevivir en
+  `fix-fase2/docs/estado-auditoria-n1.md`, que creas tú. Pablo lo replica al
+  búnker a mano.
+- **A-09 (`portfolio_resultado.md` no existe).** No lo reconstruyas. Deja
+  constancia en el informe de que el documento primario del dictamen de Fase B
+  no está y de que sus cifras solo son recuperables de
+  `fase_b_reevaluacion_resultado.md` y `results/portfolio_runner.json`.
+- **A-06 (`REGISTRO_F.md` y el "15/15 PASS").** Queda como **no verificable**,
+  con esa etiqueta. No lo des por bueno ni por falso.
+- **B-02 (`N=12`).** Entrégalo como asunción **no verificable**, etiquetada
+  así en el informe, y da el DSR como función de `N`. Di explícitamente a
+  partir de qué `N` el dictamen "SEÑAL DÉBIL" pasaría a "MUERTA".
+
+**Lo que sigue prohibido:** cambiar métricas, umbrales o criterios del
+expediente (§3.6 del brief original sigue vigente); mergear el PR; tocar
+nada fuera de `fix-fase2/`; descargar datos de red.
+
+**Alcance físico de las escrituras:** `fix-fase2/auditoria_n1/` (scripts),
+`fix-fase2/docs/auditoria_harness_n1.md` (informe),
+`fix-fase2/docs/estado-auditoria-n1.md` (hallazgos para el ancla), y el
+parche de `fix-fase2/src/portfolio_runner.py` del paso 3.0. Ningún `.csv`,
+`.sha256` ni `.meta.json` se modifica.
 
 ---
 
