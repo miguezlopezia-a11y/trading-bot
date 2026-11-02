@@ -1,0 +1,52 @@
+{
+  "B-d": {
+    "sharpe_est": 1.0081533486994563,
+    "sharpe_a": 1.0710904225677678,
+    "dif_de_sharpes": -0.06293707386831149,
+    "sharpe_del_diferencial": -0.3544647801017175,
+    "rho": 0.9712676962807966,
+    "sd_est": 0.006556102496159732,
+    "sd_a": 0.006698714979913316,
+    "sd_d": 0.0015950040859175098,
+    "media_anual_d_pct": -1.0801431653683107,
+    "mismo_signo": true
+  },
+  "B-e": {
+    "dias_cero": 915,
+    "pct_cero": 20.776566757493185,
+    "coste_en_dias_cero": 0.0035758944111665995,
+    "dias_cero_con_coste": 17,
+    "max_abs_rp_en_ceros": 0.0,
+    "d_medio_ceros": -3.908081323679068e-06,
+    "d_medio_no_ceros": -3.6328895544701894e-05,
+    "dias_cero_con_d_negativo": 17,
+    "sharpe_d_todos": -0.3544647801017175,
+    "sharpe_d_sin_ceros": -0.38733113381681505,
+    "efecto_de_los_ceros": 0.03286635371509755,
+    "n_efectivo_de_comparacion": 3489,
+    "direccion": "los ceros FAVORECEN a Fase B (+0.033 de Sharpe(d))",
+    "severidad": "MEDIA (bajada de ALTA: mi objecion tenia el signo al reves)"
+  },
+  "B-f1_PPY": {
+    "dias_calendario": 4404,
+    "filas": 4404,
+    "huecos": 0,
+    "veredicto": "RETIRADA: PPY=365 correcto e irrelevante al signo"
+  },
+  "B-f2_contador": {
+    "construcciones_medidas_aqui": [
+      "(a) escalado dia a dia alineado",
+      "(a') escalado con el retardo del brief",
+      "(b) escalado por constante (no-op en Sharpe)",
+      "(c) binario alineado",
+      "(c') binario con el retardo del brief",
+      "EW con coste real de rebalanceo",
+      "B&H puro",
+      "B&H universo fijo del primer dia",
+      "B&H de BTC solo",
+      "panel de 15 igualado"
+    ],
+    "filas_que_pide_la_seccion_4_2": 96,
+    "contador_N6": 5
+  }
+}

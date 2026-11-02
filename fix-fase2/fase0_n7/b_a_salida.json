@@ -1,0 +1,96 @@
+{
+  "sello": "20261007",
+  "dias": 4404,
+  "k_brief": 0.1559827260735808,
+  "tabla": {
+    "estrategia Fase B (neto de costes)": {
+      "retorno_pct": 317.5151198990724,
+      "sharpe": 1.0081533486994563,
+      "max_dd_pct": -26.899893854084024,
+      "calmar": 0.9782714942517985,
+      "exposicion_media": 1.0,
+      "n": 4404
+    },
+    "benchmark PUBLICADO: B&H 100 %": {
+      "retorno_pct": 132831.0356355764,
+      "sharpe": 1.1641398732233168,
+      "max_dd_pct": -88.95843043348796,
+      "calmar": 123.753645511943,
+      "exposicion_media": 1.0,
+      "n": 4404
+    },
+    "(a) exposure[t]*r_bench  ALINEADO": {
+      "retorno_pct": 373.56674488978285,
+      "sharpe": 1.0710904225677678,
+      "max_dd_pct": -27.07291714203402,
+      "calmar": 1.1436120116674395,
+      "exposicion_media": 0.1559827260735808,
+      "n": 4404
+    },
+    "(a') exposure[t-1]*r_bench (del brief)": {
+      "retorno_pct": 381.2490163449471,
+      "sharpe": 1.0766818347001186,
+      "max_dd_pct": -27.413155206413837,
+      "calmar": 1.1526441781164776,
+      "exposicion_media": 0.1559827260735808,
+      "n": 4404
+    },
+    "(b) k*r_bench, k=0.15598273": {
+      "retorno_pct": 386.121298712245,
+      "sharpe": 1.164139873223317,
+      "max_dd_pct": -25.024077545178912,
+      "calmar": 1.2788253458300867,
+      "exposicion_media": 0.1559827260735808,
+      "n": 4404
+    },
+    "(c) mask exposure[t]>0  ALINEADO": {
+      "n_dias": 3489,
+      "pct_dias": 79.22343324250681,
+      "sharpe_estrategia": 1.1357119655605208,
+      "sharpe_bh": 1.15653135224147,
+      "calmar_estrategia": 1.2448203049057514,
+      "calmar_bh": 40.31174703422374,
+      "diferencia_sharpe": -0.02081938668094918
+    },
+    "(c') mask exposure[t-1]>0 (del brief)": {
+      "n_dias": 3489,
+      "pct_dias": 79.22343324250681,
+      "sharpe_estrategia": 1.146994168297734,
+      "sharpe_bh": 1.1925065674467272,
+      "calmar_estrategia": 1.2470438811072617,
+      "calmar_bh": 53.91376167479431,
+      "diferencia_sharpe": -0.04551239914899319
+    }
+  },
+  "b_es_noop_en_sharpe": true,
+  "sharpe_b": 1.164139873223317,
+  "sharpe_bench_sin_escalar": 1.1641398732233168,
+  "desfase": {
+    "sharpe_a_alineado": 1.0710904225677678,
+    "sharpe_a_brief": 1.0766818347001186,
+    "delta_sharpe": 0.005591412132350815,
+    "dias_mask_alineado": 3489,
+    "dias_mask_brief": 3489,
+    "dias_mask_difieren": 34,
+    "diferencial_alineado": -0.06293707386831149,
+    "diferencial_brief": -0.0685284860006623,
+    "favorece_a_fase_b": false
+  },
+  "permutaciones": {
+    "n": 2000,
+    "semilla": 43,
+    "sharpe_real": 1.0710904225677678,
+    "media_permutado": 0.9682765020845712,
+    "sd_permutado": 0.159649032926988,
+    "percentil": 73.25,
+    "z": 0.6439996447095065,
+    "lectura": "seleccion NO significativa (z=+0.64); el leve sesgo va en contra de Fase B pero no se distingue del ruido"
+  },
+  "veredicto_b_a": [
+    "(b) queda DESCARTADA: es un no-op para el Sharpe (identidad a 1e-12). No es una tercera construccion, es el 1.164 publicado con otra etiqueta. Solo aporta retorno/maxDD/Calmar, que no son invariantes a escala.",
+    "(c) corrige poco: la mascara conserva 79.2 % de los dias y en ellos el benchmark sigue al 100 % mientras la estrategia esta al 19.7 %. No iguala exposicion: solo descarta los dias de caja total.",
+    "(a) es la unica que iguala de verdad el gross dia a dia. Su objecion -- que le regala al benchmark el timing de vol de la estrategia -- esta MEDIDA: percentil 73.2 %, z +0.64. El sesgo existe y va EN CONTRA de Fase B, no a su favor, asi que (a) es la construccion DURA, no la blanda.",
+    "CONCLUSION: la comparacion honesta es (a) ALINEADA con exposure[t], leida junto al percentil de seleccion. (c) se reporta como control de robustez y (b) solo para retorno/Calmar. NO es 'hay que leer las tres juntas' en pie de igualdad: (b) no es una comparacion."
+  ],
+  "ninguna_es_honesta": false
+}

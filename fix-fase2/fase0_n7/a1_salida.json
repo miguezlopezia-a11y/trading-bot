@@ -1,0 +1,94 @@
+{
+  "2.1": {
+    "campos_que_difieren": [],
+    "veredicto": "CONFIRMADO"
+  },
+  "2.2": {
+    "lineas_citadas_ausentes": [],
+    "docstring_bateria_linea6": "benchmark = portfolio igual-ponderado buy&hold de los mismos 10 activos",
+    "docstring_dice_buyhold": true,
+    "veredicto": "CONFIRMADO"
+  },
+  "2.3": {
+    "reporta_sharpe": true,
+    "reporta_calmar": true,
+    "mismo_subconjunto": true,
+    "tiene_ic_diferencial": false,
+    "fase_a_variantes": 17,
+    "fase_a_pierden": 15,
+    "veredicto": "CONFIRMADO"
+  },
+  "2.4": {
+    "constantes_que_difieren": {},
+    "activos": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "BNB-USD",
+      "XRP-USD",
+      "ADA-USD",
+      "AVAX-USD",
+      "LINK-USD",
+      "DOGE-USD",
+      "LTC-USD"
+    ],
+    "etiqueta_de_lineas_desplazada": true,
+    "veredicto": "CONFIRMADO con correccion"
+  },
+  "2.5": {
+    "grep_vacio": true,
+    "grep_rama_completa": "fase-b-recuperada:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md:146:### 2.5 No hay tasa libre de riesgo en ninguna parte del c\u00f3digo\nfase-b-recuperada:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md:149:$ git grep -n -i -E \"risk_free|risk-free|libre de riesgo|\\brf\\b|tasa\" fase-b-recuperada -- fix-fase2/src/\nfase-b-recuperada:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md:467:Sharpe calculado en bruto, sin tasa libre de riesgo, PPY=365:",
+    "ficheros_de_tasas": [],
+    "veredicto": "CONFIRMADO"
+  },
+  "2.6": {
+    "wc_l": 4405,
+    "filas": 4404,
+    "ini": "2014-09-17",
+    "fin": "2026-10-07",
+    "v0": 1.0,
+    "vN": 1329.310356355764,
+    "retorno_pct": 132831.04,
+    "exposure_en_results": false,
+    "veredicto": "CONFIRMADO"
+  },
+  "2.7": {
+    "ficheros": {
+      "portfolio_benchmark_muertos.csv": true,
+      "portfolio_equity_muertos.csv": true,
+      "portfolio_supervivencia.json": true
+    },
+    "supervivencia_json": {
+      "criterio_inclusion": "top-20 market-cap historico (2017-2021) y hoy >85% bajo maximo; criterio de caida, no de senal; yfinance period=max",
+      "n_activos": 15,
+      "n_vetos_wmax": 2724,
+      "n_vetos_vol": 3190,
+      "exposicion_media": 0.15711804729336995
+    },
+    "csv_muertos": 15,
+    "sellos_muertos": [
+      "20261009"
+    ],
+    "etiqueta_de_lineas_desplazada": true,
+    "veredicto": "CONFIRMADO con correccion"
+  },
+  "2.8": {
+    "ficheros_que_mencionan_igual_exposicion": [
+      "fase-b-recuperada:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+      "fase-b-recuperada:fix-fase2/docs/auditoria_harness_n1.md",
+      "fase-b-recuperada:fix-fase2/docs/estado-auditoria-n1.md",
+      "fase-b-recuperada:fix-fase2/docs/rigor_estadistico_resultado.md",
+      "fase-b-recuperada:fix-fase2/src/rigor_estadistico.py",
+      "fase-b-recuperada:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+      "fase-b-recuperada:fix-fase2/tareas/tarea-nube-S1-auditoria-harness-trading.md",
+      "fase-b-recuperada:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md"
+    ],
+    "supera_bench_sharpe_publicado": {
+      "T1_2015-2018": false,
+      "T2_2019-2022": false,
+      "T3_2023-fin": false,
+      "_dictamen": null
+    },
+    "veredicto": "CONFIRMADO como regla; la \u00a71 del brief, REFUTADA tal como esta escrita"
+  }
+}

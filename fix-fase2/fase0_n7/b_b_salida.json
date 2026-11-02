@@ -1,0 +1,90 @@
+{
+  "candidatas": {
+    "EW diario, sin coste (el del expediente)": {
+      "sharpe_bench": 1.071090422567768,
+      "diferencial": -0.06293707386831171,
+      "calmar_bench": 1.1436120116674333,
+      "max_dd_bench": -27.072917142034008,
+      "gana_fase_b": false
+    },
+    "EW diario, CON su coste real de rebalanceo": {
+      "sharpe_bench": 1.0609805923932092,
+      "diferencial": -0.05282724369375291,
+      "calmar_bench": 1.1180556742181966,
+      "max_dd_bench": -27.13751554973068,
+      "gana_fase_b": false
+    },
+    "B&H PURO (sin rebalanceo diario)": {
+      "sharpe_bench": 1.039164891863676,
+      "diferencial": -0.031011543164219724,
+      "calmar_bench": 1.0495303060031582,
+      "max_dd_bench": -27.182026861061452,
+      "gana_fase_b": false
+    },
+    "B&H PURO + coste de las 4 entradas": {
+      "sharpe_bench": 1.039164891863676,
+      "diferencial": -0.031011543164219724,
+      "calmar_bench": 1.0495303060031582,
+      "max_dd_bench": -27.182026861061452,
+      "gana_fase_b": false
+    },
+    "BTC B&H, 100 %": {
+      "sharpe_bench": 0.9860431661850126,
+      "diferencial": 0.022110182514443633,
+      "calmar_bench": 17.998514469194983,
+      "max_dd_bench": -83.39900882218971,
+      "gana_fase_b": true
+    },
+    "BTC B&H igualado a exposure[t]": {
+      "sharpe_bench": 1.0480774145286411,
+      "diferencial": -0.03992406582918484,
+      "calmar_bench": 0.9979687068289377,
+      "max_dd_bench": -21.45012148299153,
+      "gana_fase_b": false
+    },
+    "panel15 \u00b7 EW 100 % (el publicado del panel 15)": {
+      "sharpe_bench": 1.0678770941938256,
+      "diferencial": -0.1523794524841321,
+      "calmar_bench": 50.22421631692851,
+      "max_dd_bench": -90.57703950620511,
+      "gana_fase_b": false
+    },
+    "panel15 \u00b7 EW igualado a exposure[t]": {
+      "sharpe_bench": 0.9506623511693018,
+      "diferencial": -0.03516470945960826,
+      "calmar_bench": 0.8689474761233303,
+      "max_dd_bench": -28.55930127609651,
+      "gana_fase_b": false
+    },
+    "panel15 \u00b7 EW igualado + coste real": {
+      "sharpe_bench": 0.9395844014037115,
+      "diferencial": -0.024086759694017967,
+      "calmar_bench": 0.8468235197841042,
+      "max_dd_bench": -28.6248307772418,
+      "gana_fase_b": false
+    },
+    "panel15 \u00b7 B&H PURO igualado a exposure[t]": {
+      "sharpe_bench": 0.9177289003765036,
+      "diferencial": -0.0022312586668100653,
+      "calmar_bench": 0.8150079508454037,
+      "max_dd_bench": -28.29433654462477,
+      "gana_fase_b": false
+    }
+  },
+  "drawdown": {
+    "mdd_fase_b": -26.899893854084024,
+    "mdd_a_igualado": -27.072917142034008,
+    "mdd_bench_100": -88.95843043348796,
+    "calmar_fase_b": 0.9782714942517985,
+    "calmar_a_igualado": 1.1436120116674333,
+    "contrapeso_sobrevive_a_igual_exposicion": true
+  },
+  "panel15": {
+    "sharpe_fase_b": 0.9154976417096935,
+    "exposicion_media": 0.15711804729336995,
+    "dias": 4406
+  },
+  "construcciones_en_que_gana_fase_b": [
+    "BTC B&H, 100 %"
+  ]
+}

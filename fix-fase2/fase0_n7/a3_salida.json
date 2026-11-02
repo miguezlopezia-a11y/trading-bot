@@ -1,0 +1,41 @@
+{
+  "objetivo_exposicion_media": 0.1559827260735808,
+  "sellos": {
+    "20261007": {
+      "dias": 4404,
+      "ini": "2014-09-17",
+      "fin": "2026-10-07",
+      "exposicion_media": 0.1559827260735808,
+      "diferencia_vs_objetivo": 0.0,
+      "identica_al_bit": true,
+      "expo_min": 0.0,
+      "expo_max": 0.4302864631110993,
+      "dias_expo_cero": 915,
+      "equity_final": 4.175151198990724,
+      "bench_final": 1329.310356355764,
+      "fechas_comunes_con_results": 4404,
+      "max_dif_equity_vs_results": 0.0
+    },
+    "20261009": {
+      "dias": 4406,
+      "ini": "2014-09-17",
+      "fin": "2026-10-09",
+      "exposicion_media": 0.15591192138630272,
+      "diferencia_vs_objetivo": -7.080468727807543e-05,
+      "identica_al_bit": false,
+      "expo_min": 0.0,
+      "expo_max": 0.4302864631110993,
+      "dias_expo_cero": 917,
+      "equity_final": 4.175151198990724,
+      "bench_final": 1277.6180579816871,
+      "fechas_comunes_con_results": 4404,
+      "max_dif_equity_vs_results": 0.0
+    }
+  },
+  "sellos_que_reproducen_al_bit": [
+    "20261007"
+  ],
+  "veredicto_nogo": "NO-GO NO SE DISPARA (sello 20261007)",
+  "sello_que_manda_el_brief": "20261009",
+  "reproduce_con_el_sello_del_brief": false
+}
