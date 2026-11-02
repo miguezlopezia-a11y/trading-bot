@@ -1,4 +1,33 @@
-# Tarea N8 (nube) — Carry de funding: umbral de viabilidad, y contrapropuesta obligatoria
+# Tarea N8 (nube) — CANCELADA. Reemplazada por N9 (VPS)
+
+> ## ⛔ NO EJECUTAR. Esta tarea está cancelada desde el 2026-11-02 20:56.
+>
+> **Reemplazada por**
+> `fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md`
+> (commit `0f77f9e`), que cubre lo mismo y más, **en el VPS**.
+>
+> **Por qué se canceló, dicho sin adornos:** este brief se escribió para la nube,
+> y la nube **no tiene red** para datos de mercado (medido dos veces: N5 · A-1 y
+> N7 · A-7, 0 de 10 fuentes). Así que N8 solo podía entregar una fórmula y una
+> tabla de sensibilidad — **otro documento**, cuando lo que hace falta es la
+> cuenta con datos reales. Se eligió la nube porque había crédito caducando el
+> 05-nov, no porque fuera el sitio correcto. Es un error de quien lo escribió, y
+> es el mismo que Pablo ya había señalado ese día.
+>
+> **N9 hace lo que esto no podía:** corre en el VPS, donde las tres APIs de
+> funding (Binance, Bybit, OKX) responden **200 sin credenciales** —verificado
+> por SSH el 2026-11-02 a las 18:40—, hay **7,1 años** de histórico, y entrega
+> **euros al año** más la especificación del bot. Conserva íntegro lo único
+> valioso de este brief: el **Paso C de contrapropuesta obligatoria**, y las tres
+> cosas que N5 · B-c ya había refutado y no hay que volver a afirmar.
+>
+> **Nunca se ejecutó:** §7 entera en `[pendiente]`, sin registro némesis, sin
+> rama `nube/n8-carry-funding`, cero código y cero datos. Lo detectó el **Paso
+> A-3 de N9**, que es justo la comprobación que este expediente añadió tras el
+> fallo de N7 — y cazó un duplicado creado 14 minutos antes. Funcionó.
+>
+> Se conserva, en vez de borrarse, porque el historial de por qué esto pasó de
+> la nube al VPS es parte del expediente.
 
 **Repo:** `miguezlopezia-a11y/trading-bot` · **Rama base:** `fase-b-recuperada`
 **Rama de trabajo:** `nube/n8-carry-funding` · **PR contra:** `fase-b-recuperada`, nunca contra `main`
