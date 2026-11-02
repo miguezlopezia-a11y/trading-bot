@@ -111,22 +111,50 @@ def main():
     print(f"  calcula IC sobre la DIFERENCIA de Sharpes: {tiene_ic}"
           f"   (el brief dice que no, y es el defecto a no repetir)")
     print("  ---- §1: '9 de 11 variantes perdian contra el B&H' (arbol de la RAIZ) ----")
+    # CORREGIDO tras la critica del Maker/Verifier (hallazgo 2, CRITICA).
+    # La v1 buscaba la tabla "por forma" con un re.match suelto y capturaba
+    # ADEMAS seis filas de otra tabla del mismo documento (lineas 58-66), donde
+    # las columnas 3 y 4 no son estrategia-contra-B&H. Daba 17 y 15, y el
+    # registro pego 11 y 9 a mano. Ahora la tabla se ANCLA por su encabezado
+    # ("## Benchmark de exposicion igualada") y por la cabecera de columnas, y
+    # las columnas se eligen POR NOMBRE, no por posicion adivinada.
     doc = os.path.join(RAIZ, "docs/rigor_estadistico_resultado.md")
-    pierden, total = 0, 0
-    for l in open(doc, encoding="utf-8"):
-        m = re.match(r"\|\s*([a-z_0-9]+)\s*\|\s*([\d.]+)\s*\|\s*(-?[\d.]+)\s*\|\s*(-?[\d.]+)\s*\|", l)
-        if m:
-            total += 1
-            st, bh = float(m.group(3)), float(m.group(4))
-            if st < bh:
-                pierden += 1
+    lineas_doc = open(doc, encoding="utf-8").read().splitlines()
+    i0 = next(i for i, l in enumerate(lineas_doc)
+              if l.strip().startswith("## Benchmark de exposici"))
+    i_cab = next(i for i in range(i0, len(lineas_doc))
+                 if lineas_doc[i].startswith("| Variante"))
+    cols = [c.strip() for c in lineas_doc[i_cab].strip("|").split("|")]
+    c_st = cols.index("Sharpe estrat.")
+    c_bh = cols.index("Sharpe B&H igual expo.")
+    print(f"  tabla anclada en la linea {i_cab+1}: {lineas_doc[i_cab]}")
+    print(f"  columna 'Sharpe estrat.'={c_st}  'Sharpe B&H igual expo.'={c_bh}")
+    pierden, total, detalle = 0, 0, []
+    for l in lineas_doc[i_cab + 2:]:
+        if not l.startswith("|"):
+            break
+        cel = [c.strip() for c in l.strip("|").split("|")]
+        if len(cel) <= max(c_st, c_bh):
+            break
+        st, bh = float(cel[c_st]), float(cel[c_bh])
+        total += 1
+        if st < bh:
+            pierden += 1
+        detalle.append((cel[0], st, bh, "pierde" if st < bh else "GANA"))
+    for nom, st, bh, v in detalle:
+        print(f"    {nom:<24} est={st:>6} bh={bh:>6}  {v}")
     print(f"  variantes tabuladas: {total}   pierden en Sharpe: {pierden}")
     out["2.3"] = {"reporta_sharpe": tiene_sharpe, "reporta_calmar": tiene_calmar,
                   "mismo_subconjunto": bool(mismo_subconj),
                   "tiene_ic_diferencial": bool(tiene_ic),
                   "fase_a_variantes": total, "fase_a_pierden": pierden,
+                  "fase_a_detalle": detalle,
                   "veredicto": "CONFIRMADO"}
-    print(f"  -> §2.3 CONFIRMADO ({pierden} de {total}, como dice la §1)")
+    coincide_con_la_s1 = (total == 11 and pierden == 9)
+    print(f"  la §1 del brief afirma 'nueve de once'. Medido: {pierden} de {total}"
+          f"  -> {'COINCIDE' if coincide_con_la_s1 else 'NO COINCIDE'}")
+    out["2.3"]["coincide_con_la_s1"] = bool(coincide_con_la_s1)
+    print(f"  -> §2.3 CONFIRMADO ({pierden} de {total})")
 
     # ---------------------------------------------------------------- 2.4
     print("\n=== §2.4 los parametros (31-42) ===")

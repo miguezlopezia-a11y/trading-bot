@@ -14,9 +14,78 @@
     "reporta_calmar": true,
     "mismo_subconjunto": true,
     "tiene_ic_diferencial": false,
-    "fase_a_variantes": 17,
-    "fase_a_pierden": 15,
-    "veredicto": "CONFIRMADO"
+    "fase_a_variantes": 11,
+    "fase_a_pierden": 9,
+    "fase_a_detalle": [
+      [
+        "ma_cross",
+        4.22,
+        4.12,
+        "GANA"
+      ],
+      [
+        "sma_timing_5",
+        -0.41,
+        0.25,
+        "pierde"
+      ],
+      [
+        "sma_timing_10",
+        0.24,
+        0.74,
+        "pierde"
+      ],
+      [
+        "sma_timing_20",
+        1.09,
+        1.36,
+        "pierde"
+      ],
+      [
+        "sma_timing_50",
+        1.5,
+        1.77,
+        "pierde"
+      ],
+      [
+        "sma_timing_100",
+        1.41,
+        1.72,
+        "pierde"
+      ],
+      [
+        "sma_timing_304",
+        0.87,
+        1.19,
+        "pierde"
+      ],
+      [
+        "tsmom_7",
+        -0.35,
+        0.1,
+        "pierde"
+      ],
+      [
+        "tsmom_365",
+        -0.34,
+        1.63,
+        "pierde"
+      ],
+      [
+        "connors_rsi2",
+        4.07,
+        4.84,
+        "pierde"
+      ],
+      [
+        "rsi_hidden_divergence",
+        1.5,
+        1.49,
+        "GANA"
+      ]
+    ],
+    "veredicto": "CONFIRMADO",
+    "coincide_con_la_s1": true
   },
   "2.4": {
     "constantes_que_difieren": {},

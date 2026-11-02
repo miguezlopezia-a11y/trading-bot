@@ -102,8 +102,11 @@ def main():
         ("EW diario, sin coste (el del expediente)", e * r_ew),
         ("EW diario, CON su coste real de rebalanceo", e * (r_ew - coste)),
         ("B&H PURO (sin rebalanceo diario)", e * r_bh),
-        ("B&H PURO + coste de las 4 entradas", e * r_bh),
     ]
+    # CORREGIDO tras la critica (hallazgo 11, MEDIA). La v1 tenia una cuarta
+    # fila, "B&H PURO + coste de las 4 entradas", BIT A BIT identica a la
+    # anterior porque el B&H puro no paga rebalanceo diario. Inflaba el
+    # recuento a costa de una fila vacia. Retirada.
     for nom, x in cands:
         d = s_est - sharpe(x)
         print(f"  {nom:<48} {sharpe(x):>8.4f} {d:>+9.4f} {calmar(x):>8.3f}"
@@ -140,18 +143,30 @@ def main():
     print(f"  Calmar Fase B {calmar(r_est):.3f} vs (a) EW igualado "
           f"{calmar(best):.3f}  -> Fase B "
           f"{'GANA' if calmar(r_est) > calmar(best) else 'pierde'}")
-    print("  => el contrapeso del drawdown SOLO existe contra el benchmark al")
-    print("     100 %. A igual exposicion desaparece: el benchmark escalado")
-    print(f"     tiene maxDD {mdd(best):.2f} %, casi el mismo que Fase B.")
-    print("     La §2.1 del brief presenta -26.9 vs -88.96 como 'contrapeso real';")
-    print("     a igual exposicion ese contrapeso se evapora. Es un hallazgo")
-    print("     EN CONTRA de Fase B que el brief no vio, no a favor.")
+    # CORREGIDO tras la critica (hallazgo 4, CRITICA). La v1 concluia aqui que
+    # el contrapeso "se evapora" / "desaparece". ES FALSO, y lo contradice este
+    # mismo script dos lineas arriba ("-> Fase B GANA") y el campo
+    # contrapeso_sobrevive_a_igual_exposicion del JSON.
+    gana_mdd = abs(mdd(r_est)) < abs(mdd(best))
+    print("  => el contrapeso COLAPSA EN MAGNITUD Y CONSERVA EL SIGNO:")
+    print(f"     del par publicado {mdd(r_ew)/mdd(r_est):.3f}x  ->  a igual"
+          f" exposicion {mdd(best)/mdd(r_est):.4f}x")
+    print(f"     de +{mdd(r_est)-mdd(r_ew):.2f} pp a +{mdd(r_est)-mdd(best):.2f} pp")
+    print(f"     Fase B sigue teniendo el drawdown MENOR: {gana_mdd}")
+    print(f"     Lo que SI se invierte es el Calmar: {calmar(r_est):.3f} contra"
+          f" {calmar(best):.3f}")
+    print("     Luego la §2.1 NO debe RETIRAR el drawdown: debe declararlo")
+    print("     medido a igual exposicion. Retirarlo borraria un hecho cierto.")
     out["drawdown"] = {"mdd_fase_b": mdd(r_est), "mdd_a_igualado": mdd(best),
                        "mdd_bench_100": mdd(r_ew),
                        "calmar_fase_b": calmar(r_est),
                        "calmar_a_igualado": calmar(best),
                        "contrapeso_sobrevive_a_igual_exposicion":
-                           bool(mdd(r_est) > mdd(best))}
+                           bool(abs(mdd(r_est)) < abs(mdd(best))),
+                       "ratio_par_publicado": float(mdd(r_ew) / mdd(r_est)),
+                       "ratio_a_igual_exposicion": float(mdd(best) / mdd(r_est)),
+                       "calmar_se_invierte": bool(calmar(r_est) < calmar(best)),
+                       "lectura": "colapsa en magnitud, conserva el signo"}
 
     # ---------------- panel de 15
     print(f"\n=== B-b.4 candidata (1) del brief: el panel de 15, sello {SELLO15} ===")
@@ -183,18 +198,48 @@ def main():
             "sharpe_bench": sharpe(x), "diferencial": d,
             "calmar_bench": calmar(x), "max_dd_bench": mdd(x),
             "gana_fase_b": bool(d > 0)}
+    # ANADIDO tras la critica (hallazgo 14, MEDIA). La v1 describia una
+    # "escalera" sumando +0.010 (coste) + 0.032 (B&H puro) + 0.028 (panel 15)
+    # como si fueran aditivos. No lo son: coste y B&H puro se miden los DOS
+    # desde la misma base, y el B&H puro no paga rebalanceo diario, asi que el
+    # +0.010 se anula en cuanto se aplica el +0.032. Y la fila que combina las
+    # tres NO ESTABA MEDIDA. Aqui esta.
+    print("\n=== B-b.4-bis la fila combinada, que la v1 no midio ===")
+    comb = e15 * bh15          # panel 15 + B&H puro + igual exposicion
+    dc = s15 - sharpe(comb)
+    print(f"  {'panel 15 + B&H puro + igual exposicion':<48} {sharpe(comb):>8.4f}"
+          f" {dc:>+9.4f} {calmar(comb):>8.3f} {mdd(comb):>9.2f} {str(dc > 0):>13}")
+    print("  Coincide con 'B&H PURO igualado' porque el B&H puro no tiene")
+    print("  rebalanceo diario que cobrar: la combinacion de las tres")
+    print("  correcciones ES esa fila, no la suma de sus tres deltas.")
+    print(f"  Suma aritmetica ingenua de los tres deltas sobre -0.0629:"
+          f" {-0.0629 + 0.0101 + 0.0319 + 0.0330:+.4f}  <- NO es el resultado")
+    print(f"  Resultado realmente medido                   : {dc:+.4f}")
+    print(f"  -> diferencial mas benigno de todas las construcciones HONESTAS")
+    out["fila_combinada_panel15_bh_puro"] = {
+        "sharpe_bench": sharpe(comb), "diferencial": dc,
+        "nota": "el coste de rebalanceo no aplica al B&H puro; las tres "
+                "correcciones NO son aditivas"}
     out["panel15"] = {"sharpe_fase_b": s15, "exposicion_media": float(e15.mean()),
-                      "dias": int(len(e15))}
+                      "dias": int(len(e15)), "sello": SELLO15,
+                      "aviso_sellos": "el panel de 10 corre con 20261007 y el de "
+                                      "15 solo existe con 20261009: NO van en la "
+                                      "misma escalera"}
 
     print("\n=== B-b.5 veredicto de B-b ===")
     ganan = [k for k, v in out["candidatas"].items() if v["gana_fase_b"]]
-    print(f"  construcciones medidas: {len(out['candidatas'])}")
+    print(f"  construcciones DISTINTAS medidas aqui: {len(out['candidatas'])}")
+    print("  (la v1 decia 'diez': una de sus filas era duplicado al bit de otra)")
+    print(f"  AVISO DE SELLOS: las del panel de 10 corren con {SELLO10} y las del")
+    print(f"  panel de 15 con {SELLO15}, porque el de 15 solo existe con ese sello.")
+    print("  NO se pueden leer como una sola escalera.")
     print(f"  construcciones en que Fase B GANA: {len(ganan)}")
     for g in ganan:
         print(f"    - {g}: diferencial {out['candidatas'][g]['diferencial']:+.4f}")
     if not ganan:
         print("    (ninguna)")
     out["construcciones_en_que_gana_fase_b"] = ganan
+    out["n_construcciones_distintas"] = len(out["candidatas"])
     json.dump(out, open("fase0_n7/b_b_salida.json", "w"), indent=2)
     print("\n-> fase0_n7/b_b_salida.json")
 

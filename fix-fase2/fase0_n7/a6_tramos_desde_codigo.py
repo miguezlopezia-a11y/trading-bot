@@ -77,9 +77,15 @@ def main():
 def a6_6():
     import json as _j
     print("=== A-6.6 el walkforward publicado YA tiene campos de benchmark ===")
+    # CORREGIDO tras la critica del Maker/Verifier (hallazgo 9, ALTA).
+    # La v1 iteraba el NIVEL RAIZ del JSON, cuyas claves son
+    # tramos_definicion / n_trials / var_trials / seed / resultados. Los dicts
+    # por tramo estan ANIDADOS dentro de "resultados", asi que el filtro nunca
+    # encontraba nada e imprimia "resultados: {}". El registro pego a mano las
+    # cifras que habia sacado con una consulta aparte. Ahora las produce el script.
     pub = _j.load(open(PUB))
-    for k, v in pub.items():
-        if not isinstance(v, dict):
+    for k, v in pub["resultados"].items():
+        if not isinstance(v, dict) or not v:
             continue
         campos = {kk: v[kk] for kk in v
                   if "bench" in kk or kk in ("sharpe_anual", "exposicion_media")}

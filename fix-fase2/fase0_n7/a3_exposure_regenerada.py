@@ -97,19 +97,38 @@ def main():
         out["sellos"][sello]["max_dif_equity_vs_results"] = d
 
     print("\n=== A-3.3 veredicto del NO-GO ===")
+    # CORREGIDO tras la critica del Maker/Verifier (hallazgo 1, CRITICA).
+    # La v1 evaluaba el NO-GO contra "algun sello" y emitia
+    # "NO-GO NO SE DISPARA (sello 20261007)". Eso NO es lo que el brief manda.
+    # A-3 dice literal: "ejecutando portfolio_runner.py con
+    # STAMP_CONGELADO=20261009, y verificar que su media da
+    # 0.1559827260735808 al bit". El NO-GO es binario y se evalua contra ESE
+    # sello. El script lo calcula ahora, en vez de dejarlo a la prosa.
+    SELLO_DEL_BRIEF = "20261009"
     exacto = [s for s in SELLOS if out["sellos"][s]["identica_al_bit"]]
     out["sellos_que_reproducen_al_bit"] = exacto
-    if exacto:
-        print(f"  reproduce AL BIT con el sello: {exacto}")
-        out["veredicto_nogo"] = f"NO-GO NO SE DISPARA (sello {exacto[0]})"
-    else:
-        print("  NINGUN sello reproduce exposicion_media al bit")
-        out["veredicto_nogo"] = "NO-GO SE DISPARA"
-    print(f"  -> {out['veredicto_nogo']}")
-    print("  OJO: el brief manda el sello 20261009 explicitamente en A-3.")
-    out["sello_que_manda_el_brief"] = "20261009"
-    out["reproduce_con_el_sello_del_brief"] = \
-        out["sellos"]["20261009"]["identica_al_bit"]
+    out["sello_que_manda_el_brief"] = SELLO_DEL_BRIEF
+    reproduce_como_manda = out["sellos"][SELLO_DEL_BRIEF]["identica_al_bit"]
+    out["reproduce_con_el_sello_del_brief"] = bool(reproduce_como_manda)
+    print(f"  sello que A-3 manda usar          : {SELLO_DEL_BRIEF}")
+    print(f"  reproduce al bit con ESE sello    : {reproduce_como_manda}")
+    print(f"  sellos que reproducen al bit      : {exacto}")
+    out["veredicto_nogo"] = ("NO-GO NO SE DISPARA" if reproduce_como_manda
+                             else "NO-GO SE DISPARA")
+    print(f"  -> {out['veredicto_nogo']}"
+          f"  (condicion: A-3 no reproduce exposicion_media al bit)")
+    # diagnostico, que no cambia el estado del freno
+    r = (out["sellos"]["20261007"]["exposicion_media"]
+         * out["sellos"]["20261007"]["dias"]
+         / out["sellos"][SELLO_DEL_BRIEF]["dias"])
+    print(f"  diagnostico: 0.1559827260735808 * 4404/4406 = {r!r}")
+    print(f"               igual al medido con {SELLO_DEL_BRIEF}: "
+          f"{r == out['sellos'][SELLO_DEL_BRIEF]['exposicion_media']}")
+    print("               -> la diferencia es SOLO el denominador: los dos dias")
+    print("                  nuevos del 20261009 tienen exposure = 0 exacto.")
+    out["diagnostico_denominador"] = {
+        "formula": "media_20261007 * 4404/4406", "valor": r,
+        "coincide_al_bit": bool(r == out["sellos"][SELLO_DEL_BRIEF]["exposicion_media"])}
 
     json.dump(out, open("fase0_n7/a3_salida.json", "w"), indent=2)
     print("-> fase0_n7/a3_salida.json")
