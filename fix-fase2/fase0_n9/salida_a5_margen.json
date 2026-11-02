@@ -1,0 +1,884 @@
+{
+  "credenciales_enviadas": [],
+  "fuentes": {
+    "okx_position_tiers_cross": {
+      "url": "https://www.okx.com/api/v5/public/position-tiers?instType=SWAP&tdMode=cross&instFamily=BTC-USDT",
+      "http": 200,
+      "bytes": 20311,
+      "sha256_cuerpo": "9d68e7e8ded21527c2948a1a3cccf0781bacf7f6c8e567938b9040f4f35e0647",
+      "sha256_fichero": "9d68e7e8ded21527c2948a1a3cccf0781bacf7f6c8e567938b9040f4f35e0647",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/okx_position_tiers_cross.raw",
+      "extracto": "{\"code\":\"0\",\"data\":[{\"baseMaxLoan\":\"\",\"imr\":\"0.01\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"100\",\"maxSz\":\"1000\",\"minSz\":\"0\",\"mmr\":\"0.004\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"1\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.015\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"66.66\",\"maxSz\":\"5000\",\"minSz\":\"1000.01\",\"mmr\":\"0.005\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"2\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.02\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"50\",\"maxSz\":\"20000\",\"minSz\":\"5000.01\",\"mmr\":\"0.0075\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"3\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.025\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"40\",\"maxSz\":\"40000\",\"minSz\":\"20000.01\",\"mmr\":\"0.0125\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"4\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.03\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"33.33\",\"maxSz\":\"60000\",\"minSz\":\"40000.01\",\"mmr\":\"0.0175\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"5\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.035\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"28.57\",\"maxSz\":\"80000\",\"minSz\":\"60000.01\",\"mmr\":\"0.0225\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"6\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.04\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"25\",\"maxSz\":\"100000\",\"minSz\":\"80000.01\",\"mmr\":\"0.0275\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"7\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.045\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"22.22\",\"maxSz\":\"120000\",\"minSz\":\"100000.01\",\"mmr\":\"0.0325\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"8\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.05\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"20\",\"maxSz\":\"140000\",\"minSz\":\"120000.01\",\"mmr\":\"0.0375\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"9\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.055\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"18.18\",\"maxSz\":\"160000\",\"minSz\":\"140000.01\",\"mmr\":\"0.0425\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"10\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.06\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"16.66\",\"maxSz\":\"180000\",\"minSz\":\"160000.01\",\"mmr\":\"0.0475\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"11\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.065\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"15.38\",\"maxSz\":\"200000\",\"minSz\":\"180000.01\",\"mmr\":\"0.0525\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"12\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.07\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"14.28\",\"maxSz\":\"220000\",\"minSz\":\"200000.01\",\"mmr\":\"0.0575\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"13\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.075\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"13.33\",\"maxSz\":\"240000\",\"minSz\":\"220000.01\",\"mmr\":\"0.0625\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"14\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.08\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"12.5\",\"maxSz\":\"260000\",\"minSz\":\"240000.01\",\"mmr\":\"0.0675\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"15\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.085\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"11.76\",\"maxSz\":\"280000\",\"minSz\":\"260000.01\",\"mmr\":\"0.0725\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"16\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.09\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"11.11\",\"maxSz\":\"300000\",\"minSz\":\"280000.01\",\"mmr\":\"0.0775\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"17\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.095\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"10.52\",\"maxSz\":\"320000\",\"minSz\":\"300000.01\",\"mmr\":\"0.0825\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"18\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.1\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"10\",\"maxSz\":\"340000\",\"minSz\":\"320000.01\",\"mmr\":\"0.0875\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"19\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.105\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"9.52\",\"maxSz\":\"360000\",\"minSz\":\"340000.01\",\"mmr\":\""
+    },
+    "okx_position_tiers_isolated": {
+      "url": "https://www.okx.com/api/v5/public/position-tiers?instType=SWAP&tdMode=isolated&instFamily=BTC-USDT",
+      "http": 200,
+      "bytes": 20311,
+      "sha256_cuerpo": "9d68e7e8ded21527c2948a1a3cccf0781bacf7f6c8e567938b9040f4f35e0647",
+      "sha256_fichero": "9d68e7e8ded21527c2948a1a3cccf0781bacf7f6c8e567938b9040f4f35e0647",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/okx_position_tiers_isolated.raw",
+      "extracto": "{\"code\":\"0\",\"data\":[{\"baseMaxLoan\":\"\",\"imr\":\"0.01\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"100\",\"maxSz\":\"1000\",\"minSz\":\"0\",\"mmr\":\"0.004\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"1\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.015\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"66.66\",\"maxSz\":\"5000\",\"minSz\":\"1000.01\",\"mmr\":\"0.005\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"2\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.02\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"50\",\"maxSz\":\"20000\",\"minSz\":\"5000.01\",\"mmr\":\"0.0075\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"3\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.025\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"40\",\"maxSz\":\"40000\",\"minSz\":\"20000.01\",\"mmr\":\"0.0125\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"4\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.03\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"33.33\",\"maxSz\":\"60000\",\"minSz\":\"40000.01\",\"mmr\":\"0.0175\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"5\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.035\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"28.57\",\"maxSz\":\"80000\",\"minSz\":\"60000.01\",\"mmr\":\"0.0225\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"6\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.04\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"25\",\"maxSz\":\"100000\",\"minSz\":\"80000.01\",\"mmr\":\"0.0275\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"7\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.045\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"22.22\",\"maxSz\":\"120000\",\"minSz\":\"100000.01\",\"mmr\":\"0.0325\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"8\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.05\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"20\",\"maxSz\":\"140000\",\"minSz\":\"120000.01\",\"mmr\":\"0.0375\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"9\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.055\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"18.18\",\"maxSz\":\"160000\",\"minSz\":\"140000.01\",\"mmr\":\"0.0425\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"10\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.06\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"16.66\",\"maxSz\":\"180000\",\"minSz\":\"160000.01\",\"mmr\":\"0.0475\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"11\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.065\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"15.38\",\"maxSz\":\"200000\",\"minSz\":\"180000.01\",\"mmr\":\"0.0525\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"12\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.07\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"14.28\",\"maxSz\":\"220000\",\"minSz\":\"200000.01\",\"mmr\":\"0.0575\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"13\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.075\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"13.33\",\"maxSz\":\"240000\",\"minSz\":\"220000.01\",\"mmr\":\"0.0625\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"14\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.08\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"12.5\",\"maxSz\":\"260000\",\"minSz\":\"240000.01\",\"mmr\":\"0.0675\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"15\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.085\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"11.76\",\"maxSz\":\"280000\",\"minSz\":\"260000.01\",\"mmr\":\"0.0725\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"16\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.09\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"11.11\",\"maxSz\":\"300000\",\"minSz\":\"280000.01\",\"mmr\":\"0.0775\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"17\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.095\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"10.52\",\"maxSz\":\"320000\",\"minSz\":\"300000.01\",\"mmr\":\"0.0825\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"18\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.1\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"10\",\"maxSz\":\"340000\",\"minSz\":\"320000.01\",\"mmr\":\"0.0875\",\"optMgnFactor\":\"0\",\"quoteMaxLoan\":\"\",\"tier\":\"19\",\"uly\":\"BTC-USDT\"},{\"baseMaxLoan\":\"\",\"imr\":\"0.105\",\"instFamily\":\"BTC-USDT\",\"instId\":\"\",\"maxLever\":\"9.52\",\"maxSz\":\"360000\",\"minSz\":\"340000.01\",\"mmr\":\""
+    },
+    "bybit_risk_limit_linear": {
+      "url": "https://api.bybit.com/v5/market/risk-limit?category=linear&symbol=BTCUSDT",
+      "http": 200,
+      "bytes": 6091,
+      "sha256_cuerpo": "7bf86018605dda036851a9c4b94cfa35e6a64762bfc4fd547878dd5714546363",
+      "sha256_fichero": "7bf86018605dda036851a9c4b94cfa35e6a64762bfc4fd547878dd5714546363",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/bybit_risk_limit_linear.raw",
+      "extracto": "{\"retCode\":0,\"retMsg\":\"OK\",\"result\":{\"category\":\"linear\",\"list\":[{\"id\":1,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"300000\",\"maintenanceMargin\":\"0.0033\",\"initialMargin\":\"0.0066\",\"isLowestRisk\":1,\"maxLeverage\":\"150.00\",\"mmDeduction\":\"\"},{\"id\":2,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"2000000\",\"maintenanceMargin\":\"0.005\",\"initialMargin\":\"0.01\",\"isLowestRisk\":0,\"maxLeverage\":\"100.00\",\"mmDeduction\":\"510\"},{\"id\":3,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"2600000\",\"maintenanceMargin\":\"0.0056\",\"initialMargin\":\"0.0111\",\"isLowestRisk\":0,\"maxLeverage\":\"90.00\",\"mmDeduction\":\"1710\"},{\"id\":4,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"3200000\",\"maintenanceMargin\":\"0.0063\",\"initialMargin\":\"0.0125\",\"isLowestRisk\":0,\"maxLeverage\":\"80.00\",\"mmDeduction\":\"3530\"},{\"id\":5,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"3800000\",\"maintenanceMargin\":\"0.0067\",\"initialMargin\":\"0.0133\",\"isLowestRisk\":0,\"maxLeverage\":\"75.00\",\"mmDeduction\":\"4810\"},{\"id\":6,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"4400000\",\"maintenanceMargin\":\"0.0071\",\"initialMargin\":\"0.0143\",\"isLowestRisk\":0,\"maxLeverage\":\"70.00\",\"mmDeduction\":\"6330\"},{\"id\":7,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"5000000\",\"maintenanceMargin\":\"0.0077\",\"initialMargin\":\"0.0154\",\"isLowestRisk\":0,\"maxLeverage\":\"65.00\",\"mmDeduction\":\"8970\"},{\"id\":8,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"5600000\",\"maintenanceMargin\":\"0.0091\",\"initialMargin\":\"0.0182\",\"isLowestRisk\":0,\"maxLeverage\":\"55.00\",\"mmDeduction\":\"15970\"},{\"id\":9,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"8500000\",\"maintenanceMargin\":\"0.01\",\"initialMargin\":\"0.02\",\"isLowestRisk\":0,\"maxLeverage\":\"50.00\",\"mmDeduction\":\"21010\"},{\"id\":10,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"10000000\",\"maintenanceMargin\":\"0.013\",\"initialMargin\":\"0.0222\",\"isLowestRisk\":0,\"maxLeverage\":\"45.00\",\"mmDeduction\":\"46510\"},{\"id\":11,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"14000000\",\"maintenanceMargin\":\"0.015\",\"initialMargin\":\"0.025\",\"isLowestRisk\":0,\"maxLeverage\":\"40.00\",\"mmDeduction\":\"66510\"},{\"id\":12,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"20000000\",\"maintenanceMargin\":\"0.016\",\"initialMargin\":\"0.0286\",\"isLowestRisk\":0,\"maxLeverage\":\"35.00\",\"mmDeduction\":\"80510\"},{\"id\":13,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"28000000\",\"maintenanceMargin\":\"0.02\",\"initialMargin\":\"0.0333\",\"isLowestRisk\":0,\"maxLeverage\":\"30.00\",\"mmDeduction\":\"160510\"},{\"id\":14,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"38000000\",\"maintenanceMargin\":\"0.025\",\"initialMargin\":\"0.04\",\"isLowestRisk\":0,\"maxLeverage\":\"25.00\",\"mmDeduction\":\"300510\"},{\"id\":15,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"50000000\",\"maintenanceMargin\":\"0.029\",\"initialMargin\":\"0.05\",\"isLowestRisk\":0,\"maxLeverage\":\"20.00\",\"mmDeduction\":\"452510\"},{\"id\":16,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"55000000\",\"maintenanceMargin\":\"0.03\",\"initialMargin\":\"0.0526\",\"isLowestRisk\":0,\"maxLeverage\":\"19.00\",\"mmDeduction\":\"502510\"},{\"id\":17,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"60000000\",\"maintenanceMargin\":\"0.035\",\"initialMargin\":\"0.0556\",\"isLowestRisk\":0,\"maxLeverage\":\"18.00\",\"mmDeduction\":\"777510\"},{\"id\":18,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"65000000\",\"maintenanceMargin\":\"0.036\",\"initialMargin\":\"0.0588\",\"isLowestRisk\":0,\"maxLeverage\":\"17.00\",\"mmDeduction\":\"837510\"},{\"id\":19,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"70000000\",\"maintenanceMargin\":\"0.038\",\"initialMargin\":\"0.0625\",\"isLowestRisk\":0,\"maxLeverage\":\"16.00\",\"mmDeduction\":\"967510\"},{\"id\":20,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"75000000\",\"maintenanceMargin\":\"0.04\",\"initialMargin\":\"0.0667\",\"isLowestRisk\":0,\"maxLeverage\":\"15.00\",\"mmDeduction\":\"1107510\"},{\"id\":21,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"80000000\",\"maintenanceMargin\":\"0.045\",\"initialMargin\":\"0.0714\",\"isLowestRisk\":0,\"maxLeverage\":\"14.00\",\"mmDeduction\":\"1482510\"},{\"id\":22,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"85000000\",\"maintenanceMargin\":\"0.05\",\"initialMargin\":\"0.0769\",\"isLowestRisk\":0,\"maxLeverage\":\"13.00\",\"mmDeduction\":\"1882510\"},{\"id\":23,\"symbol\":\"BTCUSDT\",\"riskLimitValue\":\"90000000\",\"maintenanceMargin\":\"0.055\",\"initialMargin\":\"0.0833\",\"isLowestRisk\":0,\"maxLeverage\":\"12.00\",\"mmDeduction\":\"2307510\"},{\"id\":24,\"symbol\":\"BTCU"
+    },
+    "binance_bapi_brackets": {
+      "url": "https://www.binance.com/bapi/futures/v1/friendly/future/common/brackets",
+      "http": 200,
+      "bytes": 1690310,
+      "sha256_cuerpo": "8d966bdfb5bac677883ca087cc25ebf1b53ee74ca8e5c913a053eefa05139411",
+      "sha256_fichero": "8d966bdfb5bac677883ca087cc25ebf1b53ee74ca8e5c913a053eefa05139411",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/binance_bapi_brackets.raw",
+      "extracto": "{\"code\":\"000000\",\"message\":null,\"messageDetail\":null,\"data\":{\"brackets\":[{\"symbol\":\"ALABUSDT\",\"updateTime\":1782116820039,\"notionalLimit\":100,\"riskBrackets\":[{\"bracketSeq\":1,\"bracketNotionalFloor\":0,\"bracketNotionalCap\":100000,\"bracketMaintenanceMarginRate\":0.025,\"cumFastMaintenanceAmount\":0,\"minOpenPosLeverage\":16,\"maxOpenPosLeverage\":20},{\"bracketSeq\":2,\"bracketNotionalFloor\":100000,\"bracketNotionalCap\":500000,\"bracketMaintenanceMarginRate\":0.0333,\"cumFastMaintenanceAmount\":830,\"minOpenPosLeverage\":11,\"maxOpenPosLeverage\":15},{\"bracketSeq\":3,\"bracketNotionalFloor\":500000,\"bracketNotionalCap\":2000000,\"bracketMaintenanceMarginRate\":0.05,\"cumFastMaintenanceAmount\":9180,\"minOpenPosLeverage\":6,\"maxOpenPosLeverage\":10},{\"bracketSeq\":4,\"bracketNotionalFloor\":2000000,\"bracketNotionalCap\":5000000,\"bracketMaintenanceMarginRate\":0.1,\"cumFastMaintenanceAmount\":109180,\"minOpenPosLeverage\":5,\"maxOpenPosLeverage\":5},{\"bracketSeq\":5,\"bracketNotionalFloor\":5000000,\"bracketNotionalCap\":10000000,\"bracketMaintenanceMarginRate\":0.125,\"cumFastMaintenanceAmount\":234180,\"minOpenPosLeverage\":4,\"maxOpenPosLeverage\":4},{\"bracketSeq\":6,\"bracketNotionalFloor\":10000000,\"bracketNotionalCap\":25000000,\"bracketMaintenanceMarginRate\":0.1667,\"cumFastMaintenanceAmount\":651180,\"minOpenPosLeverage\":3,\"maxOpenPosLeverage\":3},{\"bracketSeq\":7,\"bracketNotionalFloor\":25000000,\"bracketNotionalCap\":50000000,\"bracketMaintenanceMarginRate\":0.25,\"cumFastMaintenanceAmount\":2733680,\"minOpenPosLeverage\":2,\"maxOpenPosLeverage\":2},{\"bracketSeq\":8,\"bracketNotionalFloor\":50000000,\"bracketNotionalCap\":100000000,\"bracketMaintenanceMarginRate\":0.5,\"cumFastMaintenanceAmount\":15233680,\"minOpenPosLeverage\":1,\"maxOpenPosLeverage\":1}]},{\"symbol\":\"SNTUSDT\",\"updateTime\":1714991508481,\"notionalLimit\":100,\"riskBrackets\":[{\"bracketSeq\":1,\"bracketNotionalFloor\":0,\"bracketNotionalCap\":5000,\"bracketMaintenanceMarginRate\":0.015,\"cumFastMaintenanceAmount\":0,\"minOpenPosLeverage\":21,\"maxOpenPosLeverage\":21},{\"bracketSeq\":2,\"bracketNotionalFloor\":5000,\"bracketNotionalCap\":25000,\"bracketMaintenanceMarginRate\":0.025,\"cumFastMaintenanceAmount\":50,\"minOpenPosLeverage\":11,\"maxOpenPosLeverage\":20},{\"bracketSeq\":3,\"bracketNotionalFloor\":25000,\"bracketNotionalCap\":100000,\"bracketMaintenanceMarginRate\":0.05,\"cumFastMaintenanceAmount\":675,\"minOpenPosLeverage\":6,\"maxOpenPosLeverage\":10},{\"bracketSeq\":4,\"bracketNotionalFloor\":100000,\"bracketNotionalCap\":200000,\"bracketMaintenanceMarginRate\":0.1,\"cumFastMaintenanceAmount\":5675,\"minOpenPosLeverage\":5,\"maxOpenPosLeverage\":5},{\"bracketSeq\":5,\"bracketNotionalFloor\":200000,\"bracketNotionalCap\":500000,\"bracketMaintenanceMarginRate\":0.125,\"cumFastMaintenanceAmount\":10675,\"minOpenPosLeverage\":3,\"maxOpenPosLeverage\":4},{\"bracketSeq\":6,\"bracketNotionalFloor\":500000,\"bracketNotionalCap\":1000000,\"bracketMaintenanceMarginRate\":0.25,\"cumFastMaintenanceAmount\":73175,\"minOpenPosLeverage\":2,\"maxOpenPosLeverage\":2},{\"bracketSeq\":7,\"bracketNotionalFloor\":1000000,\"bracketNotionalCap\":2000000,\"bracketMaintenanceMarginRate\":0.5,\"cumFastMaintenanceAmount\":323175,\"minOpenPosLeverage\":1,\"maxOpenPosLeverage\":1}]},{\"symbol\":\"CGPTUSDT\",\"updateTime\":1784875961857,\"notionalLimit\":100,\"riskBrackets\":[{\"bracketSeq\":1,\"bracketNotionalFloor\":0,\"bracketNotionalCap\":5000,\"bracketMaintenanceMarginRate\":0.015,\"cumFastMaintenanceAmount\":0,\"minOpenPosLeverage\":21,\"maxOpenPosLeverage\":50},{\"bracketSeq\":2,\"bracketNotionalFloor\":5000,\"bracketNotionalCap\":10000,\"bracketMaintenanceMarginRate\":0.025,\"cumFastMaintenanceAmount\":50,\"minOpenPosLeverage\":11,\"maxOpenPosLeverage\":20},{\"bracketSeq\":3,\"bracketNotionalFloor\":10000,\"bracketNotionalCap\":20000,\"bracketMaintenanceMarginRate\":0.05,\"cumFastMaintenanceAmount\":300,\"minOpenPosLeverage\":6,\"maxOpenPosLeverage\":10},{\"bracketSeq\":4,\"bracketNotionalFloor\":20000,\"bracketNotionalCap\":50000,\"bracketMaintenanceMarginRate\":0.1,\"cumFastMaintenanceAmount\":1300,\"minOpenPosLeverage\":5,\"maxOpenPosLeverage\":5},{\"bracketSeq\":5,\"bracketNotionalFloor\":50000,\"bracketNotionalCap\":2"
+    },
+    "binance_web_leverage_margin": {
+      "url": "https://www.binance.com/en/futures/trading-rules/perpetual/leverage-margin",
+      "http": 202,
+      "bytes": 0,
+      "sha256_cuerpo": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256_fichero": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/binance_web_leverage_margin.raw",
+      "extracto": null
+    },
+    "okx_instruments_swap_btc_usdt": {
+      "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP&instId=BTC-USDT-SWAP",
+      "http": 200,
+      "bytes": 1117,
+      "sha256_cuerpo": "1a6eeb4c4cc625067010d0110718feaee4a6f03becc60f661b800acb4f5ac4e2",
+      "sha256_fichero": "1a6eeb4c4cc625067010d0110718feaee4a6f03becc60f661b800acb4f5ac4e2",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/okx_instruments_swap_btc_usdt.raw",
+      "extracto": "{\"code\":\"0\",\"data\":[{\"alias\":\"\",\"auctionEndTime\":\"\",\"baseCcy\":\"\",\"category\":\"1\",\"contTdSwTime\":\"1611916860000\",\"ctMult\":\"1\",\"ctType\":\"linear\",\"ctVal\":\"0.01\",\"ctValCcy\":\"BTC\",\"expTime\":\"\",\"floatPxLmtPct\":\"0.005\",\"freq\":\"\",\"futureSettlement\":false,\"groupId\":\"4\",\"initPxLmtPct\":\"0.02\",\"instCategory\":\"1\",\"instFamily\":\"BTC-USDT\",\"instId\":\"BTC-USDT-SWAP\",\"instIdCode\":10459,\"instType\":\"SWAP\",\"lever\":\"100\",\"listTime\":\"1573557408000\",\"longPosRemainingQuota\":\"\",\"lotSz\":\"0.01\",\"maxIcebergSz\":\"100000000.0000000000000000\",\"maxLmtAmt\":\"20000000\",\"maxLmtSz\":\"100000000\",\"maxMktAmt\":\"\",\"maxMktSz\":\"35000\",\"maxPlatOICoinLmt\":\"\",\"maxPlatOILmt\":\"\",\"maxPxLmtPct\":\"0.01\",\"maxStopSz\":\"35000\",\"maxTriggerSz\":\"100000000.0000000000000000\",\"maxTwapSz\":\"100000000.0000000000000000\",\"method\":\"\",\"minSz\":\"0.01\",\"openType\":\"call_auction\",\"optType\":\"\",\"posLmtAmt\":\"250000\",\"posLmtPct\":\"30\",\"preMktSwTime\":\"\",\"quoteCcy\":\"\",\"rpiMinLevel\":\"3\",\"rpiMinPxBand\":\"20\",\"ruleType\":\"normal\",\"seriesId\":\"\",\"settleCcy\":\"USDT\",\"shortPosRemainingQuota\":\"\",\"state\":\"live\",\"stk\":\"\",\"tickSz\":\"0.1\",\"tradeQuoteCcyList\":[],\"uly\":\"BTC-USDT\",\"upcChg\":[]}],\"msg\":\"\"}"
+    },
+    "binance_exchangeinfo_btcusdt_filtros": {
+      "url": "https://fapi.binance.com/fapi/v1/exchangeInfo?symbol=BTCUSDT",
+      "http": 200,
+      "bytes": 1172011,
+      "sha256_cuerpo": "b0032d8c5a114949f1dccc5d9edd650cb10998431c4338e61e491686df4b93fa",
+      "sha256_fichero": "b0032d8c5a114949f1dccc5d9edd650cb10998431c4338e61e491686df4b93fa",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/binance_exchangeinfo_btcusdt_filtros.raw",
+      "extracto": "{\"timezone\":\"UTC\",\"serverTime\":1793649161051,\"futuresType\":\"U_MARGINED\",\"rateLimits\":[{\"rateLimitType\":\"REQUEST_WEIGHT\",\"interval\":\"MINUTE\",\"intervalNum\":1,\"limit\":2400},{\"rateLimitType\":\"ORDERS\",\"interval\":\"MINUTE\",\"intervalNum\":1,\"limit\":1200},{\"rateLimitType\":\"ORDERS\",\"interval\":\"SECOND\",\"intervalNum\":10,\"limit\":300}],\"exchangeFilters\":[],\"assets\":[{\"asset\":\"USDT\",\"marginAvailable\":true,\"autoAssetExchange\":\"-10000\"},{\"asset\":\"BTC\",\"marginAvailable\":true,\"autoAssetExchange\":\"-0.10000000\"},{\"asset\":\"BNB\",\"marginAvailable\":true,\"autoAssetExchange\":\"0\"},{\"asset\":\"ETH\",\"marginAvailable\":true,\"autoAssetExchange\":\"0\"},{\"asset\":\"USDC\",\"marginAvailable\":true,\"autoAssetExchange\":\"-10000\"},{\"asset\":\"FDUSD\",\"marginAvailable\":true,\"autoAssetExchange\":\"0\"},{\"asset\":\"BNFCR\",\"marginAvailable\":true,\"autoAssetExchange\":\"-5000\"},{\"asset\":\"BFUSD\",\"marginAvailable\":true,\"autoAssetExchange\":\"0\"},{\"asset\":\"LDUSDT\",\"marginAvailable\":true,\"autoAssetExchange\":\"0\"},{\"asset\":\"RWUSD\",\"marginAvailable\":true,\"autoAssetExchange\":\"0\"},{\"asset\":\"USD1\",\"marginAvailable\":true,\"autoAssetExchange\":\"-5000\"},{\"asset\":\"U\",\"marginAvailable\":true,\"autoAssetExchange\":\"-5000\"}],\"symbols\":[{\"symbol\":\"BTCUSDT\",\"pair\":\"BTCUSDT\",\"contractType\":\"PERPETUAL\",\"deliveryDate\":4133404800000,\"onboardDate\":1567965300000,\"status\":\"TRADING\",\"maintMarginPercent\":\"2.5000\",\"requiredMarginPercent\":\"5.0000\",\"baseAsset\":\"BTC\",\"quoteAsset\":\"USDT\",\"marginAsset\":\"USDT\",\"pricePrecision\":2,\"quantityPrecision\":3,\"baseAssetPrecision\":8,\"quotePrecision\":8,\"underlyingType\":\"COIN\",\"underlyingSubType\":[\"PoW\",\"Crypto\"],\"triggerProtect\":\"0.0300\",\"liquidationFee\":\"0.012500\",\"marketTakeBound\":\"0.03\",\"maxMoveOrderLimit\":10000,\"filters\":[{\"filterType\":\"PRICE_FILTER\",\"tickSize\":\"0.10\",\"maxPrice\":\"4529764\",\"minPrice\":\"556.80\"},{\"filterType\":\"LOT_SIZE\",\"maxQty\":\"1000\",\"stepSize\":\"0.001\",\"minQty\":\"0.001\"},{\"stepSize\":\"0.001\",\"minQty\":\"0.001\",\"filterType\":\"MARKET_LOT_SIZE\",\"maxQty\":\"120\"},{\"filterType\":\"MAX_NUM_ORDERS\",\"limit\":200},{\"notional\":\"50\",\"filterType\":\"MIN_NOTIONAL\"},{\"filterType\":\"PERCENT_PRICE\",\"multiplierDown\":\"0.9700\",\"multiplierUp\":\"1.0300\",\"multiplierDecimal\":\"4\"},{\"filterType\":\"POSITION_RISK_CONTROL\",\"positionControlSide\":\"NONE\"}],\"orderTypes\":[\"LIMIT\",\"MARKET\",\"STOP\",\"STOP_MARKET\",\"TAKE_PROFIT\",\"TAKE_PROFIT_MARKET\",\"TRAILING_STOP_MARKET\"],\"timeInForce\":[\"GTC\",\"IOC\",\"FOK\",\"GTX\",\"GTD\"],\"permissionSets\":[\"GRID\",\"COPY\",\"DCA\",\"PSB\"]},{\"symbol\":\"ETHUSDT\",\"pair\":\"ETHUSDT\",\"contractType\":\"PERPETUAL\",\"deliveryDate\":4133404800000,\"onboardDate\":1574840700000,\"status\":\"TRADING\",\"maintMarginPercent\":\"2.5000\",\"requiredMarginPercent\":\"5.0000\",\"baseAsset\":\"ETH\",\"quoteAsset\":\"USDT\",\"marginAsset\":\"USDT\",\"pricePrecision\":2,\"quantityPrecision\":3,\"baseAssetPrecision\":8,\"quotePrecision\":8,\"underlyingType\":\"COIN\",\"underlyingSubType\":[\"Layer-1\",\"Crypto\"],\"triggerProtect\":\"0.0300\",\"liquidationFee\":\"0.012500\",\"marketTakeBound\":\"0.03\",\"maxMoveOrderLimit\":10000,\"filters\":[{\"filterType\":\"PRICE_FILTER\",\"maxPrice\":\"306177\",\"tickSize\":\"0.01\",\"minPrice\":\"39.86\"},{\"minQty\":\"0.001\",\"filterType\":\"LOT_SIZE\",\"maxQty\":\"10000\",\"stepSize\":\"0.001\"},{\"filterType\":\"MARKET_LOT_SIZE\",\"minQty\":\"0.001\",\"maxQty\":\"2000\",\"stepSize\":\"0.001\"},{\"filterType\":\"MAX_NUM_ORDERS\",\"limit\":200},{\"filterType\":\"MIN_NOTIONAL\",\"notional\":\"20\"},{\"multiplierDown\":\"0.9700\",\"multiplierDecimal\":\"4\",\"multiplierUp\":\"1.0300\",\"filterType\":\"PERCENT_PRICE\"},{\"filterType\":\"POSITION_RISK_CONTROL\",\"positionControlSide\":\"NONE\"}],\"orderTypes\":[\"LIMIT\",\"MARKET\",\"STOP\",\"STOP_MARKET\",\"TAKE_PROFIT\",\"TAKE_PROFIT_MARKET\",\"TRAILING_STOP_MARKET\"],\"timeInForce\":[\"GTC\",\"IOC\",\"FOK\",\"GTX\",\"GTD\"],\"permissionSets\":[\"GRID\",\"COPY\",\"DCA\",\"PSB\"]},{\"symbol\":\"BCHUSDT\",\"pair\":\"BCHUSDT\",\"contractType\":\"PERPETUAL\",\"deliveryDate\":4133404800000,\"onboardDate\":1576745700000,\"status\":\"TRADING\",\"maintMarginPercent\":\"2.5000\",\"requiredMarginPercent\":\"5.0000\",\"baseAsset\":\"BCH\",\"quoteAsset\":\"USDT\",\"marginAsset\":\"USDT\",\"pricePrecision\":2,\"quantityPrecision\":3,\"baseAssetPrecision\":8,\"quotePrecision\":8,\"unde"
+    },
+    "okx_discount_rate_colateral": {
+      "url": "https://www.okx.com/api/v5/public/discount-rate-interest-free-quota?ccy=BTC",
+      "http": 200,
+      "bytes": 9514,
+      "sha256_cuerpo": "4a62c5ea33bdd4b1a90616bf2fcaedb152f85d311ef917254b9e4b381cc0b85f",
+      "sha256_fichero": "4a62c5ea33bdd4b1a90616bf2fcaedb152f85d311ef917254b9e4b381cc0b85f",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a5/okx_discount_rate_colateral.raw",
+      "extracto": "{\"code\":\"0\",\"data\":[{\"amt\":\"0.23\",\"ccy\":\"BTC\",\"colRes\":\"0\",\"collateralRestrict\":false,\"details\":[{\"disCcyEq\":\"19.6\",\"discountRate\":\"0.98\",\"liqPenaltyRate\":\"0.02\",\"maxAmt\":\"20\",\"minAmt\":\"0\",\"tier\":\"1\"},{\"disCcyEq\":\"24.4875\",\"discountRate\":\"0.9775\",\"liqPenaltyRate\":\"0.0225\",\"maxAmt\":\"25\",\"minAmt\":\"20\",\"tier\":\"2\"},{\"disCcyEq\":\"29.3625\",\"discountRate\":\"0.975\",\"liqPenaltyRate\":\"0.025\",\"maxAmt\":\"30\",\"minAmt\":\"25\",\"tier\":\"3\"},{\"disCcyEq\":\"58.4625\",\"discountRate\":\"0.97\",\"liqPenaltyRate\":\"0.03\",\"maxAmt\":\"60\",\"minAmt\":\"30\",\"tier\":\"4\"},{\"disCcyEq\":\"87.4125\",\"discountRate\":\"0.965\",\"liqPenaltyRate\":\"0.035\",\"maxAmt\":\"90\",\"minAmt\":\"60\",\"tier\":\"5\"},{\"disCcyEq\":\"116.2125\",\"discountRate\":\"0.96\",\"liqPenaltyRate\":\"0.04\",\"maxAmt\":\"120\",\"minAmt\":\"90\",\"tier\":\"6\"},{\"disCcyEq\":\"144.8625\",\"discountRate\":\"0.955\",\"liqPenaltyRate\":\"0.045\",\"maxAmt\":\"150\",\"minAmt\":\"120\",\"tier\":\"7\"},{\"disCcyEq\":\"173.3625\",\"discountRate\":\"0.95\",\"liqPenaltyRate\":\"0.05\",\"maxAmt\":\"180\",\"minAmt\":\"150\",\"tier\":\"8\"},{\"disCcyEq\":\"201.7125\",\"discountRate\":\"0.945\",\"liqPenaltyRate\":\"0.055\",\"maxAmt\":\"210\",\"minAmt\":\"180\",\"tier\":\"9\"},{\"disCcyEq\":\"229.9125\",\"discountRate\":\"0.94\",\"liqPenaltyRate\":\"0.06\",\"maxAmt\":\"240\",\"minAmt\":\"210\",\"tier\":\"10\"},{\"disCcyEq\":\"257.9625\",\"discountRate\":\"0.935\",\"liqPenaltyRate\":\"0.065\",\"maxAmt\":\"270\",\"minAmt\":\"240\",\"tier\":\"11\"},{\"disCcyEq\":\"285.8625\",\"discountRate\":\"0.93\",\"liqPenaltyRate\":\"0.07\",\"maxAmt\":\"300\",\"minAmt\":\"270\",\"tier\":\"12\"},{\"disCcyEq\":\"313.6125\",\"discountRate\":\"0.925\",\"liqPenaltyRate\":\"0.075\",\"maxAmt\":\"330\",\"minAmt\":\"300\",\"tier\":\"13\"},{\"disCcyEq\":\"341.2125\",\"discountRate\":\"0.92\",\"liqPenaltyRate\":\"0.08\",\"maxAmt\":\"360\",\"minAmt\":\"330\",\"tier\":\"14\"},{\"disCcyEq\":\"368.6625\",\"discountRate\":\"0.915\",\"liqPenaltyRate\":\"0.085\",\"maxAmt\":\"390\",\"minAmt\":\"360\",\"tier\":\"15\"},{\"disCcyEq\":\"395.9625\",\"discountRate\":\"0.91\",\"liqPenaltyRate\":\"0.09\",\"maxAmt\":\"420\",\"minAmt\":\"390\",\"tier\":\"16\"},{\"disCcyEq\":\"423.1125\",\"discountRate\":\"0.905\",\"liqPenaltyRate\":\"0.095\",\"maxAmt\":\"450\",\"minAmt\":\"420\",\"tier\":\"17\"},{\"disCcyEq\":\"450.1125\",\"discountRate\":\"0.9\",\"liqPenaltyRate\":\"0.1\",\"maxAmt\":\"480\",\"minAmt\":\"450\",\"tier\":\"18\"},{\"disCcyEq\":\"476.9625\",\"discountRate\":\"0.895\",\"liqPenaltyRate\":\"0.105\",\"maxAmt\":\"510\",\"minAmt\":\"480\",\"tier\":\"19\"},{\"disCcyEq\":\"503.6625\",\"discountRate\":\"0.89\",\"liqPenaltyRate\":\"0.11\",\"maxAmt\":\"540\",\"minAmt\":\"510\",\"tier\":\"20\"},{\"disCcyEq\":\"530.2125\",\"discountRate\":\"0.885\",\"liqPenaltyRate\":\"0.115\",\"maxAmt\":\"570\",\"minAmt\":\"540\",\"tier\":\"21\"},{\"disCcyEq\":\"556.6125\",\"discountRate\":\"0.88\",\"liqPenaltyRate\":\"0.12\",\"maxAmt\":\"600\",\"minAmt\":\"570\",\"tier\":\"22\"},{\"disCcyEq\":\"582.8625\",\"discountRate\":\"0.875\",\"liqPenaltyRate\":\"0.125\",\"maxAmt\":\"630\",\"minAmt\":\"600\",\"tier\":\"23\"},{\"disCcyEq\":\"608.9625\",\"discountRate\":\"0.87\",\"liqPenaltyRate\":\"0.13\",\"maxAmt\":\"660\",\"minAmt\":\"630\",\"tier\":\"24\"},{\"disCcyEq\":\"634.9125\",\"discountRate\":\"0.865\",\"liqPenaltyRate\":\"0.135\",\"maxAmt\":\"690\",\"minAmt\":\"660\",\"tier\":\"25\"},{\"disCcyEq\":\"660.7125\",\"discountRate\":\"0.86\",\"liqPenaltyRate\":\"0.14\",\"maxAmt\":\"720\",\"minAmt\":\"690\",\"tier\":\"26\"},{\"disCcyEq\":\"686.3625\",\"discountRate\":\"0.855\",\"liqPenaltyRate\":\"0.145\",\"maxAmt\":\"750\",\"minAmt\":\"720\",\"tier\":\"27\"},{\"disCcyEq\":\"711.8625\",\"discountRate\":\"0.85\",\"liqPenaltyRate\":\"0.15\",\"maxAmt\":\"780\",\"minAmt\":\"750\",\"tier\":\"28\"},{\"disCcyEq\":\"737.2125\",\"discountRate\":\"0.845\",\"liqPenaltyRate\":\"0.155\",\"maxAmt\":\"810\",\"minAmt\":\"780\",\"tier\":\"29\"},{\"disCcyEq\":\"762.4125\",\"discountRate\":\"0.84\",\"liqPenaltyRate\":\"0.16\",\"maxAmt\":\"840\",\"minAmt\":\"810\",\"tier\":\"30\"},{\"disCcyEq\":\"787.4625\",\"discountRate\":\"0.835\",\"liqPenaltyRate\":\"0.165\",\"maxAmt\":\"870\",\"minAmt\":\"840\",\"tier\":\"31\"},{\"disCcyEq\":\"812.3625\",\"discountRate\":\"0.83\",\"liqPenaltyRate\":\"0.17\",\"maxAmt\":\"900\",\"minAmt\":\"870\",\"tier\":\"32\"},{\"disCcyEq\":\"837.1125\",\"discountRate\":\"0.825\",\"liqPenaltyRate\":\"0.175\",\"maxAmt\":\"930\",\"minAmt\":\"900\",\"tier\":\"33\"},{\"disCcyEq\":\"861.7125\",\"discountRate\":\"0.82\",\"liqPenaltyRate\":\"0.18\",\"maxAmt\":\"960\",\"minAmt\":\"930\",\"tier\":\"34\"},{\"disCcyEq\":\"886.1625\",\"discountRate\":\"0.815\",\"liqPenaltyRate\":\"0.185\",\"maxAmt\":\"990\",\"min"
+    }
+  },
+  "okx_tramos_cross": [
+    {
+      "tier": "1",
+      "minSz": "0",
+      "maxSz": "1000",
+      "imr": "0.01",
+      "mmr": "0.004",
+      "maxLever": "100"
+    },
+    {
+      "tier": "2",
+      "minSz": "1000.01",
+      "maxSz": "5000",
+      "imr": "0.015",
+      "mmr": "0.005",
+      "maxLever": "66.66"
+    },
+    {
+      "tier": "3",
+      "minSz": "5000.01",
+      "maxSz": "20000",
+      "imr": "0.02",
+      "mmr": "0.0075",
+      "maxLever": "50"
+    },
+    {
+      "tier": "4",
+      "minSz": "20000.01",
+      "maxSz": "40000",
+      "imr": "0.025",
+      "mmr": "0.0125",
+      "maxLever": "40"
+    },
+    {
+      "tier": "5",
+      "minSz": "40000.01",
+      "maxSz": "60000",
+      "imr": "0.03",
+      "mmr": "0.0175",
+      "maxLever": "33.33"
+    },
+    {
+      "tier": "6",
+      "minSz": "60000.01",
+      "maxSz": "80000",
+      "imr": "0.035",
+      "mmr": "0.0225",
+      "maxLever": "28.57"
+    },
+    {
+      "tier": "7",
+      "minSz": "80000.01",
+      "maxSz": "100000",
+      "imr": "0.04",
+      "mmr": "0.0275",
+      "maxLever": "25"
+    },
+    {
+      "tier": "8",
+      "minSz": "100000.01",
+      "maxSz": "120000",
+      "imr": "0.045",
+      "mmr": "0.0325",
+      "maxLever": "22.22"
+    },
+    {
+      "tier": "9",
+      "minSz": "120000.01",
+      "maxSz": "140000",
+      "imr": "0.05",
+      "mmr": "0.0375",
+      "maxLever": "20"
+    },
+    {
+      "tier": "10",
+      "minSz": "140000.01",
+      "maxSz": "160000",
+      "imr": "0.055",
+      "mmr": "0.0425",
+      "maxLever": "18.18"
+    },
+    {
+      "tier": "11",
+      "minSz": "160000.01",
+      "maxSz": "180000",
+      "imr": "0.06",
+      "mmr": "0.0475",
+      "maxLever": "16.66"
+    },
+    {
+      "tier": "12",
+      "minSz": "180000.01",
+      "maxSz": "200000",
+      "imr": "0.065",
+      "mmr": "0.0525",
+      "maxLever": "15.38"
+    },
+    {
+      "tier": "13",
+      "minSz": "200000.01",
+      "maxSz": "220000",
+      "imr": "0.07",
+      "mmr": "0.0575",
+      "maxLever": "14.28"
+    },
+    {
+      "tier": "14",
+      "minSz": "220000.01",
+      "maxSz": "240000",
+      "imr": "0.075",
+      "mmr": "0.0625",
+      "maxLever": "13.33"
+    },
+    {
+      "tier": "15",
+      "minSz": "240000.01",
+      "maxSz": "260000",
+      "imr": "0.08",
+      "mmr": "0.0675",
+      "maxLever": "12.5"
+    },
+    {
+      "tier": "16",
+      "minSz": "260000.01",
+      "maxSz": "280000",
+      "imr": "0.085",
+      "mmr": "0.0725",
+      "maxLever": "11.76"
+    },
+    {
+      "tier": "17",
+      "minSz": "280000.01",
+      "maxSz": "300000",
+      "imr": "0.09",
+      "mmr": "0.0775",
+      "maxLever": "11.11"
+    },
+    {
+      "tier": "18",
+      "minSz": "300000.01",
+      "maxSz": "320000",
+      "imr": "0.095",
+      "mmr": "0.0825",
+      "maxLever": "10.52"
+    },
+    {
+      "tier": "19",
+      "minSz": "320000.01",
+      "maxSz": "340000",
+      "imr": "0.1",
+      "mmr": "0.0875",
+      "maxLever": "10"
+    },
+    {
+      "tier": "20",
+      "minSz": "340000.01",
+      "maxSz": "360000",
+      "imr": "0.105",
+      "mmr": "0.0925",
+      "maxLever": "9.52"
+    },
+    {
+      "tier": "21",
+      "minSz": "360000.01",
+      "maxSz": "380000",
+      "imr": "0.11",
+      "mmr": "0.0975",
+      "maxLever": "9.09"
+    },
+    {
+      "tier": "22",
+      "minSz": "380000.01",
+      "maxSz": "400000",
+      "imr": "0.115",
+      "mmr": "0.1025",
+      "maxLever": "8.69"
+    },
+    {
+      "tier": "23",
+      "minSz": "400000.01",
+      "maxSz": "420000",
+      "imr": "0.12",
+      "mmr": "0.1075",
+      "maxLever": "8.33"
+    },
+    {
+      "tier": "24",
+      "minSz": "420000.01",
+      "maxSz": "440000",
+      "imr": "0.125",
+      "mmr": "0.1125",
+      "maxLever": "8"
+    },
+    {
+      "tier": "25",
+      "minSz": "440000.01",
+      "maxSz": "460000",
+      "imr": "0.13",
+      "mmr": "0.1175",
+      "maxLever": "7.69"
+    },
+    {
+      "tier": "26",
+      "minSz": "460000.01",
+      "maxSz": "480000",
+      "imr": "0.135",
+      "mmr": "0.1225",
+      "maxLever": "7.4"
+    },
+    {
+      "tier": "27",
+      "minSz": "480000.01",
+      "maxSz": "500000",
+      "imr": "0.14",
+      "mmr": "0.1275",
+      "maxLever": "7.14"
+    },
+    {
+      "tier": "28",
+      "minSz": "500000.01",
+      "maxSz": "520000",
+      "imr": "0.145",
+      "mmr": "0.1325",
+      "maxLever": "6.89"
+    },
+    {
+      "tier": "29",
+      "minSz": "520000.01",
+      "maxSz": "540000",
+      "imr": "0.15",
+      "mmr": "0.1375",
+      "maxLever": "6.66"
+    },
+    {
+      "tier": "30",
+      "minSz": "540000.01",
+      "maxSz": "560000",
+      "imr": "0.155",
+      "mmr": "0.1425",
+      "maxLever": "6.45"
+    },
+    {
+      "tier": "31",
+      "minSz": "560000.01",
+      "maxSz": "580000",
+      "imr": "0.16",
+      "mmr": "0.1475",
+      "maxLever": "6.25"
+    },
+    {
+      "tier": "32",
+      "minSz": "580000.01",
+      "maxSz": "600000",
+      "imr": "0.165",
+      "mmr": "0.1525",
+      "maxLever": "6.06"
+    },
+    {
+      "tier": "33",
+      "minSz": "600000.01",
+      "maxSz": "620000",
+      "imr": "0.17",
+      "mmr": "0.1575",
+      "maxLever": "5.88"
+    },
+    {
+      "tier": "34",
+      "minSz": "620000.01",
+      "maxSz": "640000",
+      "imr": "0.175",
+      "mmr": "0.1625",
+      "maxLever": "5.71"
+    },
+    {
+      "tier": "35",
+      "minSz": "640000.01",
+      "maxSz": "660000",
+      "imr": "0.18",
+      "mmr": "0.1675",
+      "maxLever": "5.55"
+    },
+    {
+      "tier": "36",
+      "minSz": "660000.01",
+      "maxSz": "680000",
+      "imr": "0.185",
+      "mmr": "0.1725",
+      "maxLever": "5.4"
+    },
+    {
+      "tier": "37",
+      "minSz": "680000.01",
+      "maxSz": "700000",
+      "imr": "0.19",
+      "mmr": "0.1775",
+      "maxLever": "5.26"
+    },
+    {
+      "tier": "38",
+      "minSz": "700000.01",
+      "maxSz": "720000",
+      "imr": "0.195",
+      "mmr": "0.1825",
+      "maxLever": "5.12"
+    },
+    {
+      "tier": "39",
+      "minSz": "720000.01",
+      "maxSz": "740000",
+      "imr": "0.2",
+      "mmr": "0.1875",
+      "maxLever": "5"
+    },
+    {
+      "tier": "40",
+      "minSz": "740000.01",
+      "maxSz": "760000",
+      "imr": "0.205",
+      "mmr": "0.1925",
+      "maxLever": "4.87"
+    },
+    {
+      "tier": "41",
+      "minSz": "760000.01",
+      "maxSz": "780000",
+      "imr": "0.21",
+      "mmr": "0.1975",
+      "maxLever": "4.76"
+    },
+    {
+      "tier": "42",
+      "minSz": "780000.01",
+      "maxSz": "800000",
+      "imr": "0.215",
+      "mmr": "0.2025",
+      "maxLever": "4.65"
+    },
+    {
+      "tier": "43",
+      "minSz": "800000.01",
+      "maxSz": "820000",
+      "imr": "0.22",
+      "mmr": "0.2075",
+      "maxLever": "4.54"
+    },
+    {
+      "tier": "44",
+      "minSz": "820000.01",
+      "maxSz": "840000",
+      "imr": "0.225",
+      "mmr": "0.2125",
+      "maxLever": "4.44"
+    },
+    {
+      "tier": "45",
+      "minSz": "840000.01",
+      "maxSz": "860000",
+      "imr": "0.23",
+      "mmr": "0.2175",
+      "maxLever": "4.34"
+    },
+    {
+      "tier": "46",
+      "minSz": "860000.01",
+      "maxSz": "880000",
+      "imr": "0.235",
+      "mmr": "0.2225",
+      "maxLever": "4.25"
+    },
+    {
+      "tier": "47",
+      "minSz": "880000.01",
+      "maxSz": "900000",
+      "imr": "0.24",
+      "mmr": "0.2275",
+      "maxLever": "4.16"
+    },
+    {
+      "tier": "48",
+      "minSz": "900000.01",
+      "maxSz": "920000",
+      "imr": "0.245",
+      "mmr": "0.2325",
+      "maxLever": "4.08"
+    },
+    {
+      "tier": "49",
+      "minSz": "920000.01",
+      "maxSz": "940000",
+      "imr": "0.25",
+      "mmr": "0.2375",
+      "maxLever": "4"
+    },
+    {
+      "tier": "50",
+      "minSz": "940000.01",
+      "maxSz": "960000",
+      "imr": "0.255",
+      "mmr": "0.2425",
+      "maxLever": "3.92"
+    },
+    {
+      "tier": "51",
+      "minSz": "960000.01",
+      "maxSz": "980000",
+      "imr": "0.26",
+      "mmr": "0.2475",
+      "maxLever": "3.84"
+    },
+    {
+      "tier": "52",
+      "minSz": "980000.01",
+      "maxSz": "1000000",
+      "imr": "0.265",
+      "mmr": "0.2525",
+      "maxLever": "3.77"
+    },
+    {
+      "tier": "53",
+      "minSz": "1000000.01",
+      "maxSz": "1020000",
+      "imr": "0.27",
+      "mmr": "0.2575",
+      "maxLever": "3.7"
+    },
+    {
+      "tier": "54",
+      "minSz": "1020000.01",
+      "maxSz": "1040000",
+      "imr": "0.275",
+      "mmr": "0.2625",
+      "maxLever": "3.63"
+    },
+    {
+      "tier": "55",
+      "minSz": "1040000.01",
+      "maxSz": "1060000",
+      "imr": "0.28",
+      "mmr": "0.2675",
+      "maxLever": "3.57"
+    },
+    {
+      "tier": "56",
+      "minSz": "1060000.01",
+      "maxSz": "1080000",
+      "imr": "0.285",
+      "mmr": "0.2725",
+      "maxLever": "3.5"
+    },
+    {
+      "tier": "57",
+      "minSz": "1080000.01",
+      "maxSz": "1100000",
+      "imr": "0.29",
+      "mmr": "0.2775",
+      "maxLever": "3.44"
+    },
+    {
+      "tier": "58",
+      "minSz": "1100000.01",
+      "maxSz": "1120000",
+      "imr": "0.295",
+      "mmr": "0.2825",
+      "maxLever": "3.38"
+    },
+    {
+      "tier": "59",
+      "minSz": "1120000.01",
+      "maxSz": "1140000",
+      "imr": "0.3",
+      "mmr": "0.2875",
+      "maxLever": "3.33"
+    },
+    {
+      "tier": "60",
+      "minSz": "1140000.01",
+      "maxSz": "1160000",
+      "imr": "0.305",
+      "mmr": "0.2925",
+      "maxLever": "3.27"
+    },
+    {
+      "tier": "61",
+      "minSz": "1160000.01",
+      "maxSz": "1180000",
+      "imr": "0.31",
+      "mmr": "0.2975",
+      "maxLever": "3.22"
+    },
+    {
+      "tier": "62",
+      "minSz": "1180000.01",
+      "maxSz": "1200000",
+      "imr": "0.315",
+      "mmr": "0.3025",
+      "maxLever": "3.17"
+    },
+    {
+      "tier": "63",
+      "minSz": "1200000.01",
+      "maxSz": "1220000",
+      "imr": "0.32",
+      "mmr": "0.3075",
+      "maxLever": "3.12"
+    },
+    {
+      "tier": "64",
+      "minSz": "1220000.01",
+      "maxSz": "1240000",
+      "imr": "0.325",
+      "mmr": "0.3125",
+      "maxLever": "3.07"
+    },
+    {
+      "tier": "65",
+      "minSz": "1240000.01",
+      "maxSz": "1260000",
+      "imr": "0.33",
+      "mmr": "0.3175",
+      "maxLever": "3.03"
+    },
+    {
+      "tier": "66",
+      "minSz": "1260000.01",
+      "maxSz": "1280000",
+      "imr": "0.335",
+      "mmr": "0.3225",
+      "maxLever": "2.98"
+    },
+    {
+      "tier": "67",
+      "minSz": "1280000.01",
+      "maxSz": "1300000",
+      "imr": "0.34",
+      "mmr": "0.3275",
+      "maxLever": "2.94"
+    },
+    {
+      "tier": "68",
+      "minSz": "1300000.01",
+      "maxSz": "1320000",
+      "imr": "0.345",
+      "mmr": "0.3325",
+      "maxLever": "2.89"
+    },
+    {
+      "tier": "69",
+      "minSz": "1320000.01",
+      "maxSz": "1340000",
+      "imr": "0.35",
+      "mmr": "0.3375",
+      "maxLever": "2.85"
+    },
+    {
+      "tier": "70",
+      "minSz": "1340000.01",
+      "maxSz": "1360000",
+      "imr": "0.355",
+      "mmr": "0.3425",
+      "maxLever": "2.81"
+    },
+    {
+      "tier": "71",
+      "minSz": "1360000.01",
+      "maxSz": "1380000",
+      "imr": "0.36",
+      "mmr": "0.3475",
+      "maxLever": "2.77"
+    },
+    {
+      "tier": "72",
+      "minSz": "1380000.01",
+      "maxSz": "1400000",
+      "imr": "0.365",
+      "mmr": "0.3525",
+      "maxLever": "2.73"
+    },
+    {
+      "tier": "73",
+      "minSz": "1400000.01",
+      "maxSz": "1420000",
+      "imr": "0.37",
+      "mmr": "0.3575",
+      "maxLever": "2.7"
+    },
+    {
+      "tier": "74",
+      "minSz": "1420000.01",
+      "maxSz": "1440000",
+      "imr": "0.375",
+      "mmr": "0.3625",
+      "maxLever": "2.66"
+    },
+    {
+      "tier": "75",
+      "minSz": "1440000.01",
+      "maxSz": "1460000",
+      "imr": "0.38",
+      "mmr": "0.3675",
+      "maxLever": "2.63"
+    },
+    {
+      "tier": "76",
+      "minSz": "1460000.01",
+      "maxSz": "1480000",
+      "imr": "0.385",
+      "mmr": "0.3725",
+      "maxLever": "2.59"
+    },
+    {
+      "tier": "77",
+      "minSz": "1480000.01",
+      "maxSz": "1500000",
+      "imr": "0.39",
+      "mmr": "0.3775",
+      "maxLever": "2.56"
+    },
+    {
+      "tier": "78",
+      "minSz": "1500000.01",
+      "maxSz": "1520000",
+      "imr": "0.395",
+      "mmr": "0.3825",
+      "maxLever": "2.53"
+    },
+    {
+      "tier": "79",
+      "minSz": "1520000.01",
+      "maxSz": "1540000",
+      "imr": "0.4",
+      "mmr": "0.3875",
+      "maxLever": "2.5"
+    },
+    {
+      "tier": "80",
+      "minSz": "1540000.01",
+      "maxSz": "1560000",
+      "imr": "0.405",
+      "mmr": "0.3925",
+      "maxLever": "2.46"
+    },
+    {
+      "tier": "81",
+      "minSz": "1560000.01",
+      "maxSz": "1580000",
+      "imr": "0.41",
+      "mmr": "0.3975",
+      "maxLever": "2.43"
+    },
+    {
+      "tier": "82",
+      "minSz": "1580000.01",
+      "maxSz": "1600000",
+      "imr": "0.415",
+      "mmr": "0.4025",
+      "maxLever": "2.4"
+    },
+    {
+      "tier": "83",
+      "minSz": "1600000.01",
+      "maxSz": "1620000",
+      "imr": "0.42",
+      "mmr": "0.4075",
+      "maxLever": "2.38"
+    },
+    {
+      "tier": "84",
+      "minSz": "1620000.01",
+      "maxSz": "1640000",
+      "imr": "0.425",
+      "mmr": "0.4125",
+      "maxLever": "2.35"
+    },
+    {
+      "tier": "85",
+      "minSz": "1640000.01",
+      "maxSz": "1660000",
+      "imr": "0.43",
+      "mmr": "0.4175",
+      "maxLever": "2.32"
+    },
+    {
+      "tier": "86",
+      "minSz": "1660000.01",
+      "maxSz": "1680000",
+      "imr": "0.435",
+      "mmr": "0.4225",
+      "maxLever": "2.29"
+    },
+    {
+      "tier": "87",
+      "minSz": "1680000.01",
+      "maxSz": "1700000",
+      "imr": "0.44",
+      "mmr": "0.4275",
+      "maxLever": "2.27"
+    },
+    {
+      "tier": "88",
+      "minSz": "1700000.01",
+      "maxSz": "1720000",
+      "imr": "0.445",
+      "mmr": "0.4325",
+      "maxLever": "2.24"
+    },
+    {
+      "tier": "89",
+      "minSz": "1720000.01",
+      "maxSz": "1740000",
+      "imr": "0.45",
+      "mmr": "0.4375",
+      "maxLever": "2.22"
+    },
+    {
+      "tier": "90",
+      "minSz": "1740000.01",
+      "maxSz": "1760000",
+      "imr": "0.455",
+      "mmr": "0.4425",
+      "maxLever": "2.19"
+    },
+    {
+      "tier": "91",
+      "minSz": "1760000.01",
+      "maxSz": "1780000",
+      "imr": "0.46",
+      "mmr": "0.4475",
+      "maxLever": "2.17"
+    },
+    {
+      "tier": "92",
+      "minSz": "1780000.01",
+      "maxSz": "1800000",
+      "imr": "0.465",
+      "mmr": "0.4525",
+      "maxLever": "2.15"
+    },
+    {
+      "tier": "93",
+      "minSz": "1800000.01",
+      "maxSz": "1820000",
+      "imr": "0.47",
+      "mmr": "0.4575",
+      "maxLever": "2.12"
+    },
+    {
+      "tier": "94",
+      "minSz": "1820000.01",
+      "maxSz": "1840000",
+      "imr": "0.475",
+      "mmr": "0.4625",
+      "maxLever": "2.1"
+    },
+    {
+      "tier": "95",
+      "minSz": "1840000.01",
+      "maxSz": "1860000",
+      "imr": "0.48",
+      "mmr": "0.4675",
+      "maxLever": "2.08"
+    },
+    {
+      "tier": "96",
+      "minSz": "1860000.01",
+      "maxSz": "1880000",
+      "imr": "0.485",
+      "mmr": "0.4725",
+      "maxLever": "2.06"
+    },
+    {
+      "tier": "97",
+      "minSz": "1880000.01",
+      "maxSz": "1900000",
+      "imr": "0.49",
+      "mmr": "0.4775",
+      "maxLever": "2.04"
+    },
+    {
+      "tier": "98",
+      "minSz": "1900000.01",
+      "maxSz": "1920000",
+      "imr": "0.495",
+      "mmr": "0.4825",
+      "maxLever": "2.02"
+    },
+    {
+      "tier": "99",
+      "minSz": "1920000.01",
+      "maxSz": "1940000",
+      "imr": "0.5",
+      "mmr": "0.4875",
+      "maxLever": "2"
+    }
+  ],
+  "okx_tramo1": {
+    "imr": 0.01,
+    "mmr": 0.004,
+    "apalancamiento_max": 100.0
+  }
+}

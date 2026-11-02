@@ -1,0 +1,172 @@
+{
+  "credenciales_enviadas": [],
+  "aviso": "orden de magnitud, un solo simbolo (BTCUSDT). No es la 4.2.",
+  "a4_bybit_vip0": {
+    "fuente": "fase0_n9/fuentes_a4/bybit_help_fee.raw",
+    "fila": "VIP 0 | 0.1000% | 0.1000% | 0.0550% | 0.0200% |",
+    "spot_taker": 0.001,
+    "spot_maker": 0.001,
+    "perp_taker": 0.00055,
+    "perp_maker": 0.0002,
+    "spot_maker_igual_taker": true
+  },
+  "a4_ida_y_vuelta": {
+    "rt_taker_pct": 0.31000000000000005,
+    "rt_maker_pct": 0.24000000000000002
+  },
+  "a5_minimos_bybit": {
+    "symbol": "BTCUSDT",
+    "lotSizeFilter": {
+      "maxOrderQty": "1500.000",
+      "minOrderQty": "0.001",
+      "qtyStep": "0.001",
+      "postOnlyMaxOrderQty": "1500.000",
+      "maxMktOrderQty": "150.000",
+      "minNotionalValue": "5"
+    },
+    "leverageFilter": {
+      "minLeverage": "1",
+      "maxLeverage": "150.00",
+      "leverageStep": "0.01"
+    }
+  },
+  "referencia_bce": {
+    "url": "https://data-api.ecb.europa.eu/service/data/FM/D.U2.EUR.4F.KR.DFR.LEV?lastNObservations=1&format=csvdata",
+    "dfr_anual": 0.025,
+    "estado": "verificado"
+  },
+  "bc_retorno_sobre_capital": {
+    "margenes": [
+      0.05,
+      0.1,
+      0.2,
+      0.5
+    ],
+    "tabla": {
+      "media 7,15 anos": {
+        "bruto_anual_pct": 11.454738935776302,
+        "neto_nocional_pct": 11.214738935776301,
+        "sobre_capital_pct": {
+          "0.05": 10.680703748358383,
+          "0.1": 10.195217214342092,
+          "0.2": 9.345615779813585,
+          "0.5": 7.476492623850867
+        }
+      },
+      "mediana 7,15 anos": {
+        "bruto_anual_pct": 10.25796,
+        "neto_nocional_pct": 10.01796,
+        "sobre_capital_pct": {
+          "0.05": 9.540914285714285,
+          "0.1": 9.107236363636364,
+          "0.2": 8.3483,
+          "0.5": 6.678640000000001
+        }
+      },
+      "ano 2019": {
+        "bruto_anual_pct": 7.481924423076922,
+        "neto_nocional_pct": 7.241924423076922,
+        "sobre_capital_pct": {
+          "0.05": 6.897070879120878,
+          "0.1": 6.583567657342655,
+          "0.2": 6.034937019230768,
+          "0.5": 4.827949615384615
+        }
+      },
+      "ano 2020": {
+        "bruto_anual_pct": 17.192615942622947,
+        "neto_nocional_pct": 16.95261594262295,
+        "sobre_capital_pct": {
+          "0.05": 16.14534851678376,
+          "0.1": 15.411469038748134,
+          "0.2": 14.127179952185791,
+          "0.5": 11.301743961748633
+        }
+      },
+      "ano 2021": {
+        "bruto_anual_pct": 30.608423000000002,
+        "neto_nocional_pct": 30.368423000000003,
+        "sobre_capital_pct": {
+          "0.05": 28.922307619047622,
+          "0.1": 27.607657272727273,
+          "0.2": 25.30701916666667,
+          "0.5": 20.245615333333337
+        }
+      },
+      "ano 2022": {
+        "bruto_anual_pct": 4.164925,
+        "neto_nocional_pct": 3.924925,
+        "sobre_capital_pct": {
+          "0.05": 3.7380238095238094,
+          "0.1": 3.568113636363636,
+          "0.2": 3.2707708333333336,
+          "0.5": 2.616616666666667
+        }
+      },
+      "ano 2023": {
+        "bruto_anual_pct": 7.865711999999999,
+        "neto_nocional_pct": 7.625711999999999,
+        "sobre_capital_pct": {
+          "0.05": 7.262582857142856,
+          "0.1": 6.932465454545453,
+          "0.2": 6.35476,
+          "0.5": 5.083807999999999
+        }
+      },
+      "ano 2024": {
+        "bruto_anual_pct": 11.924213920765027,
+        "neto_nocional_pct": 11.684213920765027,
+        "sobre_capital_pct": {
+          "0.05": 11.127822781680978,
+          "0.1": 10.622012655240933,
+          "0.2": 9.736844933970856,
+          "0.5": 7.789475947176684
+        }
+      },
+      "ano 2025": {
+        "bruto_anual_pct": 5.126428000000001,
+        "neto_nocional_pct": 4.886428,
+        "sobre_capital_pct": {
+          "0.05": 4.653740952380953,
+          "0.1": 4.442207272727273,
+          "0.2": 4.072023333333334,
+          "0.5": 3.257618666666667
+        }
+      },
+      "ano 2026": {
+        "bruto_anual_pct": 3.1711724836601305,
+        "neto_nocional_pct": 2.9311724836601303,
+        "sobre_capital_pct": {
+          "0.05": 2.7915928415810765,
+          "0.1": 2.6647022578728454,
+          "0.2": 2.442643736383442,
+          "0.5": 1.9541149891067535
+        }
+      }
+    },
+    "coste_rt_pct": 0.24000000000000002
+  },
+  "bc_euros_ano": {
+    "margen": 0.1,
+    "por_capital": {
+      "1000": {
+        "media 7,15 anos": 101.95217214342092,
+        "ano 2026": 26.647022578728453
+      },
+      "10000": {
+        "media 7,15 anos": 1019.5217214342092,
+        "ano 2026": 266.47022578728456
+      },
+      "100000": {
+        "media 7,15 anos": 10195.217214342092,
+        "ano 2026": 2664.702257872845
+      }
+    },
+    "dfr_anual": 0.025,
+    "dfr_euros": {
+      "1000": 25.0,
+      "10000": 250.0,
+      "100000": 2500.0
+    }
+  }
+}

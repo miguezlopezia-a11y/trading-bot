@@ -1,0 +1,187 @@
+{
+  "credenciales_enviadas": [],
+  "fuentes": {
+    "binance_api_futuros_exchangeinfo": {
+      "url": "https://fapi.binance.com/fapi/v1/exchangeInfo",
+      "http": 200,
+      "bytes": 1172011,
+      "sha256_cuerpo": "c6076c9d652f85a3fbe491f5f88c93a1f965a17f4a5099f413c76f027d28e076",
+      "sha256_fichero": "c6076c9d652f85a3fbe491f5f88c93a1f965a17f4a5099f413c76f027d28e076",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/binance_api_futuros_exchangeinfo.raw",
+      "pares_maker_taker": []
+    },
+    "binance_bapi_fee_futuros": {
+      "url": "https://www.binance.com/bapi/futures/v1/friendly/future/common/brackets",
+      "http": 200,
+      "bytes": 1690310,
+      "sha256_cuerpo": "783a28a3617e8e3a97a63140963612663e9f367eeea629c784d0914785a77e45",
+      "sha256_fichero": "783a28a3617e8e3a97a63140963612663e9f367eeea629c784d0914785a77e45",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/binance_bapi_fee_futuros.raw",
+      "pares_maker_taker": []
+    },
+    "binance_web_fee_futuros": {
+      "url": "https://www.binance.com/en/fee/futureFee",
+      "http": 202,
+      "bytes": 0,
+      "sha256_cuerpo": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256_fichero": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/binance_web_fee_futuros.raw",
+      "pares_maker_taker": []
+    },
+    "binance_web_fee_spot": {
+      "url": "https://www.binance.com/en/fee/trading",
+      "http": 202,
+      "bytes": 0,
+      "sha256_cuerpo": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256_fichero": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/binance_web_fee_spot.raw",
+      "pares_maker_taker": []
+    },
+    "bybit_api_instruments_linear": {
+      "url": "https://api.bybit.com/v5/market/instruments-info?category=linear&symbol=BTCUSDT",
+      "http": 200,
+      "bytes": 1057,
+      "sha256_cuerpo": "099db8aaf6badeb9920ef6ce556244afa64edbc16c803b7bfe32f73cc898435a",
+      "sha256_fichero": "099db8aaf6badeb9920ef6ce556244afa64edbc16c803b7bfe32f73cc898435a",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/bybit_api_instruments_linear.raw",
+      "pares_maker_taker": []
+    },
+    "bybit_help_fee": {
+      "url": "https://www.bybit.com/en/help-center/article/Trading-Fee-Structure",
+      "http": 200,
+      "bytes": 455483,
+      "sha256_cuerpo": "00d56a3b873202d42bb953fb793ae6621e903773328049e2c67d3c5848fb4135",
+      "sha256_fichero": "00d56a3b873202d42bb953fb793ae6621e903773328049e2c67d3c5848fb4135",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/bybit_help_fee.raw",
+      "pares_maker_taker": [
+        [
+          "taker",
+          "0.0300%"
+        ],
+        [
+          "taker",
+          "0.0625%"
+        ]
+      ]
+    },
+    "okx_api_instruments_swap": {
+      "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP&instId=BTC-USDT-SWAP",
+      "http": 200,
+      "bytes": 1117,
+      "sha256_cuerpo": "1a6eeb4c4cc625067010d0110718feaee4a6f03becc60f661b800acb4f5ac4e2",
+      "sha256_fichero": "1a6eeb4c4cc625067010d0110718feaee4a6f03becc60f661b800acb4f5ac4e2",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/okx_api_instruments_swap.raw",
+      "pares_maker_taker": []
+    },
+    "okx_web_fees": {
+      "url": "https://www.okx.com/fees",
+      "http": 200,
+      "bytes": 71805,
+      "sha256_cuerpo": "99f03501631b1a17ef099f22cd33ad06cdb46d8bef589c2ece7856055113b5cd",
+      "sha256_fichero": "99f03501631b1a17ef099f22cd33ad06cdb46d8bef589c2ece7856055113b5cd",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/okx_web_fees.raw",
+      "pares_maker_taker": [
+        [
+          "maker",
+          "0.0008"
+        ],
+        [
+          "maker",
+          "0.000675"
+        ],
+        [
+          "taker",
+          "0.0008"
+        ],
+        [
+          "maker",
+          "0.0006"
+        ],
+        [
+          "taker",
+          "0.0007"
+        ],
+        [
+          "maker",
+          "0.00055"
+        ],
+        [
+          "taker",
+          "0.00065"
+        ],
+        [
+          "maker",
+          "0.0003"
+        ],
+        [
+          "taker",
+          "0.00045"
+        ],
+        [
+          "maker",
+          "0.00025"
+        ],
+        [
+          "taker",
+          "0.00035"
+        ],
+        [
+          "taker",
+          "0.0003"
+        ],
+        [
+          "maker",
+          "0.00001"
+        ],
+        [
+          "taker",
+          "0.00023"
+        ],
+        [
+          "maker",
+          "0.000025"
+        ],
+        [
+          "taker",
+          "0.0002"
+        ],
+        [
+          "maker",
+          "0.00005"
+        ],
+        [
+          "taker",
+          "0.00015"
+        ]
+      ]
+    },
+    "okx_priapi_fee_tier": {
+      "url": "https://www.okx.com/priapi/v5/public/fee-rate-tier?t=0",
+      "http": 404,
+      "bytes": 102,
+      "sha256_cuerpo": "2873a5c84107af60a96549ae51bf41aee6ac21da9acb6381210747f6b19b6534",
+      "sha256_fichero": "2873a5c84107af60a96549ae51bf41aee6ac21da9acb6381210747f6b19b6534",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/okx_priapi_fee_tier.raw",
+      "pares_maker_taker": []
+    },
+    "okx_docs_trading_fee": {
+      "url": "https://www.okx.com/help/okx-trading-fees",
+      "http": 404,
+      "bytes": 65351,
+      "sha256_cuerpo": "4cb0d3397e706ceaa7796f17768386f0a3eab539b3082c0de1bbb9332e998925",
+      "sha256_fichero": "4cb0d3397e706ceaa7796f17768386f0a3eab539b3082c0de1bbb9332e998925",
+      "truncado": false,
+      "raw": "fase0_n9/fuentes_a4/okx_docs_trading_fee.raw",
+      "pares_maker_taker": []
+    }
+  }
+}

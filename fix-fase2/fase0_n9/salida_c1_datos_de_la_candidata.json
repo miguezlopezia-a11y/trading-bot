@@ -1,0 +1,57 @@
+{
+  "credenciales_enviadas": [],
+  "endpoint": "https://fapi.binance.com/fapi/v1/klines?symbol={}&interval=1d&limit=5",
+  "pruebas": {
+    "BTCUSDT_261225": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1793232000000 cierre0=78633.6 tN=1793577600000 cierreN=77635.7"
+    },
+    "BTCUSDT_270326": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1793232000000 cierre0=79619.4 tN=1793577600000 cierreN=78691.5"
+    },
+    "BTCUSDT_260327": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1775952000000 cierre0=69260.0 tN=1776297600000 cierreN=69260.0"
+    },
+    "BTCUSDT_260626": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1782086400000 cierre0=64033.7 tN=1782432000000 cierreN=59681.2"
+    },
+    "BTCUSDT_260925": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1789948800000 cierre0=86645.3 tN=1790294400000 cierreN=83981.8"
+    },
+    "BTCUSDT_251226": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1768521600000 cierre0=88721.0 tN=1768867200000 cierreN=88721.0"
+    },
+    "ETHUSDT_260925": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1789948800000 cierre0=2778.96 tN=1790294400000 cierreN=2673.50"
+    },
+    "BTCUSDT": {
+      "http": 200,
+      "filas": 5,
+      "detalle": "t0=1793232000000 cierre0=77962.60 tN=1793577600000 cierreN=76968.70"
+    }
+  },
+  "veredicto": {
+    "con_velas": [
+      "BTCUSDT_261225",
+      "BTCUSDT_270326",
+      "BTCUSDT_260327",
+      "BTCUSDT_260626",
+      "BTCUSDT_260925",
+      "BTCUSDT_251226",
+      "ETHUSDT_260925"
+    ]
+  }
+}

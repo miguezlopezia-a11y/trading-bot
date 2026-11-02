@@ -1,0 +1,88 @@
+{
+  "endpoints_2_1": {
+    "binance": {
+      "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=3",
+      "http": 200,
+      "bytes": 379,
+      "ms": 302,
+      "body": "[{\"symbol\":\"BTCUSDT\",\"fundingTime\":1793577600005,\"fundingRate\":\"0.00010000\",\"markPrice\":\"78314.33068216\",\"rateType\":\"Regular\"},{\"symbol\":\"BTCUSDT\",\"fundingTime\":1793606400001,\"fundingRate\":\"0.00008758\",\"markPrice\":\"78083.00000000\",\"rateType\":\"Regular\"},{\"symbol\":\"BTCUSDT\",\"fundingTime\":1793635200000,\"fundingRate\":\"0.00009118\",\"markPrice\":\"77490.46959520\",\"rateType\":\"Regular\"}]"
+    },
+    "bybit": {
+      "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&limit=3",
+      "http": 200,
+      "bytes": 364,
+      "ms": 214,
+      "body": "{\"retCode\":0,\"retMsg\":\"OK\",\"result\":{\"category\":\"linear\",\"list\":[{\"symbol\":\"BTCUSDT\",\"fundingRate\":\"0.00009346\",\"fundingRateTimestamp\":\"1793635200000\"},{\"symbol\":\"BTCUSDT\",\"fundingRate\":\"0.00005216\",\"fundingRateTimestamp\":\"1793606400000\"},{\"symbol\":\"BTCUSDT\",\"fundingRate\":\"0.0000959\",\"fundingRateTimestamp\":\"1793577600000\"}]},\"retExtInfo\":{},\"time\":1793648951362}"
+    },
+    "okx": {
+      "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=BTC-USD-SWAP&limit=3",
+      "http": 200,
+      "bytes": 546,
+      "ms": 277,
+      "body": "{\"code\":\"0\",\"data\":[{\"formulaType\":\"withRate\",\"fundingRate\":\"0.0001\",\"fundingTime\":\"1793635200000\",\"instId\":\"BTC-USD-SWAP\",\"instType\":\"SWAP\",\"method\":\"current_period\",\"realizedRate\":\"0.0001\"},{\"formulaType\":\"withRate\",\"fundingRate\":\"0.0001\",\"fundingTime\":\"1793606400000\",\"instId\":\"BTC-USD-SWAP\",\"instType\":\"SWAP\",\"method\":\"current_period\",\"realizedRate\":\"0.0001\"},{\"formulaType\":\"withRate\",\"fundingRate\":\"0.0001\",\"fundingTime\":\"1793577600000\",\"instId\":\"BTC-USD-SWAP\",\"instType\":\"SWAP\",\"method\":\"current_period\",\"realizedRate\":\"0.0001\"}],\"msg\":\"\"}"
+    }
+  },
+  "headers_enviados": {
+    "User-Agent": "n9-fase0/1.0 (publico, sin credenciales)"
+  },
+  "credenciales_enviadas": [],
+  "veredicto_2_1": "CONFIRMADO",
+  "universo_2_3": {
+    "url": "https://fapi.binance.com/fapi/v1/premiumIndex",
+    "http": 200,
+    "n_medido": 945,
+    "n_brief": 945,
+    "diferencia": 0,
+    "primeros_10": [
+      "0GUSDT",
+      "1000000BOBUSDT",
+      "1000000MOGUSDT",
+      "1000BONKUSDC",
+      "1000BONKUSDT",
+      "1000CATUSDT",
+      "1000CHEEMSUSDT",
+      "1000FLOKIUSDT",
+      "1000LUNCUSDT",
+      "1000PEPEUSDC"
+    ],
+    "ultimos_10": [
+      "ZORAUSDT",
+      "ZRCUSDT",
+      "ZROUSDT",
+      "ZRXUSDT",
+      "ZSUSDT",
+      "哈基米USDT",
+      "币安人生USDT",
+      "我踏马来了USDT",
+      "牛来USDT",
+      "龙虾USDT"
+    ]
+  },
+  "paginacion_2_4": {
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=1000",
+    "http": 200,
+    "pedido": 1000,
+    "devuelto": 500,
+    "brief_dice": 500
+  },
+  "regimen_2_6": {
+    "tasas_8h": {
+      "binance_btcusdt": [
+        0.0001,
+        8.758e-05,
+        9.118e-05
+      ],
+      "bybit_btcusdt": [
+        9.346e-05,
+        5.216e-05,
+        9.59e-05
+      ],
+      "okx_btc_usd_swap": [
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "nota": "regimen actual, no media historica; no es entrada de nada"
+  }
+}

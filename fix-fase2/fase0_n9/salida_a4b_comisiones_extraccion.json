@@ -1,0 +1,117 @@
+{
+  "credenciales_enviadas": [],
+  "okx_fees_pagina": {
+    "fuente": "fase0_n9/fuentes_a4/okx_web_fees.raw",
+    "tabs": [
+      {
+        "feeClazz": 12,
+        "instType": 1,
+        "owner": 1,
+        "subTabId": 4364,
+        "subTabName": "Standard",
+        "tabId": 1,
+        "tabName": "Spot"
+      },
+      {
+        "feeClazz": 11,
+        "instType": 1,
+        "owner": 1,
+        "subTabId": 10,
+        "subTabName": "Zero-fee pairs",
+        "tabId": 1,
+        "tabName": "Spot"
+      },
+      {
+        "feeClazz": 4,
+        "instType": 4,
+        "owner": 1,
+        "subTabId": null,
+        "subTabName": null,
+        "tabId": 2,
+        "tabName": "Futures"
+      },
+      {
+        "feeClazz": 1,
+        "instType": 5,
+        "owner": 1,
+        "subTabId": null,
+        "subTabName": null,
+        "tabId": 3,
+        "tabName": "Options"
+      }
+    ],
+    "regular_user": [
+      {
+        "levelName": "Regular user",
+        "level": 0,
+        "tradeType": 6,
+        "assetType": 6,
+        "makerFee": 0.0008,
+        "takerFee": 0.001,
+        "standardMakerFee": 0.0008,
+        "standardTakerFee": 0.001
+      }
+    ]
+  },
+  "bybit_help": {
+    "fuente": "fase0_n9/fuentes_a4/bybit_help_fee.raw",
+    "apariciones": 19,
+    "bloques": [
+      "rate applied to your orders is based on your VIP level at the time the order is placed.Trading Fee RateThe table below displays the base trading fee rates for various products and the criteria required for each VIP level. However, the actual fee rates may vary depending on your region. For the accurate fee rates, please always refer to the My Fee Rate page after completing Identity Verification.VIP Level | Spot Trading*(Crypto-Crypto) | Perpetual & Futures Contracts Trading | Options Trading | \nTaker Fee Rate | Maker Fee Rate | Taker Fee Rate | Maker Fee Rate | Taker Fee Rate | Maker Fee Rate | \nVIP 0 | 0.1000% | 0.1000% | 0.0550% | 0.0200% | 0.0300% | 0.0200% | \nVIP 1 | 0.0800% | 0.0675% | 0.0400% | 0.0180% | 0.0200% | 0.0150% | \nVIP 2 | 0.0775% | 0.0650% | 0.0375% | 0.0160% | 0.0200% | 0.0150% | \nVIP 3 | 0.0750% | 0.0625% | 0.0350% | 0.0140% | 0.0200% | 0.0150% | \nVIP 4 | 0.0600% | 0.0500% | 0.0320% | 0.0120% | 0.0180% | 0.0150% | \nVIP 5 | 0.0500% | 0.0400% | 0.0320% | 0.0100% | 0.0150% | 0.0100% | \nSupreme VIP | 0.0450% | 0.0300% | 0.0300% | 0.0000% | 0.0150% | 0.0050% | \n*The Spot Trading fee rate above is only applicable to Crypto Trading pairs. Please refer to the tables below for the trading fees applied in Special Trading Zones.Note: If the filled price of Options trading volumes is less than or equal to the (underlying price × non-VIP taker fee rate × 4), it will not be counted toward meeting the requirements for a VIP tier. Let’s take the following example:Trade A’s filled price: 8,010.00Underlying price: 114,859.71Non-VIP taker fee rate for Options Trading: 0.0300%Threshold = (underlying price × non-VIP taker fee rate for Options Trading × 4)Threshold = 114,859.71 × 0.0300% × 4= 137.83Since 8,010.00 (filled price) is higher than 137.83 (threshold), Trade A’s volume does count toward VIP tier qualification. Special Trading Zones Fiat Trading Fee (Spot Tradin",
+      "ed on your VIP level at the time the order is placed.Trading Fee RateThe table below displays the base trading fee rates for various products and the criteria required for each VIP level. However, the actual fee rates may vary depending on your region. For the accurate fee rates, please always refer to the My Fee Rate page after completing Identity Verification.VIP Level | Spot Trading*(Crypto-Crypto) | Perpetual & Futures Contracts Trading | Options Trading | \nTaker Fee Rate | Maker Fee Rate | Taker Fee Rate | Maker Fee Rate | Taker Fee Rate | Maker Fee Rate | \nVIP 0 | 0.1000% | 0.1000% | 0.0550% | 0.0200% | 0.0300% | 0.0200% | \nVIP 1 | 0.0800% | 0.0675% | 0.0400% | 0.0180% | 0.0200% | 0.0150% | \nVIP 2 | 0.0775% | 0.0650% | 0.0375% | 0.0160% | 0.0200% | 0.0150% | \nVIP 3 | 0.0750% | 0.0625% | 0.0350% | 0.0140% | 0.0200% | 0.0150% | \nVIP 4 | 0.0600% | 0.0500% | 0.0320% | 0.0120% | 0.0180% | 0.0150% | \nVIP 5 | 0.0500% | 0.0400% | 0.0320% | 0.0100% | 0.0150% | 0.0100% | \nSupreme VIP | 0.0450% | 0.0300% | 0.0300% | 0.0000% | 0.0150% | 0.0050% | \n*The Spot Trading fee rate above is only applicable to Crypto Trading pairs. Please refer to the tables below for the trading fees applied in Special Trading Zones.Note: If the filled price of Options trading volumes is less than or equal to the (underlying price × non-VIP taker fee rate × 4), it will not be counted toward meeting the requirements for a VIP tier. Let’s take the following example:Trade A’s filled price: 8,010.00Underlying price: 114,859.71Non-VIP taker fee rate for Options Trading: 0.0300%Threshold = (underlying price × non-VIP taker fee rate for Options Trading × 4)Threshold = 114,859.71 × 0.0300% × 4= 137.83Since 8,010.00 (filled price) is higher than 137.83 (threshold), Trade A’s volume does count toward VIP tier qualification. Special Trading Zones Fiat Trading Fee (Spot Trading Fiat-Crypto pair)Spot Trading Ad",
+      "he order is placed.Trading Fee RateThe table below displays the base trading fee rates for various products and the criteria required for each VIP level. However, the actual fee rates may vary depending on your region. For the accurate fee rates, please always refer to the My Fee Rate page after completing Identity Verification.VIP Level | Spot Trading*(Crypto-Crypto) | Perpetual & Futures Contracts Trading | Options Trading | \nTaker Fee Rate | Maker Fee Rate | Taker Fee Rate | Maker Fee Rate | Taker Fee Rate | Maker Fee Rate | \nVIP 0 | 0.1000% | 0.1000% | 0.0550% | 0.0200% | 0.0300% | 0.0200% | \nVIP 1 | 0.0800% | 0.0675% | 0.0400% | 0.0180% | 0.0200% | 0.0150% | \nVIP 2 | 0.0775% | 0.0650% | 0.0375% | 0.0160% | 0.0200% | 0.0150% | \nVIP 3 | 0.0750% | 0.0625% | 0.0350% | 0.0140% | 0.0200% | 0.0150% | \nVIP 4 | 0.0600% | 0.0500% | 0.0320% | 0.0120% | 0.0180% | 0.0150% | \nVIP 5 | 0.0500% | 0.0400% | 0.0320% | 0.0100% | 0.0150% | 0.0100% | \nSupreme VIP | 0.0450% | 0.0300% | 0.0300% | 0.0000% | 0.0150% | 0.0050% | \n*The Spot Trading fee rate above is only applicable to Crypto Trading pairs. Please refer to the tables below for the trading fees applied in Special Trading Zones.Note: If the filled price of Options trading volumes is less than or equal to the (underlying price × non-VIP taker fee rate × 4), it will not be counted toward meeting the requirements for a VIP tier. Let’s take the following example:Trade A’s filled price: 8,010.00Underlying price: 114,859.71Non-VIP taker fee rate for Options Trading: 0.0300%Threshold = (underlying price × non-VIP taker fee rate for Options Trading × 4)Threshold = 114,859.71 × 0.0300% × 4= 137.83Since 8,010.00 (filled price) is higher than 137.83 (threshold), Trade A’s volume does count toward VIP tier qualification. Special Trading Zones Fiat Trading Fee (Spot Trading Fiat-Crypto pair)Spot Trading Adventure Zone & xStocksPerpetual Tr",
+      "| 0.0150% | \nVIP 4 | 0.0600% | 0.0500% | 0.0320% | 0.0120% | 0.0180% | 0.0150% | \nVIP 5 | 0.0500% | 0.0400% | 0.0320% | 0.0100% | 0.0150% | 0.0100% | \nSupreme VIP | 0.0450% | 0.0300% | 0.0300% | 0.0000% | 0.0150% | 0.0050% | \n*The Spot Trading fee rate above is only applicable to Crypto Trading pairs. Please refer to the tables below for the trading fees applied in Special Trading Zones.Note: If the filled price of Options trading volumes is less than or equal to the (underlying price × non-VIP taker fee rate × 4), it will not be counted toward meeting the requirements for a VIP tier. Let’s take the following example:Trade A’s filled price: 8,010.00Underlying price: 114,859.71Non-VIP taker fee rate for Options Trading: 0.0300%Threshold = (underlying price × non-VIP taker fee rate for Options Trading × 4)Threshold = 114,859.71 × 0.0300% × 4= 137.83Since 8,010.00 (filled price) is higher than 137.83 (threshold), Trade A’s volume does count toward VIP tier qualification. Special Trading Zones Fiat Trading Fee (Spot Trading Fiat-Crypto pair)Spot Trading Adventure Zone & xStocksPerpetual Trading (Pre Market Perpetual & Innovation Zone)VIP CriteriaFiat Trading Fee (Spot Trading Fiat-Crypto pair)The Fiat trading fee rates applied to your account will depend on your trading volume or VIP level, whichever is higher. For example, a VIP 3 trader with a 30–Day Spot Trading Volume of 50,000 USD will benefit from the VIP 3 trading fee rates of 0.0750% for taker orders and 0.0625% for maker orders. VIP Level | 30–Day Spot Trading Volume (USD) | Taker Fee Rate | Maker Fee Rate | \nVIP 0 | &lt;100,000 | 0.2000% | 0.1500% | \n≥100,000 | 0.2000% | 0.1000% | \n≥275,000 | 0.1500% | 0.1000% | \n≥550,000 | 0.1200% | 0.1000% | \nVIP 1 | ≥ 1,000,000 | 0.1000% | 0.0675% | \nVIP 2 | ≥ 5,000,000 | 0.0775% | 0.0650% | \nVIP 3 | ≥ 10,000,000 | 0.0750% | 0.0625% | \nVIP 4 | ≥ 25,000,000 | 0.0600% | 0.0500%"
+    ]
+  },
+  "sondeo_extra": {
+    "okx_help_trading_fees": {
+      "url": "https://www.okx.com/help/trading-fees",
+      "http": 404,
+      "bytes": 65010,
+      "sha256": "3b2c2beae0903ac8daf804d3bf7396114c2693dd9b6abf7a56a11b4e0059e4d8",
+      "cabeza": "<!DOCTYPE html><html lang=\"en-de\" dir=\"ltr\" class=\"  \"><head><meta charSet=\"UTF-8\" content=\"\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><title>Buy Bitcoin &amp; Crypto | Crypto Exchange, App &amp; Wallet | OKX Europe</title><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/><meta name=\"description\" content=\"OKX Europe - OKX is the new OKEx. We&#x27;re reimag"
+    },
+    "okx_help_fee_schedule": {
+      "url": "https://www.okx.com/help/fees-okx-trading-fees",
+      "http": 404,
+      "bytes": 65777,
+      "sha256": "b0efaab667419bbde7823dcef4fb01fedfd04e1c3eb37f8b0f6a3b22936d00b6",
+      "cabeza": "<!DOCTYPE html><html lang=\"en-de\" dir=\"ltr\" class=\"  \"><head><meta charSet=\"UTF-8\" content=\"\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><title>Buy Bitcoin &amp; Crypto | Crypto Exchange, App &amp; Wallet | OKX Europe</title><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/><meta name=\"description\" content=\"OKX Europe - OKX is the new OKEx. We&#x27;re reimag"
+    },
+    "okx_priapi_trade_fee": {
+      "url": "https://www.okx.com/priapi/v5/public/trade-fee?t=0",
+      "http": 404,
+      "bytes": 102,
+      "sha256": "2873a5c84107af60a96549ae51bf41aee6ac21da9acb6381210747f6b19b6534",
+      "cabeza": "{\"code\":404,\"data\":{},\"detailMsg\":\"\",\"error_code\":\"404\",\"error_message\":\"Not Found\",\"msg\":\"Not Found\"}"
+    },
+    "bybit_web_fee_schedule": {
+      "url": "https://www.bybit.com/en/fee-schedule/",
+      "http": 200,
+      "bytes": 184527,
+      "sha256": "4f4922b5e913fd97cb9c0af7935fdc74fa42351fad94ad9c051d411ab16db2e1",
+      "cabeza": "<!doctype html>\n<html data-n-head-ssr lang=\"en\" data-n-head=\"lang\">\n\n<head data-n-head=\"\">\n  <script>const allLang=[\"en-US\",\"zh-TW\",\"ja-JP\",\"ru-RU\",\"es-ES\",\"vi-VN\",\"tr-TR\",\"pt-BR\",\"pt-PT\",\"fr-FR\",\"th-TH\",\"id-ID\",\"kk-KZ\",\"fil-PH\",\"uk-UA\",\"hi-IN\",\"ar-SA\",\"es-MX\",\"es-AR\",\"es-419\",\"zh-MY\",\"nl-NL\",\"pl-PL\",\"en\"],allLangMapLang={en:\"en\",\"zh-CN\":\"zh-MY\",\"zh-TW\":\"zh-TW\",ja:\"ja-JP\",ru:\"ru-RU\",es:\"es-ES\",vi:"
+    },
+    "binance_bapi_vip_fee": {
+      "url": "https://www.binance.com/bapi/accounts/v1/public/account/vip/fee/rate",
+      "http": 404,
+      "bytes": 134,
+      "sha256": "b6e6ec4eabc03839f6404ab655713199168e2e3b11695b8e6bc571735f488310",
+      "cabeza": "{\"message\":\"No message available\",\"timestamp\":1793649602292,\"error\":\"Not Found\",\"path\":\"/v1/public/account/vip/fee/rate\",\"status\":404}"
+    },
+    "binance_bapi_trade_fee": {
+      "url": "https://www.binance.com/bapi/composite/v1/public/future/common/trade-fee",
+      "http": 404,
+      "bytes": 137,
+      "sha256": "164674e774b4e47c7b430dd1f232c60473f0f14dd29211363a0859eb31bfa410",
+      "cabeza": "{\"status\":404,\"message\":\"No message available\",\"timestamp\":1793649602561,\"error\":\"Not Found\",\"path\":\"/v1/public/future/common/trade-fee\"}"
+    },
+    "binance_fapi_commission_publico": {
+      "url": "https://fapi.binance.com/fapi/v1/commissionRate?symbol=BTCUSDT",
+      "http": 401,
+      "bytes": 46,
+      "sha256": "e7712db7077e81c13ccaf23d57a54ffb8e54c18d680a7bc30979e711ebdffbf1",
+      "cabeza": "{\"code\":-2014,\"msg\":\"API-key format invalid.\"}"
+    }
+  }
+}

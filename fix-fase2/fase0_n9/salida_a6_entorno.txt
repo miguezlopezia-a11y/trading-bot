@@ -1,0 +1,31 @@
+=== 2.5 — entorno del VPS ===
+cwd    = /root/trading-bot-n9/fix-fase2
+host   = bunker-2026
+fecha  = 2026-11-02T19:49:10Z
+
+--- git / curl / jq / python3 ---
+git version 2.43.0
+/usr/bin/curl
+/usr/bin/jq
+/usr/bin/python3
+Python 3.12.3
+
+--- interprete con numpy y pandas ---
+python 3.12.3 numpy 2.5.3 pandas 3.0.6
+
+--- /root/trading-bot-fix-fase2/.git ---
+no existe -> sin git, CONFIRMADO
+
+--- df -h / ---
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1       150G   43G  102G  30% /
+
+--- el clon de trabajo ---
+rama   = vps/n9-carry-cuenta-real
+base   = 0f77f9e4b49ac837bb33472967f36157bbf66bc7
+HEAD   = 0f77f9e
+limpio = SI
+
+--- produccion viva en /opt/trading-bot (solo lectura) ---
+/opt/trading-bot presente
+2991740 bash -c cd /root/trading-bot-n9/fix-fase2 && bash fase0_n9/a6_entorno.sh; echo RC_A6=0; echo; /opt/trading-bot/venv/bin/python fase0_n9/a1_hechos_seccion2.py; echo RC_A1=0; echo; /opt/trading-bot/venv/bin/python fase0_n9/a2_fecha_y_conteo_exacto.py; echo RC_A2=0

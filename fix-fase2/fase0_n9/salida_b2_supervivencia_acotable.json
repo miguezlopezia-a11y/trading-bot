@@ -1,0 +1,138 @@
+{
+  "credenciales_enviadas": [],
+  "cobertura": {
+    "exchange_info": 942,
+    "estados": {
+      "TRADING": 804,
+      "SETTLING": 137,
+      "PENDING_TRADING": 1
+    },
+    "funding_info": 820,
+    "premium_index": 945,
+    "solo_funding_info": [
+      "AAVEUSD_PERP",
+      "ADAUSD_PERP",
+      "AVAXUSD_PERP",
+      "BCHUSD_PERP",
+      "BNBUSD_PERP",
+      "BTCUSD_PERP",
+      "DOGEUSD_PERP",
+      "DOTUSD_PERP",
+      "ETCUSD_PERP",
+      "ETHUSD_PERP",
+      "FILUSD_PERP",
+      "LINKUSD_PERP",
+      "LTCUSD_PERP",
+      "NEARUSD_PERP",
+      "SOLUSD_PERP",
+      "SUIUSD_PERP",
+      "TRXUSD_PERP",
+      "UNIUSD_PERP",
+      "XLMUSD_PERP",
+      "XRPUSD_PERP"
+    ],
+    "solo_premium_index": [
+      "EOSUSDT",
+      "FRONTUSDT",
+      "MATICUSDT"
+    ]
+  },
+  "pruebas": {
+    "AAVEUSD_PERP": {
+      "http": 200,
+      "filas": 0,
+      "cuerpo": "[]"
+    },
+    "ADAUSD_PERP": {
+      "http": 200,
+      "filas": 0,
+      "cuerpo": "[]"
+    },
+    "AVAXUSD_PERP": {
+      "http": 200,
+      "filas": 0,
+      "cuerpo": "[]"
+    },
+    "EOSUSDT": {
+      "http": 200,
+      "filas": 3,
+      "cuerpo": "[{\"symbol\":\"EOSUSDT\",\"fundingTime\":1793577600005,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.78020000\",\"rateType\":\"Regular\"},{\"symbol\":\"EOSUSDT\",\"fundingTime\":1793606400001,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.78020000\",\"rateType\":\"Regular\"},{\"symbol\":\"EOSUSDT\",\"fundingTime\":1793635200000,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.78020000\",\"rateType\":\"Regular\"}]"
+    },
+    "FRONTUSDT": {
+      "http": 200,
+      "filas": 3,
+      "cuerpo": "[{\"symbol\":\"FRONTUSDT\",\"fundingTime\":1793577600005,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.45000000\",\"rateType\":\"Regular\"},{\"symbol\":\"FRONTUSDT\",\"fundingTime\":1793606400001,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.45000000\",\"rateType\":\"Regular\"},{\"symbol\":\"FRONTUSDT\",\"fundingTime\":1793635200000,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.45000000\",\"rateType\":\"Regular\"}]"
+    },
+    "MATICUSDT": {
+      "http": 200,
+      "filas": 3,
+      "cuerpo": "[{\"symbol\":\"MATICUSDT\",\"fundingTime\":1793577600005,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.19800000\",\"rateType\":\"Regular\"},{\"symbol\":\"MATICUSDT\",\"fundingTime\":1793606400001,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.19800000\",\"rateType\":\"Regular\"},{\"symbol\":\"MATICUSDT\",\"fundingTime\":1793635200000,\"fundingRate\":\"0.00010000\",\"markPrice\":\"0.19800000\",\"rateType\":\"Regular\"}]"
+    }
+  },
+  "no_trading_probados": {
+    "1000000BOBUSDT": {
+      "status": "SETTLING",
+      "http": 200,
+      "filas": 3,
+      "cuerpo": "[{\"symbol\":\"1000000BOBUSDT\",\"fundingTime\":1791158400002,\"fundingRate\":\"0.01054137\",\"markPrice\":\"0.01216000\",\"rateType\":\"Regular\"},{\"symbol\":\"1000000BOBUSDT\",\"fundingTime\":1791172800000,\"fundingRate\":\"0.01728928\",\"markPrice\":\"0.01191000\",\"rateType\":\"Regular\"},{\"symbol\":\"1000000BOBUSDT\",\"fundingTime\":1791187200001,\"fundingRate\":\"0.02000000\",\"markPrice\":\"0.02328000\",\"rateType\":\"Regular\"}]"
+    },
+    "1000WHYUSDT": {
+      "status": "SETTLING",
+      "http": 200,
+      "filas": 3,
+      "cuerpo": "[{\"symbol\":\"1000WHYUSDT\",\"fundingTime\":1773705600000,\"fundingRate\":\"0.00019659\",\"markPrice\":\"0.00000505\",\"rateType\":\"Regular\"},{\"symbol\":\"1000WHYUSDT\",\"fundingTime\":1773720000008,\"fundingRate\":\"0.00172228\",\"markPrice\":\"0.00000466\",\"rateType\":\"Regular\"},{\"symbol\":\"1000WHYUSDT\",\"fundingTime\":1773734400002,\"fundingRate\":\"0.00457468\",\"markPrice\":\"0.00000394\",\"rateType\":\"Regular\"}]"
+    },
+    "1000XUSDT": {
+      "status": "SETTLING",
+      "http": 200,
+      "filas": 3,
+      "cuerpo": "[{\"symbol\":\"1000XUSDT\",\"fundingTime\":1763078400000,\"fundingRate\":\"-0.00014703\",\"markPrice\":\"0.02735000\",\"rateType\":\"Regular\"},{\"symbol\":\"1000XUSDT\",\"fundingTime\":1763092800000,\"fundingRate\":\"0.00005000\",\"markPrice\":\"0.02683417\",\"rateType\":\"Regular\"},{\"symbol\":\"1000XUSDT\",\"fundingTime\":1763107200000,\"fundingRate\":\"0.00039134\",\"markPrice\":\"0.02575000\",\"rateType\":\"Regular\"}]"
+    }
+  },
+  "no_trading": {
+    "n": 138,
+    "primeros": [
+      "1000000BOBUSDT",
+      "1000WHYUSDT",
+      "1000XUSDT",
+      "42USDT",
+      "A2ZUSDT",
+      "ACXUSDT",
+      "AGIXUSDT",
+      "AI16ZUSDT",
+      "AIUSDT",
+      "ALPACAUSDT",
+      "ALPHAUSDT",
+      "AMBUSDT",
+      "ATAUSDT",
+      "B3USDT",
+      "BADGERUSDT",
+      "BAKEUSDT",
+      "BALUSDT",
+      "BIDUSDT",
+      "BLZUSDT",
+      "BNXUSDT",
+      "BOBUSDT",
+      "BONDUSDT",
+      "BSWUSDT",
+      "CHESSUSDT",
+      "COMBOUSDT",
+      "COMMONUSDT",
+      "COSUSDT",
+      "CUDISUSDT",
+      "DAMUSDT",
+      "DARUSDT",
+      "DEFIUSDT",
+      "DEGENUSDT",
+      "DEGOUSDT",
+      "DENTUSDT",
+      "DFUSDT",
+      "DGBUSDT",
+      "DMCUSDT",
+      "DUSDT",
+      "EPICUSDT",
+      "EPTUSDT"
+    ]
+  },
+  "instante_utc": "2026-11-02T20:14:03.756878+00:00"
+}

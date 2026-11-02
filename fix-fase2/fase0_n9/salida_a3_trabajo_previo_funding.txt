@@ -1,0 +1,83 @@
+=== A-3 — trabajo de funding ya hecho? ===
+cwd     = /root/trading-bot-n9/fix-fase2
+raiz    = /root/trading-bot-n9
+fecha   = 2026-11-02T19:40:25Z
+
+--- A-3.1  git grep -il funding en las ramas remotas ---
+origin/main : 0 archivos con 'funding'
+origin/fase-b-recuperada : 4 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md
+      fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+      fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md
+origin/feat/estrategias-candidatas : 0 archivos con 'funding'
+origin/nube/n4-procedencia-v-t-n : 1 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+origin/nube/n5-reconocimiento-datos : 2 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+origin/nube/n6-holdout-y-recuento : 2 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+origin/nube/n7-benchmark-exposicion : 2 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+origin/nube/s1-auditoria-harness : 1 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+origin/nube/s2-literatura : 1 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+origin/nube/s3-datos : 1 archivos con 'funding'
+      fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+
+--- A-3.2  codigo o datos de funding (no solo la palabra) en las ramas ---
+origin/main : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/fase-b-recuperada : 2 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+      fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md
+      fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md
+origin/feat/estrategias-candidatas : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/nube/n4-procedencia-v-t-n : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/nube/n5-reconocimiento-datos : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/nube/n6-holdout-y-recuento : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/nube/n7-benchmark-exposicion : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/nube/s1-auditoria-harness : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/nube/s2-literatura : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+origin/nube/s3-datos : 0 rutas cuyo NOMBRE contiene funding/carry/basis/perp
+
+--- A-3.3  grep -rl -i funding en /opt/trading-bot (produccion, solo lectura) ---
+/opt/trading-bot/venv/lib/python3.12/site-packages/curl_cffi/_wrapper.abi3.so
+/opt/trading-bot/venv/lib/python3.12/site-packages/lxml/isoschematron/resources/xsl/iso-schematron-xslt1/iso_schematron_skeleton_for_xslt1.xsl
+/opt/trading-bot/venv/lib/python3.12/site-packages/websockets-17.2.dist-info/METADATA
+coincidencias: 3
+
+--- A-3.4  grep -rl -i funding en /root/trading-bot-fix-fase2 (solo lectura) ---
+coincidencias: 0
+
+--- A-3.5  datos de funding ya descargados en el VPS ---
+total 164
+drwxr-xr-x 5 root root   4096 Nov  2 19:21 .
+drwxr-xr-x 9 root root   4096 Nov  2 19:34 ..
+drwxr-xr-x 2 root root   4096 Nov  2 19:21 brain
+-rw-r--r-- 1 root root 144506 Nov  2 19:21 btc_usd_5y_1d.csv
+drwxr-xr-x 2 root root   4096 Nov  2 19:21 multi
+drwxr-xr-x 2 root root   4096 Nov  2 19:21 multi_muertos
+-rw-r--r-- 1 root root      0 Nov  2 19:21 paper_journal.db
+data/funding/ existe? NO
+/root/trading-bot-n9/fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md
+/root/trading-bot-n9/fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md
+/opt/criteria/node_modules/es-errors/.github/FUNDING.yml
+/opt/criteria/node_modules/function-bind/.github/FUNDING.yml
+/opt/criteria/node_modules/hasown/.github/FUNDING.yml
+/opt/criteria/node_modules/supports-preserve-symlinks-flag/.github/FUNDING.yml
+/opt/criteria/node_modules/resolve/.github/FUNDING.yml
+ficheros con 'funding' en el nombre bajo /root y /opt (excluyendo fase0_n9): 7
+
+--- A-3.6  donde vive sharpe_min_dsr (lo citan N5 y el brief) ---
+origin/fase-b-recuperada:fix-fase2/src/potencia_fase_b.py:34:def sharpe_min_dsr(n_trials, var_trials=V_TRIALS, n_eff=T_EFF,
+origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md:95:34:def sharpe_min_dsr(n_trials, var_trials=V_TRIALS, n_eff=T_EFF,
+origin/fase-b-recuperada:fix-fase2/results/potencia_fase_b.json
+origin/fase-b-recuperada:fix-fase2/src/potencia_fase_b.py
+origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md
+origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md
+origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md
+origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md
+origin/fase-b-recuperada:fix-fase2/verificar_potencia_sintetico.py
