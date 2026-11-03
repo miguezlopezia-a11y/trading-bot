@@ -1,0 +1,47 @@
+{
+  "coste_unitario": 0.0015,
+  "sellos": {
+    "20261007": {
+      "T": 4404,
+      "n": 10,
+      "elig_dias_difieren": 4,
+      "elig_celdas_difieren": 10,
+      "elig_celdas_bench_admite_antes": 10,
+      "turnover_brief_total": 2.922222222222222,
+      "turnover_brief_medio": 0.0006635381975981431,
+      "turnover_brief_dias_no_cero": 4,
+      "turnover_real_total": 68.81166944080734,
+      "turnover_real_medio": 0.0156248114079944,
+      "turnover_real_dias_no_cero": 4038,
+      "coste_real_bps_dia": 0.23437217111991604,
+      "coste_real_pct_anual": 0.8554584245876935,
+      "bench_final_sin_coste": 1329.310356355764,
+      "bench_final_con_coste": 1200.3827236531408,
+      "bench_sharpe_sin_coste": 1.1642725251886343,
+      "bench_sharpe_con_coste": 1.1532673156903392,
+      "delta_sharpe": -0.011005209498295088,
+      "material_en_sharpe": false
+    },
+    "20261009": {
+      "T": 4406,
+      "n": 10,
+      "elig_dias_difieren": 4,
+      "elig_celdas_difieren": 10,
+      "elig_celdas_bench_admite_antes": 10,
+      "turnover_brief_total": 2.922222222222222,
+      "turnover_brief_medio": 0.0006632370000504362,
+      "turnover_brief_dias_no_cero": 4,
+      "turnover_real_total": 68.8352720389886,
+      "turnover_real_medio": 0.015623075814568453,
+      "turnover_real_dias_no_cero": 4040,
+      "coste_real_bps_dia": 0.23434613721852685,
+      "coste_real_pct_anual": 0.855363400847623,
+      "bench_final_sin_coste": 1277.6180579816871,
+      "bench_final_con_coste": 1153.6615815631742,
+      "bench_sharpe_sin_coste": 1.1595878861074365,
+      "bench_sharpe_con_coste": 1.1485828436197647,
+      "delta_sharpe": -0.011005042487671757,
+      "material_en_sharpe": false
+    }
+  }
+}

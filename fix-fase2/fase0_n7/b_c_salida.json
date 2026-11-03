@@ -1,0 +1,42 @@
+{
+  "script": "auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+  "existe": true,
+  "salida_3_0d": {
+    "sello": "20261007",
+    "dias": 4404,
+    "exposicion_media": 0.1559827260735808,
+    "dias_exposicion_cero": 915,
+    "sharpe_fase_b": 1.0082678270225074,
+    "sharpe_bh_100": 1.164272064204635,
+    "sharpe_bh_igual_exposicion": 1.07121204755227,
+    "gana_con_benchmark_igualado": false,
+    "mascara_binaria": {
+      "sharpe_estrategia": 1.1358747566407752,
+      "sharpe_bh": 1.1566971275382782
+    },
+    "percentil_seleccion": 73.55000000000001
+  },
+  "documentado_en": [
+    "docs/estado-auditoria-n1.md (H11)",
+    "docs/auditoria_harness_n1.md (3.0d, 5-bis)"
+  ],
+  "commit_3_0d": "1713e13 2026-11-01 11:17:54 +0000 N1 pasos 3.0c y 3.0d: el liston del DSR no es robusto y el benchmark no estaba igualado",
+  "estado_de_la_seccion_4": {
+    "\u00a74.1(a) escalado dia a dia": "HECHO en 3.0d PARTE C (sharpe_bh_igual_exposicion=1.07121)",
+    "\u00a74.1(b) escalado por constante k": "INNECESARIO: 3.0d ya demuestra la invariancia de escala (k=0.5/1/2)",
+    "\u00a74.1(c) binario tipo Fase A": "HECHO en 3.0d PARTE B (mascara_binaria: 1.13587 vs 1.15670)",
+    "\u00a74.2 hilo 1 costes del benchmark": "NO hecho (lo mide A-4 de esta Fase 0)",
+    "\u00a74.2 hilo 2 rf del efectivo": "VACIO en (a): las dos series tienen la MISMA exposicion, luego el mismo efectivo, luego rf se cancela exactamente en el diferencial",
+    "\u00a74.2 hilo 3 B&H puro vs EW diario": "NO hecho (lo mide A-5 de esta Fase 0)",
+    "\u00a74.2 hilo 4 regla de entrada": "NO hecho (lo mide A-4: el bench admite cada activo 1 dia antes, 10 celdas)",
+    "\u00a74.3 IC del diferencial por block bootstrap": "NO hecho. ES LA UNICA APORTACION GENUINA DE LA \u00a74",
+    "\u00a74.4 por tramos": "PARCIAL: portfolio_walkforward_temporal.json ya publica supera_bench_sharpe=False en T1/T2/T3, SIN igualar exposicion",
+    "test de seleccion por permutaciones": "HECHO en 3.0d PARTE D (percentil 73.55) y el brief NO LO CONTEMPLA"
+  },
+  "defecto_en_3_0d": {
+    "afirma": "99%+ de dias con exposicion>0",
+    "medido": "79.22 %",
+    "dias_cero": 915,
+    "dias": 4404
+  }
+}

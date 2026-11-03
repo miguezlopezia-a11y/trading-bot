@@ -1,0 +1,32 @@
+{
+  "equity": {
+    "dias": 4404,
+    "ini": "2014-09-17",
+    "fin": "2026-10-07",
+    "v0": 1.0,
+    "vN": 4.175151198990724
+  },
+  "benchmark": {
+    "dias": 4404,
+    "ini": "2014-09-17",
+    "fin": "2026-10-07",
+    "v0": 1.0,
+    "vN": 1329.310356355764
+  },
+  "mismas_fechas": true,
+  "sharpe_estrategia_ddof1": 1.0082681199193708,
+  "sharpe_estrategia_ddof0": 1.0083826372824432,
+  "sharpe_benchmark_ddof1": 1.1642725251886343,
+  "sharpe_benchmark_ddof0": 1.1644047612643844,
+  "publicado_estrategia": 1.008,
+  "publicado_benchmark": 1.164,
+  "retorno_pct": 317.52,
+  "bench_retorno_pct": 132831.04,
+  "max_dd_pct": -26.9,
+  "bench_max_dd_pct": -88.96,
+  "reproduce_estrategia": true,
+  "reproduce_benchmark": true,
+  "n_retornos_estrategia": 4403,
+  "n_retornos_benchmark": 4403,
+  "veredicto_nogo": "NO-GO NO SE DISPARA"
+}

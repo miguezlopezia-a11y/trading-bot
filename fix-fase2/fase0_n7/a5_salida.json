@@ -1,0 +1,77 @@
+{
+  "definicion_bh": "entra el 1er dia elegible, reparto a peso igual ese dia, sin tocar hasta la siguiente entrada",
+  "sellos": {
+    "20261007": {
+      "T": 4404,
+      "dias_entrada": [
+        "2015-09-18",
+        "2018-11-10",
+        "2021-04-11",
+        "2021-09-22"
+      ],
+      "curvas": {
+        "igual-ponderado diario (EL DEL CODIGO)": {
+          "retorno_pct": 132831.0356355764,
+          "sharpe": 1.1642725251886343,
+          "max_dd_pct": -88.95843043348796,
+          "calmar": 123.753645511943,
+          "final": 1329.310356355764
+        },
+        "B&H puro (reparto solo al entrar)": {
+          "retorno_pct": 75764.90909170522,
+          "sharpe": 1.107769509619438,
+          "max_dd_pct": -89.45263146638864,
+          "calmar": 70.19732126051974,
+          "final": 758.6490909170523
+        },
+        "B&H universo fijo del 1er dia elegible": {
+          "retorno_pct": 19158.168766246563,
+          "sharpe": 0.9869422978201708,
+          "max_dd_pct": -89.25600467306577,
+          "calmar": 17.789432997231224,
+          "final": 189.62553081278045
+        }
+      },
+      "delta_sharpe_bh_menos_ew": -0.056503015569196346,
+      "delta_sharpe_relativo": 0.04853074718055533,
+      "menor_del_5pct": true,
+      "ratio_final_bh_sobre_ew": 0.5707087793981006
+    },
+    "20261009": {
+      "T": 4406,
+      "dias_entrada": [
+        "2015-09-18",
+        "2018-11-10",
+        "2021-04-11",
+        "2021-09-22"
+      ],
+      "curvas": {
+        "igual-ponderado diario (EL DEL CODIGO)": {
+          "retorno_pct": 127661.80579816872,
+          "sharpe": 1.1595878861074365,
+          "max_dd_pct": -88.95843043348796,
+          "calmar": 118.88368087832147,
+          "final": 1277.6180579816871
+        },
+        "B&H puro (reparto solo al entrar)": {
+          "retorno_pct": 73638.61609522057,
+          "sharpe": 1.1043723192691022,
+          "max_dd_pct": -89.45263146638864,
+          "calmar": 68.1963088352303,
+          "final": 737.3861609522056
+        },
+        "B&H universo fijo del 1er dia elegible": {
+          "retorno_pct": 18977.75026964745,
+          "sharpe": 0.9855383228456455,
+          "max_dd_pct": -89.25600467306577,
+          "calmar": 17.613905266843133,
+          "final": 187.84904034780888
+        }
+      },
+      "delta_sharpe_bh_menos_ew": -0.055215566838334285,
+      "delta_sharpe_relativo": 0.04761654334255311,
+      "menor_del_5pct": true,
+      "ratio_final_bh_sobre_ew": 0.5771569651395574
+    }
+  }
+}

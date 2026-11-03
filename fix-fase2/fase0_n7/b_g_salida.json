@@ -1,0 +1,71 @@
+{
+  "rf": {
+    "base_dif_sharpes": -0.06293707386831149,
+    "base_sharpe_d": -0.3544647801017175,
+    "cotas": {
+      "0.02": {
+        "sharpe_d": -0.35446478010171745,
+        "max_abs_dif_d": 6.938893903907228e-18,
+        "dif_sharpes": -0.06007081085368937,
+        "movimiento_dif_sharpes": 0.002866263014622117,
+        "calmar_a": 1.5413484035322322,
+        "mdd_a": -25.837081574589433,
+        "pct_del_0_063": 4.55417266557298
+      },
+      "0.05": {
+        "sharpe_d": -0.35446478010171756,
+        "max_abs_dif_d": 3.469446951953614e-18,
+        "dif_sharpes": -0.055771627627628995,
+        "movimiento_dif_sharpes": 0.007165446240682494,
+        "calmar_a": 2.3808606875006797,
+        "mdd_a": -23.944062006007506,
+        "pct_del_0_063": 11.385095938326204
+      }
+    }
+  },
+  "a5_convenciones": {
+    "sharpe_ew": 1.1641398732233168,
+    "lecturas": {
+      "crecer_primero": {
+        "retorno_pct": 75764.90909170522,
+        "sharpe": 1.107643339593207,
+        "delta": -0.05649653363010976,
+        "rel_pct": 4.853070917816766,
+        "por_debajo_del_5pct": true,
+        "ratio_sobre_ew": 0.5707087793981006
+      },
+      "repartir_primero": {
+        "retorno_pct": 75724.60925703796,
+        "sharpe": 1.105866093658733,
+        "delta": -0.058273779564583794,
+        "rel_pct": 5.005736931184483,
+        "por_debajo_del_5pct": false,
+        "ratio_sobre_ew": 0.5704056159233365
+      }
+    },
+    "el_umbral_del_5pct_discrimina": false
+  },
+  "retardo": {
+    "dif_a": -0.06293707386831149,
+    "dif_a_brief": -0.0685284860006623,
+    "mueve_a": -0.005591412132350815,
+    "dif_c": -0.02081938668094918,
+    "dif_c_brief": -0.04551239914899319,
+    "mueve_c": -0.024693012468044007,
+    "veces_mayor_en_c": 4.416239025768657,
+    "mascara_mismo_tamano": true,
+    "dias_que_difieren_en_membresia": 34
+  },
+  "permutaciones": {
+    "sharpe_real": 1.0710904225677678,
+    "percentil": 73.25,
+    "z": 0.6439996447095065,
+    "media_real": 0.0003755529721474258,
+    "media_independencia": 0.0003783612095758349,
+    "corr_e_rb": -0.0006784560953969617,
+    "corr_e_abs_rb": 0.016832341275452575,
+    "sd_real": 0.006698714979913316,
+    "sd_permutada_media": 0.007470765524616997,
+    "lectura": "no selecciona dias; el efecto entero es reduccion de varianza"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "sidecars": {
+    "total": 35,
+    "descuadran": 0,
+    "ficheros_malos": [],
+    "por_directorio": {
+      "data/multi": {
+        "sidecars": 20,
+        "cuadran": 20,
+        "descuadran": 0
+      },
+      "data/multi_muertos": {
+        "sidecars": 15,
+        "cuadran": 15,
+        "descuadran": 0
+      }
+    }
+  },
+  "h8_medido": {
+    "decisiones": 44030,
+    "divergentes": 10,
+    "sharpe_benchmark_actual": 1.1644047612643846,
+    "sharpe_benchmark_simetrico": 1.160271233798433,
+    "delta_sharpe": 0.004133527465951525
+  },
+  "dictamen_h8": "| **H8** | `portfolio_runner.py:246` vs `:229` | asimetr\u00eda de informaci\u00f3n | **s\u00ed**, medido | A ninguno: 10 decisiones de 44.030 (0,023%), +0.0041 de Sharpe en el benchmark | **BAJO** |",
+  "consecuencia": "el hilo 4 de la \u00a74.2 esta HECHO: H8, BAJO, 10 de 44030 decisiones, +0.0041 de Sharpe. La fila 'NO hecho' del registro era falsa."
+}
