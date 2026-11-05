@@ -1,0 +1,42 @@
+{
+  "filas": [
+    {
+      "construccion": "base: N=12, muestra completa",
+      "N": 12,
+      "T_eff": 4336,
+      "liston_anual": 1.3118,
+      "delta": 0.0,
+      "sharpe_obs_anual": 1.0084,
+      "pasa": false
+    },
+    {
+      "construccion": "solo recuento: N=15, completa",
+      "N": 15,
+      "T_eff": 4336,
+      "liston_anual": 1.8024,
+      "delta": 0.4906,
+      "sharpe_obs_anual": 1.0084,
+      "pasa": false
+    },
+    {
+      "construccion": "solo holdout: N=12 en T3",
+      "N": 12,
+      "T_eff": 1354,
+      "liston_anual": 1.7013,
+      "delta": 0.3896,
+      "sharpe_obs_anual": 0.5725,
+      "pasa": false
+    },
+    {
+      "construccion": "LAS DOS: N=15 en T3",
+      "N": 15,
+      "T_eff": 1354,
+      "liston_anual": 2.195,
+      "delta": 0.8833,
+      "sharpe_obs_anual": 0.5725,
+      "pasa": false
+    }
+  ],
+  "V_para_liston_0823": 0.00012317362883131636,
+  "cociente_V": 0.1754123414383613
+}

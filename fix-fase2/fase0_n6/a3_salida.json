@@ -1,0 +1,56 @@
+{
+  "tramos": {
+    "T1_2015-2018": {
+      "sharpe_anual": 1.328,
+      "t_stat": 2.34,
+      "dsr": 0.8244,
+      "n_obs_eff": 1136,
+      "ic95": [
+        0.57,
+        38.51
+      ],
+      "pnl_pct": 81.72,
+      "n_retornos": 1218,
+      "skew": 3.142129765069334,
+      "kurt_raw": 52.458753380603056,
+      "desde": "2015-09-01",
+      "hasta": "2018-12-31",
+      "reproduce": true
+    },
+    "T2_2019-2022": {
+      "sharpe_anual": 1.219,
+      "t_stat": 2.49,
+      "dsr": 0.7719,
+      "n_obs_eff": 1524,
+      "ic95": [
+        1.13,
+        30.71
+      ],
+      "pnl_pct": 82.42,
+      "n_retornos": 1461,
+      "skew": -0.7811112150612451,
+      "kurt_raw": 12.499071692236985,
+      "desde": "2019-01-01",
+      "hasta": "2022-12-31",
+      "reproduce": true
+    },
+    "T3_2023-fin": {
+      "sharpe_anual": 0.573,
+      "t_stat": 1.1,
+      "dsr": 0.3013,
+      "n_obs_eff": 1354,
+      "ic95": [
+        -5.82,
+        20.35
+      ],
+      "pnl_pct": 25.95,
+      "n_retornos": 1376,
+      "skew": 0.12336101849439718,
+      "kurt_raw": 11.497002452642162,
+      "desde": "2023-01-01",
+      "hasta": "2026-10-07",
+      "reproduce": false
+    }
+  },
+  "reproducen_todos": false
+}

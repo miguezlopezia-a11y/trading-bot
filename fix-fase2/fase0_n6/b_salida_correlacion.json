@@ -1,0 +1,117 @@
+{
+  "corr_sma_timing": {
+    "media": 0.6411318402432526,
+    "min": 0.36784080337305824,
+    "max": 0.8607076368171827
+  },
+  "corr_11_media": 0.3299739622659571,
+  "n_eff_11": {
+    "N": 11,
+    "rho_medio": 0.3299739622659571,
+    "cheverud_nyholt": 9.042952408284854,
+    "li_ji": 7.000000000000002,
+    "li_ji_impl_erronea_v1": 6.538228974788747,
+    "kish": 2.5582944469544495,
+    "autovalores": [
+      5.2698,
+      1.1872,
+      1.0047,
+      0.9623,
+      0.8151,
+      0.611,
+      0.5002,
+      0.2608,
+      0.1869,
+      0.1133,
+      0.0885
+    ]
+  },
+  "n_eff_14": {
+    "N": 14,
+    "rho_medio": 0.21309674361129827,
+    "cheverud_nyholt": 12.158543419936677,
+    "li_ji": 10.000000000000002,
+    "li_ji_impl_erronea_v1": 8.455231987316655,
+    "kish": 3.7132740615410196,
+    "autovalores": [
+      5.6194,
+      1.757,
+      1.1103,
+      1.0581,
+      0.9396,
+      0.7958,
+      0.6244,
+      0.61,
+      0.4816,
+      0.3669,
+      0.2577,
+      0.1809,
+      0.1099,
+      0.0884
+    ]
+  },
+  "objeto": {
+    "T_eff": 4336,
+    "skew": 1.036877411892888,
+    "kurt_raw": 31.998896649002162,
+    "sharpe_obs_anual": 1.0083826372824432
+  },
+  "listones": [
+    {
+      "construccion": "expediente, N nominal",
+      "N": 12.0,
+      "V": 0.0007021947704551833,
+      "liston_anual": 1.3118,
+      "pasa": false
+    },
+    {
+      "construccion": "N efectivo CN (11 corr.) + portfolio",
+      "N": 10.04,
+      "V": 0.0007021947704551833,
+      "liston_anual": 1.2672,
+      "pasa": false
+    },
+    {
+      "construccion": "N efectivo Li-Ji (11 corr.) + portfolio",
+      "N": 8.0,
+      "V": 0.0007021947704551833,
+      "liston_anual": 1.2076,
+      "pasa": false
+    },
+    {
+      "construccion": "N efectivo rho-medio (11) + portfolio",
+      "N": 3.56,
+      "V": 0.0007021947704551833,
+      "liston_anual": 0.9625,
+      "pasa": true
+    },
+    {
+      "construccion": "N=15 nominal (recuento de esta tarea)",
+      "N": 15.0,
+      "V": 0.0015503661545655356,
+      "liston_anual": 1.8024,
+      "pasa": false
+    },
+    {
+      "construccion": "N efectivo CN (14 corr.) + portfolio",
+      "N": 13.16,
+      "V": 0.0015503661545655356,
+      "liston_anual": 1.7558,
+      "pasa": false
+    },
+    {
+      "construccion": "N efectivo Li-Ji (14 corr.) + portfolio",
+      "N": 11.0,
+      "V": 0.0015503661545655356,
+      "liston_anual": 1.6901,
+      "pasa": false
+    },
+    {
+      "construccion": "N efectivo rho-medio (14) + portfolio",
+      "N": 4.71,
+      "V": 0.0015503661545655356,
+      "liston_anual": 1.3389,
+      "pasa": false
+    }
+  ]
+}

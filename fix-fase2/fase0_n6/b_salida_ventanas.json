@@ -1,0 +1,47 @@
+{
+  "ventana_V": [
+    "2024-10-06",
+    "2026-10-06"
+  ],
+  "filas": [
+    {
+      "ventana": "muestra completa",
+      "T": 4405,
+      "T_eff": 4338,
+      "sharpe_anual": 1.0082,
+      "t": 3.48,
+      "liston_n12": 1.3117,
+      "liston_n15": 1.8022,
+      "liston_t3": 0.8702,
+      "pasa_n12": false,
+      "pasa_n15": false,
+      "pasa_t3": true
+    },
+    {
+      "ventana": "T3 2023-fin",
+      "T": 1378,
+      "T_eff": 1356,
+      "sharpe_anual": 0.5721,
+      "t": 1.1,
+      "liston_n12": 1.7007,
+      "liston_n15": 2.1944,
+      "liston_t3": 1.5565,
+      "pasa_n12": false,
+      "pasa_n15": false,
+      "pasa_t3": false
+    },
+    {
+      "ventana": "ventana de V exacta",
+      "T": 731,
+      "T_eff": 666,
+      "sharpe_anual": 0.2798,
+      "t": 0.38,
+      "liston_n12": 2.108,
+      "liston_n15": 2.6126,
+      "liston_t3": 2.2209,
+      "pasa_n12": false,
+      "pasa_n15": false,
+      "pasa_t3": false
+    }
+  ]
+}

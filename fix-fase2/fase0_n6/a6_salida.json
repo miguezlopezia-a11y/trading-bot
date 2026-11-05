@@ -1,0 +1,93 @@
+{
+  "ventanas": {
+    "muestra completa 2014-2026": {
+      "T": 4405,
+      "T_eff": 4338,
+      "sharpe_diario": 0.052769142712665945,
+      "skew": 1.0371826169106773,
+      "kurt_raw": 32.013435568063514
+    },
+    "T3 holdout 2023-fin": {
+      "T": 1378,
+      "T_eff": 1356,
+      "sharpe_diario": 0.029944777086904947,
+      "skew": 0.1235808771512713,
+      "kurt_raw": 11.513662957513093
+    },
+    "T1+T2 2015-09-2022": {
+      "T": 2679,
+      "T_eff": 2644,
+      "sharpe_diario": 0.06646274756937505,
+      "skew": 1.2663213059430416,
+      "kurt_raw": 34.43444233242783
+    }
+  },
+  "comparaciones": [
+    {
+      "ventana": "muestra completa 2014-2026",
+      "N": 12,
+      "V": 0.0007021947704551833,
+      "T_eff": 4338,
+      "liston_dsr_anual": 1.3117,
+      "liston_t3_anual": 0.8702,
+      "sharpe_obs_anual": 1.0082,
+      "pasa_dsr": false,
+      "pasa_t": true
+    },
+    {
+      "ventana": "muestra completa 2014-2026",
+      "N": 15,
+      "V": 0.0015503661545655356,
+      "T_eff": 4338,
+      "liston_dsr_anual": 1.8022,
+      "liston_t3_anual": 0.8702,
+      "sharpe_obs_anual": 1.0082,
+      "pasa_dsr": false,
+      "pasa_t": true
+    },
+    {
+      "ventana": "T3 holdout 2023-fin",
+      "N": 12,
+      "V": 0.0007021947704551833,
+      "T_eff": 1356,
+      "liston_dsr_anual": 1.7007,
+      "liston_t3_anual": 1.5565,
+      "sharpe_obs_anual": 0.5721,
+      "pasa_dsr": false,
+      "pasa_t": false
+    },
+    {
+      "ventana": "T3 holdout 2023-fin",
+      "N": 15,
+      "V": 0.0015503661545655356,
+      "T_eff": 1356,
+      "liston_dsr_anual": 2.1944,
+      "liston_t3_anual": 1.5565,
+      "sharpe_obs_anual": 0.5721,
+      "pasa_dsr": false,
+      "pasa_t": false
+    },
+    {
+      "ventana": "T1+T2 2015-09-2022",
+      "N": 12,
+      "V": 0.0007021947704551833,
+      "T_eff": 2644,
+      "liston_dsr_anual": 1.4393,
+      "liston_t3_anual": 1.1146,
+      "sharpe_obs_anual": 1.2698,
+      "pasa_dsr": false,
+      "pasa_t": true
+    },
+    {
+      "ventana": "T1+T2 2015-09-2022",
+      "N": 15,
+      "V": 0.0015503661545655356,
+      "T_eff": 2644,
+      "liston_dsr_anual": 1.9301,
+      "liston_t3_anual": 1.1146,
+      "sharpe_obs_anual": 1.2698,
+      "pasa_dsr": false,
+      "pasa_t": true
+    }
+  ]
+}

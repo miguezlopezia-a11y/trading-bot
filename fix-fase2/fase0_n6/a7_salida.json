@@ -1,0 +1,50 @@
+{
+  "z_scores": {
+    "mean_reversion": -4.238788138482593,
+    "sma_timing_5": -0.8264692064029743,
+    "tsmom_7": -0.7679964859686341,
+    "trend_following": -0.6165162543896708,
+    "tsmom_365": -0.42459095987067397,
+    "breakout": -0.42142388583911156,
+    "sma_timing_10": -0.15880301217995194,
+    "rsi_hidden_divergence": 0.3106058266169606,
+    "sma_timing_304": 0.3116168644176752,
+    "sma_timing_20": 0.6957891967694636,
+    "ma_cross": 0.7247973153250097,
+    "connors_rsi2": 0.8732129358075281,
+    "sma_timing_100": 1.01661308605163,
+    "PORTFOLIO": 1.0230325419624253,
+    "sma_timing_50": 1.1908242563780906
+  },
+  "casos": [
+    {
+      "construccion": "N=12, expediente (11+portfolio)",
+      "N": 12,
+      "V": 0.0007021947704551833,
+      "liston_anual": 1.3118,
+      "delta": 0.0
+    },
+    {
+      "construccion": "N=15, con las 3",
+      "N": 15,
+      "V": 0.0015503661554462243,
+      "liston_anual": 1.8024,
+      "delta": 0.4906
+    },
+    {
+      "construccion": "N=14, con las 3 SIN mean_reversion",
+      "N": 14,
+      "V": 0.0007291060926637066,
+      "liston_anual": 1.3658,
+      "delta": 0.054
+    },
+    {
+      "construccion": "N=13, solo mean_reversion anadida",
+      "N": 13,
+      "V": 0.0017328276529136163,
+      "liston_anual": 1.8251,
+      "delta": 0.5133
+    }
+  ],
+  "fraccion_mean_reversion_pct": 88.9930697105585
+}
