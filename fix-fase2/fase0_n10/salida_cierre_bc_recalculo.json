@@ -1,0 +1,76 @@
+{
+  "mundo_cagr": 0.11804903679636802,
+  "dfr": 0.025,
+  "limpias": [
+    "^GSPC",
+    "EEM",
+    "IEF",
+    "TLT",
+    "DBC",
+    "BTC-EUR",
+    "ETH-EUR",
+    "VNQ",
+    "URTH"
+  ],
+  "excluidas": [
+    "^STOXX50E",
+    "^IBEX",
+    "^TNX",
+    "GC=F",
+    "CL=F",
+    "HG=F",
+    "EURUSD=X",
+    "JPY=X",
+    "^VIX"
+  ],
+  "b6_exceso_neto": 0.0753697198050581,
+  "b6_capital_min": 31843.02669835499,
+  "candidatas": {
+    "C-1_mundo": {
+      "tasa_bruta": 0.11804903679636802,
+      "filas": [
+        {
+          "capital": 1000,
+          "neta": 95.61971980505811,
+          "vs_dfr": 75.36971980505811,
+          "vs_mundo": 0.0
+        },
+        {
+          "capital": 10000,
+          "neta": 956.1971980505809,
+          "vs_dfr": 753.6971980505809,
+          "vs_mundo": 0.0
+        },
+        {
+          "capital": 100000,
+          "neta": 9445.873906913073,
+          "vs_dfr": 7420.873906913073,
+          "vs_mundo": 0.0
+        }
+      ]
+    },
+    "C-2_tendencia": {
+      "tasa_bruta": 0.049,
+      "filas": [
+        {
+          "capital": 1000,
+          "neta": 39.69,
+          "vs_dfr": 19.439999999999998,
+          "vs_mundo": -55.92971980505811
+        },
+        {
+          "capital": 10000,
+          "neta": 396.9,
+          "vs_dfr": 194.39999999999998,
+          "vs_mundo": -559.297198050581
+        },
+        {
+          "capital": 100000,
+          "neta": 3969.0,
+          "vs_dfr": 1944.0,
+          "vs_mundo": -5476.873906913073
+        }
+      ]
+    }
+  }
+}

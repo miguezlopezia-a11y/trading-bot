@@ -1,0 +1,32 @@
+{
+  "fecha_utc": "2026-11-06T10:05:35.432403+00:00",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
+  "previo_yahoo": {
+    "http": 200,
+    "bytes": 1298
+  },
+  "bce": {
+    "url": "https://data-api.ecb.europa.eu/service/data/FM/D.U2.EUR.4F.KR.DFR.LEV?lastNObservations=1&format=csvdata",
+    "http": 200,
+    "bytes": 745,
+    "fecha": "2026-11-06",
+    "valor_pct": 2.5
+  },
+  "sg_trend_indicator": {
+    "pagina": "https://wholesale.banking.societegenerale.com/fileadmin/indices_feeds/ti_screen/index.html",
+    "fecha": "2026-11-04",
+    "stats_url": "https://wholesale.banking.societegenerale.com/fileadmin/indices_feeds/ti_screen/data/2stats/2.2026-11-04.stats.csv",
+    "http": 200,
+    "csv": "Annualised Return, 1.46%,Current Margin/Equity,\r\nAnnualised Volatility,16.69%,Current Drawdown,-27.34%\r\nSharpe Ratio, 0.087,Maximum Drawdown,-46.01%\r\n",
+    "advertencia": "Es SG Trend Indicator, no el Sharpe del SG CTA Index desde 2000."
+  },
+  "sg_cta_0_56_verificado_en_fuente_primaria": false,
+  "dato_publico_mas_cercano": {
+    "valor": 0.61,
+    "desde": "2000-01",
+    "fecha_documento": "2022-05-26",
+    "fuente": "CFM, A good time for trend following... but, then again, it's always been!, figura 2; fuente de datos Bloomberg",
+    "url": "https://www.cfm.com/wp-content/uploads/2022/12/39-A-Good-Time-for-Trend-Following-FINAL.pdf",
+    "tipo": "secundario, no SG oficial"
+  }
+}

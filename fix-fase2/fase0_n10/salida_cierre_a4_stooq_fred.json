@@ -1,0 +1,46 @@
+{
+  "fecha_utc": "2026-11-06T09:58:00.377194+00:00",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
+  "fuentes": [
+    {
+      "nombre": "previo_yahoo",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=1d&interval=1d",
+      "http": 200,
+      "bytes": 1298,
+      "inicio_cuerpo": "{\"chart\":{\"result\":[{\"meta\":{\"currency\":\"USD\",\"symbol\":\"^GSPC\",\"exchangeName\":\"SNP\",\"fullExchangeName\":\"SNP\",\"instrumentType\":\"INDEX\",\"firstTradeDate\":-1325583000,\"regularMarketTime\":1793914448,\"hasPrePostMarketData\":false,\"gmtoffset\":-18000,\"timezone\":\"EST\",\"exchangeTimezoneName\":\"America/New_York\",\"regularMarketPrice\":7353.73,\"regularMarketChangePercent\":-4.356,\"fulldayPrice\":7353.73,\"fulldayCha",
+      "cuerpo_util": true
+    },
+    {
+      "nombre": "stooq_sp500",
+      "url": "https://stooq.com/q/d/l/?s=%5Espx&i=d",
+      "http": 200,
+      "bytes": 796,
+      "inicio_cuerpo": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex,nofollow\"></head><body><noscript>This site requires JavaScript to verify your browser. Please enable JavaScript and reload.</noscript><script nonce=\"FgANDzMnTXLR4ZBaEIaZJQ\">\n(async()=>{const c=\"AAAAAGrtpKgzEGCZVNjOvNIn7iTKEpqEWqDLLhx6Tuam9umc0o4HsyEOJQQ\",d=4,t=\"0\".repeat(d),e=new TextEncoder;let n=0;while(1){cons",
+      "cuerpo_util": false
+    },
+    {
+      "nombre": "fred_dgs10_csv",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10",
+      "http": 0,
+      "bytes": 0,
+      "error": "TimeoutError('The read operation timed out')",
+      "cuerpo_util": false
+    },
+    {
+      "nombre": "fred_vix_csv",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS",
+      "http": 0,
+      "bytes": 0,
+      "error": "TimeoutError('The read operation timed out')",
+      "cuerpo_util": false
+    },
+    {
+      "nombre": "fred_dgs10_api_sin_clave",
+      "url": "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&file_type=json",
+      "http": 400,
+      "bytes": 162,
+      "inicio_cuerpo": "{\"error_code\":400,\"error_message\":\"Bad Request.  Variable api_key is not set.  Read https:\\/\\/fred.stlouisfed.org\\/docs\\/api\\/api_key.html for more information.\"}",
+      "cuerpo_util": false
+    }
+  ]
+}

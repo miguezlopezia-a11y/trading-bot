@@ -1,0 +1,55 @@
+{
+  "fecha_utc": "2026-11-06T09:49:47.571967+00:00",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
+  "previo": {
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=1d&interval=1d",
+    "http": 200,
+    "bytes": 1298,
+    "cuerpo_util": true,
+    "n_velas": 1,
+    "primera": "2026-11-05",
+    "ultima": "2026-11-05",
+    "granularidad_meta": "1d",
+    "error_chart": null
+  },
+  "period2_epoch": 1793958587,
+  "resultados": [
+    {
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=max&interval=1d",
+      "http": 200,
+      "bytes": 19900,
+      "cuerpo_util": true,
+      "n_velas": 169,
+      "primera": "1984-12-01",
+      "ultima": "2026-11-05",
+      "granularidad_meta": "3mo",
+      "error_chart": null,
+      "nombre": "range_max_1d"
+    },
+    {
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=10y&interval=1d",
+      "http": 200,
+      "bytes": 261269,
+      "cuerpo_util": true,
+      "n_velas": 2513,
+      "primera": "2016-11-07",
+      "ultima": "2026-11-05",
+      "granularidad_meta": "1d",
+      "error_chart": null,
+      "nombre": "range_10y_1d"
+    },
+    {
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=0&period2=1793958587&interval=1d",
+      "http": 200,
+      "bytes": 1549380,
+      "cuerpo_util": true,
+      "n_velas": 14334,
+      "primera": "1970-01-02",
+      "ultima": "2026-11-05",
+      "granularidad_meta": "1d",
+      "error_chart": null,
+      "nombre": "periodos_1d"
+    }
+  ],
+  "no_go_fuente_disparado": false
+}

@@ -1,0 +1,772 @@
+{
+  "fecha_utc": "2026-11-06T01:18:01.925208+00:00",
+  "cwd": "/home/pablo/trading-bot-gh/.worktrees/n10",
+  "n_ramas": 11,
+  "ramas": [
+    "task/n10-eleccion-de-mercado",
+    "origin/fase-b-recuperada",
+    "origin/feat/estrategias-candidatas",
+    "origin/main",
+    "origin/nube/n4-procedencia-v-t-n",
+    "origin/nube/n5-reconocimiento-datos",
+    "origin/nube/n6-holdout-y-recuento",
+    "origin/nube/n7-benchmark-exposicion",
+    "origin/nube/s1-auditoria-harness",
+    "origin/nube/s2-literatura",
+    "origin/nube/s3-datos"
+  ],
+  "git_log": {
+    "comando": "git log --all --oneline",
+    "rc": 0,
+    "salida": [
+      "c2682df Anade el brief de N10: la criba de mercados antes de construir el bot",
+      "573a579 N8 CANCELADA: la reemplaza N9 (VPS), que si tiene red para los datos",
+      "0f77f9e Anade el brief de N9 (VPS): la cuenta del carry con datos reales y el plano del bot",
+      "05d1ebf Anade el brief de N8: carry de funding, umbral de viabilidad y contrapropuesta",
+      "7fe739c N7 Fase 0: correcciones del Maker/Verifier (20 hallazgos, 5 criticos)",
+      "1062b34 N7 Fase 0: el benchmark de exposicion igualada ya estaba medido",
+      "80e41d4 Anade el brief de N7: benchmark de exposicion igualada de Fase B",
+      "d138f22 N6 Fase 0: respuesta al Maker/Verifier, con los trece hallazgos aceptados",
+      "0eed41c N6 Fase 0 nemesis: verificacion de hechos y ataque adversarial (sin ejecutar el Alcance)",
+      "b158016 Anade el brief de N6 y cancela los Alcances de N4 y N5",
+      "50635fe N5 Fase 0: registro nemesis — ninguna fuente alcanzable (NO-GO), N si se reinicia, y T no era la restriccion",
+      "3fe18c8 Anade el brief de N5: reconocimiento de datos y potencia a priori",
+      "2dda39b N4 Fase 0: critica del Maker/Verifier aplicada — 16 hallazgos, 2 errores criticos mios",
+      "a1bd5c1 N4 Fase 0: registro nemesis — T_eff y V son rastreables, N esta contado por debajo",
+      "9f322b8 Anade el brief de N4: procedencia de V, T_eff y N",
+      "9e0974e Mergea N3 (PR 3): registro nemesis de ampliacion de T, Alcance cancelado",
+      "46ad49d Mergea N2 (PR 2): registro nemesis de literatura, Alcance cancelado",
+      "f7feab0 Mergea N1 (PR 1): auditoria del harness ejecutada",
+      "1713e13 N1 pasos 3.0c y 3.0d: el liston del DSR no es robusto y el benchmark no estaba igualado",
+      "892e179 N1: informe de la auditoria del harness y documento de ancla",
+      "7559940 N1 Alcance 3.3-3.7: costes, DSR(N) y V, simetria, supervivencia, verificadores sin red",
+      "118d2f1 N1 Alcance 3.0-3.2: parche del loader, vinculo codigo-resultados, AUDIT-A1/A2/A3, look-ahead",
+      "2738115 Anade a N1 los pasos 3.0c y 3.0d, que salen de la nemesis de N2",
+      "30be2d2 S3 Fase 0: revision nemesis — la palanca T es nula, el defecto real es el loader",
+      "b9e90a1 S2 Fase 0 nemesis: verificacion de hechos y ataque adversarial (sin ejecutar la §3)",
+      "71062e4 OK de Pablo a la Fase 3 de N1, con el orden corregido por la nemesis",
+      "8becf5f S1 Fase 0: registro de revision nemesis (solo §2, sin ejecutar el Alcance)",
+      "adad9e7 Anade los tres briefs de las sesiones en la nube (S1 auditoria del harness, S2 literatura, S3 ampliacion de T)",
+      "d34b147 Recupera el trabajo de Fase B, reevaluacion y TimesFM del VPS",
+      "663db2c Fase A rigor estadistico: DSR (Bailey-LdP 2014), block bootstrap, t>3, benchmark exposicion igualada — ninguna de las 11 variantes sobrevive",
+      "5b2851c feat: rsi_hidden_divergence — adaptado de jamniol/freqtrade-setup (MIT), look-ahead corregido",
+      "9731a42 merge: feat/estrategias-candidatas — sma_timing/tsmom/connors_rsi2 (9 variantes), walkforward sizing fix",
+      "c4f042c feat: 3 estrategias candidatas de Opus — sma_timing, tsmom, connors_rsi2 (9 variantes)",
+      "62503a4 feat: exit_long/exit_short en el backtester + fix de folds sin trades en walk-forward (candidatas de Opus, decision Pablo 2026-10-07)",
+      "58afd98 feat: OpenRouterProvider como proveedor PRINCIPAL de deliberacion (decision Pablo 2026-10-07)",
+      "b7da9eb fix: data/*.db en .gitignore + referencia rota a REGISTRO_C.md (hallazgos de MaiA, verificados)",
+      "6e49e56 fix: on_conflict=dedupe_key en inserts a Supabase + decision en probe de init",
+      "589c466 docs: resultado real del epsilon sobre las 12 operaciones (7/12 -> 0/12 vetadas)",
+      "0216979 fix: epsilon de tolerancia en risk_veto (decision Pablo 2026-10-07)",
+      "0a3345f 1.2 segundo cerebro (mensaje separado; el codigo viajo en 3a61591 por git add -A previo)",
+      "3a61591 docs: deliberacion_sombra.md al dia (KimiProvider activo, smoke real 6/6, sin bloqueo de saldo) + backtest sizing 5% (politica Risk de Pablo)",
+      "e39e5bf docs: copia smoke_kimi_real.py a produccion (manual, llamada real de pago, fuera de la suite automatica)",
+      "8efd0c3 Etapa B sub-fix: KimiProvider en deliberation.py (sin saldo Anthropic)",
+      "039476a docs: hallazgo modo sombra — sizing 95% del backtest vs limite Risk 5%, las 32 senales vetadas por sizing (registrado, no bloquea). Dato de decision para Pablo, sin cambios de parametros.",
+      "1953620 1.1 deliberacion 6 Sombreros en modo sombra + veto de riesgo (Etapa B)",
+      "c68b7cc Verificaciones Fase 2: paper sin dinero real (estructural), MTM paper, cierre A4/A7 re-ejecutable",
+      "1ae6148 1.3 paper runner: simulacion pura de ma_cross con MTM diario",
+      "3622492 1.4 walk-forward de estabilidad de ma_cross: 4 ventanas, sin optimizar params",
+      "a4a7d4f init: estado real de produccion tras cierre Fase 1 + docstring A4"
+    ]
+  },
+  "busquedas": {
+    "autocorr": {
+      "task/n10-eleccion-de-mercado": {
+        "rc": 0,
+        "archivos": [
+          "task/n10-eleccion-de-mercado:docs/rigor_estadistico_resultado.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/rigor_estadistico.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md",
+          "task/n10-eleccion-de-mercado:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/fase-b-recuperada": {
+        "rc": 0,
+        "archivos": [
+          "origin/fase-b-recuperada:docs/rigor_estadistico_resultado.md",
+          "origin/fase-b-recuperada:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/fase-b-recuperada:fix-fase2/src/rigor_estadistico.py",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md",
+          "origin/fase-b-recuperada:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/feat/estrategias-candidatas": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/main": {
+        "rc": 0,
+        "archivos": [
+          "origin/main:docs/rigor_estadistico_resultado.md",
+          "origin/main:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/nube/n4-procedencia-v-t-n": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n4-procedencia-v-t-n:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/fase0_n4/fase0_a4b_mecanica_rho_negativo.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/rigor_estadistico.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n4-procedencia-v-t-n:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/nube/n5-reconocimiento-datos": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n5-reconocimiento-datos:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/rigor_estadistico.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n5-reconocimiento-datos:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/nube/n6-holdout-y-recuento": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n6-holdout-y-recuento:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/rigor_estadistico.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n6-holdout-y-recuento:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/nube/n7-benchmark-exposicion": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n7-benchmark-exposicion:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/b_a_tres_construcciones.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/rigor_estadistico.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n7-benchmark-exposicion:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/nube/s1-auditoria-harness": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s1-auditoria-harness:docs/rigor_estadistico_resultado.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/rigor_estadistico.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/s1-auditoria-harness:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/nube/s2-literatura": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s2-literatura:docs/rigor_estadistico_resultado.md",
+          "origin/nube/s2-literatura:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/s2-literatura:fix-fase2/src/rigor_estadistico.py",
+          "origin/nube/s2-literatura:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/s2-literatura:src/rigor_estadistico.py"
+        ]
+      },
+      "origin/nube/s3-datos": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s3-datos:docs/rigor_estadistico_resultado.md",
+          "origin/nube/s3-datos:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/s3-datos:fix-fase2/src/rigor_estadistico.py",
+          "origin/nube/s3-datos:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/s3-datos:src/rigor_estadistico.py"
+        ]
+      }
+    },
+    "variance_ratio": {
+      "task/n10-eleccion-de-mercado": {
+        "rc": 0,
+        "archivos": [
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md"
+        ]
+      },
+      "origin/fase-b-recuperada": {
+        "rc": 0,
+        "archivos": [
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md"
+        ]
+      },
+      "origin/feat/estrategias-candidatas": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/main": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n4-procedencia-v-t-n": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n5-reconocimiento-datos": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n6-holdout-y-recuento": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n7-benchmark-exposicion": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/s1-auditoria-harness": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/s2-literatura": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/s3-datos": {
+        "rc": 1,
+        "archivos": []
+      }
+    },
+    "hurst": {
+      "task/n10-eleccion-de-mercado": {
+        "rc": 0,
+        "archivos": [
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md"
+        ]
+      },
+      "origin/fase-b-recuperada": {
+        "rc": 0,
+        "archivos": [
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md"
+        ]
+      },
+      "origin/feat/estrategias-candidatas": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/main": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n4-procedencia-v-t-n": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n5-reconocimiento-datos": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n6-holdout-y-recuento": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n7-benchmark-exposicion": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/s1-auditoria-harness": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/s2-literatura": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/s3-datos": {
+        "rc": 1,
+        "archivos": []
+      }
+    },
+    "mercado": {
+      "task/n10-eleccion-de-mercado": {
+        "rc": 0,
+        "archivos": [
+          "task/n10-eleccion-de-mercado:data/brain/knowledge.jsonl",
+          "task/n10-eleccion-de-mercado:docs/rigor_estadistico_resultado.md",
+          "task/n10-eleccion-de-mercado:docs/supabase_esquema.sql",
+          "task/n10-eleccion-de-mercado:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/auditoria_n1/paso_3_1_audit_a1_lookahead.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/auditoria_n1/paso_3_2_lookahead_invariancia_prefijo.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/auditoria_n1/paso_3_3_costes.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/data/brain/knowledge.jsonl",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/auditoria_harness_n1.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/supabase_esquema.sql",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/brain.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/deliberation.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/personas/paul_tudor_jones.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/personas/ray_dalio.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/verificar_mark_to_market_paper.py",
+          "task/n10-eleccion-de-mercado:src/brain.py",
+          "task/n10-eleccion-de-mercado:src/deliberation.py",
+          "task/n10-eleccion-de-mercado:src/personas/paul_tudor_jones.md",
+          "task/n10-eleccion-de-mercado:src/personas/ray_dalio.md",
+          "task/n10-eleccion-de-mercado:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/fase-b-recuperada": {
+        "rc": 0,
+        "archivos": [
+          "origin/fase-b-recuperada:data/brain/knowledge.jsonl",
+          "origin/fase-b-recuperada:docs/rigor_estadistico_resultado.md",
+          "origin/fase-b-recuperada:docs/supabase_esquema.sql",
+          "origin/fase-b-recuperada:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+          "origin/fase-b-recuperada:fix-fase2/auditoria_n1/paso_3_1_audit_a1_lookahead.py",
+          "origin/fase-b-recuperada:fix-fase2/auditoria_n1/paso_3_2_lookahead_invariancia_prefijo.py",
+          "origin/fase-b-recuperada:fix-fase2/auditoria_n1/paso_3_3_costes.py",
+          "origin/fase-b-recuperada:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/fase-b-recuperada:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/fase-b-recuperada:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/fase-b-recuperada:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/fase-b-recuperada:fix-fase2/docs/supabase_esquema.sql",
+          "origin/fase-b-recuperada:fix-fase2/src/brain.py",
+          "origin/fase-b-recuperada:fix-fase2/src/deliberation.py",
+          "origin/fase-b-recuperada:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/fase-b-recuperada:fix-fase2/src/personas/ray_dalio.md",
+          "origin/fase-b-recuperada:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md",
+          "origin/fase-b-recuperada:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/fase-b-recuperada:src/brain.py",
+          "origin/fase-b-recuperada:src/deliberation.py",
+          "origin/fase-b-recuperada:src/personas/paul_tudor_jones.md",
+          "origin/fase-b-recuperada:src/personas/ray_dalio.md",
+          "origin/fase-b-recuperada:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/feat/estrategias-candidatas": {
+        "rc": 0,
+        "archivos": [
+          "origin/feat/estrategias-candidatas:data/brain/knowledge.jsonl",
+          "origin/feat/estrategias-candidatas:docs/supabase_esquema.sql",
+          "origin/feat/estrategias-candidatas:src/brain.py",
+          "origin/feat/estrategias-candidatas:src/deliberation.py",
+          "origin/feat/estrategias-candidatas:src/personas/paul_tudor_jones.md",
+          "origin/feat/estrategias-candidatas:src/personas/ray_dalio.md",
+          "origin/feat/estrategias-candidatas:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/main": {
+        "rc": 0,
+        "archivos": [
+          "origin/main:data/brain/knowledge.jsonl",
+          "origin/main:docs/rigor_estadistico_resultado.md",
+          "origin/main:docs/supabase_esquema.sql",
+          "origin/main:src/brain.py",
+          "origin/main:src/deliberation.py",
+          "origin/main:src/personas/paul_tudor_jones.md",
+          "origin/main:src/personas/ray_dalio.md",
+          "origin/main:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/nube/n4-procedencia-v-t-n": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n4-procedencia-v-t-n:data/brain/knowledge.jsonl",
+          "origin/nube/n4-procedencia-v-t-n:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n4-procedencia-v-t-n:docs/supabase_esquema.sql",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/auditoria_n1/paso_3_1_audit_a1_lookahead.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/auditoria_n1/paso_3_2_lookahead_invariancia_prefijo.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/auditoria_n1/paso_3_3_costes.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/supabase_esquema.sql",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/brain.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/deliberation.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/personas/ray_dalio.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/nube/n4-procedencia-v-t-n:src/brain.py",
+          "origin/nube/n4-procedencia-v-t-n:src/deliberation.py",
+          "origin/nube/n4-procedencia-v-t-n:src/personas/paul_tudor_jones.md",
+          "origin/nube/n4-procedencia-v-t-n:src/personas/ray_dalio.md",
+          "origin/nube/n4-procedencia-v-t-n:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/nube/n5-reconocimiento-datos": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n5-reconocimiento-datos:data/brain/knowledge.jsonl",
+          "origin/nube/n5-reconocimiento-datos:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n5-reconocimiento-datos:docs/supabase_esquema.sql",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/auditoria_n1/paso_3_1_audit_a1_lookahead.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/auditoria_n1/paso_3_2_lookahead_invariancia_prefijo.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/auditoria_n1/paso_3_3_costes.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/supabase_esquema.sql",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/brain.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/deliberation.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/personas/ray_dalio.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/nube/n5-reconocimiento-datos:src/brain.py",
+          "origin/nube/n5-reconocimiento-datos:src/deliberation.py",
+          "origin/nube/n5-reconocimiento-datos:src/personas/paul_tudor_jones.md",
+          "origin/nube/n5-reconocimiento-datos:src/personas/ray_dalio.md",
+          "origin/nube/n5-reconocimiento-datos:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/nube/n6-holdout-y-recuento": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n6-holdout-y-recuento:data/brain/knowledge.jsonl",
+          "origin/nube/n6-holdout-y-recuento:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n6-holdout-y-recuento:docs/supabase_esquema.sql",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/auditoria_n1/paso_3_1_audit_a1_lookahead.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/auditoria_n1/paso_3_2_lookahead_invariancia_prefijo.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/auditoria_n1/paso_3_3_costes.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/supabase_esquema.sql",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/fase0_n6/a4_entorno_y_red.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/brain.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/deliberation.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/personas/ray_dalio.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-N6-holdout-recuento-de-N-y-que-test-aplica.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/nube/n6-holdout-y-recuento:src/brain.py",
+          "origin/nube/n6-holdout-y-recuento:src/deliberation.py",
+          "origin/nube/n6-holdout-y-recuento:src/personas/paul_tudor_jones.md",
+          "origin/nube/n6-holdout-y-recuento:src/personas/ray_dalio.md",
+          "origin/nube/n6-holdout-y-recuento:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/nube/n7-benchmark-exposicion": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n7-benchmark-exposicion:data/brain/knowledge.jsonl",
+          "origin/nube/n7-benchmark-exposicion:docs/rigor_estadistico_resultado.md",
+          "origin/nube/n7-benchmark-exposicion:docs/supabase_esquema.sql",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/auditoria_n1/paso_3_1_audit_a1_lookahead.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/auditoria_n1/paso_3_2_lookahead_invariancia_prefijo.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/auditoria_n1/paso_3_3_costes.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/supabase_esquema.sql",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/a7_entorno_y_red.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/a7_salida.json",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/b_def_diferencial_ceros_ppy.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/brain.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/deliberation.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/personas/ray_dalio.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/nube/n7-benchmark-exposicion:src/brain.py",
+          "origin/nube/n7-benchmark-exposicion:src/deliberation.py",
+          "origin/nube/n7-benchmark-exposicion:src/personas/paul_tudor_jones.md",
+          "origin/nube/n7-benchmark-exposicion:src/personas/ray_dalio.md",
+          "origin/nube/n7-benchmark-exposicion:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/nube/s1-auditoria-harness": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s1-auditoria-harness:data/brain/knowledge.jsonl",
+          "origin/nube/s1-auditoria-harness:docs/rigor_estadistico_resultado.md",
+          "origin/nube/s1-auditoria-harness:docs/supabase_esquema.sql",
+          "origin/nube/s1-auditoria-harness:fix-fase2/auditoria_n1/paso_3_0d_benchmark_exposicion_igualada.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/auditoria_n1/paso_3_1_audit_a1_lookahead.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/auditoria_n1/paso_3_2_lookahead_invariancia_prefijo.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/auditoria_n1/paso_3_3_costes.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/supabase_esquema.sql",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/brain.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/deliberation.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/personas/ray_dalio.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/nube/s1-auditoria-harness:src/brain.py",
+          "origin/nube/s1-auditoria-harness:src/deliberation.py",
+          "origin/nube/s1-auditoria-harness:src/personas/paul_tudor_jones.md",
+          "origin/nube/s1-auditoria-harness:src/personas/ray_dalio.md",
+          "origin/nube/s1-auditoria-harness:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/nube/s2-literatura": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s2-literatura:data/brain/knowledge.jsonl",
+          "origin/nube/s2-literatura:docs/rigor_estadistico_resultado.md",
+          "origin/nube/s2-literatura:docs/supabase_esquema.sql",
+          "origin/nube/s2-literatura:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/nube/s2-literatura:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/s2-literatura:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/s2-literatura:fix-fase2/docs/supabase_esquema.sql",
+          "origin/nube/s2-literatura:fix-fase2/src/brain.py",
+          "origin/nube/s2-literatura:fix-fase2/src/deliberation.py",
+          "origin/nube/s2-literatura:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/nube/s2-literatura:fix-fase2/src/personas/ray_dalio.md",
+          "origin/nube/s2-literatura:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/s2-literatura:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/s2-literatura:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/nube/s2-literatura:src/brain.py",
+          "origin/nube/s2-literatura:src/deliberation.py",
+          "origin/nube/s2-literatura:src/personas/paul_tudor_jones.md",
+          "origin/nube/s2-literatura:src/personas/ray_dalio.md",
+          "origin/nube/s2-literatura:verificar_mark_to_market_paper.py"
+        ]
+      },
+      "origin/nube/s3-datos": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s3-datos:data/brain/knowledge.jsonl",
+          "origin/nube/s3-datos:docs/rigor_estadistico_resultado.md",
+          "origin/nube/s3-datos:docs/supabase_esquema.sql",
+          "origin/nube/s3-datos:fix-fase2/data/brain/knowledge.jsonl",
+          "origin/nube/s3-datos:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/s3-datos:fix-fase2/docs/rigor_estadistico_resultado.md",
+          "origin/nube/s3-datos:fix-fase2/docs/supabase_esquema.sql",
+          "origin/nube/s3-datos:fix-fase2/src/brain.py",
+          "origin/nube/s3-datos:fix-fase2/src/deliberation.py",
+          "origin/nube/s3-datos:fix-fase2/src/personas/paul_tudor_jones.md",
+          "origin/nube/s3-datos:fix-fase2/src/personas/ray_dalio.md",
+          "origin/nube/s3-datos:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/s3-datos:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/s3-datos:fix-fase2/verificar_mark_to_market_paper.py",
+          "origin/nube/s3-datos:src/brain.py",
+          "origin/nube/s3-datos:src/deliberation.py",
+          "origin/nube/s3-datos:src/personas/paul_tudor_jones.md",
+          "origin/nube/s3-datos:src/personas/ray_dalio.md",
+          "origin/nube/s3-datos:verificar_mark_to_market_paper.py"
+        ]
+      }
+    },
+    "universo": {
+      "task/n10-eleccion-de-mercado": {
+        "rc": 0,
+        "archivos": [
+          "task/n10-eleccion-de-mercado:fix-fase2/auditoria_n1/paso_3_5_simetria_benchmark.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/auditoria_n1/paso_3_6_supervivencia.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/auditoria_n1/salida_3_6_supervivencia.json",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/auditoria_harness_n1.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/portfolio_supervivencia.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N6-holdout-recuento-de-N-y-que-test-aplica.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md",
+          "task/n10-eleccion-de-mercado:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/fase-b-recuperada": {
+        "rc": 0,
+        "archivos": [
+          "origin/fase-b-recuperada:fix-fase2/auditoria_n1/paso_3_5_simetria_benchmark.py",
+          "origin/fase-b-recuperada:fix-fase2/auditoria_n1/paso_3_6_supervivencia.py",
+          "origin/fase-b-recuperada:fix-fase2/auditoria_n1/salida_3_6_supervivencia.json",
+          "origin/fase-b-recuperada:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/fase-b-recuperada:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/fase-b-recuperada:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/fase-b-recuperada:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/fase-b-recuperada:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N6-holdout-recuento-de-N-y-que-test-aplica.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-N8-carry-de-funding-umbral-de-viabilidad-y-contrapropuesta.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md",
+          "origin/fase-b-recuperada:fix-fase2/tareas/tarea-vps-N9-carry-de-funding-cuenta-real-y-especificacion-del-bot.md",
+          "origin/fase-b-recuperada:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/feat/estrategias-candidatas": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/main": {
+        "rc": 1,
+        "archivos": []
+      },
+      "origin/nube/n4-procedencia-v-t-n": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/auditoria_n1/paso_3_5_simetria_benchmark.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/auditoria_n1/paso_3_6_supervivencia.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/auditoria_n1/salida_3_6_supervivencia.json",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n4-procedencia-v-t-n:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/nube/n5-reconocimiento-datos": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/auditoria_n1/paso_3_5_simetria_benchmark.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/auditoria_n1/paso_3_6_supervivencia.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/auditoria_n1/salida_3_6_supervivencia.json",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n5-reconocimiento-datos:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/nube/n6-holdout-y-recuento": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/auditoria_n1/paso_3_5_simetria_benchmark.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/auditoria_n1/paso_3_6_supervivencia.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/auditoria_n1/salida_3_6_supervivencia.json",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/fase0_n6/a9_balance_y_etiquetas.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/fase0_n6/b_ventana_homogenea.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-N6-holdout-recuento-de-N-y-que-test-aplica.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n6-holdout-y-recuento:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/nube/n7-benchmark-exposicion": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/auditoria_n1/paso_3_5_simetria_benchmark.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/auditoria_n1/paso_3_6_supervivencia.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/auditoria_n1/salida_3_6_supervivencia.json",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/a5_bh_puro_vs_igualponderado.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/a5_salida.json",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/b_b_favorable_a_fase_b.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/b_def_diferencial_ceros_ppy.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/fase0_n7/b_def_salida.json",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-N4-procedencia-de-V-T-y-N.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-N5-reconocimiento-de-datos-y-potencia-a-priori.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-N6-holdout-recuento-de-N-y-que-test-aplica.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-N7-benchmark-de-exposicion-igualada.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/n7-benchmark-exposicion:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/nube/s1-auditoria-harness": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s1-auditoria-harness:fix-fase2/auditoria_n1/paso_3_5_simetria_benchmark.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/auditoria_n1/paso_3_6_supervivencia.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/auditoria_n1/salida_3_6_supervivencia.json",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/auditoria_harness_n1.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/s1-auditoria-harness:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/nube/s2-literatura": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s2-literatura:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/s2-literatura:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/nube/s2-literatura:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/nube/s2-literatura:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/s2-literatura:fix-fase2/tareas/tarea-nube-S2-investigacion-literatura-cripto.md",
+          "origin/nube/s2-literatura:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      },
+      "origin/nube/s3-datos": {
+        "rc": 0,
+        "archivos": [
+          "origin/nube/s3-datos:fix-fase2/docs/fase_b_reevaluacion_resultado.md",
+          "origin/nube/s3-datos:fix-fase2/docs/timesfm_fase2_resultado.md",
+          "origin/nube/s3-datos:fix-fase2/src/portfolio_supervivencia.py",
+          "origin/nube/s3-datos:fix-fase2/src/portfolio_walkforward_temporal.py",
+          "origin/nube/s3-datos:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md",
+          "origin/nube/s3-datos:fix-fase2/verificar_supervivencia_sintetico.py"
+        ]
+      }
+    }
+  },
+  "busqueda_focal_rama_actual": {
+    "comando": "git grep -i -n -E variance_ratio|hurst|ratio de varianza|autocorrelaci[oó]n de (los )?retornos|criba de mercados task/n10-eleccion-de-mercado -- . :!*.csv :!*.html",
+    "rc": 0,
+    "salida": [
+      "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-nube-S3-datos-reproducibles-y-T.md:170:   T efectivo teniendo en cuenta la autocorrelación de los retornos",
+      "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md:62:  **se mide** —autocorrelación, ratio de varianza, persistencia de la volatilidad— y",
+      "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md:220:1. **Autocorrelación de los retornos** a 1, 5, 21 y 63 días, con su intervalo de",
+      "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md:223:2. **Ratio de varianza de Lo-MacKinlay** a 5, 21 y 63 días. Por encima de 1 hay",
+      "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md:292:  cualquier medición previa de autocorrelación, ratio de varianza o criba de mercados.",
+      "task/n10-eleccion-de-mercado:fix-fase2/tareas/tarea-vps-N10-eleccion-de-mercado-y-de-instrumento.md:293:  `git log --all --oneline`, `git grep -i` por `autocorr`, `variance_ratio`, `hurst`,"
+    ]
+  },
+  "criterio_no_go": "Solo dispara si hay una medición ejecutada de memoria de precios o una criba de mercados; briefs y autocorrelación de equity no cuentan.",
+  "no_go_disparado": false,
+  "nota": "La búsqueda amplia produce documentación y mediciones de equity; la focal no encuentra ratio de varianza, Hurst ni criba ejecutada. S3 A.12 mide autocorrelación de la equity, no memoria de precios de mercados."
+}

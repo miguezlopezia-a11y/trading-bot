@@ -1,0 +1,12 @@
+{
+  "comando": "python3 fix-fase2/fase0_n10/a2_granularidad_yahoo.py",
+  "rc": 1,
+  "consulta": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=max&interval=1d",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+  "http": 429,
+  "cuerpo_util": false,
+  "error_literal": "urllib.error.HTTPError: HTTP Error 429: Too Many Requests",
+  "n_velas": null,
+  "no_go_fuente_disparado": true,
+  "consecuencia": "PARAR; no ejecutar A-3 a A-6 ni buscar una fuente alternativa."
+}

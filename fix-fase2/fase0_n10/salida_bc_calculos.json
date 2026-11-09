@@ -1,0 +1,104 @@
+{
+  "b1": {
+    "estimaciones": 360,
+    "por_mitad": 180,
+    "alfa_global": 0.0001388888888888889
+  },
+  "b2": [
+    {
+      "coste": 0.0005,
+      "sigma": 0.01,
+      "rho_min": 0.06266570686577501
+    },
+    {
+      "coste": 0.0005,
+      "sigma": 0.02,
+      "rho_min": 0.031332853432887504
+    }
+  ],
+  "b3": {
+    "series_yahoo": 18,
+    "etfs": [
+      "EEM",
+      "IEF",
+      "TLT",
+      "DBC",
+      "VNQ",
+      "URTH"
+    ]
+  },
+  "b4": [
+    {
+      "tipo": 0.19,
+      "final_anual": 301324.29454194324,
+      "final_diferido": 332444.44146138086,
+      "diferencia": 31120.14691943763
+    },
+    {
+      "tipo": 0.28,
+      "final_anual": 267358.66354288626,
+      "final_diferido": 306617.2812990052,
+      "diferencia": 39258.61775611894
+    }
+  ],
+  "b6": [
+    {
+      "exceso": 0.01,
+      "capital_min": 240000.0
+    },
+    {
+      "exceso": 0.03,
+      "capital_min": 80000.0
+    },
+    {
+      "exceso": 0.056133,
+      "capital_min": 42755.598311153866
+    }
+  ],
+  "C-1_mundo": {
+    "bruto_supuesto": 0.0943,
+    "filas": [
+      {
+        "capital": 1000,
+        "candidata_neta": 76.383,
+        "vs_dfr": 56.132999999999996,
+        "vs_mundo": 0.0
+      },
+      {
+        "capital": 10000,
+        "candidata_neta": 763.8299999999999,
+        "vs_dfr": 561.3299999999999,
+        "vs_mundo": 0.0
+      },
+      {
+        "capital": 100000,
+        "candidata_neta": 7569.7,
+        "vs_dfr": 5544.7,
+        "vs_mundo": 0.0
+      }
+    ]
+  },
+  "C-2_tendencia": {
+    "bruto_supuesto": 0.049,
+    "filas": [
+      {
+        "capital": 1000,
+        "candidata_neta": 39.69,
+        "vs_dfr": 19.439999999999998,
+        "vs_mundo": -36.693
+      },
+      {
+        "capital": 10000,
+        "candidata_neta": 396.9,
+        "vs_dfr": 194.39999999999998,
+        "vs_mundo": -366.92999999999995
+      },
+      {
+        "capital": 100000,
+        "candidata_neta": 3969.0,
+        "vs_dfr": 1944.0,
+        "vs_mundo": -3600.7
+      }
+    ]
+  }
+}
